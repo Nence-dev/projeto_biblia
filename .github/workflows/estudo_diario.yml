@@ -1,0 +1,81 @@
+name: Estudo Bíblico Diário & Publicação Web (GitHub Pages)
+
+on:
+  schedule:
+    # Executa todos os dias às 09:00 UTC (06:00 horário de Brasília)
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Permite disparar manualmente pelo GitHub
+  push:
+    branches:
+      - main
+    paths:
+      - 'web/**'
+      - '.github/workflows/estudo_diario.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  gerar-estudo:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar Dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Executar Coleta e Geração Teológica Diária
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL || 'gemini-3.5-flash' }}
+          BIBLIA_VERSAO: ${{ secrets.BIBLIA_VERSAO || 'nvi' }}
+        run: |
+          python main.py
+
+      - name: Salvar Novo Estudo e Dados Web no Repositório
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: Estudo Bíblico do Dia & Atualização Web [skip ci]"
+          file_pattern: "estudos/*.md web/data.js"
+
+  deploy-pages:
+    # Executa sempre que gerar-estudo tiver sucesso ou quando o trigger for push direto na branch main
+    if: always() && !cancelled() && (needs.gerar-estudo.result == 'success' || needs.gerar-estudo.result == 'skipped')
+    needs: [gerar-estudo]
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Fazer Upload dos Arquivos Web
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'web/'
+
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

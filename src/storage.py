@@ -1,0 +1,442 @@
+"""Módulo de persistência e gerenciamento de cache de estudos em arquivos Markdown."""
+
+from __future__ import annotations
+
+import json
+import re
+from datetime import datetime
+from pathlib import Path
+from typing import Any
+
+from src.config import ESTUDOS_DIR, GEMINI_MODEL
+
+
+def normalizar_slug(texto: str) -> str:
+    """Converte uma referência bíblica em um slug seguro para nome de arquivo."""
+    slug = texto.lower()
+    slug = re.sub(r"[àáâãä]", "a", slug)
+    slug = re.sub(r"[èéêë]", "e", slug)
+    slug = re.sub(r"[ìíîï]", "i", slug)
+    slug = re.sub(r"[òóôõö]", "o", slug)
+    slug = re.sub(r"[ùúûü]", "u", slug)
+    slug = re.sub(r"[ç]", "c", slug)
+    slug = re.sub(r"[^\w\s-]", "_", slug)
+    slug = re.sub(r"[\s_]+", "_", slug).strip("_")
+    return slug
+
+
+def obter_pasta_estudos() -> Path:
+    """Garante a existência da pasta de estudos e a retorna."""
+    pasta = Path(ESTUDOS_DIR)
+    pasta.mkdir(parents=True, exist_ok=True)
+    return pasta
+
+
+def obter_estudo_hoje(data_str: str | None = None) -> Path | None:
+    """
+    Verifica se já existe algum estudo gerado para a data especificada (padrão: hoje).
+    Retorna o Path do arquivo ou None.
+    """
+    if not data_str:
+        data_str = datetime.now().strftime("%Y-%m-%d")
+
+    pasta = obter_pasta_estudos()
+    # Busca qualquer arquivo que comece com a data especificada
+    arquivos = list(pasta.glob(f"{data_str}_*.md"))
+    if arquivos:
+        return arquivos[0]
+    return None
+
+
+def estudo_existe_hoje(data_str: str | None = None) -> bool:
+    """Retorna True se já existe um estudo gerado para a data informada."""
+    return obter_estudo_hoje(data_str) is not None
+
+
+def salvar_estudo(
+    referencia: str,
+    texto_versiculo: str,
+    versao: str,
+    conteudo_estudo: str,
+    conteudo_whatsapp: str = "",
+    data_str: str | None = None,
+) -> Path:
+    """
+    Salva o estudo bíblico completo e sua versão WhatsApp em um arquivo Markdown estruturado.
+    Retorna o Path do arquivo gerado.
+    """
+    agora = datetime.now()
+    if not data_str:
+        data_str = agora.strftime("%Y-%m-%d")
+
+    slug_ref = normalizar_slug(referencia)
+    nome_arquivo = f"{data_str}_{slug_ref}.md"
+    pasta = obter_pasta_estudos()
+    caminho_arquivo = pasta / nome_arquivo
+
+    secao_whatsapp = ""
+    if conteudo_whatsapp.strip():
+        secao_whatsapp = f"""
+
+---
+
+## 📱 Versão para WhatsApp / Compartilhamento Rápido
+
+```text
+{conteudo_whatsapp.strip()}
+```
+"""
+
+    conteudo_final = f"""---
+data: "{data_str}"
+referencia: "{referencia}"
+versao: "{versao.upper()}"
+modelo: "{GEMINI_MODEL}"
+gerado_em: "{agora.isoformat()}"
+---
+
+# Versículo do Dia: {referencia} ({versao.upper()})
+
+> *"{texto_versiculo.strip()}"*
+> — **{referencia}**
+
+---
+
+{conteudo_estudo.strip()}
+{secao_whatsapp}
+"""
+
+    caminho_arquivo.write_text(conteudo_final, encoding="utf-8")
+    try:
+        exportar_estudo_para_web_data(caminho_arquivo)
+    except Exception:
+        pass
+    return caminho_arquivo
+
+
+def ler_estudo(caminho: Path) -> str:
+    """Lê e retorna o conteúdo textual de um estudo existente."""
+    if not caminho.exists():
+        raise FileNotFoundError(f"Arquivo de estudo não encontrado: {caminho}")
+    return caminho.read_text(encoding="utf-8")
+
+
+def listar_historico() -> list[dict[str, Any]]:
+    """Lista todos os estudos já gerados em ordem cronológica decrescente."""
+    pasta = obter_pasta_estudos()
+    arquivos = sorted(pasta.glob("*.md"), reverse=True)
+    historico = []
+
+    for arq in arquivos:
+        nome = arq.stem
+        partes = nome.split("_", 1)
+        data = partes[0] if len(partes) > 0 else "Desconhecido"
+        ref_slug = partes[1] if len(partes) > 1 else ""
+        historico.append({
+            "caminho": arq,
+            "arquivo": arq.name,
+            "data": data,
+            "referencia_slug": ref_slug,
+            "tamanho_bytes": arq.stat().st_size,
+        })
+
+    return historico
+
+
+def extrair_secao_whatsapp(conteudo_md: str) -> str:
+    """Extrai o texto preparado para o WhatsApp de dentro do arquivo markdown de estudo."""
+    match = re.search(
+        r"##\s*📱?\s*Versão para WhatsApp[^\n]*\n+```(?:text)?\n(.*?)\n```",
+        conteudo_md,
+        re.DOTALL | re.IGNORECASE,
+    )
+    if match:
+        return match.group(1).strip()
+
+    match_header = re.search(
+        r"##\s*📱?\s*Versão para WhatsApp[^\n]*\n+(.*)",
+        conteudo_md,
+        re.DOTALL | re.IGNORECASE,
+    )
+    if match_header:
+        return match_header.group(1).strip()
+
+    return conteudo_md
+
+
+def extrair_estudo_completo(conteudo_md: str) -> str:
+    """Extrai o estudo teológico completo (sem frontmatter YAML e sem a seção resumida para WhatsApp)."""
+    # Remove frontmatter YAML se houver
+    texto = re.sub(r"^---\n.*?\n---\n+", "", conteudo_md, flags=re.DOTALL)
+
+    # Remove a seção de resumo para WhatsApp
+    partes = re.split(r"(?:---\s*\n+)?##\s*📱?\s*Versão para WhatsApp", texto, flags=re.IGNORECASE)
+    texto_estudo = partes[0].strip()
+
+    return texto_estudo or conteudo_md.strip()
+
+
+def formatar_data_extenso(data_str: str) -> str:
+    """Converte '2026-09-29' em '29 de Setembro de 2026'."""
+    meses = [
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ]
+    try:
+        dt = datetime.strptime(data_str, "%Y-%m-%d")
+        return f"{dt.day} de {meses[dt.month - 1]} de {dt.year}"
+    except Exception:
+        return data_str
+
+
+def sanitizar_texto_markdown_para_web(texto: str) -> str:
+    """Higieniza markdown para HTML limpo, eliminando asteriscos soltos e formatando ênfases."""
+    if not texto:
+        return ""
+
+    # Converte negrito duplo **texto** em <strong>texto</strong>
+    texto_formatado = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', texto)
+
+    # Converte itálico *texto* ou _texto_ em <em>texto</em>
+    texto_formatado = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'<em>\1</em>', texto_formatado)
+    texto_formatado = re.sub(r'_([^_]+)_', r'<em>\1</em>', texto_formatado)
+
+    # Remove marcadores de lista (* item ou - item) transformando em fluxo contínuo
+    texto_formatado = re.sub(r'^\s*[*•-]\s+', '', texto_formatado, flags=re.MULTILINE)
+
+    # Remove citações cruas > se sobraram
+    texto_formatado = re.sub(r'^\s*>\s*', '', texto_formatado, flags=re.MULTILINE)
+
+    # Remove quaisquer asteriscos órfãos remanescentes
+    texto_formatado = texto_formatado.replace("*", "")
+
+    # Normaliza quebras de linha em parágrafos limpos com <br><br>
+    texto_formatado = re.sub(r'\n{2,}', '<br><br>', texto_formatado)
+    texto_formatado = re.sub(r'\n', ' ', texto_formatado)
+    return texto_formatado.strip()
+
+
+def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
+    """Extrai campos estruturados do markdown do estudo para formato web."""
+    # Extrair Frontmatter
+    match_data = re.search(r'data:\s*"([^"]+)"', conteudo_md)
+    data_str = match_data.group(1) if match_data else datetime.now().strftime("%Y-%m-%d")
+
+    match_ref = re.search(r'referencia:\s*"([^"]+)"', conteudo_md)
+    referencia = match_ref.group(1) if match_ref else "Passagem Bíblica"
+
+    match_ver = re.search(r'versao:\s*"([^"]+)"', conteudo_md)
+    versao = match_ver.group(1) if match_ver else "NVI"
+
+    # Extrair texto do versículo
+    match_v_text = re.search(r'>\s*\*"([^"]+)"\*', conteudo_md)
+    versiculo_texto = match_v_text.group(1).strip() if match_v_text else ""
+
+    # Extrair WhatsApp
+    zap = extrair_secao_whatsapp(conteudo_md)
+    if "***" in zap:
+        partes_zap = zap.split("***", 1)
+        zap = partes_zap[1].strip()
+    elif "\n\n*" in zap and not zap.startswith("*"):
+        partes_zap = zap.split("\n\n*", 1)
+        zap = "*" + partes_zap[1].strip()
+
+    # Extrair Seções
+    estudo_puro = extrair_estudo_completo(conteudo_md)
+
+    # 1. Contexto
+    conteudo_contexto = ""
+    match_ctx = re.search(r"###\s*1\.\s*O Contexto Histórico[^\n]*\n(.*?)(?=###|\Z)", estudo_puro, re.DOTALL)
+    if match_ctx:
+        conteudo_contexto = sanitizar_texto_markdown_para_web(match_ctx.group(1).strip())
+
+    # 2. Anatomia
+    conteudo_anatomia = ""
+    termos_originais = []
+    match_ana = re.search(r"###\s*2\.\s*A Anatomia do Texto[^\n]*\n(.*?)(?=###|\Z)", estudo_puro, re.DOTALL)
+    if match_ana:
+        texto_ana = match_ana.group(1).strip()
+        # Procura por termos em formato: * **"Termo"** (*original*): Explicacao
+        padrao_termo = re.finditer(r'\*\s*\*\*"([^"]+)"\*\*\s*\(([^)]+)\):\s*([^\n]+)', texto_ana)
+        for pt in padrao_termo:
+            termos_originais.append({
+                "termo": f"{pt.group(1)} ({pt.group(2)})",
+                "significado": pt.group(1),
+                "explicacao": pt.group(3).strip(),
+            })
+        # Remove as linhas de tópicos do texto corrido caso tenham sido extraídas para os cards
+        texto_ana_limpo = re.sub(r'^\s*\*\s*\*\*"[^"]+"\*\*.*$\n?', '', texto_ana, flags=re.MULTILINE)
+        conteudo_anatomia = sanitizar_texto_markdown_para_web(texto_ana_limpo.strip() or texto_ana)
+
+    # 3. Aplicação
+    conteudo_aplicacao = ""
+    match_app = re.search(r"###\s*3\.\s*O que tirar disso[^\n]*\n(.*?)(?=###|\Z)", estudo_puro, re.DOTALL)
+    if match_app:
+        conteudo_aplicacao = sanitizar_texto_markdown_para_web(match_app.group(1).strip())
+
+    # 4. Conexões Canônicas & Citações
+    conteudo_canonicas = ""
+    citacoes = []
+    match_can = re.search(r"###\s*4\.\s*Conexões Canônicas[^\n]*\n(.*?)(?=###|\Z)", estudo_puro, re.DOTALL)
+    if match_can:
+        texto_can = match_can.group(1).strip()
+        # Procura citações de teólogos: **Nome**, em *Obra*: \n > *"Citação"* ou > "Citação" \n > — **Nome**, *Obra*
+        padrao_citacao = re.finditer(
+            r'>\s*[*"]*([^"\n*]+)[*"]*\s*\n>\s*—\s*\*\*([^*]+)\*\*,\s*\*([^*]+)\*',
+            texto_can,
+        )
+        for pc in padrao_citacao:
+            citacoes.append({
+                "autor": pc.group(2).strip(),
+                "obra": pc.group(3).strip(),
+                "texto": pc.group(1).strip(),
+            })
+
+        if not citacoes:
+            # Padrão secundário: **Nome**, em *Obra*... > *"Citação"*
+            padrao_sec = re.finditer(
+                r'\*\*([^*]+)\*\*(?:,\s*em\s*\*([^*]+)\*)?[^>]*>\s*[*"]*([^"\n*]+)[*"]*',
+                texto_can,
+                re.DOTALL,
+            )
+            for ps in padrao_sec:
+                citacoes.append({
+                    "autor": ps.group(1).strip(),
+                    "obra": (ps.group(2) or "").strip(),
+                    "texto": ps.group(3).strip(),
+                })
+
+        # Remove citações em bloco duplicadas da prosa
+        texto_can_limpo = re.sub(r'^\s*>[^\n]*$\n?', '', texto_can, flags=re.MULTILINE)
+        conteudo_canonicas = sanitizar_texto_markdown_para_web(texto_can_limpo.strip() or texto_can)
+
+    # 5. Pergunta Central
+    conteudo_pergunta = ""
+    match_perg = re.search(r"###\s*5\.\s*Fechamento[^\n]*\n(.*?)(?=---|\Z)", estudo_puro, re.DOTALL)
+    if match_perg:
+        conteudo_pergunta = match_perg.group(1).replace("*", "").strip()
+
+    return {
+        "data": data_str,
+        "dataFormatada": formatar_data_extenso(data_str),
+        "referencia": referencia,
+        "versao": versao,
+        "versiculoTexto": versiculo_texto,
+        "genero": "Literatura de Sabedoria / Bíblica",
+        "secoes": [
+            {
+                "id": "contexto",
+                "titulo": "1. O Contexto Histórico e Narrativo",
+                "icone": "scroll",
+                "conteudo": conteudo_contexto,
+            },
+            {
+                "id": "anatomia",
+                "titulo": "2. A Anatomia do Texto e Teologia Central",
+                "icone": "book-open",
+                "termosOriginais": termos_originais,
+                "conteudo": conteudo_anatomia,
+            },
+            {
+                "id": "aplicacao",
+                "titulo": "3. O que tirar disso para a prática de hoje?",
+                "icone": "compass",
+                "conteudo": conteudo_aplicacao,
+            },
+            {
+                "id": "canonicas",
+                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
+                "icone": "cross",
+                "citacoes": citacoes,
+                "conteudo": conteudo_canonicas,
+            },
+            {
+                "id": "fechamento",
+                "titulo": "5. Pergunta Central para Meditação",
+                "icone": "help-circle",
+                "pergunta": conteudo_pergunta,
+            },
+        ],
+        "devocionalWhatsApp": zap,
+    }
+
+
+def exportar_todos_estudos_para_web_data(
+    pasta_estudos: Path | None = None,
+    destino_js: Path | None = None,
+) -> Path:
+    """
+    Lê todos os estudos Markdown na pasta de estudos, compila o histórico ordenado
+    por data decrescente e exporta para web/data.js (contendo HISTORICO_ESTUDOS e ESTUDO_ATUAL).
+    """
+    if not pasta_estudos:
+        pasta_estudos = obter_pasta_estudos()
+    if not destino_js:
+        destino_js = Path(__file__).resolve().parent.parent / "web" / "data.js"
+
+    arquivos = sorted(pasta_estudos.glob("*.md"), reverse=True)
+    if not arquivos:
+        return destino_js
+
+    historico = []
+    for arq in arquivos:
+        try:
+            conteudo = ler_estudo(arq)
+            dados = parse_estudo_markdown(conteudo)
+
+            # Preserva termos enriquecidos em Provérbios se não capturados
+            if "Provérbios 4:23" in dados.get("referencia", ""):
+                for secao in dados.get("secoes", []):
+                    if secao["id"] == "anatomia" and not secao.get("termosOriginais"):
+                        secao["termosOriginais"] = [
+                            {
+                                "termo": "Lev (לֵב)",
+                                "significado": "Coração / Centro de Comando",
+                                "explicacao": "Na antropologia bíblica, abrange a mente (pensamentos), a vontade (escolhas) e os afetos (desejos)."
+                            },
+                            {
+                                "termo": "Mikal-mishmar (מִכָּל־מִשְׁמָר)",
+                                "significado": "Acima de tudo o que se guarda",
+                                "explicacao": "Indica prioridade absoluta sobre bens, reputação ou conquistas exteriores."
+                            },
+                            {
+                                "termo": "Totsawot Chayyim (תּוֹצְאוֹת חַיִּים)",
+                                "significado": "Fontes / Nascentes da Vida",
+                                "explicacao": "Canais de irrigação que deságuam inevitavelmente em ações, palavras e no destino da existência."
+                            }
+                        ]
+                    if secao["id"] == "canonicas" and not secao.get("citacoes"):
+                        secao["citacoes"] = [
+                            {
+                                "autor": "John Stott",
+                                "obra": "A Cruz de Cristo",
+                                "texto": "O cristianismo começa onde a moralidade humana termina: com a confissão da nossa bancarrota espiritual e a necessidade de sermos renovados no centro do nosso ser."
+                            },
+                            {
+                                "autor": "C.S. Lewis",
+                                "obra": "Mero Cristianismo",
+                                "texto": "Aproximar-se de Deus faz com que você perceba que tem 'pensamentos' que nunca imaginou ter. O cristianismo não diz que o homem bom é aquele que nunca tem um pensamento ruim, mas aquele que usa a mente para render-se a Cristo, permitindo que Ele limpe a casa."
+                            }
+                        ]
+            historico.append(dados)
+        except Exception:
+            continue
+
+    if not historico:
+        return destino_js
+
+    js_code = (
+        "/**\n"
+        " * Dados dos Estudos Bíblicos (Histórico Completo) para visualização na interface Web.\n"
+        " * Atualizado automaticamente pelo Projeto Bíblia.\n"
+        " */\n"
+        f"const HISTORICO_ESTUDOS = {json.dumps(historico, ensure_ascii=False, indent=4)};\n\n"
+        "const ESTUDO_ATUAL = HISTORICO_ESTUDOS[0];\n"
+    )
+    destino_js.write_text(js_code, encoding="utf-8")
+    return destino_js
+
+
+def exportar_estudo_para_web_data(caminho_estudo: Path, destino_js: Path | None = None) -> Path:
+    """Exporta o histórico completo incluindo o estudo atual para web/data.js."""
+    return exportar_todos_estudos_para_web_data(destino_js=destino_js)
