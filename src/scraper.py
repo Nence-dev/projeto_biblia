@@ -207,8 +207,16 @@ def extrair_versiculo_bibliaon(html_content: str | bytes | BeautifulSoup) -> Opt
                 referencia = match_ref.group(1).strip()
                 card_text = card.get_text(separator=" ", strip=True)
                 texto = card_text.replace(referencia, "").strip(" -–:\"'“”\t\n")
+                # Remove cabeçalhos de data do card (ex: "Versiculo de Hoje Quarta, 30 de setembro de 2026")
                 texto = re.sub(
-                    r"(Compartilhar|Copiar|WhatsApp|Facebook|Twitter|Salvar).*",
+                    r"^Vers[íi]culo\s+de\s+Hoje[^\n\r]*?(?:\d{1,2}\s+de\s+[a-zç]+\s+de\s+\d{4}|\d{4})\s*",
+                    "",
+                    texto,
+                    flags=re.IGNORECASE,
+                ).strip()
+                # Remove botões de ação e rodapés ("Compartilhar", "Gostou?", etc.)
+                texto = re.sub(
+                    r"(Compartilhar|Copiar|WhatsApp|Facebook|Twitter|Salvar|Gostou\?).*",
                     "",
                     texto,
                     flags=re.IGNORECASE,

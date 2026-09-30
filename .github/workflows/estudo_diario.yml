@@ -65,8 +65,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout do Repositório
+      - name: Checkout do Repositório Atualizado
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
