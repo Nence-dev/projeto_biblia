@@ -37,6 +37,14 @@
     --accent-emerald: #10b981;
     --accent-emerald-subtle: rgba(16, 185, 129, 0.15);
 
+    /* Ciano & Safira Celestial (Destaque de Comparações Bíblicas) */
+    --accent-cyan: #38bdf8;
+    --accent-cyan-hover: #0ea5e9;
+    --accent-cyan-subtle: rgba(56, 189, 248, 0.12);
+    --accent-cyan-glow: rgba(56, 189, 248, 0.35);
+    --accent-sapphire: #818cf8;
+    --accent-sapphire-subtle: rgba(129, 140, 248, 0.15);
+
     --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
     --shadow-elevated: 0 20px 45px -15px rgba(0, 0, 0, 0.8);
     --navbar-glass: rgba(10, 13, 19, 0.85);
@@ -61,6 +69,14 @@
     --accent-gold-subtle: rgba(166, 118, 21, 0.1);
     --accent-emerald: #059669;
     --accent-emerald-subtle: rgba(5, 150, 105, 0.12);
+
+    /* Ciano & Safira em Fundo Claro */
+    --accent-cyan: #0284c7;
+    --accent-cyan-hover: #0369a1;
+    --accent-cyan-subtle: rgba(2, 132, 199, 0.1);
+    --accent-cyan-glow: rgba(2, 132, 199, 0.25);
+    --accent-sapphire: #4f46e5;
+    --accent-sapphire-subtle: rgba(79, 70, 229, 0.08);
 
     --shadow-soft: 0 10px 30px -10px rgba(60, 45, 20, 0.12);
     --shadow-elevated: 0 20px 40px -15px rgba(60, 45, 20, 0.18);
@@ -244,6 +260,18 @@ body {
     background: transparent;
     color: var(--text-muted);
     border: 1px dashed var(--border-subtle);
+}
+
+.badge-subtle {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+}
+
+.badge-cyan {
+    background: var(--accent-cyan-subtle);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
 /* Barra de Navegação entre Estudos */
@@ -1096,3 +1124,489 @@ body.zen-mode .content-grid {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+/* =====================================================================
+   VERSÍCULOS BÍBLICOS & DESTAQUE DE ESCRITURAS (NEGRITO & DOURADO PURO)
+   ===================================================================== */
+.bible-verse-tag,
+.bible-verse-highlight {
+    display: inline;
+    background: transparent;
+    color: var(--accent-gold);
+    border: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: inherit;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: text;
+    transition: color var(--transition-fast), text-shadow var(--transition-fast);
+}
+
+.bible-verse-tag:hover,
+.bible-verse-highlight:hover {
+    color: var(--accent-gold-hover);
+    text-shadow: 0 0 6px var(--border-gold-glow);
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.bible-verse-tag svg {
+    display: none !important;
+}
+
+.bible-verse-quote {
+    color: var(--accent-gold);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 0 0 1px rgba(224, 176, 67, 0.2);
+    display: inline;
+}
+
+/* Badge estilizado exclusivo para o cabeçalho dos cards de versículos correlacionados */
+.related-verse-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--accent-gold-subtle);
+    color: var(--accent-gold);
+    border: 1px solid var(--border-accent);
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    transition: all var(--transition-fast);
+}
+
+.related-verse-pill:hover {
+    background: var(--accent-gold);
+    color: #121822;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 12px var(--border-gold-glow);
+    transform: translateY(-1px);
+}
+
+.related-verse-pill svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+/* =====================================================================
+   CAIXA DE COMPARAÇÃO EXEGÉTICA DE VERSÕES (CIANO/SAFIRA CELESTIAL)
+   ===================================================================== */
+.comparacao-container {
+    margin: 2rem 0;
+}
+
+.translation-comparison-card {
+    background: linear-gradient(145deg, rgba(56, 189, 248, 0.06) 0%, rgba(129, 140, 248, 0.03) 100%);
+    border: 1px solid var(--accent-cyan-glow);
+    border-radius: var(--radius-md);
+    padding: 1.85rem;
+    box-shadow: 0 12px 35px -10px rgba(56, 189, 248, 0.15);
+    position: relative;
+    overflow: hidden;
+    transition: border-color var(--transition-smooth);
+}
+
+.translation-comparison-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-sapphire), var(--accent-gold));
+}
+
+.comparison-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.comparison-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-cyan-subtle);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 0.4rem 0.95rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.comparison-header-badge svg {
+    width: 16px;
+    height: 16px;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.25rem;
+    align-items: stretch;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 820px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .comparison-divider {
+        flex-direction: row !important;
+        padding: 0.5rem 0;
+    }
+}
+
+.comparison-column {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all var(--transition-fast);
+}
+
+.comparison-column:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+}
+
+.comparison-column.col-original {
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.07) 0%, var(--bg-surface-elevated) 100%);
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+.comparison-column.col-original:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 22px rgba(56, 189, 248, 0.25);
+}
+
+.col-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.version-tag {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+}
+
+.version-tag.original-tag {
+    color: var(--accent-cyan);
+}
+
+.emphasis-tag {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.comparison-quote-box {
+    margin-bottom: 1.15rem;
+    flex: 1;
+}
+
+.comparison-text {
+    font-family: var(--font-serif);
+    font-size: 1.28rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--text-primary);
+}
+
+.comparison-text.original-text {
+    color: #e0f2fe;
+}
+
+[data-theme="light"] .comparison-text.original-text {
+    color: #0369a1;
+}
+
+.comparison-focus-box {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    border-left: 3px solid var(--border-accent);
+}
+
+.comparison-focus-box.original-focus-box {
+    border-left-color: var(--accent-cyan);
+    background: var(--accent-cyan-subtle);
+}
+
+.focus-label {
+    font-weight: 800;
+    color: var(--accent-gold);
+    margin-right: 0.35rem;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+}
+
+.comparison-focus-box.original-focus-box .focus-label {
+    color: var(--accent-cyan);
+}
+
+.focus-desc {
+    color: var(--text-secondary);
+}
+
+/* Divisor Visual VS */
+.comparison-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.divider-icon {
+    font-size: 1.25rem;
+    color: var(--accent-cyan);
+}
+
+.divider-label {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+}
+
+/* Síntese Hermenêutica */
+.comparison-synthesis-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1.15rem 1.35rem;
+    border-left: 3px solid var(--accent-cyan);
+}
+
+.synthesis-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.synthesis-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+/* =====================================================================
+   VERSÍCULOS CORRELACIONADOS & HARMONIA BÍBLICA
+   ===================================================================== */
+.versiculos-relacionados-container {
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px dashed var(--border-subtle);
+}
+
+.related-verses-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.related-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.related-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.03em;
+}
+
+.related-verses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.15rem;
+}
+
+.related-verse-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+    transition: all var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.related-verse-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px rgba(224, 176, 67, 0.2);
+}
+
+.related-verse-quote {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.6;
+    flex: 1;
+}
+
+.related-verse-context {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 0.6rem;
+}
+
+/* =====================================================================
+   BLOCO INTERATIVO DE MEDITAÇÃO & DIÁRIO ESPIRITUAL
+   ===================================================================== */
+.meditation-interactive-box {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.meditation-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.btn-outline-gold {
+    background: transparent;
+    border: 1px solid var(--border-accent);
+    color: var(--accent-gold);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: all var(--transition-fast);
+}
+
+.btn-outline-gold:hover {
+    background: var(--accent-gold-subtle);
+    border-color: var(--accent-gold);
+    transform: translateY(-1px);
+}
+
+.reflection-journal-box {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-sm);
+    padding: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.reflection-textarea {
+    width: 100%;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem 1rem;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    transition: border-color var(--transition-fast);
+}
+
+.reflection-textarea:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 10px rgba(224, 176, 67, 0.15);
+}
+
+.reflection-save-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-gold {
+    background: var(--accent-gold);
+    color: #121822;
+    border: none;
+    padding: 0.5rem 1.15rem;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-gold:hover {
+    background: var(--accent-gold-hover);
+    transform: translateY(-1px);
+}
+
+.reflection-saved-status {
+    font-size: 0.8rem;
+    color: var(--accent-emerald);
+    font-weight: 600;
+}
+
+.icon-inline {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    vertical-align: middle;
+}
+
+.icon-tiny {
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+

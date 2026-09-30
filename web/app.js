@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarZenMode();
     inicializarCopiaWhatsApp();
     inicializarAudioNarrador();
+    inicializarMeditacaoInterativa();
 });
 
 /**
@@ -49,7 +50,7 @@ function determinarEstudoInicialPorHash() {
 }
 
 /**
- * Renderiza o estudo correspondente ao índice atual.
+ * Renderiza o estudo correspondente ao índice atual com fidelidade total e dinamismo exegético.
  */
 function renderizarEstudoAtivo() {
     const data = listaEstudos[currentIndex];
@@ -59,12 +60,14 @@ function renderizarEstudoAtivo() {
     const elData = document.getElementById("meta-data");
     const elVersao = document.getElementById("meta-versao");
     const elGenero = document.getElementById("meta-genero");
+    const elModelo = document.getElementById("meta-modelo");
 
     if (elData) elData.textContent = data.dataFormatada || data.data;
     if (elVersao) elVersao.textContent = data.versao || "NVI";
     if (elGenero) elGenero.textContent = data.genero || "Literatura Bíblica";
+    if (elModelo) elModelo.textContent = data.modelo ? `Modelo: ${data.modelo}` : "Gemini 3.5 Flash";
 
-    // Hero: Versículo
+    // Hero: Versículo Principal
     const elVerseText = document.getElementById("verse-text");
     const elVerseRef = document.getElementById("verse-ref");
 
@@ -81,9 +84,11 @@ function renderizarEstudoAtivo() {
     // Seção 02: Anatomia do Texto & Termos Originais
     const secaoAnatomia = data.secoes.find(s => s.id === "anatomia");
     const elTermosGrid = document.getElementById("termos-grid");
+    const elComparacao = document.getElementById("comparacao-container");
     const elConteudoAnatomia = document.getElementById("conteudo-anatomia");
 
     if (secaoAnatomia) {
+        // Termos Originais no Hebraico/Grego
         if (elTermosGrid) {
             if (Array.isArray(secaoAnatomia.termosOriginais) && secaoAnatomia.termosOriginais.length > 0) {
                 elTermosGrid.style.display = "grid";
@@ -97,6 +102,77 @@ function renderizarEstudoAtivo() {
             } else {
                 elTermosGrid.style.display = "none";
                 elTermosGrid.innerHTML = "";
+            }
+        }
+
+        // Caixa de Comparação Exegética de Versões (Ciano/Safira Celestial)
+        if (elComparacao) {
+            if (data.comparacaoTraducoes) {
+                const comp = data.comparacaoTraducoes;
+                elComparacao.style.display = "block";
+                elComparacao.innerHTML = `
+                    <div class="translation-comparison-card">
+                        <div class="comparison-card-header">
+                            <div class="comparison-header-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <span>${escapeHtml(comp.titulo || "Comparação Exegética de Versões")}</span>
+                            </div>
+                        </div>
+
+                        <div class="comparison-grid">
+                            <!-- Coluna NVI -->
+                            <div class="comparison-column col-nvi">
+                                <div class="col-header">
+                                    <span class="version-tag">${escapeHtml(comp.versaoPrincipal.sigla)}</span>
+                                    <span class="emphasis-tag">${escapeHtml(comp.versaoPrincipal.rotulo)}</span>
+                                </div>
+                                <blockquote class="comparison-quote-box">
+                                    <p class="comparison-text">“${escapeHtml(comp.versaoPrincipal.texto)}”</p>
+                                </blockquote>
+                                <div class="comparison-focus-box">
+                                    <span class="focus-label">Foco:</span>
+                                    <span class="focus-desc">${escapeHtml(comp.versaoPrincipal.foco)}</span>
+                                </div>
+                            </div>
+
+                            <!-- Divisor Visual VS -->
+                            <div class="comparison-divider">
+                                <span class="divider-icon">⚡</span>
+                                <span class="divider-label">VS</span>
+                            </div>
+
+                            <!-- Coluna Original Hebraico / Grego -->
+                            <div class="comparison-column col-original">
+                                <div class="col-header">
+                                    <span class="version-tag original-tag">${escapeHtml(comp.versaoOriginal.sigla)}</span>
+                                    <span class="emphasis-tag">${escapeHtml(comp.versaoOriginal.rotulo)}</span>
+                                </div>
+                                <blockquote class="comparison-quote-box original-quote-box">
+                                    <p class="comparison-text original-text">“${escapeHtml(comp.versaoOriginal.texto)}”</p>
+                                </blockquote>
+                                <div class="comparison-focus-box original-focus-box">
+                                    <span class="focus-label">Foco:</span>
+                                    <span class="focus-desc">${escapeHtml(comp.versaoOriginal.foco)}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        ${comp.notaHermeneutica ? `
+                            <div class="comparison-synthesis-box">
+                                <div class="synthesis-header">
+                                    <span class="synthesis-icon">💡</span>
+                                    <strong>Chave Hermenêutica & Teologia Bíblica</strong>
+                                </div>
+                                <p class="synthesis-text">${escapeHtml(comp.notaHermeneutica)}</p>
+                            </div>
+                        ` : ""}
+                    </div>
+                `;
+            } else {
+                elComparacao.style.display = "none";
+                elComparacao.innerHTML = "";
             }
         }
 
@@ -114,10 +190,15 @@ function renderizarEstudoAtivo() {
 
     // Seção 04: Conexões Canônicas & Cristo
     const secaoCanonicas = data.secoes.find(s => s.id === "canonicas");
-    const elCitacoesContainer = document.getElementById("citacoes-container");
     const elConteudoCanonicas = document.getElementById("conteudo-canonicas");
+    const elCitacoesContainer = document.getElementById("citacoes-container");
+    const elVersiculosRelacionados = document.getElementById("versiculos-relacionados-container");
 
     if (secaoCanonicas) {
+        if (elConteudoCanonicas) {
+            elConteudoCanonicas.innerHTML = formatarMarkdownEditorial(secaoCanonicas.conteudo);
+        }
+
         if (elCitacoesContainer) {
             if (Array.isArray(secaoCanonicas.citacoes) && secaoCanonicas.citacoes.length > 0) {
                 elCitacoesContainer.style.display = "flex";
@@ -136,8 +217,38 @@ function renderizarEstudoAtivo() {
             }
         }
 
-        if (elConteudoCanonicas) {
-            elConteudoCanonicas.innerHTML = formatarMarkdownEditorial(secaoCanonicas.conteudo);
+        // Versículos Correlacionados
+        if (elVersiculosRelacionados) {
+            if (Array.isArray(data.versiculosRelacionados) && data.versiculosRelacionados.length > 0) {
+                elVersiculosRelacionados.style.display = "block";
+                elVersiculosRelacionados.innerHTML = `
+                    <div class="related-verses-section">
+                        <div class="related-header">
+                            <span class="badge badge-gold">Conexões Escriturísticas</span>
+                            <h3 class="related-title">📖 Versículos Correlacionados & Harmonia Bíblica</h3>
+                        </div>
+                        <div class="related-verses-grid">
+                            ${data.versiculosRelacionados.map(v => `
+                                <div class="related-verse-card">
+                                    <div class="related-verse-header">
+                                        <span class="related-verse-pill">
+                                            <svg class="icon-tiny" viewBox="0 0 24 24" fill="currentColor">
+                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                            </svg>
+                                            ${escapeHtml(v.referencia)}
+                                        </span>
+                                    </div>
+                                    <blockquote class="related-verse-quote">“${escapeHtml(v.texto)}”</blockquote>
+                                    <p class="related-verse-context">${escapeHtml(v.contexto)}</p>
+                                </div>
+                            `).join("")}
+                        </div>
+                    </div>
+                `;
+            } else {
+                elVersiculosRelacionados.style.display = "none";
+                elVersiculosRelacionados.innerHTML = "";
+            }
         }
     }
 
@@ -146,6 +257,15 @@ function renderizarEstudoAtivo() {
     const elPergunta = document.getElementById("conteudo-pergunta");
     if (secaoPergunta && elPergunta) {
         elPergunta.textContent = (secaoPergunta.pergunta || "").replace(/\*/g, "").trim();
+    }
+
+    // Carrega reflexão salva para esta data
+    const reflectionTextarea = document.getElementById("reflection-textarea");
+    const reflectionStatus = document.getElementById("reflection-saved-status");
+    if (reflectionTextarea) {
+        const chave = `biblia_reflexao_${data.data}`;
+        reflectionTextarea.value = localStorage.getItem(chave) || "";
+        if (reflectionStatus) reflectionStatus.textContent = "";
     }
 
     // Coluna Lateral: Devocional Rápido
@@ -191,6 +311,8 @@ function atualizarBarraNavegacao() {
     // Lista ordenada decrescente:
     // index 0 = mais recente (Hoje)
     // index total-1 = mais antigo
+    // "Anterior" no tempo significa ir para índice maior (+1)
+    // "Próximo" no tempo significa voltar para índice menor (-1)
     if (btnPrev) {
         btnPrev.disabled = currentIndex >= total - 1;
     }
@@ -327,17 +449,21 @@ function formatarMarkdownEditorial(texto) {
     if (!texto) return "";
     let html = String(texto);
 
-    // 1. Negrito duplo: **texto** -> <strong>texto</strong>
+    // 1. Aspas de versículos ou frases bíblicas em itálico: *"texto"*, *“texto”*, <em>"texto"</em> ou <em>“texto”</em>
+    html = html.replace(/\*([“"][^”"\n]+[”"])\*/g, '<span class="bible-verse-quote">$1</span>');
+    html = html.replace(/<em>([“"][^”"\n]+[”"])<\/em>/g, '<span class="bible-verse-quote">$1</span>');
+
+    // 2. Negrito duplo: **texto** -> <strong>texto</strong>
     html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 
-    // 2. Itálico simples: *texto* (não precedido ou seguido por outro *)
+    // 3. Itálico simples: *texto* (não precedido ou seguido por outro *)
     html = html.replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, "<em>$1</em>");
     html = html.replace(/(?<!_)_([^_\n]+)_(?!_)/g, "<em>$1</em>");
 
-    // 3. Citações em bloco: > texto
+    // 4. Citações em bloco: > texto
     html = html.replace(/^\s*>\s*([^\n<]+)/gm, '<blockquote class="inline-quote">$1</blockquote>');
 
-    // 4. Marcadores de lista: * item ou - item -> <ul class="editorial-list"><li>...</li></ul>
+    // 5. Marcadores de lista: * item ou - item -> <ul class="editorial-list"><li>...</li></ul>
     html = html.replace(/(?:^\s*[*•-]\s+([^\n]+)\n?)+/gm, (match) => {
         const itens = match.split("\n")
             .map(line => line.trim())
@@ -347,16 +473,32 @@ function formatarMarkdownEditorial(texto) {
         return `<ul class="editorial-list">${itens}</ul>`;
     });
 
-    // 5. Remove qualquer asterisco cru remanescente
+    // 6. Remove qualquer asterisco cru remanescente
     html = html.replace(/\*/g, "");
 
-    // 6. Normaliza quebras de linha em parágrafos se não houver tags
+    // 7. Enriquecimento de versículos bíblicos citados no texto: negrito e dourado puro (sem formato de botão)
+    const BIBLE_BOOKS_PATTERN = '(?:[123]\\s*)?(?:Gênesis|Êxodo|Levítico|Números|Deuteronômio|Josué|Juízes|Rute|[12]\\s*Samuel|[12]\\s*Reis|[12]\\s*Crônicas|Esdras|Neemias|Ester|Jó|Salmos?|Provérbios?|Eclesiastes|Cânticos|Cantares|Isaías|Jeremias|Lamentações|Ezequiel|Daniel|Oseias|Joel|Amós|Obadias|Jonas|Miqueias|Naum|Habacuque|Sofonias|Ageu|Zacarias|Malaquias|Mateus|Marcos|Lucas|João|Atos|Romanos|[12]\\s*Coríntios?|Gálatas|Efésios|Filipenses|Colossenses|[12]\\s*Tessalonicenses|[12]\\s*Timóteo|Tito|Filemom|Hebreus|Tiago|[12]\\s*Pedro|[123]\\s*João|Judas|Apocalipse|Gn|Êx|Lv|Nm|Dt|Js|Jz|Rt|1Sm|2Sm|1Rs|2Rs|1Cr|2Cr|Ed|Ne|Et|Sl|Pv|Ec|Ct|Is|Jr|Lm|Ez|Dn|Os|Jl|Am|Ob|Jn|Mq|Na|Hc|Sf|Ag|Zc|Ml|Mt|Mc|Lc|Jo|At|Rm|1Co|2Co|Gl|Ef|Fp|Cl|1Ts|2Ts|1Tm|2Tm|Tt|Fm|Hb|Tg|1Pe|2Pe|1Jo|2Jo|3Jo|Jd|Ap)\\.?\\s+\\d+[:\\.]\\d+(?:[\\s\\-–—,]\\d+)*';
+
+    // Normaliza qualquer tag pré-existente de versículo eliminando SVGs e botões
+    html = html.replace(/<span class="bible-verse-tag">(?:<svg[\s\S]*?<\/svg>)?\s*([^<]+)<\/span>/gi, '<strong class="bible-verse-tag">$1</strong>');
+
+    // Transforma ocorrências dentro de <strong> (ex: <strong>Marcos 7:21-23</strong>)
+    html = html.replace(new RegExp(`<strong>(${BIBLE_BOOKS_PATTERN})<\\/strong>`, 'gi'), '<strong class="bible-verse-tag">$1</strong>');
+
+    // Transforma referências soltas que ainda não foram envolvidas por tag (ex: Jeremias 17:9)
+    html = html.replace(new RegExp(`(?<!class="bible-verse-tag">)(?<!<strong>)(${BIBLE_BOOKS_PATTERN})(?!<\\/strong>)`, 'gi'), (match, ref, offset, full) => {
+        const before = full.slice(Math.max(0, offset - 40), offset);
+        if (before.includes('class="bible-verse-tag"')) return match;
+        return `<strong class="bible-verse-tag">${ref}</strong>`;
+    });
+
+    // 8. Normaliza quebras de linha em parágrafos se não houver tags de bloco
     if (!html.includes("<br>") && !html.includes("<p>")) {
         html = html.split(/\n{2,}/)
             .filter(p => p.trim().length > 0)
             .map(p => `<p>${p.trim()}</p>`)
             .join("");
-    } else if (!html.startsWith("<p>") && !html.startsWith("<div") && !html.startsWith("<ul")) {
+    } else if (!html.startsWith("<p>") && !html.startsWith("<div") && !html.startsWith("<ul") && !html.startsWith("<blockquote")) {
         html = `<p>${html}</p>`;
     }
 
@@ -456,6 +598,72 @@ function inicializarCopiaWhatsApp() {
             showToast("Selecione o texto manualmente para copiar", "warning");
         }
     });
+}
+
+/**
+ * Inicializa os botões interativos da Pergunta Central:
+ * Cópia rápida da pergunta e Diário Pessoal de Meditação (armazenado no localStorage).
+ */
+function inicializarMeditacaoInterativa() {
+    const btnCopy = document.getElementById("btn-copy-pergunta");
+    const btnToggle = document.getElementById("btn-toggle-reflexao");
+    const journalBox = document.getElementById("reflection-journal-box");
+    const textarea = document.getElementById("reflection-textarea");
+    const btnSave = document.getElementById("btn-salvar-reflexao");
+    const status = document.getElementById("reflection-saved-status");
+
+    if (btnCopy) {
+        btnCopy.addEventListener("click", async () => {
+            const elPergunta = document.getElementById("conteudo-pergunta");
+            const pergunta = elPergunta ? elPergunta.textContent.trim() : "";
+            if (!pergunta) {
+                showToast("Nenhuma pergunta disponível para cópia.", "error");
+                return;
+            }
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(pergunta);
+                } else {
+                    const temp = document.createElement("textarea");
+                    temp.value = pergunta;
+                    document.body.appendChild(temp);
+                    temp.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(temp);
+                }
+                showToast("📋 Pergunta para meditação copiada com sucesso!");
+            } catch (err) {
+                console.error("Erro ao copiar pergunta:", err);
+                showToast("Não foi possível copiar automaticamente a pergunta.", "warning");
+            }
+        });
+    }
+
+    if (btnToggle && journalBox) {
+        btnToggle.addEventListener("click", () => {
+            const isHidden = journalBox.style.display === "none" || !journalBox.style.display;
+            journalBox.style.display = isHidden ? "flex" : "none";
+            if (isHidden && textarea) {
+                textarea.focus();
+            }
+        });
+    }
+
+    if (btnSave && textarea) {
+        btnSave.addEventListener("click", () => {
+            const estudo = listaEstudos[currentIndex];
+            if (!estudo) return;
+            const chave = `biblia_reflexao_${estudo.data}`;
+            localStorage.setItem(chave, textarea.value.trim());
+            if (status) {
+                status.textContent = "✓ Reflexão salva com sucesso!";
+                setTimeout(() => {
+                    if (status) status.textContent = "";
+                }, 3000);
+            }
+            showToast("💾 Sua reflexão pessoal foi salva com segurança no navegador.");
+        });
+    }
 }
 
 /**

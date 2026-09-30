@@ -81,3 +81,83 @@ def test_listar_historico(tmp_path, monkeypatch):
     # Ordem cronológica decrescente
     assert historico[0]["data"] == "2026-09-29"
     assert historico[1]["data"] == "2026-09-28"
+
+
+def test_parse_estudo_markdown_completo(tmp_path):
+    from src.storage import parse_estudo_markdown
+
+    conteudo_md = """---
+data: "2026-09-29"
+referencia: "Provérbios 4:23"
+versao: "NVI"
+modelo: "gemini-3.5-flash"
+gerado_em: "2026-09-29T12:44:00"
+---
+
+# Versículo do Dia: Provérbios 4:23 (NVI)
+
+> *"Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos."*
+> — **Provérbios 4:23**
+
+---
+
+### 1. O Contexto Histórico e Narrativo
+Contexto de Salomão educando seu filho.
+
+### 2. A Anatomia do Texto e Teologia Central
+No texto hebraico, a palavra coração (*lev*) é o centro de comando.
+
+### 3. O que tirar disso para a prática de hoje?
+Não viver de ativismo performático.
+
+### 4. Conexões Canônicas e Autores da Mesma Linha
+Conexão com Marcos 7:21-23 e Ezequiel 36:26.
+Sobre isso, o teólogo John Stott pontuava:
+> "O cristianismo começa onde a moralidade humana termina..."
+> — **John Stott**, *A Cruz de Cristo*
+
+### 5. Fechamento: A Pergunta Central
+Qual narrativa secreta tem ocupado seus pensamentos?
+
+## 📱 Versão para WhatsApp / Compartilhamento Rápido
+*Versão WhatsApp*
+"""
+    arquivo_md = tmp_path / "2026-09-29_proverbios_4_23.md"
+    arquivo_md.write_text(conteudo_md, encoding="utf-8")
+
+    dados = parse_estudo_markdown(arquivo_md)
+
+    assert dados["referencia"] == "Provérbios 4:23"
+    assert dados["modelo"] == "gemini-3.5-flash"
+    assert dados["data"] == "2026-09-29"
+    assert len(dados["secoes"]) >= 5
+
+    # Verifica se a citação teológica de John Stott foi extraída
+    secao_canonicas = next(s for s in dados["secoes"] if s["id"] == "canonicas")
+    assert len(secao_canonicas["citacoes"]) >= 1
+    assert secao_canonicas["citacoes"][0]["autor"] == "John Stott"
+    assert "moralidade humana termina" in secao_canonicas["citacoes"][0]["texto"]
+
+
+def test_exportar_web_data(tmp_path, monkeypatch):
+    from src.storage import exportar_todos_estudos_para_web_data, salvar_estudo
+
+    monkeypatch.setattr("src.storage.ESTUDOS_DIR", tmp_path)
+
+    salvar_estudo(
+        referencia="Provérbios 4:23",
+        texto_versiculo="Tenha cuidado com o que você pensa...",
+        versao="NVI",
+        conteudo_estudo="### 1. O Contexto Histórico\nContexto\n### 2. A Anatomia do Texto\nAnatomia\n### 3. Prática\nAplicação\n### 4. Conexões Canônicas\nCanônicas\n### 5. Fechamento\nPergunta",
+        data_str="2026-09-29",
+    )
+
+    destino = tmp_path / "web_test" / "data.js"
+    exportar_todos_estudos_para_web_data(destino_js=destino)
+
+    assert destino.exists()
+    conteudo_js = destino.read_text(encoding="utf-8")
+    assert "const HISTORICO_ESTUDOS =" in conteudo_js
+    assert "Provérbios 4:23" in conteudo_js
+    assert "comparacaoTraducoes" in conteudo_js
+    assert "versiculosRelacionados" in conteudo_js

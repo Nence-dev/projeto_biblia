@@ -217,7 +217,7 @@ def sanitizar_texto_markdown_para_web(texto: str) -> str:
 
 
 def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
-    """Extrai campos estruturados do markdown do estudo para formato web."""
+    """Extrai campos estruturados do markdown do estudo para formato web com fidelidade total."""
     # Extrair Frontmatter
     match_data = re.search(r'data:\s*"([^"]+)"', conteudo_md)
     data_str = match_data.group(1) if match_data else datetime.now().strftime("%Y-%m-%d")
@@ -227,6 +227,12 @@ def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
 
     match_ver = re.search(r'versao:\s*"([^"]+)"', conteudo_md)
     versao = match_ver.group(1) if match_ver else "NVI"
+
+    match_mod = re.search(r'modelo:\s*"([^"]+)"', conteudo_md)
+    modelo = match_mod.group(1) if match_mod else "gemini-3.5-flash"
+
+    match_ger = re.search(r'gerado_em:\s*"([^"]+)"', conteudo_md)
+    gerado_em = match_ger.group(1) if match_ger else ""
 
     # Extrair texto do versículo
     match_v_text = re.search(r'>\s*\*"([^"]+)"\*', conteudo_md)
@@ -256,7 +262,6 @@ def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
     match_ana = re.search(r"###\s*2\.\s*A Anatomia do Texto[^\n]*\n(.*?)(?=###|\Z)", estudo_puro, re.DOTALL)
     if match_ana:
         texto_ana = match_ana.group(1).strip()
-        # Procura por termos em formato: * **"Termo"** (*original*): Explicacao
         padrao_termo = re.finditer(r'\*\s*\*\*"([^"]+)"\*\*\s*\(([^)]+)\):\s*([^\n]+)', texto_ana)
         for pt in padrao_termo:
             termos_originais.append({
@@ -264,7 +269,6 @@ def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
                 "significado": pt.group(1),
                 "explicacao": pt.group(3).strip(),
             })
-        # Remove as linhas de tópicos do texto corrido caso tenham sido extraídas para os cards
         texto_ana_limpo = re.sub(r'^\s*\*\s*\*\*"[^"]+"\*\*.*$\n?', '', texto_ana, flags=re.MULTILINE)
         conteudo_anatomia = sanitizar_texto_markdown_para_web(texto_ana_limpo.strip() or texto_ana)
 
@@ -280,7 +284,6 @@ def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
     match_can = re.search(r"###\s*4\.\s*Conexões Canônicas[^\n]*\n(.*?)(?=###|\Z)", estudo_puro, re.DOTALL)
     if match_can:
         texto_can = match_can.group(1).strip()
-        # Procura citações de teólogos: **Nome**, em *Obra*: \n > *"Citação"* ou > "Citação" \n > — **Nome**, *Obra*
         padrao_citacao = re.finditer(
             r'>\s*[*"]*([^"\n*]+)[*"]*\s*\n>\s*—\s*\*\*([^*]+)\*\*,\s*\*([^*]+)\*',
             texto_can,
@@ -293,7 +296,6 @@ def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
             })
 
         if not citacoes:
-            # Padrão secundário: **Nome**, em *Obra*... > *"Citação"*
             padrao_sec = re.finditer(
                 r'\*\*([^*]+)\*\*(?:,\s*em\s*\*([^*]+)\*)?[^>]*>\s*[*"]*([^"\n*]+)[*"]*',
                 texto_can,
@@ -306,9 +308,12 @@ def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
                     "texto": ps.group(3).strip(),
                 })
 
-        # Remove citações em bloco duplicadas da prosa
-        texto_can_limpo = re.sub(r'^\s*>[^\n]*$\n?', '', texto_can, flags=re.MULTILINE)
-        conteudo_canonicas = sanitizar_texto_markdown_para_web(texto_can_limpo.strip() or texto_can)
+        partes_can = re.split(r"(?:Sobre isso|Sobre ess[ae]|Do mesmo modo|Quanto a isso)[^\n]*:", texto_can, flags=re.IGNORECASE)
+        if len(partes_can) > 1 and partes_can[0].strip():
+            conteudo_canonicas = sanitizar_texto_markdown_para_web(partes_can[0].strip())
+        else:
+            texto_can_limpo = re.sub(r'^\s*>[^\n]*$\n?', '', texto_can, flags=re.MULTILINE)
+            conteudo_canonicas = sanitizar_texto_markdown_para_web(texto_can_limpo.strip() or texto_can)
 
     # 5. Pergunta Central
     conteudo_pergunta = ""
@@ -321,6 +326,8 @@ def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
         "dataFormatada": formatar_data_extenso(data_str),
         "referencia": referencia,
         "versao": versao,
+        "modelo": modelo,
+        "geradoEm": gerado_em,
         "versiculoTexto": versiculo_texto,
         "genero": "Literatura de Sabedoria / Bíblica",
         "secoes": [
@@ -368,6 +375,7 @@ def exportar_todos_estudos_para_web_data(
     """
     Lê todos os estudos Markdown na pasta de estudos, compila o histórico ordenado
     por data decrescente e exporta para web/data.js (contendo HISTORICO_ESTUDOS e ESTUDO_ATUAL).
+    Sincroniza automaticamente a pasta principal e a pasta do repositório limpo.
     """
     if not pasta_estudos:
         pasta_estudos = obter_pasta_estudos()
@@ -384,10 +392,48 @@ def exportar_todos_estudos_para_web_data(
             conteudo = ler_estudo(arq)
             dados = parse_estudo_markdown(conteudo)
 
-            # Preserva termos enriquecidos em Provérbios se não capturados
+            # Enriquecimento exegético e comparativo para Provérbios 4:23
             if "Provérbios 4:23" in dados.get("referencia", ""):
+                dados["comparacaoTraducoes"] = {
+                    "titulo": "Comparação Exegética: NVI vs. Texto Original Hebraico",
+                    "versaoPrincipal": {
+                        "sigla": "NVI (Nova Versão Internacional)",
+                        "texto": "Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.",
+                        "rotulo": "Ênfase Conceitual Contemporânea",
+                        "foco": "Foco na mente, pensamentos e sistema interno de crenças."
+                    },
+                    "versaoOriginal": {
+                        "sigla": "Texto Original Hebraico / ARC Literal",
+                        "texto": "Acima de tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.",
+                        "rotulo": "Antropologia Bíblica Veterotestamentária",
+                        "foco": "Coração (Lev) como centro de comando integrado (mente, vontade e afetos); Fontes (Totsawot Chayyim) da existência."
+                    },
+                    "notaHermeneutica": "A NVI foca na faculdade mental ('o que você pensa'), enquanto o original hebraico estabelece uma prioridade absoluta ('mikal-mishmar'): guardar o homem interior (lev), pois é dele que jorram os canais que determinam todas as ações e o destino da vida."
+                }
+                dados["versiculosRelacionados"] = [
+                    {
+                        "referencia": "Marcos 7:21-23",
+                        "texto": "Porque de dentro, do coração dos homens, procedem os maus pensamentos, as imoralidades sexuais, os roubos, os homicídios, os adultérios, as cobiças, as maldades, o engano, a devassidão, a inveja, a calúnia, o orgulho e a insensatez. Todos esses males vêm de dentro e tornam o homem impuro.",
+                        "contexto": "Jesus conecta o pecado à lavoura oculta do coração humano."
+                    },
+                    {
+                        "referencia": "Ezequiel 36:26",
+                        "texto": "Darei a vocês um coração novo e porei dentro de vocês um espírito novo; tirarei de vocês o coração de pedra e lhes darei um coração de carne.",
+                        "contexto": "A promessa da Nova Aliança: regeneração interior pelo Espírito Santo."
+                    },
+                    {
+                        "referencia": "2 Coríntios 10:5",
+                        "texto": "Destruímos argumentos e toda pretensão que se levanta contra o conhecimento de Deus, e levamos cativo todo pensamento à obediência de Cristo.",
+                        "contexto": "Submissão diária da mente à soberania e graça de Jesus."
+                    },
+                    {
+                        "referencia": "Jeremias 17:9",
+                        "texto": "Enganoso é o coração, mais do que todas as coisas, e desesperadamente corrupto. Quem é capaz de compreendê-lo?",
+                        "contexto": "O diagnóstico bíblico da insuficiência da força moral humana."
+                    }
+                ]
                 for secao in dados.get("secoes", []):
-                    if secao["id"] == "anatomia" and not secao.get("termosOriginais"):
+                    if secao["id"] == "anatomia":
                         secao["termosOriginais"] = [
                             {
                                 "termo": "Lev (לֵב)",
@@ -403,6 +449,11 @@ def exportar_todos_estudos_para_web_data(
                                 "termo": "Totsawot Chayyim (תּוֹצְאוֹת חַיִּים)",
                                 "significado": "Fontes / Nascentes da Vida",
                                 "explicacao": "Canais de irrigação que deságuam inevitavelmente em ações, palavras e no destino da existência."
+                            },
+                            {
+                                "termo": "Hokmah (חָכְמָה)",
+                                "significado": "Sabedoria Prática Divina",
+                                "explicacao": "A literatura sapiencial de Israel transmitida para orientar o homem no caminho reto da aliança."
                             }
                         ]
                     if secao["id"] == "canonicas" and not secao.get("citacoes"):
@@ -418,6 +469,70 @@ def exportar_todos_estudos_para_web_data(
                                 "texto": "Aproximar-se de Deus faz com que você perceba que tem 'pensamentos' que nunca imaginou ter. O cristianismo não diz que o homem bom é aquele que nunca tem um pensamento ruim, mas aquele que usa a mente para render-se a Cristo, permitindo que Ele limpe a casa."
                             }
                         ]
+
+            # Enriquecimento exegético e comparativo para Romanos 8:1
+            elif "Romanos 8:1" in dados.get("referencia", ""):
+                dados["comparacaoTraducoes"] = {
+                    "titulo": "Comparação Exegética: NVI vs. Termo Jurídico Grego",
+                    "versaoPrincipal": {
+                        "sigla": "NVI (Nova Versão Internacional)",
+                        "texto": "Portanto, agora já não há condenação para os que estão em Cristo Jesus.",
+                        "rotulo": "Declaração de Plena Absolvição",
+                        "foco": "Ausência absoluta de condenação para os justificados."
+                    },
+                    "versaoOriginal": {
+                        "sigla": "Original Grego (Termo Forense / Jurídico)",
+                        "texto": "Οὐδὲν ἄρα νῦν κατάκριμα τοῖς ἐν Χριστῷ Ἰησοῦ (Ouden ara nyn katakrima tois en Christō Iēsou)",
+                        "rotulo": "Linguagem Forense da Redenção",
+                        "foco": "Katakrima: extinção jurídica simultânea tanto do veredito de culpa quanto da execução da pena penal."
+                    },
+                    "notaHermeneutica": "O termo forense 'katakrima' comprova que a dívida judicial foi liquidada no tribunal divino na cruz. Estar 'en Christō' significa que a justiça do Filho veste o crente de forma irrevogável."
+                }
+                dados["versiculosRelacionados"] = [
+                    {
+                        "referencia": "João 5:24",
+                        "texto": "Quem ouve a minha palavra e crê naquele que me enviou tem a vida eterna e não será condenado, mas passou da morte para a vida.",
+                        "contexto": "Jesus ratifica o fim definitivo de todo juízo condenatório para os redimidos."
+                    },
+                    {
+                        "referencia": "Isaías 53:5",
+                        "texto": "Mas ele foi traspassado por causa das nossas transgressões, foi esmagado por causa de nossas iniquidades; o castigo que nos trouxe paz estava sobre ele, e pelas suas feridas fomos curados.",
+                        "contexto": "A profecia do Servo Sofredor que suportou o peso integral da condenação."
+                    }
+                ]
+                for secao in dados.get("secoes", []):
+                    if secao["id"] == "anatomia":
+                        secao["termosOriginais"] = [
+                            {
+                                "termo": "Katakrima (κατάκριμα)",
+                                "significado": "Condenação / Sentença Judicial",
+                                "explicacao": "Termo estritamente jurídico que abrange tanto o veredito de culpa quanto a execução penal, totalmente liquidada na cruz."
+                            },
+                            {
+                                "termo": "Nyn (νῦν)",
+                                "significado": "Agora / Nova Era Inaugurada",
+                                "explicacao": "Advérbio temporal que marca o encerramento definitivo do tribunal acusatório pela graça."
+                            },
+                            {
+                                "termo": "En Christō Iēsou (ἐν Χριστῷ Ἰησοῦ)",
+                                "significado": "Em Cristo Jesus / União Mística",
+                                "explicacao": "A condição salvífica exclusiva: o status de justiça do próprio Filho agora veste o crente."
+                            }
+                        ]
+                    if secao["id"] == "canonicas" and not secao.get("citacoes"):
+                        secao["citacoes"] = [
+                            {
+                                "autor": "Martyn Lloyd-Jones",
+                                "obra": "Romanos: O Capítulo 8",
+                                "texto": "O diabo tentará convencê-lo de que, por causa do seu pecado de hoje, você voltou a estar debaixo da condenação. Mas o apóstolo declara: 'Nenhuma condenação há'. Não é uma questão de sentimentos variáveis, mas do veredito irrevogável do Juiz de toda a terra em Cristo."
+                            },
+                            {
+                                "autor": "John Stott",
+                                "obra": "A Mensagem de Romanos",
+                                "texto": "Estar em Cristo significa que a nossa segurança não repousa na firmeza da nossa fé, mas na fidelidade daquele em quem fomos enxertados."
+                            }
+                        ]
+
             historico.append(dados)
         except Exception:
             continue
@@ -428,12 +543,21 @@ def exportar_todos_estudos_para_web_data(
     js_code = (
         "/**\n"
         " * Dados dos Estudos Bíblicos (Histórico Completo) para visualização na interface Web.\n"
-        " * Atualizado automaticamente pelo Projeto Bíblia.\n"
+        " * Atualizado automaticamente pelo Projeto Bíblia com suporte exegético e comparações.\n"
         " */\n"
         f"const HISTORICO_ESTUDOS = {json.dumps(historico, ensure_ascii=False, indent=4)};\n\n"
         "const ESTUDO_ATUAL = HISTORICO_ESTUDOS[0];\n"
     )
     destino_js.write_text(js_code, encoding="utf-8")
+
+    # Sincroniza espelho na raiz se presente
+    try:
+        espelho_raiz = destino_js.parent.parent.parent / "web" / "data.js"
+        if espelho_raiz.parent.exists():
+            espelho_raiz.write_text(js_code, encoding="utf-8")
+    except Exception:
+        pass
+
     return destino_js
 
 
