@@ -100,6 +100,96 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+
+/* =====================================================================
+   FUNDO SAGRADO: MANUSCRITOS ANTIGOS & CALIGRAFIA BÍBLICA
+   ===================================================================== */
+.sacred-manuscript-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    user-select: none;
+}
+
+.manuscript-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 12%, rgba(224, 176, 67, 0.07) 0%, rgba(13, 17, 23, 0) 65%),
+                radial-gradient(circle at 10% 85%, rgba(56, 189, 248, 0.03) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+[data-theme="light"] .manuscript-vignette {
+    background: radial-gradient(circle at 50% 12%, rgba(197, 155, 39, 0.08) 0%, rgba(247, 244, 236, 0) 65%),
+                radial-gradient(circle at 90% 85%, rgba(160, 120, 60, 0.04) 0%, transparent 60%);
+}
+
+.manuscript-ruled-lines {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to bottom, rgba(224, 176, 67, 0.02) 1px, transparent 1px);
+    background-size: 100% 54px;
+    opacity: 0.65;
+}
+
+[data-theme="light"] .manuscript-ruled-lines {
+    background-image: linear-gradient(to bottom, rgba(120, 90, 40, 0.03) 1px, transparent 1px);
+}
+
+.manuscript-watermark-hebrew,
+.manuscript-watermark-greek {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    white-space: nowrap;
+    line-height: 1.4;
+    transition: opacity var(--transition-smooth);
+}
+
+.manuscript-watermark-hebrew {
+    top: 2%;
+    right: -10%;
+    transform: rotate(-9deg);
+    font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+    font-size: clamp(2rem, 3.8vw, 4.2rem);
+    color: var(--accent-gold);
+    opacity: 0.035;
+    filter: blur(0.35px);
+    text-align: right;
+    direction: rtl;
+}
+
+.manuscript-watermark-greek {
+    top: 40%;
+    left: -12%;
+    transform: rotate(8deg);
+    font-family: var(--font-display), "Cinzel", "Times New Roman", serif;
+    font-size: clamp(1.8rem, 3.2vw, 3.8rem);
+    color: var(--accent-gold);
+    opacity: 0.03;
+    filter: blur(0.35px);
+    letter-spacing: 0.3em;
+}
+
+[data-theme="light"] .manuscript-watermark-hebrew {
+    color: #4a3410;
+    opacity: 0.042;
+}
+
+[data-theme="light"] .manuscript-watermark-greek {
+    color: #4a3818;
+    opacity: 0.038;
 }
 
 /* =====================================================================
@@ -210,6 +300,8 @@ body {
    LAYOUT PRINCIPAL
    ===================================================================== */
 .layout-wrapper {
+    position: relative;
+    z-index: 1;
     max-width: 1280px;
     margin: 0 auto;
     padding: 2.5rem 1.5rem 5rem;
@@ -360,6 +452,58 @@ body {
     right: 20%;
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+/* Iluminura & Cantoneiras de Códice (Estilo Manuscrito Antigo) */
+.illuminated-codex {
+    position: relative;
+}
+
+.codex-corner {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+    border-color: var(--accent-gold);
+    opacity: 0.45;
+    transition: all var(--transition-fast);
+}
+
+.codex-tl {
+    top: 10px;
+    left: 10px;
+    border-top: 2px solid var(--accent-gold);
+    border-left: 2px solid var(--accent-gold);
+    border-top-left-radius: 4px;
+}
+
+.codex-tr {
+    top: 10px;
+    right: 10px;
+    border-top: 2px solid var(--accent-gold);
+    border-right: 2px solid var(--accent-gold);
+    border-top-right-radius: 4px;
+}
+
+.codex-bl {
+    bottom: 10px;
+    left: 10px;
+    border-bottom: 2px solid var(--accent-gold);
+    border-left: 2px solid var(--accent-gold);
+    border-bottom-left-radius: 4px;
+}
+
+.codex-br {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 2px solid var(--accent-gold);
+    border-right: 2px solid var(--accent-gold);
+    border-bottom-right-radius: 4px;
+}
+
+.verse-card:hover .codex-corner {
+    opacity: 0.95;
+    box-shadow: 0 0 10px rgba(224, 176, 67, 0.4);
 }
 
 .quote-mark {
@@ -788,6 +932,42 @@ body {
     margin-top: 5rem;
     padding-top: 3rem;
     border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Selo Teológico no Rodapé */
+.footer-seal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.35rem 1.15rem;
+    background: var(--accent-gold-subtle);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-full);
+    margin-bottom: 1.35rem;
+    box-shadow: 0 0 15px rgba(224, 176, 67, 0.08);
+}
+
+.seal-icon {
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+}
+
+.seal-latin {
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+}
+
+.seal-verse {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 600;
 }
 
 .footer-verse {

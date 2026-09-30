@@ -97,3 +97,32 @@ Resumo para leitura rápida
     completo = extrair_estudo_completo(texto_total)
     assert "Texto de introdução teológica." in completo
     assert "Versão para WhatsApp" not in completo
+
+
+def test_elementos_visuais_manuscritos_e_iluminura():
+    """Valida a presença dos elementos de manuscrito sagrado, cantoneiras e selo teológico."""
+    html_path = Path(__file__).resolve().parent.parent / "web" / "index.html"
+    css_path = Path(__file__).resolve().parent.parent / "web" / "style.css"
+
+    assert html_path.exists()
+    assert css_path.exists()
+
+    html_content = html_path.read_text(encoding="utf-8")
+    css_content = css_path.read_text(encoding="utf-8")
+
+    # Elementos no HTML
+    assert "sacred-manuscript-bg" in html_content
+    assert "manuscript-watermark-hebrew" in html_content
+    assert "manuscript-watermark-greek" in html_content
+    assert "illuminated-codex" in html_content
+    assert "codex-corner" in html_content
+    assert "footer-seal" in html_content
+    assert "VERBUM DOMINI MANET IN AETERNUM" in html_content
+
+    # Classes no CSS
+    assert ".sacred-manuscript-bg" in css_content
+    assert ".manuscript-watermark-hebrew" in css_content
+    assert ".manuscript-watermark-greek" in css_content
+    assert ".codex-corner" in css_content
+    assert ".footer-seal" in css_content
+

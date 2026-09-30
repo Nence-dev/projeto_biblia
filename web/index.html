@@ -13,6 +13,26 @@
 <body>
     <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
+    <!-- Fundo de Manuscritos Antigos & Caligrafia Sagrada (Marca D'Água) -->
+    <div class="sacred-manuscript-bg" aria-hidden="true">
+        <div class="manuscript-vignette"></div>
+        <div class="manuscript-watermark-hebrew">
+            <span>בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ</span>
+            <span>קָדוֹשׁ קָדוֹשׁ קָדוֹשׁ יְהוָה צְבָאוֹת מְלֹא כָל־הָאָרֶץ כְּבוֹדוֹ</span>
+            <span>עַל־כָּל־מִשְׁמָר נְצֹר לִבֶּךָ כִּי־מִמֶּנּוּ תּוֹצְאוֹת חַיִּים</span>
+            <span>תּוֹרַת יְהוָה תְּמִימָה מְשִׁיבַת נָפֶשׁ • חֶסֶד וֶאֱמֶת נִפְגָּשׁוּ</span>
+            <span>שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד</span>
+        </div>
+        <div class="manuscript-watermark-greek">
+            <span>ΕΝ ΑΡΧΗ ΗΝ Ο ΛΟΓΟΣ ΚΑΙ Ο ΛΟΓΟΣ ΗΝ ΠΡΟΣ ΤΟΝ ΘΕΟΝ</span>
+            <span>Η ΧΑΡΙΣ ΤΟΥ ΚΥΡΙΟΥ ΙΗΣΟΥ ΧΡΙΣΤΟΥ ΚΑΙ Η ΑΓΑΠΗ ΤΟΥ ΘΕΟΥ</span>
+            <span>ΟΥΔΕΝ ΑΡΑ ΝΥΝ ΚΑΤΑΚΡΙΜΑ ΤΟΙΣ ΕΝ ΧΡΙΣΤΩ ΙΗΣΟΥ</span>
+            <span>ΤΟ ΦΩΣ ΕΝ ΤΗ ΣΚΟΤΙΑ ΦΑΙΝΕΙ ΚΑΙ Η ΣΚΟΤΙΑ ΑΥΤΟ ΟΥ ΚΑΤΕΛΑΒΕΝ</span>
+            <span>Η ΑΓΑΠΗ ΟΥΔΕΠΟΤΕ ΕΚΠΙΠΤΕΙ • ΤΟ ΠΝΕΥΜΑ ΖΩΟΠΟΙΕΙ</span>
+        </div>
+        <div class="manuscript-ruled-lines"></div>
+    </div>
+
     <!-- Barra de Navegação Superior -->
     <header class="navbar" id="main-navbar">
         <div class="navbar-container">
@@ -98,7 +118,11 @@
                 <span class="badge badge-subtle" id="meta-modelo">Gemini 3.5 Flash</span>
             </div>
 
-            <div class="verse-card">
+            <div class="verse-card illuminated-codex">
+                <div class="codex-corner codex-tl" aria-hidden="true"></div>
+                <div class="codex-corner codex-tr" aria-hidden="true"></div>
+                <div class="codex-corner codex-bl" aria-hidden="true"></div>
+                <div class="codex-corner codex-br" aria-hidden="true"></div>
                 <span class="quote-mark">“</span>
                 <h1 class="verse-quote" id="verse-text">
                     Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.
@@ -253,11 +277,16 @@
             </aside>
         </main>
 
-        <!-- Rodapé Nobre -->
+        <!-- Rodapé Nobre com Selo Teológico da Reforma -->
         <footer class="main-footer" id="main-footer">
+            <div class="footer-seal">
+                <span class="seal-icon" aria-hidden="true">✦</span>
+                <span class="seal-latin">VERBUM DOMINI MANET IN AETERNUM</span>
+                <span class="seal-verse">(1 Pedro 1:25)</span>
+            </div>
             <div class="footer-content">
                 <p class="footer-verse"><em>“Acima de tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.”</em></p>
-                <p class="footer-sub">Projeto Bíblia & Teologia Expositiva • Versão Web Local & Online</p>
+                <p class="footer-sub">Projeto Bíblia & Teologia Expositiva • Sola Scriptura • Soli Deo Gloria</p>
             </div>
         </footer>
     </div>
