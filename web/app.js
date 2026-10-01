@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 3. Renderiza estudo ativo e inicializa componentes
     renderizarEstudoAtivo();
-    inicializarNavegadorDeEstudos();
     inicializarGavetaHistorico();
     inicializarTema();
     inicializarZenMode();
@@ -64,12 +63,10 @@ function renderizarEstudoAtivo() {
 
     const elVersao = document.getElementById("meta-versao");
     const elGenero = document.getElementById("meta-genero");
-    const elModelo = document.getElementById("meta-modelo");
 
     if (elData) elData.textContent = data.dataFormatada || data.data;
     if (elVersao) elVersao.textContent = data.versao || "NVI";
     if (elGenero) elGenero.textContent = data.genero || "Literatura Bíblica";
-    if (elModelo) elModelo.textContent = data.modelo ? `Modelo: ${data.modelo}` : "Gemini 3.5 Flash";
 
     // Hero: Versículo Principal
     const elVerseText = document.getElementById("verse-text");
@@ -285,9 +282,6 @@ function renderizarEstudoAtivo() {
         elBtnShareWhatsApp.href = `https://api.whatsapp.com/send?text=${textoCodificado}`;
     }
 
-    // Atualiza controles da barra de navegação
-    atualizarBarraNavegacao();
-
     // Atualiza marcação ativa na gaveta
     atualizarItemAtivoGaveta();
 
@@ -297,57 +291,7 @@ function renderizarEstudoAtivo() {
     }
 }
 
-/**
- * Atualiza botões anterior / próximo e o indicador de estudo ativo.
- */
-function atualizarBarraNavegacao() {
-    const total = listaEstudos.length;
-    const indicador = document.getElementById("nav-study-indicator");
-    const btnPrev = document.getElementById("btn-nav-prev");
-    const btnNext = document.getElementById("btn-nav-next");
 
-    if (indicador) {
-        const dataAtual = listaEstudos[currentIndex];
-        indicador.textContent = `${currentIndex + 1} de ${total}`;
-        indicador.title = `${dataAtual.referencia} (${dataAtual.dataFormatada || dataAtual.data})`;
-    }
-
-    // Lista ordenada decrescente:
-    // index 0 = mais recente (Hoje)
-    // index total-1 = mais antigo
-    // "Anterior" no tempo significa ir para índice maior (+1)
-    // "Próximo" no tempo significa voltar para índice menor (-1)
-    if (btnPrev) {
-        btnPrev.disabled = currentIndex >= total - 1;
-    }
-    if (btnNext) {
-        btnNext.disabled = currentIndex <= 0;
-    }
-}
-
-/**
- * Inicializa os botões de navegação anterior/próximo.
- */
-function inicializarNavegadorDeEstudos() {
-    const btnPrev = document.getElementById("btn-nav-prev");
-    const btnNext = document.getElementById("btn-nav-next");
-
-    if (btnPrev) {
-        btnPrev.addEventListener("click", () => {
-            if (currentIndex < listaEstudos.length - 1) {
-                irParaEstudo(currentIndex + 1);
-            }
-        });
-    }
-
-    if (btnNext) {
-        btnNext.addEventListener("click", () => {
-            if (currentIndex > 0) {
-                irParaEstudo(currentIndex - 1);
-            }
-        });
-    }
-}
 
 /**
  * Transiciona para um estudo por índice com atualização suave.
