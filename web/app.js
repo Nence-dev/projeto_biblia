@@ -9,9 +9,9 @@ let currentIndex = 0;
 let narradorAudioHandler = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Carregamento dos dados (Histórico ou Estudo Único)
+    // 1. Carregamento dos dados (Garante que o último postado esteja sempre no topo)
     if (typeof HISTORICO_ESTUDOS !== "undefined" && Array.isArray(HISTORICO_ESTUDOS) && HISTORICO_ESTUDOS.length > 0) {
-        listaEstudos = HISTORICO_ESTUDOS;
+        listaEstudos = [...HISTORICO_ESTUDOS].sort((a, b) => (b.data || "").localeCompare(a.data || ""));
     } else if (typeof ESTUDO_ATUAL !== "undefined") {
         listaEstudos = [ESTUDO_ATUAL];
     } else {
@@ -46,7 +46,7 @@ function determinarEstudoInicialPorHash() {
             return;
         }
     }
-    currentIndex = 0; // Mais recente por padrão
+    currentIndex = 0; // Mais recente por padrão (Versículo do Dia)
 }
 
 /**
@@ -56,8 +56,12 @@ function renderizarEstudoAtivo() {
     const data = listaEstudos[currentIndex];
     if (!data) return;
 
+    // Atualiza o título dinâmico da página
+    document.title = `${data.referencia} - Versículo do Dia & Teologia Expositiva`;
+
     // Badges do Topo
     const elData = document.getElementById("meta-data");
+
     const elVersao = document.getElementById("meta-versao");
     const elGenero = document.getElementById("meta-genero");
     const elModelo = document.getElementById("meta-modelo");
@@ -544,9 +548,19 @@ function aplicarTema(tema) {
 
 /**
  * Modo Zen / Foco para leitura sem distrações.
+ * Sempre ativado por padrão conforme especificação do usuário.
  */
 function inicializarZenMode() {
     const btnZen = document.getElementById("btn-zen");
+
+    // Sempre ativa o Modo Foco ao abrir o site
+    document.body.classList.add("zen-mode");
+    if (btnZen) {
+        btnZen.classList.add("is-active");
+        const btnText = btnZen.querySelector(".btn-text");
+        if (btnText) btnText.textContent = "Sair do Foco";
+    }
+
     if (!btnZen) return;
 
     btnZen.addEventListener("click", () => {
@@ -564,6 +578,7 @@ function inicializarZenMode() {
         }
     });
 }
+
 
 /**
  * Cópia rápida do devocional para a área de transferência com feedback tátil e visual.

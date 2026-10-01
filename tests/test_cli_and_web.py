@@ -103,14 +103,18 @@ def test_elementos_visuais_manuscritos_e_iluminura():
     """Valida a presença dos elementos de manuscrito sagrado, cantoneiras e selo teológico."""
     html_path = Path(__file__).resolve().parent.parent / "web" / "index.html"
     css_path = Path(__file__).resolve().parent.parent / "web" / "style.css"
+    favicon_path = Path(__file__).resolve().parent.parent / "web" / "favicon.svg"
 
     assert html_path.exists()
     assert css_path.exists()
+    assert favicon_path.exists()
+
 
     html_content = html_path.read_text(encoding="utf-8")
     css_content = css_path.read_text(encoding="utf-8")
 
     # Elementos no HTML
+    assert "favicon.svg" in html_content
     assert "sacred-manuscript-bg" in html_content
     assert "manuscript-watermark-hebrew" in html_content
     assert "manuscript-watermark-greek" in html_content
@@ -125,4 +129,5 @@ def test_elementos_visuais_manuscritos_e_iluminura():
     assert ".manuscript-watermark-greek" in css_content
     assert ".codex-corner" in css_content
     assert ".footer-seal" in css_content
+
 
