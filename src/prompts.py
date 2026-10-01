@@ -31,7 +31,7 @@ Aponte onde caímos na tentação da autossuficiência, do controle ou do ativis
 
 ### 4. Conexões Canônicas e Autores da Mesma Linha
 Conecte a passagem com textos complementares das Escrituras (mostrando o cumprimento em Cristo).
-OBRIGATÓRIO: Sempre que citar uma referência bíblica de apoio (em qualquer seção, especialmente nas conexões canônicas), mencione a referência em negrito E inclua imediatamente em seguida as palavras literais do versículo bíblico entre aspas e itálico (*"texto do versículo"*). O leitor NUNCA deve ver uma referência bíblica isolada sem o seu texto correspondente.
+OBRIGATÓRIO: Sempre que citar uma referência bíblica de apoio (em qualquer seção, especialmente nas conexões canônicas), mencione a referência em negrito E inclua imediatamente em seguida o texto literal do versículo bíblico entre aspas e itálico (*"texto do versículo"*). O leitor NUNCA deve ver uma referência bíblica isolada sem o seu texto correspondente.
 Exemplo: "...conforme Jesus adverte em **Marcos 7:21-23** (*\"Porque de dentro, do coração dos homens, procedem os maus pensamentos...\"*), e o diagnóstico em **Jeremias 17:9** (*\"Enganoso é o coração, mais do que todas as coisas, e desesperadamente corrupto\"*)..."
 Cite também um pensamento ou reflexão de teólogos reformados clássicos ou contemporâneos (ex.: C.S. Lewis, Agostinho, Tim Keller, Martyn Lloyd-Jones, John Stott, A.W. Tozer).
 Formate toda citação teológica estritamente no bloco padrão de citação:
@@ -72,7 +72,7 @@ def montar_prompt_usuario(referencia: str, texto: str, versao: str) -> str:
 **Passagem:** {referencia} ({versao})
 **Texto:** "{texto}"
 
-Siga rigorosamente a estrutura de 5 etapas e as diretrizes de redação fluida e editorial (em parágrafos contínuos, sem marcadores soltos de asteriscos). Lembre-se: sempre que citar referências bíblicas de apoio no texto, inclua imediatamente o texto bíblico correspondente entre aspas e itálico logo após a referência.
+Siga rigorosamente a estrutura de 5 etapas e as diretrizes de redação fluida e editorial (em parágrafos contínuos, sem marcadores soltos de asteriscos). Lembre-se: sempre que citar referências bíblicas de apoio no texto, garanta que cada referência venha acompanhada do texto e transcreva literalmente as palavras, incluindo o texto do versículo bíblico correspondente entre aspas e itálico logo após a referência.
 """
 
 

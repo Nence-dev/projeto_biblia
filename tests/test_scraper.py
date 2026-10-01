@@ -141,4 +141,4 @@ def test_fallback_calendario_quando_web_indisponivel():
         assert versiculo is not None
         assert versiculo.referencia != ""
         assert versiculo.texto != ""
-        assert "Calendário Bíblico de Contingência" in versiculo.url_fonte
+        assert "Calendário Bíblico" in versiculo.url_fonte

@@ -216,8 +216,10 @@ def sanitizar_texto_markdown_para_web(texto: str) -> str:
     return texto_formatado.strip()
 
 
-def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
+def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
     """Extrai campos estruturados do markdown do estudo para formato web com fidelidade total."""
+    if isinstance(conteudo_md, Path):
+        conteudo_md = conteudo_md.read_text(encoding="utf-8")
     # Extrair Frontmatter
     match_data = re.search(r'data:\s*"([^"]+)"', conteudo_md)
     data_str = match_data.group(1) if match_data else datetime.now().strftime("%Y-%m-%d")
@@ -252,14 +254,14 @@ def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
 
     # 1. Contexto
     conteudo_contexto = ""
-    match_ctx = re.search(r"###\s*1\.\s*O Contexto Histórico[^\n]*\n(.*?)(?=###|\Z)", estudo_puro, re.DOTALL)
+    match_ctx = re.search(r"#{2,3}\s*1\.\s*(?:O\s+)?Contexto Histórico[^\n]*\n(.*?)(?=#{2,3}|\Z)", estudo_puro, re.DOTALL)
     if match_ctx:
         conteudo_contexto = sanitizar_texto_markdown_para_web(match_ctx.group(1).strip())
 
     # 2. Anatomia
     conteudo_anatomia = ""
     termos_originais = []
-    match_ana = re.search(r"###\s*2\.\s*A Anatomia do Texto[^\n]*\n(.*?)(?=###|\Z)", estudo_puro, re.DOTALL)
+    match_ana = re.search(r"#{2,3}\s*2\.\s*(?:A\s+)?Anatomia[^\n]*\n(.*?)(?=#{2,3}|\Z)", estudo_puro, re.DOTALL)
     if match_ana:
         texto_ana = match_ana.group(1).strip()
         padrao_termo = re.finditer(r'\*\s*\*\*"([^"]+)"\*\*\s*\(([^)]+)\):\s*([^\n]+)', texto_ana)
@@ -274,9 +276,10 @@ def parse_estudo_markdown(conteudo_md: str) -> dict[str, Any]:
 
     # 3. Aplicação
     conteudo_aplicacao = ""
-    match_app = re.search(r"###\s*3\.\s*O que tirar disso[^\n]*\n(.*?)(?=###|\Z)", estudo_puro, re.DOTALL)
+    match_app = re.search(r"#{2,3}\s*(?:2|3)\.\s*(?:O que tirar disso|Aplicação)[^\n]*\n(.*?)(?=#{2,3}|---|##\s*📱|\Z)", estudo_puro, re.DOTALL)
     if match_app:
         conteudo_aplicacao = sanitizar_texto_markdown_para_web(match_app.group(1).strip())
+
 
     # 4. Conexões Canônicas & Citações
     conteudo_canonicas = ""
@@ -548,19 +551,21 @@ def exportar_todos_estudos_para_web_data(
         f"const HISTORICO_ESTUDOS = {json.dumps(historico, ensure_ascii=False, indent=4)};\n\n"
         "const ESTUDO_ATUAL = HISTORICO_ESTUDOS[0];\n"
     )
+    destino_js.parent.mkdir(parents=True, exist_ok=True)
     destino_js.write_text(js_code, encoding="utf-8")
-
-    # Sincroniza espelho na raiz se presente
-    try:
-        espelho_raiz = destino_js.parent.parent.parent / "web" / "data.js"
-        if espelho_raiz.parent.exists():
-            espelho_raiz.write_text(js_code, encoding="utf-8")
-    except Exception:
-        pass
 
     return destino_js
 
 
 def exportar_estudo_para_web_data(caminho_estudo: Path, destino_js: Path | None = None) -> Path:
     """Exporta o histórico completo incluindo o estudo atual para web/data.js."""
-    return exportar_todos_estudos_para_web_data(destino_js=destino_js)
+    pasta_estudos = caminho_estudo.parent
+    if not destino_js:
+        candidato_web = pasta_estudos.parent / "web" / "data.js"
+        if candidato_web.parent.exists():
+            destino_js = candidato_web
+        elif "pytest" not in str(pasta_estudos).lower():
+            destino_js = Path(__file__).resolve().parent.parent / "web" / "data.js"
+        else:
+            destino_js = pasta_estudos / "web" / "data.js"
+    return exportar_todos_estudos_para_web_data(pasta_estudos=pasta_estudos, destino_js=destino_js)

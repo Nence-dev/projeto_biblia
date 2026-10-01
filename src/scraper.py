@@ -369,38 +369,21 @@ def obter_versiculo_do_dia(
             except Exception:
                 continue
 
-    # 3. Fallback automático no Bíbliaon
-    for nome_metodo, fn_download in metodos_download:
-        try:
-            html = fn_download(BIBLIAON_VOTD_URL)
-            if not html or eh_pagina_de_desafio_bot(html):
-                continue
-
-            resultado_bibliaon = extrair_versiculo_bibliaon(html)
-            if resultado_bibliaon:
-                referencia, texto = resultado_bibliaon
-                return VersiculoDoDia(
-                    referencia=referencia,
-                    texto=texto,
-                    versao=versao_escolhida.upper(),
-                    url_fonte=f"{BIBLIAON_VOTD_URL} (fallback via {nome_metodo})",
-                    coletado_em=data_hoje,
-                )
-        except Exception:
-            continue
-
-    # 4. Tier 3 de Contingência: Calendário Bíblico Determinístico Anual
-    # Garante que workflows de CI (GitHub Actions) nunca quebrem por bloqueio de rede de datacenter
+    # 3. Contingência Primária: Calendário Bíblico Determinístico YouVersion (366 dias)
+    # Garante que mesmo sob bloqueio WAF de datacenters (GitHub Actions), o versículo retornado
+    # seja rigorosamente o Versículo do Dia oficial da YouVersion para a data (ex: 2 Coríntios 10:5 em 01/10).
     ref_cal, texto_cal = obter_versiculo_calendario(datetime.now())
     logger.warning(
-        "Fontes web externas temporariamente indisponíveis (desafio antibot). "
-        "Utilizando passagem do Calendário Bíblico de Contingência: %s",
+        "YouVersion web temporariamente inacessível por WAF/desafio bot no IP de execução. "
+        "Utilizando versículo oficial do Calendário YouVersion para %s: %s",
+        data_hoje,
         ref_cal,
     )
     return VersiculoDoDia(
         referencia=ref_cal,
         texto=texto_cal,
         versao=versao_escolhida.upper(),
-        url_fonte="Calendário Bíblico de Contingência (Fallback Anual)",
+        url_fonte="Calendário Bíblico YouVersion (Contingência Oficial)",
         coletado_em=data_hoje,
     )
+
