@@ -10,7 +10,7 @@ const HISTORICO_ESTUDOS = [
         "versao": "NVI",
         "modelo": "gemini-3.5-flash",
         "geradoEm": "2026-09-30T09:27:26.517610",
-        "versiculoTexto": "Versiculo de Hoje Quarta, 30 de setembro de 2026 Quem dá alimento aos corvos\nquando os seus filhotes clamam a Deus\ne vagueiam por falta de comida?  Gostou?",
+        "versiculoTexto": "Quem dá alimento aos corvos quando os seus filhotes clamam a Deus e vagueiam por falta de comida?",
         "genero": "Literatura de Sabedoria / Bíblica",
         "secoes": [
             {

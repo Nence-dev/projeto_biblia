@@ -4,13 +4,25 @@ on:
   schedule:
     # Executa todos os dias às 09:00 UTC (06:00 horário de Brasília)
     - cron: '0 9 * * *'
-  workflow_dispatch: # Permite disparar manualmente pelo GitHub
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Forçar regeneração mesmo que o estudo de hoje já exista'
+        required: false
+        type: boolean
+        default: false
+      versiculo:
+        description: 'Passagem manual opcional (ex: Romanos 8:28 ou Salmos 23:1)'
+        required: false
+        type: string
+        default: ''
   push:
     branches:
       - main
-    paths:
-      - 'web/**'
-      - '.github/workflows/estudo_diario.yml'
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - '.env.example'
 
 permissions:
   contents: write
@@ -23,12 +35,14 @@ concurrency:
 
 jobs:
   gerar-estudo:
-    if: github.event_name != 'push'
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout do Repositório
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
 
       - name: Configurar Python
         uses: actions/setup-python@v5
@@ -47,16 +61,25 @@ jobs:
           GEMINI_MODEL: ${{ secrets.GEMINI_MODEL || 'gemini-3.5-flash' }}
           BIBLIA_VERSAO: ${{ secrets.BIBLIA_VERSAO || 'nvi' }}
         run: |
-          python main.py
+          CMD="python main.py"
+          if [ "${{ inputs.force }}" = "true" ]; then
+            CMD="$CMD --force"
+          fi
+          if [ -n "${{ inputs.versiculo }}" ]; then
+            CMD="$CMD --versiculo '${{ inputs.versiculo }}'"
+          fi
+          echo "Executando comando: $CMD"
+          eval $CMD
 
       - name: Salvar Novo Estudo e Dados Web no Repositório
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: Estudo Bíblico do Dia & Atualização Web [skip ci]"
           file_pattern: "estudos/*.md web/data.js"
+          branch: ${{ github.ref_name }}
 
   deploy-pages:
-    # Executa sempre que gerar-estudo tiver sucesso ou quando o trigger for push direto na branch main
+    # Executa sempre que gerar-estudo tiver sucesso ou se tiver sido pulado
     if: always() && !cancelled() && (needs.gerar-estudo.result == 'success' || needs.gerar-estudo.result == 'skipped')
     needs: [gerar-estudo]
     runs-on: ubuntu-latest

@@ -1,4 +1,4 @@
-"""Módulo resiliente de coleta e parsing do Versículo do Dia no YouVersion (bible.com) com fallback."""
+"""Módulo resiliente de coleta e parsing do Versículo do Dia no YouVersion (bible.com) com múltiplos fallbacks."""
 
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ from src.config import (
     BIBLIA_VERSAO,
     YOUVERSION_VERSION_IDS,
 )
+from src.versiculos_calendario import obter_versiculo_calendario
 
 logger = logging.getLogger(__name__)
 
@@ -38,23 +39,38 @@ class ScraperError(Exception):
     pass
 
 
-HEADERS_NAVEGADOR = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/129.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-    "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Sec-Ch-Ua": '"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
-    "Sec-Ch-Ua-Mobile": "?0",
-    "Sec-Ch-Ua-Platform": '"Windows"',
-    "Sec-Fetch-Dest": "document",
-    "Sec-Fetch-Mode": "navigate",
-    "Sec-Fetch-Site": "none",
-    "Sec-Fetch-User": "?1",
-    "Upgrade-Insecure-Requests": "1",
-}
+# Conjunto de Headers limpos e compatíveis com WAF (sem os client hints Sec-Ch-Ua que provocam TLS fingerprint mismatch)
+HEADERS_COMPATIVEIS = [
+    {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Accept-Encoding": "gzip, deflate",
+        "DNT": "1",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+    },
+    {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/126.0.0.0 Safari/537.36"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Upgrade-Insecure-Requests": "1",
+    },
+]
+
+
+def normalizar_referencia(ref: str) -> str:
+    """Padroniza referências com números juntos (ex: '2Coríntios 10:5' -> '2 Coríntios 10:5')."""
+    if not ref:
+        return ""
+    ref_limpa = re.sub(r"^([1-3])\s*([a-zA-ZÀ-ÿ])", r"\1 \2", ref.strip())
+    return ref_limpa.strip()
 
 
 def eh_pagina_de_desafio_bot(html: str) -> bool:
@@ -75,7 +91,7 @@ def eh_pagina_de_desafio_bot(html: str) -> bool:
 def extrair_de_string_og(og_desc: str, title_text: str = "") -> Optional[tuple[str, str]]:
     """
     Tenta extrair a referência e o texto bíblico a partir do conteúdo de og:description e do título.
-    Exemplo: 'Provérbios 4:23 Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.'
+    Exemplo: '2Coríntios 10:5 e também todo orgulho humano que não deixa...'
     """
     if not og_desc:
         return None
@@ -93,20 +109,23 @@ def extrair_de_string_og(og_desc: str, title_text: str = "") -> Optional[tuple[s
         if match_title:
             referencia_do_titulo = match_title.group(1).strip()
 
-    if referencia_do_titulo and og_desc.lower().startswith(referencia_do_titulo.lower()):
-        texto = og_desc[len(referencia_do_titulo):].strip(" -–:\"'“”\t\n")
-        if texto:
-            return referencia_do_titulo, texto
+    if referencia_do_titulo:
+        ref_norm = normalizar_referencia(referencia_do_titulo)
+        # Verifica se og_desc começa com a referência (com ou sem espaço no livro, ex: 2Coríntios ou 2 Coríntios)
+        for cand in [referencia_do_titulo, ref_norm]:
+            if og_desc.lower().startswith(cand.lower()):
+                texto = og_desc[len(cand):].strip(" -–:\"'“”\t\n")
+                if texto:
+                    return ref_norm, texto
 
-    # 2. Estratégia Regex Universal em og_desc
-    # Padrão: "Provérbios 4:23 Tenha cuidado..." ou "1 João 1:9 Se confessarmos..."
+    # 2. Estratégia Regex Universal no início de og_desc
     match_desc = re.match(
-        r"^([0-9]?\s?[^\d\n]+?\s+\d+:\d+(?:-\d+)?)\s+(.+)$",
+        r"^([1-3]?\s?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)?\s+\d+:\d+(?:-\d+)?)\s+(.+)$",
         og_desc,
         re.DOTALL,
     )
     if match_desc:
-        referencia = match_desc.group(1).strip()
+        referencia = normalizar_referencia(match_desc.group(1).strip())
         texto = match_desc.group(2).strip(" -–:\"'“”\t\n")
         if referencia and texto:
             return referencia, texto
@@ -166,7 +185,7 @@ def extrair_referencia_e_texto(html_content: str | bytes | BeautifulSoup) -> tup
         if resultado:
             return resultado
 
-    # Estratégia 3: Extração via Título + Corpo
+    # Estratégia 3: Extração via Título + Elementos de Parágrafo
     if title_text:
         match_title_only = re.search(
             r"Vers[íi]culo do Dia\s*[-–—]\s*([^—–-]+?)\s*[-–—]",
@@ -174,19 +193,17 @@ def extrair_referencia_e_texto(html_content: str | bytes | BeautifulSoup) -> tup
             re.IGNORECASE,
         )
         if match_title_only:
-            ref_encontrada = match_title_only.group(1).strip()
+            ref_encontrada = normalizar_referencia(match_title_only.group(1).strip())
             for p in soup.find_all(["p", "blockquote", "h2", "h3"]):
                 p_text = p.get_text(separator=" ", strip=True)
                 if len(p_text) > 20 and not p_text.startswith("Leia um inspirador"):
                     return ref_encontrada, p_text
 
-    raise ScraperError(
-        "Não foi possível extrair a referência e o texto bíblico do YouVersion."
-    )
+    raise ScraperError("Não foi possível extrair a referência e o texto bíblico do YouVersion.")
 
 
 def extrair_versiculo_bibliaon(html_content: str | bytes | BeautifulSoup) -> Optional[tuple[str, str]]:
-    """Extrai a referência e o texto bíblico da página do Bíbliaon (serviço alternativo de fallback)."""
+    """Extrai e higieniza a referência e o texto bíblico da página do Bíbliaon."""
     if isinstance(html_content, BeautifulSoup):
         soup = html_content
         raw_html = str(soup)
@@ -194,19 +211,21 @@ def extrair_versiculo_bibliaon(html_content: str | bytes | BeautifulSoup) -> Opt
         soup = BeautifulSoup(html_content, "html.parser")
         raw_html = html_content if isinstance(html_content, str) else html_content.decode("utf-8", errors="ignore")
 
-    # 1. Procura por container específico com classe versiculo ou v_dia
+    # 1. Procura por container específico com classe versiculo-card, versiculo-alt ou v_dia
     cards = soup.find_all("div", class_=lambda c: c and any(k in str(c) for k in ["versiculo", "v_dia"]))
     for card in cards:
+        # Extrai links que contenham a referência bíblica
         for el in card.find_all(["a", "span", "strong", "p"]):
             txt = el.get_text(strip=True)
             match_ref = re.search(
-                r"^([1-3]?\s?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)?\s+\d+:\d+(?:-\d+)?)$",
+                r"([1-3]?\s?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)?\s+\d+:\d+(?:-\d+)?)",
                 txt,
             )
             if match_ref:
-                referencia = match_ref.group(1).strip()
+                referencia = normalizar_referencia(match_ref.group(1).strip())
                 card_text = card.get_text(separator=" ", strip=True)
-                texto = card_text.replace(referencia, "").strip(" -–:\"'“”\t\n")
+                texto = card_text.replace(txt, "").replace(referencia, "").strip(" -–:\"'“”\t\n")
+                
                 # Remove cabeçalhos de data do card (ex: "Versiculo de Hoje Quarta, 30 de setembro de 2026")
                 texto = re.sub(
                     r"^Vers[íi]culo\s+de\s+Hoje[^\n\r]*?(?:\d{1,2}\s+de\s+[a-zç]+\s+de\s+\d{4}|\d{4})\s*",
@@ -214,9 +233,9 @@ def extrair_versiculo_bibliaon(html_content: str | bytes | BeautifulSoup) -> Opt
                     texto,
                     flags=re.IGNORECASE,
                 ).strip()
-                # Remove botões de ação e rodapés ("Compartilhar", "Gostou?", etc.)
+                # Remove botões de ação e rodapés ("Compartilhar", "Gostou?", "Ler o capítulo", etc.)
                 texto = re.sub(
-                    r"(Compartilhar|Copiar|WhatsApp|Facebook|Twitter|Salvar|Gostou\?).*",
+                    r"(Compartilhar|Copiar|WhatsApp|Facebook|Twitter|Salvar|Gostou\?|Ler\s+o\s+cap[íi]tulo).*",
                     "",
                     texto,
                     flags=re.IGNORECASE,
@@ -236,94 +255,56 @@ def extrair_versiculo_bibliaon(html_content: str | bytes | BeautifulSoup) -> Opt
                     a.get_text(strip=True),
                 )
                 if match_ref:
-                    ref = match_ref.group(1).strip()
+                    ref = normalizar_referencia(match_ref.group(1).strip())
                     texto_limpo = texto.replace(ref, "").strip(" -–:\"'“”\t\n")
                     if texto_limpo:
                         return ref, texto_limpo
-
-    # 3. Regex em links bíblicos do Bíbliaon
-    match_link = re.search(
-        r'<a[^>]+href=["\'](?:https?://www\.bibliaon\.com)?/([a-z0-9_]+)/["\'][^>]*>([1-3]?\s?[A-Za-zÀ-ÿ]+\s+\d+:\d+(?:-\d+)?)</a>',
-        raw_html,
-        re.IGNORECASE,
-    )
-    if match_link:
-        referencia = match_link.group(2).strip()
-        idx = raw_html.find(match_link.group(0))
-        snippet = raw_html[max(0, idx - 600) : min(len(raw_html), idx + 600)]
-        soup_snippet = BeautifulSoup(snippet, "html.parser")
-        for p in soup_snippet.find_all(["p", "blockquote"]):
-            p_txt = p.get_text(strip=True)
-            if (
-                len(p_txt) > 20
-                and not p_txt.startswith("Leia")
-                and referencia.lower() not in p_txt.lower()
-            ):
-                return referencia, p_txt
 
     return None
 
 
 def baixar_html_via_requests(url: str) -> Optional[str]:
-    """Baixa o HTML da URL utilizando requests com sessão e headers realistas."""
-    try:
-        session = requests.Session()
-        session.headers.update(HEADERS_NAVEGADOR)
-        response = session.get(url, timeout=12)
-        response.raise_for_status()
-        response.encoding = "utf-8"
-        return response.text
-    except Exception:
-        return None
-
-
-def baixar_html_via_curl(url: str) -> Optional[str]:
-    """Baixa o HTML utilizando o curl nativo do sistema operacional (Windows/Linux)."""
-    curl_path = shutil.which("curl") or "C:\\Windows\\System32\\curl.exe"
-    try:
-        res = subprocess.run(
-            [
-                curl_path,
-                "-sL",
-                "--max-time", "15",
-                "-H", f"User-Agent: {HEADERS_NAVEGADOR['User-Agent']}",
-                "-H", "Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
-                "-H", "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                url,
-            ],
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="ignore",
-            check=False,
-        )
-        if res.returncode == 0 and res.stdout and "<html" in res.stdout.lower():
-            return res.stdout
-    except Exception:
-        pass
+    """Baixa o HTML da URL utilizando requests com rotação de headers compatíveis."""
+    for headers in HEADERS_COMPATIVEIS:
+        try:
+            session = requests.Session()
+            session.headers.update(headers)
+            response = session.get(url, timeout=10)
+            if response.status_code == 200:
+                response.encoding = "utf-8"
+                if not eh_pagina_de_desafio_bot(response.text):
+                    return response.text
+        except Exception:
+            continue
     return None
 
 
-def baixar_html_via_powershell(url: str) -> Optional[str]:
-    """Baixa o HTML utilizando PowerShell Invoke-WebRequest nativo do Windows."""
-    try:
-        cmd = (
-            f"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; "
-            f"$headers = @{{'User-Agent'='{HEADERS_NAVEGADOR['User-Agent']}'; 'Accept-Language'='pt-BR,pt;q=0.9'}}; "
-            f"(Invoke-WebRequest -Uri '{url}' -UseBasicParsing -Headers $headers -TimeoutSec 15).Content"
-        )
-        res = subprocess.run(
-            ["powershell", "-NoProfile", "-Command", cmd],
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="ignore",
-            check=False,
-        )
-        if res.returncode == 0 and res.stdout and "<html" in res.stdout.lower():
-            return res.stdout
-    except Exception:
-        pass
+def baixar_html_via_curl(url: str) -> Optional[str]:
+    """Baixa o HTML utilizando o curl nativo do sistema operacional com suporte a redirecionamentos."""
+    curl_path = shutil.which("curl") or "C:\\Windows\\System32\\curl.exe"
+    for headers in HEADERS_COMPATIVEIS:
+        try:
+            res = subprocess.run(
+                [
+                    curl_path,
+                    "-sL",
+                    "--max-time", "15",
+                    "-H", f"User-Agent: {headers['User-Agent']}",
+                    "-H", "Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+                    "-H", "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                    url,
+                ],
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="ignore",
+                check=False,
+            )
+            if res.returncode == 0 and res.stdout and "<html" in res.stdout.lower():
+                if not eh_pagina_de_desafio_bot(res.stdout):
+                    return res.stdout
+        except Exception:
+            continue
     return None
 
 
@@ -333,18 +314,18 @@ def obter_versiculo_do_dia(
     texto_manual: Optional[str] = None,
 ) -> VersiculoDoDia:
     """
-    Obtém o Versículo do Dia com resiliência em múltiplas etapas:
+    Obtém o Versículo do Dia com resiliência em 3 Tiers:
     1. Entrada manual se fornecida via flag CLI (--versiculo).
-    2. Raspagem no YouVersion (bible.com) com múltiplos métodos de download.
-    3. Fallback automático para Bíbliaon caso o YouVersion apresente bloqueio antibot (Client Challenge).
-    4. Mensagem instrucional clara com comando de fallback manual caso todas as fontes web falhem.
+    2. Raspagem no YouVersion (bible.com) com múltiplos métodos de download e headers compatíveis.
+    3. Fallback automático no Bíbliaon caso o YouVersion apresente bloqueio antibot.
+    4. Tier 3 de Contingência: Calendário Bíblico Determinístico Anual (366 dias), garantindo 100% de execução no CI.
     """
     versao_escolhida = (versao or BIBLIA_VERSAO).lower()
     data_hoje = datetime.now().strftime("%Y-%m-%d")
 
     # 1. Fallback manual direto
     if versiculo_manual:
-        referencia = versiculo_manual.strip()
+        referencia = normalizar_referencia(versiculo_manual.strip())
         texto = texto_manual.strip() if texto_manual else f"(Passagem selecionada para reflexão: {referencia})"
         return VersiculoDoDia(
             referencia=referencia,
@@ -354,19 +335,20 @@ def obter_versiculo_do_dia(
             coletado_em=data_hoje,
         )
 
-    # Métodos de download em ordem de prioridade (requests -> curl nativo -> powershell)
     metodos_download = [
         ("requests", baixar_html_via_requests),
         ("curl", baixar_html_via_curl),
-        ("powershell", baixar_html_via_powershell),
     ]
 
     # 2. URLs YouVersion a tentar
-    urls_youversion = []
+    urls_youversion = [
+        YOUVERSION_VOTD_URL,
+        f"{YOUVERSION_VOTD_URL}?version=129",
+        "https://www.bible.com/verse-of-the-day",
+    ]
     version_id = YOUVERSION_VERSION_IDS.get(versao_escolhida)
-    if version_id:
-        urls_youversion.append(f"{YOUVERSION_VOTD_URL}?version={version_id}")
-    urls_youversion.append(YOUVERSION_VOTD_URL)
+    if version_id and version_id != 129:
+        urls_youversion.insert(0, f"{YOUVERSION_VOTD_URL}?version={version_id}")
 
     for url in urls_youversion:
         for nome_metodo, fn_download in metodos_download:
@@ -376,13 +358,14 @@ def obter_versiculo_do_dia(
                     continue
 
                 referencia, texto = extrair_referencia_e_texto(html)
-                return VersiculoDoDia(
-                    referencia=referencia,
-                    texto=texto,
-                    versao=versao_escolhida.upper(),
-                    url_fonte=f"{url} (via {nome_metodo})",
-                    coletado_em=data_hoje,
-                )
+                if referencia and texto:
+                    return VersiculoDoDia(
+                        referencia=referencia,
+                        texto=texto,
+                        versao=versao_escolhida.upper(),
+                        url_fonte=f"{url} (via {nome_metodo})",
+                        coletado_em=data_hoje,
+                    )
             except Exception:
                 continue
 
@@ -406,11 +389,18 @@ def obter_versiculo_do_dia(
         except Exception:
             continue
 
-    # 4. Falha geral amigável
-    raise ScraperError(
-        "Não foi possível extrair o Versículo do Dia automaticamente "
-        "(o YouVersion exige desafio interativo em navegador e as fontes alternativas estão indisponíveis no momento).\n"
-        "Você pode executar imediatamente informando o versículo desejado:\n"
-        "  python main.py -v 'Provérbios 4:23'\n"
-        "  python main.py -v 'Filipenses 4:13' -t 'Tudo posso naquele que me fortalece.'"
+    # 4. Tier 3 de Contingência: Calendário Bíblico Determinístico Anual
+    # Garante que workflows de CI (GitHub Actions) nunca quebrem por bloqueio de rede de datacenter
+    ref_cal, texto_cal = obter_versiculo_calendario(datetime.now())
+    logger.warning(
+        "Fontes web externas temporariamente indisponíveis (desafio antibot). "
+        "Utilizando passagem do Calendário Bíblico de Contingência: %s",
+        ref_cal,
+    )
+    return VersiculoDoDia(
+        referencia=ref_cal,
+        texto=texto_cal,
+        versao=versao_escolhida.upper(),
+        url_fonte="Calendário Bíblico de Contingência (Fallback Anual)",
+        coletado_em=data_hoje,
     )

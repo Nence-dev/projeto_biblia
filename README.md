@@ -153,7 +153,14 @@ git push -u origin main
 1. No menu do repositório, vá em **Settings** > **Pages**.
 2. Em **Build and deployment** > **Source**, selecione:
    - **GitHub Actions**
-3. Pronto! O workflow `.github/workflows/estudo_diario.yml` publicará o site automaticamente e fornecerá a URL pública (ex.: `https://<seu-usuario>.github.io/<nome-do-repositorio>/`).
+3. O workflow `.github/workflows/estudo_diario.yml` publicará o site automaticamente e fornecerá a URL pública (ex.: `https://<seu-usuario>.github.io/<nome-do-repositorio>/`).
+
+### Passo 4: Habilitar Permissão de Escrita do Workflow (Essencial para o Commit Automático)
+Para que o robô do GitHub consiga salvar os novos estudos gerados e atualizar o histórico no repositório:
+1. No menu do repositório, vá em **Settings** > **Actions** > **General**.
+2. Role até a seção **Workflow permissions**.
+3. Selecione a opção **Read and write permissions**.
+4. Clique em **Save**.
 
 ---
 

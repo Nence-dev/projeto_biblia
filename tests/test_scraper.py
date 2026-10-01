@@ -1,12 +1,26 @@
-"""Testes unitários para o módulo de scraping do YouVersion (src/scraper.py)."""
+"""Testes unitários para o módulo de scraping do YouVersion (src/scraper.py) e contingência."""
 
+from datetime import datetime
 import pytest
 from bs4 import BeautifulSoup
+from unittest.mock import patch
+
 from src.scraper import (
     extrair_referencia_e_texto,
     obter_versiculo_do_dia,
+    normalizar_referencia,
+    eh_pagina_de_desafio_bot,
+    extrair_versiculo_bibliaon,
     ScraperError,
 )
+from src.versiculos_calendario import obter_versiculo_calendario
+
+
+def test_normalizar_referencia():
+    assert normalizar_referencia("2Coríntios 10:5") == "2 Coríntios 10:5"
+    assert normalizar_referencia("1João 1:9") == "1 João 1:9"
+    assert normalizar_referencia("3João 1:2") == "3 João 1:2"
+    assert normalizar_referencia("Romanos 8:28") == "Romanos 8:28"
 
 
 def test_extrair_referencia_e_texto_formato_padrao():
@@ -25,6 +39,26 @@ def test_extrair_referencia_e_texto_formato_padrao():
 
     assert ref == "Provérbios 4:23"
     assert texto == "Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos."
+
+
+def test_extrair_referencia_e_texto_numero_junto_youversion():
+    """Valida o caso real do YouVersion onde o título vem com '2Coríntios 10:5'."""
+    html = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Versículo do Dia - 2Coríntios 10:5 — App da Bíblia</title>
+        <meta property="og:description" content="2Coríntios 10:5 e também todo orgulho humano que não deixa que as pessoas conheçam a Deus. Dominamos todo pensamento humano e fazemos com que ele obedeça a Cristo." />
+    </head>
+    <body></body>
+    </html>
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    ref, texto = extrair_referencia_e_texto(soup)
+
+    assert ref == "2 Coríntios 10:5"
+    assert texto.startswith("e também todo orgulho humano")
+    assert "obedecer" in texto or "obedeça" in texto
 
 
 def test_extrair_referencia_e_texto_regex_fallback():
@@ -67,8 +101,6 @@ def test_obter_versiculo_manual():
 
 
 def test_eh_pagina_de_desafio_bot():
-    from src.scraper import eh_pagina_de_desafio_bot
-
     html_desafio = "<html><head><title>Client Challenge</title></head><body>JavaScript is disabled in your browser.</body></html>"
     assert eh_pagina_de_desafio_bot(html_desafio) is True
 
@@ -77,8 +109,6 @@ def test_eh_pagina_de_desafio_bot():
 
 
 def test_extrair_versiculo_bibliaon_card():
-    from src.scraper import extrair_versiculo_bibliaon
-
     html_bibliaon = """
     <html>
     <body>
@@ -94,3 +124,21 @@ def test_extrair_versiculo_bibliaon_card():
     ref, texto = res
     assert ref == "Filipenses 4:13"
     assert "Tudo posso naquele que me fortalece" in texto
+
+
+def test_obter_versiculo_calendario():
+    data_outubro_1 = datetime(2026, 10, 1)
+    ref, texto = obter_versiculo_calendario(data_outubro_1)
+    assert ref == "2 Coríntios 10:5"
+    assert "pensamento" in texto or "Cristo" in texto
+
+
+def test_fallback_calendario_quando_web_indisponivel():
+    """Garante que quando todas as fontes web falharem, o Tier 3 retorna o versículo do dia sem travar o CI."""
+    with patch("src.scraper.baixar_html_via_requests", return_value=None), \
+         patch("src.scraper.baixar_html_via_curl", return_value=None):
+        versiculo = obter_versiculo_do_dia(versao="nvi")
+        assert versiculo is not None
+        assert versiculo.referencia != ""
+        assert versiculo.texto != ""
+        assert "Calendário Bíblico de Contingência" in versiculo.url_fonte
