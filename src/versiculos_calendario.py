@@ -47,8 +47,8 @@ CALENDARIO_ANUAL: dict[tuple[int, int], tuple[str, str]] = {
 
     # Outubro (mês atual)
     (10, 1): ("2 Coríntios 10:5", "Destruímos argumentos e toda pretensão que se levanta contra o conhecimento de Deus, e levamos cativo todo pensamento, para torná-lo obediente a Cristo."),
-    (10, 2): ("Colossenses 1:16-17", "Pois nele foram criadas todas as coisas nos céus e na terra, as visíveis e as invisíveis; tudo foi criado por ele e para ele. Ele é antes de todas as coisas, e nele tudo subsiste."),
-    (10, 3): ("Salmos 19:1", "Os céus declaram a glória de Deus; o firmamento proclama a obra das suas mãos."),
+    (10, 2): ("1 João 4:19", "Nós amamos porque ele nos amou primeiro."),
+    (10, 3): ("Êxodo 20:8", "Guarde o sábado, que é um dia santo."),
     (10, 4): ("Romanos 5:1", "Tendo sido, pois, justificados pela fé, temos paz com Deus, por nosso Senhor Jesus Cristo."),
     (10, 5): ("Hebreus 4:16", "Assim, aproximemo-nos do trono da graça com toda a confiança, a fim de recebermos misericórdia e encontrarmos graça que nos ajude no momento da necessidade."),
     (10, 6): ("Salmos 34:8", "Provem e vejam como o Senhor é bom. Como é feliz o homem que nele se refugia!"),

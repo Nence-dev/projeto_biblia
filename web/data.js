@@ -4,6 +4,140 @@
  */
 const HISTORICO_ESTUDOS = [
     {
+        "data": "2026-10-03",
+        "dataFormatada": "3 de Outubro de 2026",
+        "referencia": "Êxodo 20:8",
+        "versao": "NTLH",
+        "modelo": "gemini-3.5-flash",
+        "geradoEm": "2026-10-03T12:00:00.000000",
+        "versiculoTexto": "Guarde o sábado, que é um dia santo.",
+        "genero": "Lei da Aliança / Pentateuco",
+        "secoes": [
+            {
+                "id": "contexto",
+                "titulo": "1. O Contexto Histórico e Narrativo",
+                "icone": "scroll",
+                "conteudo": "Para compreender a força libertadora deste mandamento, precisamos nos transportar ao sopé do Monte Sinai. O povo de Israel acabara de atravessar o Mar Vermelho após mais de quatro séculos de escravidão implacável no Egito. Sob o chicote de Faraó, a identidade de um hebreu resumia-se estritamente à sua capacidade de produção: tijolos, argamassa e construções imperiais. No Egito não existia sábado, não existia dignidade e não havia pausas; quem parava de produzir era açoitado ou descartado. O valor da vida humana era determinado exclusivamente pela sua utilidade para o império.<br><br>Quando Yahweh desce em glória sobre o Sinai e entrega os Dez Mandamentos, o quarto mandamento surge como uma solene certidão de alforria ontológica. Deus não está apenas prescrevendo uma regra religiosa fria; Ele está ensinando uma nação traumatizada a viver como filhos livres da aliança. Ao ordenar a guarda do sábado, o Senhor declara: 'Vocês não são mais escravos de nenhum senhor humano, e o seu valor não é medido pela sua produtividade'. O sábado é estabelecido como um memorial indelével de que a redenção divina devolve ao homem o direito sagrado de descansar na providência de seu Criador."
+            },
+            {
+                "id": "anatomia",
+                "titulo": "2. A Anatomia do Texto e Teologia Central",
+                "icone": "book-open",
+                "termosOriginais": [
+                    {
+                        "termo": "Zakhor (זָכוֹר)",
+                        "significado": "Lembra-te / Guarda na memória viva",
+                        "explicacao": "Infinitivo absoluto com força de imperativo contínuo; ação consciente e memorial."
+                    },
+                    {
+                        "termo": "Shabbat (שַׁבָּת)",
+                        "significado": "Cessar / Interromper o trabalho",
+                        "explicacao": "Derivado de shavat; cessação intencional do labor e da produção utilitária."
+                    },
+                    {
+                        "termo": "L'qadd'sho (לְקַדְּשׁוֹ)",
+                        "significado": "Para o santificar / Consagrar",
+                        "explicacao": "Da raiz Qadash; separar do uso profano/ordinário para dedicação exclusiva a Deus."
+                    }
+                ],
+                "conteudo": "No texto hebraico original, o versículo é introduzido pelo infinitivo absoluto <em>Zakhor</em> (זָכוֹר), que funciona com força de imperativo contínuo: 'Lembra-te', 'Guarda na memória viva e ativa'. Não se trata de uma lembrança passiva do intelecto, mas de uma atitude consciente de separação e honra. O mandamento recai sobre o <em>yom ha-shabbat</em> (יוֹם הַשัּׁבָּת). A raiz do substantivo <em>shabbat</em> é o verbo <em>shavat</em>, que significa literalmente 'cessar', 'interromper o labor', 'largar as ferramentas'.<br><br>Essa cessação tem uma finalidade explícita: <em>l'qadd'sho</em> (לְקַדְּשׁוֹ) — 'para santificá-lo', isto é, separá-lo do uso comum e consagrá-lo integralmente ao Senhor. O sábado está fundamentado na própria ordem da criação (Gênesis 2:2-3). Deus não descansou no sétimo dia por exaustão física — pois o Criador jamais se cansa —, mas porque Sua obra havia chegado à plenitude e à perfeição. O descanso sabático é, portanto, uma confissão teológica com o próprio corpo: quando paramos de trabalhar, confessamos que o cosmos continua seguro sob o governo soberano de Deus e que a nossa sobrevivência não depende em última análise das nossas mãos ansiosas, mas da graça sustentadora dEle."
+            },
+            {
+                "id": "aplicacao",
+                "titulo": "3. O que tirar disso para a prática de hoje?",
+                "icone": "compass",
+                "conteudo": "Vivemos imersos no que os pensadores contemporâneos chamam de 'sociedade do cansaço'. Somos escravos voluntários de uma tirania de autoexploração: smartphones que nunca silenciam, cobranças ininterruptas por resultados, idolatria da ocupação e uma ansiedade crônica sussurrando que, se pararmos por um dia, seremos deixados para trás. Mesmo quando tentamos descansar, frequentemente transformamos esse tempo em mero 'recarregamento mecânico' para voltar a produzir com mais eficiência na segunda-feira, tratando a alma como uma máquina industrial.<br><br>A ordem de guardar o sábado vem como um ato radical de resistência espiritual e desintoxicação da alma. Descansar é um ato de fé contracultural. Quando desligamos o trabalho e declaramos um dia sagrado, dizemos ao mundo e ao nosso próprio ego: 'Eu não sou o que eu produzo; eu sou quem Deus diz que eu sou'. Guardar o sábado desmonta a ilusão de controle e o moralismo performático, curando o nosso coração da pretensão de ser o salvador de si mesmo. O descanso verdadeiro nos devolve à mesa da comunhão, à contemplação da beleza e à paz de saber que Deus cuida de tudo enquanto nós repousamos."
+            },
+            {
+                "id": "canonicas",
+                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
+                "icone": "cross",
+                "citacoes": [
+                    {
+                        "autor": "Timothy Keller",
+                        "obra": "Igreja Centrada",
+                        "texto": "O sábado é um teste contínuo sobre onde está depositada a nossa confiança: se nós realmente cremos que Deus governa e sustenta a nossa vida, ou se acreditamos secretamente que somos os garantidores do nosso próprio destino. Descansar no evangelho é finalmente cessar a tentativa desesperada de provar o nosso valor."
+                    }
+                ],
+                "conteudo": "O princípio do sábado percorre todas as Escrituras até encontrar o seu pleno cumprimento na pessoa e na obra consumada de Jesus Cristo. No Evangelho de <strong>Marcos 2:27-28</strong> (<em>'O sábado foi feito por causa do homem, e não o homem por causa do sábado. Assim, o Filho do homem é senhor até mesmo do sábado.'</em>), Jesus resgata o mandamento do legalismo asfixiante que o havia desfigurado.<br><br>Mais do que isso, Jesus é o verdadeiro Shabbat da alma humana. Em <strong>Mateus 11:28-29</strong> (<em>'Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso.'</em>), Ele oferece o descanso definitivo da culpa e da autojustificação. Como sintetiza o autor aos Hebreus em <strong>Hebreus 4:9-10</strong> (<em>'Resta, pois, um descanso sabático para o povo de Deus; pois todo aquele que entra no descanso de Deus, também descansa das suas obras, como Deus descansou das suas.'</em>), na cruz a salvação foi perfeitamente consumada."
+            },
+            {
+                "id": "fechamento",
+                "titulo": "5. Pergunta Central para Meditação",
+                "icone": "help-circle",
+                "pergunta": "Se a redenção de Cristo já libertou você da escravidão de ter que provar o seu valor pela sua performance, que medo oculto ainda impede você de parar de verdade e confiar que Deus cuida do mundo e do seu futuro enquanto você descansa?"
+            }
+        ],
+        "devocionalWhatsApp": "🌿 *Êxodo 20:8 (YouVersion / NTLH)*\n> *\"Guarde o sábado, que é um dia santo.\"*\n\nDurante quatrocentos anos no Egito, o povo de Israel não teve um único dia de descanso. A identidade deles era medida exclusivamente pelos tijolos que produziam. Se parassem de trabalhar, eram açoitados. \n\nNo Sinai, Deus quebrou essa mentalidade de escravidão com o mandamento do sábado: *vocês não são mais escravos do império; vocês são meus filhos livres.*\n\nHoje, vivemos em uma sociedade que idolatra a correria e o produtivismo tóxico. Sentimos uma culpa silenciosa sempre que paramos, como se o universo dependesse do nosso esforço ininterrupto para não desmoronar.\n\nMas o sábado bíblico é um freio santo na nossa arrogância. Parar de trabalhar não é fraqueza; é um ato de fé e rendição. Quando você para, você declara: *\"Deus continua reinando mesmo quando minhas mãos descansam\"*. \n\nEm Cristo, temos o descanso definitivo (*Hebreus 4:9*). Você não precisa viver para provar o seu valor. A obra da sua salvação já está consumada na cruz. Desligue o ruído, respire fundo e desfrute da presença do seu Pai.\n\n---\n\n💡 *Para meditar hoje:*\nQue medo oculto ainda impede você de parar de verdade e confiar que Deus cuida do seu futuro enquanto você descansa?"
+    },
+    {
+        "data": "2026-10-03",
+        "dataFormatada": "3 de Outubro de 2026",
+        "referencia": "Salmos 19:1",
+        "versao": "NVI",
+        "modelo": "gemini-3.5-flash",
+        "geradoEm": "2026-10-03T10:43:15.924071",
+        "versiculoTexto": "Os céus declaram a glória de Deus; o firmamento proclama a obra das suas mãos.",
+        "genero": "Poesia Bíblica / Sabedoria",
+        "secoes": [
+            {
+                "id": "contexto",
+                "titulo": "1. O Contexto Histórico e Narrativo",
+                "icone": "scroll",
+                "conteudo": "O Salmo 19 é uma das composições mais majestosas do saltério, atribuída a Davi. Ele nos convida a erguer os olhos da nossa pequenez cotidiana e olhar para o alto. Em uma época em que os povos vizinhos de Israel olhavam para a imensidão do céu noturno e viam divindades, astros a serem adorados ou presságios astrológicos, Davi faz uma revolução teológica com a sua poesia. Ele não vê no cosmos um deus a ser aplacado, mas o eco estrondoso e mudo da glória de um Deus criador que transcende toda a criação. Escrevendo a partir de sua experiência como pastor — alguém que passou noites incontáveis sob o dossel do deserto observando as estrelas —, Davi compreende que a natureza não tem autonomia salvífica, mas funciona como um megafone cósmico que aponta incansavelmente para a grandeza dAquele que a projetou."
+            },
+            {
+                "id": "anatomia",
+                "titulo": "2. A Anatomia do Texto e Teologia Central",
+                "icone": "book-open",
+                "termosOriginais": [
+                    {
+                        "termo": "Saphar (סָפַר)",
+                        "significado": "Declarar / Contar continuamente",
+                        "explicacao": "Particípio hebraico que indica proclamação incessante e ininterrupta."
+                    },
+                    {
+                        "termo": "Kabod (כָּבוֹד)",
+                        "significado": "Glória / Peso e majestade",
+                        "explicacao": "Substância, gravidade e esplendor tangível da presença de Deus."
+                    },
+                    {
+                        "termo": "Raqia (רָקִיעַ)",
+                        "significado": "Firmamento / Abóbada celeste",
+                        "explicacao": "A vasta extensão dos céus estendida como a obra das mãos divinas."
+                    }
+                ],
+                "conteudo": "Quando Davi afirma que os céus <em>saphar</em> (contam, narram de forma contínua) a glória de Deus, ele utiliza um verbo no particípio presente, indicando uma ação incessante e sem pausas. Não há um único segundo em que a criação fique em silêncio. A palavra traduzida como glória é <em>kabod</em>, que evoca peso, substância, esplendor tangível. O firmamento, por sua vez, traduzido do hebraico <em>raqia</em>, refere-se à expansão sólida ou à abóbada celeste que foi estendida como uma cortina ou uma tenda. Essa obra é descrita como <em>maaseh</em> (a feitura, o trabalho artesanal) das mãos de Deus. O texto nos revela que o Criador não apenas deu uma ordem mecânica e distante, mas se envolveu artisticamente na arquitetura do universo. A teologia central aqui desmonta qualquer leitura deísta: o Criador não deu corda no relógio do mundo para abandoná-lo. Pelo contrário, a vastidão e a ordem do universo gritam diariamente a supremacia dEle sobre os nossos pequenos caos e deidades de barro."
+            },
+            {
+                "id": "aplicacao",
+                "titulo": "3. O que tirar disso para a prática de hoje?",
+                "icone": "compass",
+                "conteudo": "Na correria da nossa vida urbana, sufocados por telas de smartphones, agendas lotadas e pela urgência do produtivismo, tendemos a nos tornar o centro do nosso próprio universo. Caímos na ilusão pragmática de que somos os arquitetos da nossa própria segurança e que o mundo gira em torno das nossas ansiedades. O Salmo 19:1 vem como um freio de arrumação na nossa arrogância existencial. Quando nos sentimos esmagados pelas pressões do trabalho, pelos relacionamentos quebrados ou pelas incertezas do futuro, contemplar a ordem e a grandeza da criação nos devolve à nossa devida proporção. Não precisamos carregar o peso do controle do mundo nos ombros, porque a criação inteira já declara, sem o uso de palavras humanas, que Deus está no trono. Parar para reconhecer a grandeza do Criador é um antídoto contra a soberba e a ansiedade, lembrando-nos de que Aquele que sustenta galáxias inteiras é o mesmo Pai que sustenta a nossa frágil existência."
+            },
+            {
+                "id": "canonicas",
+                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
+                "icone": "cross",
+                "citacoes": [
+                    {
+                        "autor": "John Stott",
+                        "obra": "A Cruz de Cristo",
+                        "texto": "A criação proclama a majestade de Deus, mas somente a cruz revela a profundidade do seu amor. Ambas vêm das mesmas mãos criadoras e redentoras."
+                    }
+                ],
+                "conteudo": "A revelação de Deus na criação, apontada por Davi, encontra sua expansão máxima na revelação redentora descrita no Novo Testamento, onde o mesmo Deus que estendeu os céus se fez carne para habitar entre nós. Como o apóstolo Paulo argumenta em <strong>Romanos 1:20</strong> (<em>'Pois desde a criação do mundo os atributos invisíveis de Deus, o seu eterno poder e sua natureza divina, têm sido vistos claramente, sendo compreendidos por meio das coisas criadas, de forma que os homens são inescusáveis'</em>), a natureza deixa todos os seres humanos sem desculpa diante da majestade divina. No entanto, essa mesma criação aponta para o clímax da revelação divina em Cristo, conforme ecoa o autor aos Hebreus em <strong>Hebreus 1:1-3</strong> (<em>'Havendo Deus falado outrora muitas vezes, e de muitas maneiras, aos pais pelos profetas, nestes últimos dias nos falou pelo Filho, a quem constituiu herdeiro de todas as coisas, por quem também fez o universo. Ele, sendo o resplendor da glória e a expressão exata do seu Ser, sustentando todas as coisas pela palavra do seu poder...'</em>)."
+            },
+            {
+                "id": "fechamento",
+                "titulo": "5. Pergunta Central para Meditação",
+                "icone": "help-circle",
+                "pergunta": "Diante da imensidão de um Deus que sustenta os céus com a mesma facilidade com que sustenta o seu fôlego, quais são as pequenas soberanias e ansiedades que você ainda insiste em tentar controlar hoje, em vez de entregá-las Àquele cujas mãos criaram o universo?"
+            }
+        ],
+        "devocionalWhatsApp": "✨ *Salmos 19:1 (NVI)*\n> *\"Os céus declaram a glória de Deus; o firmamento proclama a obra das suas mãos.\"*\n\nNa correria da vida urbana, sufocados por telas, agendas lotadas e pela urgência do produtivismo, facilmente nos tornamos o centro do nosso próprio universo. Caímos na ilusão pragmática de que somos os arquitetos da nossa segurança e que o mundo gira em torno das nossas ansiedades.\n\nO Salmo 19 chega como um freio de arrumação na nossa arrogância existencial. Os céus não param de ecoar (*saphar*) a substância e o peso (*kabod*) da glória de Deus. O Criador que estendeu a abóbada celeste não abandonou o mundo à própria sorte. \n\nIsso significa que você não precisa carregar o peso do controle de tudo nos ombros. A imensidão do cosmos nos devolve à nossa devida proporção: Aquele que sustenta galáxias inteiras é o mesmo Pai que sustenta a sua frágil existência hoje. Descanse da sua autossuficiência.\n\n🔍 *Para refletir:*\nDiante da imensidão de um Deus que sustenta os céus, quais são as pequenas soberanias e ansiedades que você ainda insiste em tentar controlar hoje, em vez de entregá-las Àquele cujas mãos criaram o universo?"
+    },
+    {
         "data": "2026-10-02",
         "dataFormatada": "2 de Outubro de 2026",
         "referencia": "Colossenses 1:16-17",

@@ -114,7 +114,7 @@ def extrair_de_string_og(og_desc: str, title_text: str = "") -> Optional[tuple[s
         # Verifica se og_desc começa com a referência (com ou sem espaço no livro, ex: 2Coríntios ou 2 Coríntios)
         for cand in [referencia_do_titulo, ref_norm]:
             if og_desc.lower().startswith(cand.lower()):
-                texto = og_desc[len(cand):].strip(" -–:\"'“”\t\n")
+                texto = og_desc[len(cand):].strip(" -–—:\"'“”\t\n")
                 if texto:
                     return ref_norm, texto
 
@@ -126,7 +126,7 @@ def extrair_de_string_og(og_desc: str, title_text: str = "") -> Optional[tuple[s
     )
     if match_desc:
         referencia = normalizar_referencia(match_desc.group(1).strip())
-        texto = match_desc.group(2).strip(" -–:\"'“”\t\n")
+        texto = match_desc.group(2).strip(" -–—:\"'“”\t\n")
         if referencia and texto:
             return referencia, texto
 
@@ -308,17 +308,67 @@ def baixar_html_via_curl(url: str) -> Optional[str]:
     return None
 
 
+def baixar_via_jina(url: str) -> Optional[str]:
+    """Baixa o conteúdo renderizado via Jina Reader (r.jina.ai), contornando proteções Cloudflare em datacenters."""
+    try:
+        jina_url = f"https://r.jina.ai/{url}"
+        session = requests.Session()
+        session.headers.update({
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,text/plain,*/*",
+        })
+        resp = session.get(jina_url, timeout=15)
+        if resp.status_code == 200 and resp.text:
+            return resp.text
+    except Exception as e:
+        logger.debug("Falha ao baixar via Jina Reader: %s", e)
+    return None
+
+
+def extrair_versiculo_jina(texto_jina: str) -> Optional[tuple[str, str]]:
+    """Extrai referência e texto bíblico a partir do output markdown retornado pelo Jina Reader."""
+    if not texto_jina:
+        return None
+
+    # 1. Pelo cabeçalho Title gerado pelo Jina Reader
+    match_title = re.search(
+        r"Title:\s*Vers[íi]culo\s+do\s+Dia\s*[-–—]\s*([^—–-]+?)\s*[-–—]\s*(.+?)(?:\s*\|\s*O\s+App|\s*\|\s*Bible|$)",
+        texto_jina,
+        re.IGNORECASE | re.MULTILINE,
+    )
+    if match_title:
+        ref = normalizar_referencia(match_title.group(1).strip())
+        txt = match_title.group(2).strip(" -–—:\"'“”\t\n")
+        if ref and txt:
+            return ref, txt
+
+    # 2. Pelo título genérico no corpo markdown
+    match_gen = re.search(
+        r"Vers[íi]culo\s+do\s+Dia\s*[-–—]\s*([^—–-]+?)\s*[-–—]\s*(.+?)(?:\s*\|\s*O\s+App|\s*\|\s*Bible|$)",
+        texto_jina,
+        re.IGNORECASE,
+    )
+    if match_gen:
+        ref = normalizar_referencia(match_gen.group(1).strip())
+        txt = match_gen.group(2).strip(" -–—:\"'“”\t\n")
+        if ref and txt:
+            return ref, txt
+
+    return None
+
+
 def obter_versiculo_do_dia(
     versao: Optional[str] = None,
     versiculo_manual: Optional[str] = None,
     texto_manual: Optional[str] = None,
 ) -> VersiculoDoDia:
     """
-    Obtém o Versículo do Dia com resiliência em 3 Tiers:
+    Obtém o Versículo do Dia com resiliência em 4 Tiers:
     1. Entrada manual se fornecida via flag CLI (--versiculo).
     2. Raspagem no YouVersion (bible.com) com múltiplos métodos de download e headers compatíveis.
-    3. Fallback automático no Bíbliaon caso o YouVersion apresente bloqueio antibot.
-    4. Tier 3 de Contingência: Calendário Bíblico Determinístico Anual (366 dias), garantindo 100% de execução no CI.
+    3. Fallback de Datacenter via Jina Reader (bypassa Cloudflare/WAF em runners CI/CD sem necessidade de API key).
+    4. Fallback no Bíbliaon.
+    5. Tier de Contingência: Calendário Bíblico Determinístico Anual (366 dias), garantindo 100% de execução no CI.
     """
     versao_escolhida = (versao or BIBLIA_VERSAO).lower()
     data_hoje = datetime.now().strftime("%Y-%m-%d")
@@ -350,6 +400,7 @@ def obter_versiculo_do_dia(
     if version_id and version_id != 129:
         urls_youversion.insert(0, f"{YOUVERSION_VOTD_URL}?version={version_id}")
 
+    # 2.1 Tentativa direta YouVersion (Requests / Curl)
     for url in urls_youversion:
         for nome_metodo, fn_download in metodos_download:
             try:
@@ -369,9 +420,45 @@ def obter_versiculo_do_dia(
             except Exception:
                 continue
 
-    # 3. Contingência Primária: Calendário Bíblico Determinístico YouVersion (366 dias)
-    # Garante que mesmo sob bloqueio WAF de datacenters (GitHub Actions), o versículo retornado
-    # seja rigorosamente o Versículo do Dia oficial da YouVersion para a data (ex: 2 Coríntios 10:5 em 01/10).
+    # 2.2 Fallback de Datacenter via Jina Reader (bypassa Cloudflare/WAF em runners CI/CD)
+    for url in urls_youversion:
+        try:
+            texto_jina = baixar_via_jina(url)
+            if texto_jina:
+                resultado_jina = extrair_versiculo_jina(texto_jina)
+                if resultado_jina:
+                    ref_jina, txt_jina = resultado_jina
+                    logger.info("Versículo do Dia obtido com sucesso via Jina Reader: %s", ref_jina)
+                    return VersiculoDoDia(
+                        referencia=ref_jina,
+                        texto=txt_jina,
+                        versao=versao_escolhida.upper(),
+                        url_fonte=f"{url} (via Jina Reader)",
+                        coletado_em=data_hoje,
+                    )
+        except Exception as e:
+            logger.debug("Tentativa Jina Reader falhou para %s: %s", url, e)
+
+    # 2.3 Fallback Bíbliaon
+    for nome_metodo, fn_download in metodos_download:
+        try:
+            html_bibliaon = fn_download(BIBLIAON_VOTD_URL)
+            if html_bibliaon:
+                res_bon = extrair_versiculo_bibliaon(html_bibliaon)
+                if res_bon:
+                    ref_bon, txt_bon = res_bon
+                    logger.info("Versículo obtido via Bíbliaon: %s", ref_bon)
+                    return VersiculoDoDia(
+                        referencia=ref_bon,
+                        texto=txt_bon,
+                        versao="NVI",
+                        url_fonte=f"{BIBLIAON_VOTD_URL} (via {nome_metodo})",
+                        coletado_em=data_hoje,
+                    )
+        except Exception as e:
+            logger.debug("Tentativa Bíbliaon falhou: %s", e)
+
+    # 3. Contingência Determinística YouVersion (366 dias)
     ref_cal, texto_cal = obter_versiculo_calendario(datetime.now())
     logger.warning(
         "YouVersion web temporariamente inacessível por WAF/desafio bot no IP de execução. "
