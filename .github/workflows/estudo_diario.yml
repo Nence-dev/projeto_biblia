@@ -2,8 +2,8 @@ name: Estudo Bíblico Diário & Publicação Web (GitHub Pages)
 
 on:
   schedule:
-    # Executa todos os dias às 09:00 UTC (06:00 horário de Brasília)
-    - cron: '0 9 * * *'
+    # Executa todos os dias às 06:23 UTC (03:23 horário de Brasília - minuto ímpar e fila limpa)
+    - cron: '23 6 * * *'
   workflow_dispatch:
     inputs:
       force:
