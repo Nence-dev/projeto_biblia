@@ -4,6 +4,57 @@
  */
 const HISTORICO_ESTUDOS = [
     {
+        "data": "2026-10-03",
+        "dataFormatada": "3 de Outubro de 2026",
+        "referencia": "Salmos 19:1",
+        "versao": "NVI",
+        "modelo": "gemini-3.5-flash",
+        "geradoEm": "2026-10-03T10:43:15.924071",
+        "versiculoTexto": "Os céus declaram a glória de Deus; o firmamento proclama a obra das suas mãos.",
+        "genero": "Literatura de Sabedoria / Bíblica",
+        "secoes": [
+            {
+                "id": "contexto",
+                "titulo": "1. O Contexto Histórico e Narrativo",
+                "icone": "scroll",
+                "conteudo": "O Salmo 19 é uma das composições mais majestosas do saltério, atribuída a Davi. Ele nos convida a erguer os olhos da nossa pequenez cotidiana e olhar para o alto. Em uma época em que os povos vizinhos de Israel olhavam para a imensidão do céu noturno e viam divindades, astros a serem adorados ou presságios astrológicos, Davi faz uma revolução teológica com a sua poesia. Ele não vê no cosmos um deus a ser aplacado, mas o eco estrondoso e mudo da glória de um Deus criador que transcende toda a criação. Escrevendo a partir de sua experiência como pastor — alguém que passou noites incontáveis sob o dossel do deserto observando as estrelas —, Davi compreende que a natureza não tem autonomia salvífica, mas funciona como um megafone cósmico que aponta incansavelmente para a grandeza dAquele que a projetou."
+            },
+            {
+                "id": "anatomia",
+                "titulo": "2. A Anatomia do Texto e Teologia Central",
+                "icone": "book-open",
+                "termosOriginais": [],
+                "conteudo": ""
+            },
+            {
+                "id": "aplicacao",
+                "titulo": "3. O que tirar disso para a prática de hoje?",
+                "icone": "compass",
+                "conteudo": "Na correria da nossa vida urbana, sufocados por telas de smartphones, agendas lotadas e pela urgência do produtivismo, tendemos a nos tornar o centro do nosso próprio universo. Caímos na ilusão pragmática de que somos os arquitetos da nossa própria segurança e que o mundo gira em torno das nossas ansiedades. O Salmo 19:1 vem como um freio de arrumação na nossa arrogância existencial. Quando nos sentimos esmagados pelas pressões do trabalho, pelos relacionamentos quebrados ou pelas incertezas do futuro, contemplar a ordem e a grandeza da criação nos devolve à nossa devida proporção. Não precisamos carregar o peso do controle do mundo nos ombros, porque a criação inteira já declara, sem o uso de palavras humanas, que Deus está no trono. Parar para reconhecer a grandeza do Criador é um antídoto contra a soberba e a ansiedade, lembrando-nos de que Aquele que sustenta galáxias inteiras é o mesmo Pai que sustenta a nossa frágil existência."
+            },
+            {
+                "id": "canonicas",
+                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
+                "icone": "cross",
+                "citacoes": [
+                    {
+                        "autor": "John Stott",
+                        "obra": "A Cruz de Cristo",
+                        "texto": "A criação proclama a majestade de Deus, mas somente a cruz revela a profundidade do seu amor. Ambas vêm das mesmas mãos criadoras e redentoras."
+                    }
+                ],
+                "conteudo": "A revelação de Deus na criação, apontada por Davi, encontra sua expansão máxima na revelação redentora descrita no Novo Testamento, onde o mesmo Deus que estendeu os céus se fez carne para habitar entre nós. Como o apóstolo Paulo argumenta em <strong>Romanos 1:20</strong> (<em>\"Pois desde a criação do mundo os atributos invisíveis de Deus, o seu eterno poder e sua natureza divina, têm sido vistos claramente, sendo compreendidos por meio das coisas criadas, de forma que os homens são inescusáveis\"</em>), a natureza deixa todos os seres humanos sem desculpa diante da majestade divina. No entanto, essa mesma criação aponta para o clímax da revelação divina em Cristo, conforme ecoa o autor aos Hebreus em <strong>Hebreus 1:1-3</strong> (<em>\"Havendo Deus falado outrora muitas vezes, e de muitas maneiras, aos pais pelos profetas, nestes últimos dias nos falou pelo Filho, a quem constituiu herdeiro de todas as coisas, por quem também fez o universo. Ele, sendo o resplendor da glória e a expressão exata do seu Ser, sustentando todas as coisas pela palavra do seu poder...\"</em>). A respeito dessa grandiosidade que nos convida ao descanso e à adoração, o teólogo reformado John Stott nos lembra com precisão:"
+            },
+            {
+                "id": "fechamento",
+                "titulo": "5. Pergunta Central para Meditação",
+                "icone": "help-circle",
+                "pergunta": "Diante da imensidão de um Deus que sustenta os céus com a mesma facilidade com que sustenta o seu fôlego, quais são as pequenas soberanias e ansiedades que você ainda insiste em tentar controlar hoje, em vez de entregá-las Àquele cujas mãos criaram o universo?"
+            }
+        ],
+        "devocionalWhatsApp": "✨ *Salmos 19:1 (NVI)*\n> *\"Os céus declaram a glória de Deus; o firmamento proclama a obra das suas mãos.\"*\n\nNa correria da vida urbana, sufocados por telas, agendas lotadas e pela urgência do produtivismo, facilmente nos tornamos o centro do nosso próprio universo. Caímos na ilusão pragmática de que somos os arquitetos da nossa segurança e que o mundo gira em torno das nossas ansiedades.\n\nO Salmo 19 chega como um freio de arrumação na nossa arrogância existencial. Os céus não param de ecoar (*saphar*) a substância e o peso (*kabod*) da glória de Deus. O Criador que estendeu a abóbada celeste não abandonou o mundo à própria sorte. \n\nIsso significa que você não precisa carregar o peso do controle de tudo nos ombros. A imensidão do cosmos nos devolve à nossa devida proporção: Aquele que sustenta galáxias inteiras é o mesmo Pai que sustenta a sua frágil existência hoje. Descanse da sua autossuficiência.\n\n🔍 *Para refletir:*\nDiante da imensidão de um Deus que sustenta os céus, quais são as pequenas soberanias e ansiedades que você ainda insiste em tentar controlar hoje, em vez de entregá-las Àquele cujas mãos criaram o universo?"
+    },
+    {
         "data": "2026-10-02",
         "dataFormatada": "2 de Outubro de 2026",
         "referencia": "Colossenses 1:16-17",
