@@ -254,37 +254,119 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
 
     # 1. Contexto
     conteudo_contexto = ""
-    match_ctx = re.search(r"#{2,3}\s*1\.\s*(?:O\s+)?Contexto Histórico[^\n]*\n(.*?)(?=#{2,3}|\Z)", estudo_puro, re.DOTALL)
+    match_ctx = re.search(r"#{2,3}\s*1\.\s*(?:O\s+)?Contexto[^\n]*\n(.*?)(?=\n#{2,3}\s*2\.|\Z)", estudo_puro, re.DOTALL)
     if match_ctx:
         conteudo_contexto = sanitizar_texto_markdown_para_web(match_ctx.group(1).strip())
 
     # 2. Anatomia
     conteudo_anatomia = ""
     termos_originais = []
-    match_ana = re.search(r"#{2,3}\s*2\.\s*(?:A\s+)?Anatomia[^\n]*\n(.*?)(?=#{2,3}|\Z)", estudo_puro, re.DOTALL)
+    comparacao_extraida = None
+    match_ana = re.search(r"#{2,3}\s*2\.\s*(?:A\s+)?Anatomia[^\n]*\n(.*?)(?=\n#{2,3}\s*3\.|\Z)", estudo_puro, re.DOTALL)
     if match_ana:
         texto_ana = match_ana.group(1).strip()
-        padrao_termo = re.finditer(r'\*\s*\*\*"([^"]+)"\*\*\s*\(([^)]+)\):\s*([^\n]+)', texto_ana)
+
+        # 2.1 Extrai Bloco de Comparação de Versões se presente no markdown
+        match_comp = re.search(
+            r"(?:#{3,4}\s*Comparação[^\n]*\n)(.*?)(?=\n#{3,4}|\Z)",
+            texto_ana,
+            re.DOTALL | re.IGNORECASE,
+        )
+        if match_comp:
+            bloco_comp = match_comp.group(1).strip()
+            m_nvi = re.search(
+                r"[-*•]\s*(?:\*\*)?NVI[^*:\n]*:(?:\*\*)?\s*[\"“]?([^\"”\n|]+)[\"”]?(?:\s*\|?\s*(?:\*\*)?Foco:(?:\*\*)?\s*([^\n]+))?",
+                bloco_comp,
+                re.IGNORECASE,
+            )
+            m_lit = re.search(
+                r"[-*•]\s*(?:\*\*)?(?:Tradução\s+Literal|Literal)[^*:\n]*:(?:\*\*)?\s*[\"“]?([^\"”\n|]+)[\"”]?(?:\s*\|?\s*(?:\*\*)?Foco:(?:\*\*)?\s*([^\n]+))?",
+                bloco_comp,
+                re.IGNORECASE,
+            )
+            m_herm = re.search(
+                r"[-*•]\s*(?:\*\*)?Chave\s+Hermenêutica[^*:\n]*:(?:\*\*)?\s*([^\n]+)",
+                bloco_comp,
+                re.IGNORECASE,
+            )
+
+            if m_nvi and m_lit:
+                texto_nvi = m_nvi.group(1).strip().strip('"“”')
+                foco_nvi = (m_nvi.group(2) or "Ênfase na fluidez e inteligibilidade contemporânea.").strip()
+                texto_lit = m_lit.group(1).strip().strip('"“”')
+                foco_lit = (m_lit.group(2) or "Fidelidade rigorosa ao vocabulário e gramática original.").strip()
+                nota_herm = m_herm.group(1).strip() if m_herm else "A comparação de versões evidencia nuances profundas do texto bíblico."
+
+                comparacao_extraida = {
+                    "titulo": "Comparação Exegética de Versões",
+                    "versaoPrincipal": {
+                        "sigla": "NVI (Nova Versão Internacional)",
+                        "texto": texto_nvi,
+                        "rotulo": "Tradução Dinâmica Contemporânea",
+                        "foco": foco_nvi,
+                    },
+                    "versaoOriginal": {
+                        "sigla": "Literal (Tradução ao Pé da Letra)",
+                        "rotulo": "Equivalência Formal Estrita",
+                        "textoLiteral": texto_lit,
+                        "texto": texto_lit,
+                        "foco": foco_lit,
+                    },
+                    "notaHermeneutica": nota_herm,
+                }
+
+            # Remove o bloco de comparação da narrativa expositiva
+            texto_ana = re.sub(
+                r"(?:#{3,4}\s*Comparação[^\n]*\n)(.*?)(?=\n#{3,4}|\Z)",
+                "",
+                texto_ana,
+                flags=re.DOTALL | re.IGNORECASE,
+            ).strip()
+
+        # 2.2 Extrai Termos Originais
+        match_termos = re.search(
+            r"(?:#{3,4}\s*Termos\s+Originais[^\n]*\n)(.*?)(?=\n#{3,4}|\Z)",
+            texto_ana,
+            re.DOTALL | re.IGNORECASE,
+        )
+        bloco_termos = match_termos.group(1) if match_termos else texto_ana
+
+        padrao_termo = re.finditer(
+            r'[-*•]\s*\*\*["“]?([^"”*]+)["”]?\*\*\s*(?:\(([^)]+)\))?:\s*([^|\n]+)(?:\s*\|\s*([^\n]+))?',
+            bloco_termos,
+        )
         for pt in padrao_termo:
+            nome = pt.group(1).strip()
+            grafia = pt.group(2).strip() if pt.group(2) else ""
+            sig = pt.group(3).strip()
+            exp = pt.group(4).strip() if pt.group(4) else sig
             termos_originais.append({
-                "termo": f"{pt.group(1)} ({pt.group(2)})",
-                "significado": pt.group(1),
-                "explicacao": pt.group(3).strip(),
+                "termo": f"{nome} ({grafia})" if grafia else nome,
+                "significado": sig,
+                "explicacao": exp,
             })
-        texto_ana_limpo = re.sub(r'^\s*\*\s*\*\*"[^"]+"\*\*.*$\n?', '', texto_ana, flags=re.MULTILINE)
+
+        if match_termos:
+            texto_ana = re.sub(
+                r"(?:#{3,4}\s*Termos\s+Originais[^\n]*\n)(.*?)(?=\n#{3,4}|\Z)",
+                "",
+                texto_ana,
+                flags=re.DOTALL | re.IGNORECASE,
+            ).strip()
+
+        texto_ana_limpo = re.sub(r'^\s*[-*•]\s*\*\*.*$\n?', '', texto_ana, flags=re.MULTILINE)
         conteudo_anatomia = sanitizar_texto_markdown_para_web(texto_ana_limpo.strip() or texto_ana)
 
     # 3. Aplicação
     conteudo_aplicacao = ""
-    match_app = re.search(r"#{2,3}\s*(?:2|3)\.\s*(?:O que tirar disso|Aplicação)[^\n]*\n(.*?)(?=#{2,3}|---|##\s*📱|\Z)", estudo_puro, re.DOTALL)
+    match_app = re.search(r"#{2,3}\s*(?:2|3)\.\s*(?:O que tirar disso|Aplicação)[^\n]*\n(.*?)(?=\n#{2,3}\s*4\.|\Z)", estudo_puro, re.DOTALL)
     if match_app:
         conteudo_aplicacao = sanitizar_texto_markdown_para_web(match_app.group(1).strip())
-
 
     # 4. Conexões Canônicas & Citações
     conteudo_canonicas = ""
     citacoes = []
-    match_can = re.search(r"###\s*4\.\s*Conexões Canônicas[^\n]*\n(.*?)(?=###|\Z)", estudo_puro, re.DOTALL)
+    match_can = re.search(r"#{2,3}\s*4\.\s*Conexões Canônicas[^\n]*\n(.*?)(?=\n#{2,3}\s*5\.|\Z)", estudo_puro, re.DOTALL)
     if match_can:
         texto_can = match_can.group(1).strip()
         padrao_citacao = re.finditer(
@@ -320,11 +402,11 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
 
     # 5. Pergunta Central
     conteudo_pergunta = ""
-    match_perg = re.search(r"###\s*5\.\s*Fechamento[^\n]*\n(.*?)(?=---|\Z)", estudo_puro, re.DOTALL)
+    match_perg = re.search(r"#{2,3}\s*5\.\s*Fechamento[^\n]*\n(.*?)(?=\n#{2,3}\s*📱|---|##\s*📱|\Z)", estudo_puro, re.DOTALL)
     if match_perg:
         conteudo_pergunta = match_perg.group(1).replace("*", "").strip()
 
-    return {
+    resultado = {
         "data": data_str,
         "dataFormatada": formatar_data_extenso(data_str),
         "referencia": referencia,
@@ -370,6 +452,11 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
         "devocionalWhatsApp": zap,
     }
 
+    if comparacao_extraida:
+        resultado["comparacaoTraducoes"] = comparacao_extraida
+
+    return resultado
+
 
 def exportar_todos_estudos_para_web_data(
     pasta_estudos: Path | None = None,
@@ -396,19 +483,20 @@ def exportar_todos_estudos_para_web_data(
             dados = parse_estudo_markdown(conteudo)
 
             # Enriquecimento exegético e comparativo para Provérbios 4:23
-            if "Provérbios 4:23" in dados.get("referencia", ""):
+            if "Provérbios 4:23" in dados.get("referencia", "") and not dados.get("comparacaoTraducoes"):
                 dados["comparacaoTraducoes"] = {
-                    "titulo": "Comparação Exegética: NVI vs. Texto Original Hebraico",
+                    "titulo": "Comparação Exegética de Versões",
                     "versaoPrincipal": {
                         "sigla": "NVI (Nova Versão Internacional)",
                         "texto": "Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.",
-                        "rotulo": "Ênfase Conceitual Contemporânea",
+                        "rotulo": "Tradução Dinâmica Contemporânea",
                         "foco": "Foco na mente, pensamentos e sistema interno de crenças."
                     },
                     "versaoOriginal": {
-                        "sigla": "Texto Original Hebraico / ARC Literal",
+                        "sigla": "Literal (Tradução ao Pé da Letra)",
+                        "rotulo": "Equivalência Formal Estrita",
+                        "textoLiteral": "Acima de tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.",
                         "texto": "Acima de tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.",
-                        "rotulo": "Antropologia Bíblica Veterotestamentária",
                         "foco": "Coração (Lev) como centro de comando integrado (mente, vontade e afetos); Fontes (Totsawot Chayyim) da existência."
                     },
                     "notaHermeneutica": "A NVI foca na faculdade mental ('o que você pensa'), enquanto o original hebraico estabelece uma prioridade absoluta ('mikal-mishmar'): guardar o homem interior (lev), pois é dele que jorram os canais que determinam todas as ações e o destino da vida."
@@ -474,19 +562,21 @@ def exportar_todos_estudos_para_web_data(
                         ]
 
             # Enriquecimento exegético e comparativo para Romanos 8:1
-            elif "Romanos 8:1" in dados.get("referencia", ""):
+            # Enriquecimento exegético e comparativo para Romanos 8:1
+            elif "Romanos 8:1" in dados.get("referencia", "") and not dados.get("comparacaoTraducoes"):
                 dados["comparacaoTraducoes"] = {
-                    "titulo": "Comparação Exegética: NVI vs. Termo Jurídico Grego",
+                    "titulo": "Comparação Exegética de Versões",
                     "versaoPrincipal": {
                         "sigla": "NVI (Nova Versão Internacional)",
                         "texto": "Portanto, agora já não há condenação para os que estão em Cristo Jesus.",
-                        "rotulo": "Declaração de Plena Absolvição",
+                        "rotulo": "Tradução Dinâmica Contemporânea",
                         "foco": "Ausência absoluta de condenação para os justificados."
                     },
                     "versaoOriginal": {
-                        "sigla": "Original Grego (Termo Forense / Jurídico)",
-                        "texto": "Οὐδὲν ἄρα νῦν κατάκριμα τοῖς ἐν Χριστῷ Ἰησοῦ (Ouden ara nyn katakrima tois en Christō Iēsou)",
-                        "rotulo": "Linguagem Forense da Redenção",
+                        "sigla": "Literal (Tradução ao Pé da Letra)",
+                        "rotulo": "Equivalência Formal Estrita",
+                        "textoLiteral": "Nenhuma condenação, portanto, há agora para os que estão em Cristo Jesus.",
+                        "texto": "Nenhuma condenação, portanto, há agora para os que estão em Cristo Jesus.",
                         "foco": "Katakrima: extinção jurídica simultânea tanto do veredito de culpa quanto da execução da pena penal."
                     },
                     "notaHermeneutica": "O termo forense 'katakrima' comprova que a dívida judicial foi liquidada no tribunal divino na cruz. Estar 'en Christō' significa que a justiça do Filho veste o crente de forma irrevogável."

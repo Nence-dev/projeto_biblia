@@ -677,7 +677,8 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1rem;
-    margin-bottom: 1.75rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 .term-chip {
@@ -1381,21 +1382,25 @@ body.zen-mode .content-grid {
 }
 
 /* =====================================================================
-   CAIXA DE COMPARAÇÃO EXEGÉTICA DE VERSÕES (CIANO/SAFIRA CELESTIAL)
+   CAIXA DE COMPARAÇÃO EXEGÉTICA DE VERSÕES (DESIGN PADRÃO EDITORIAL)
    ===================================================================== */
 .comparacao-container {
     margin: 2rem 0;
 }
 
 .translation-comparison-card {
-    background: linear-gradient(145deg, rgba(56, 189, 248, 0.06) 0%, rgba(129, 140, 248, 0.03) 100%);
-    border: 1px solid var(--accent-cyan-glow);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     padding: 1.85rem;
-    box-shadow: 0 12px 35px -10px rgba(56, 189, 248, 0.15);
+    box-shadow: var(--shadow-soft);
     position: relative;
     overflow: hidden;
     transition: border-color var(--transition-smooth);
+}
+
+.translation-comparison-card:hover {
+    border-color: var(--border-accent);
 }
 
 .translation-comparison-card::before {
@@ -1405,7 +1410,7 @@ body.zen-mode .content-grid {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-sapphire), var(--accent-gold));
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
 }
 
 .comparison-card-header {
@@ -1419,9 +1424,9 @@ body.zen-mode .content-grid {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--accent-cyan-subtle);
-    color: var(--accent-cyan);
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: var(--accent-gold-subtle);
+    color: var(--accent-gold);
+    border: 1px solid var(--border-accent);
     padding: 0.4rem 0.95rem;
     border-radius: var(--radius-full);
     font-size: 0.8rem;
@@ -1455,7 +1460,7 @@ body.zen-mode .content-grid {
 }
 
 .comparison-column {
-    background: var(--bg-surface-elevated);
+    background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
     padding: 1.35rem;
@@ -1466,19 +1471,19 @@ body.zen-mode .content-grid {
 }
 
 .comparison-column:hover {
-    border-color: var(--accent-cyan);
+    border-color: var(--border-accent);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-soft);
 }
 
 .comparison-column.col-original {
-    background: linear-gradient(180deg, rgba(56, 189, 248, 0.07) 0%, var(--bg-surface-elevated) 100%);
-    border-color: rgba(56, 189, 248, 0.3);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
 }
 
 .comparison-column.col-original:hover {
-    border-color: var(--accent-cyan);
-    box-shadow: 0 0 22px rgba(56, 189, 248, 0.25);
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-soft);
 }
 
 .col-header {
@@ -1499,7 +1504,7 @@ body.zen-mode .content-grid {
 }
 
 .version-tag.original-tag {
-    color: var(--accent-cyan);
+    color: var(--accent-gold);
 }
 
 .emphasis-tag {
@@ -1523,13 +1528,6 @@ body.zen-mode .content-grid {
     color: var(--text-primary);
 }
 
-.comparison-text.original-text {
-    color: #e0f2fe;
-}
-
-[data-theme="light"] .comparison-text.original-text {
-    color: #0369a1;
-}
 
 .comparison-focus-box {
     background: rgba(0, 0, 0, 0.2);
@@ -1541,8 +1539,8 @@ body.zen-mode .content-grid {
 }
 
 .comparison-focus-box.original-focus-box {
-    border-left-color: var(--accent-cyan);
-    background: var(--accent-cyan-subtle);
+    border-left-color: var(--accent-gold);
+    background: var(--accent-gold-subtle);
 }
 
 .focus-label {
@@ -1552,10 +1550,6 @@ body.zen-mode .content-grid {
     text-transform: uppercase;
     font-size: 0.72rem;
     letter-spacing: 0.05em;
-}
-
-.comparison-focus-box.original-focus-box .focus-label {
-    color: var(--accent-cyan);
 }
 
 .focus-desc {
@@ -1573,7 +1567,7 @@ body.zen-mode .content-grid {
 
 .divider-icon {
     font-size: 1.25rem;
-    color: var(--accent-cyan);
+    color: var(--accent-gold);
 }
 
 .divider-label {
@@ -1590,7 +1584,7 @@ body.zen-mode .content-grid {
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
     padding: 1.15rem 1.35rem;
-    border-left: 3px solid var(--accent-cyan);
+    border-left: 3px solid var(--accent-gold);
 }
 
 .synthesis-header {
@@ -1598,7 +1592,7 @@ body.zen-mode .content-grid {
     align-items: center;
     gap: 0.5rem;
     font-size: 0.85rem;
-    color: var(--accent-cyan);
+    color: var(--accent-gold);
     margin-bottom: 0.4rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;

@@ -45,3 +45,7 @@ htmlcov/
 Thumbs.db
 debug_*.html
 scratch/
+testar_*.py
+teste_*.md
+visualizar_*.py
+

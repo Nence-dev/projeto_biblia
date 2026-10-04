@@ -504,17 +504,17 @@ const HISTORICO_ESTUDOS = [
         ],
         "devocionalWhatsApp": "*“Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.”* \n*(Provérbios 4:23)*\n\nVivemos na era do controle externo. Gastamos uma energia exaustiva tentando gerenciar nossa imagem, nossas redes sociais e nossa produtividade, enquanto negligenciamos o porão da nossa mente — onde o cansaço, a ansiedade e a autossuficiência costumam montar acampamento. \n\nNa Bíblia, o \"coração\" não é apenas o símbolo das emoções, mas o centro de comando do ser humano: onde geramos nossas desculpas, nossos medos e nossas ambições. O texto de Provérbios não é um convite a um pensamento positivo barato ou a uma repressão estoica. É um alerta lúcido: nós caminhamos exatamente na direção para a qual alimentamos os nossos pensamentos.\n\nA boa notícia do Evangelho é que \"guardar o coração\" não é uma carga que carregamos na base da força de vontade, mas um convite diário para render a nossa mente à graça de Cristo. O cristianismo não exige que você seja impecável no silêncio da sua mente; ele nos alcança justamente na nossa bancarrota interior e nos oferece um Espírito novo, capaz de reorganizar o caos de dentro para fora. \n\nVocê não precisa mais fingir controle ou tentar se salvar pelo que pensa ou deixa de pensar. Descanse na obra de Cristo, que já redimiu até os recantos mais escuros da sua história.\n\n🔍 *Qual é o medo inconfessado, a fantasia de controle ou a narrativa de autossuficiência que tem ocupado o trono dos seus pensamentos nestes dias, mostrando onde você ainda tenta se sustentar longe da graça?*",
         "comparacaoTraducoes": {
-            "titulo": "Comparação Exegética: NVI vs. Texto Original Hebraico",
+            "titulo": "Comparação Exegética de Versões",
             "versaoPrincipal": {
                 "sigla": "NVI (Nova Versão Internacional)",
                 "texto": "Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.",
-                "rotulo": "Ênfase Conceitual Contemporânea",
+                "rotulo": "Tradução Dinâmica Contemporânea",
                 "foco": "Foco na mente, pensamentos e sistema interno de crenças."
             },
             "versaoOriginal": {
-                "sigla": "Texto Original Hebraico / ARC Literal",
+                "sigla": "Literal (Tradução ao Pé da Letra)",
+                "rotulo": "Equivalência Formal Estrita",
                 "texto": "Acima de tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.",
-                "rotulo": "Antropologia Bíblica Veterotestamentária",
                 "foco": "Coração (Lev) como centro de comando integrado (mente, vontade e afetos); Fontes (Totsawot Chayyim) da existência."
             },
             "notaHermeneutica": "A NVI foca na faculdade mental ('o que você pensa'), enquanto o original hebraico estabelece uma prioridade absoluta ('mikal-mishmar'): guardar o homem interior (lev), pois é dele que jorram os canais que determinam todas as ações e o destino da vida."
@@ -614,17 +614,17 @@ const HISTORICO_ESTUDOS = [
         ],
         "devocionalWhatsApp": "*“Portanto, agora já não há condenação para os que estão em Cristo Jesus.”*\n*(Romanos 8:1)*\n\nMuitos de nós passamos os dias vivendo em um tribunal imaginário dentro da cabeça: nos cobrando por produtividade, nos punindo por falhas passadas e presumindo que Deus está secretamente desapontado conosco.\n\nA declaração de Paulo em Romanos 8 não é um conselho de autoajuda moralista. É um veredito jurídico irrevogável: em Cristo, a pena foi paga, a dívida foi quitada e o tribunal celestial foi encerrado. A palavra original para condenação (*katakrima*) significa que nem a culpa e nem a punição restam para os que estão abrigados na cruz.\n\nVocê não precisa mais performar para merecer aceitação de Deus. Você já foi aceito, justificado e amado. Obedeça não pelo terror da rejeição, mas pelo descanso da graça.\n\n🔍 *Qual cobrança interna ou culpa do passado você ainda tem sustentado, como se a obra de Jesus na cruz não tivesse sido suficiente para perdoar e libertar você por completo?*",
         "comparacaoTraducoes": {
-            "titulo": "Comparação Exegética: NVI vs. Termo Jurídico Grego",
+            "titulo": "Comparação Exegética de Versões",
             "versaoPrincipal": {
                 "sigla": "NVI (Nova Versão Internacional)",
                 "texto": "Portanto, agora já não há condenação para os que estão em Cristo Jesus.",
-                "rotulo": "Declaração de Plena Absolvição",
+                "rotulo": "Tradução Dinâmica Contemporânea",
                 "foco": "Ausência absoluta de condenação para os justificados."
             },
             "versaoOriginal": {
-                "sigla": "Original Grego (Termo Forense / Jurídico)",
-                "texto": "Οὐδὲν ἄρα νῦν κατάκριμα τοῖς ἐν Χριστῷ Ἰησοῦ (Ouden ara nyn katakrima tois en Christō Iēsou)",
-                "rotulo": "Linguagem Forense da Redenção",
+                "sigla": "Literal (Tradução ao Pé da Letra)",
+                "rotulo": "Equivalência Formal Estrita",
+                "texto": "Nenhuma condenação, portanto, há agora para os que estão em Cristo Jesus.",
                 "foco": "Katakrima: extinção jurídica simultânea tanto do veredito de culpa quanto da execução da pena penal."
             },
             "notaHermeneutica": "O termo forense 'katakrima' comprova que a dívida judicial foi liquidada no tribunal divino na cruz. Estar 'en Christō' significa que a justiça do Filho veste o crente de forma irrevogável."

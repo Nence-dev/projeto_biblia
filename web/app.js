@@ -144,14 +144,14 @@ function renderizarEstudoAtivo() {
                                 <span class="divider-label">VS</span>
                             </div>
 
-                            <!-- Coluna Original Hebraico / Grego -->
+                            <!-- Coluna Tradução ao Pé da Letra / Literal -->
                             <div class="comparison-column col-original">
                                 <div class="col-header">
-                                    <span class="version-tag original-tag">${escapeHtml(comp.versaoOriginal.sigla)}</span>
-                                    <span class="emphasis-tag">${escapeHtml(comp.versaoOriginal.rotulo)}</span>
+                                    <span class="version-tag original-tag">${escapeHtml(comp.versaoOriginal.sigla || "Literal (Tradução ao Pé da Letra)")}</span>
+                                    <span class="emphasis-tag">${escapeHtml(comp.versaoOriginal.rotulo || "Equivalência Formal Estrita")}</span>
                                 </div>
                                 <blockquote class="comparison-quote-box original-quote-box">
-                                    <p class="comparison-text original-text">“${escapeHtml(comp.versaoOriginal.texto)}”</p>
+                                    <p class="comparison-text">“${escapeHtml(comp.versaoOriginal.textoLiteral || comp.versaoOriginal.texto)}”</p>
                                 </blockquote>
                                 <div class="comparison-focus-box original-focus-box">
                                     <span class="focus-label">Foco:</span>
