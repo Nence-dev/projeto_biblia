@@ -30,6 +30,7 @@ YOUVERSION_VERSION_IDS: dict[str, int] = {
     "naa": 1840,   # Nova Almeida Atualizada
     "nvt": 1930,   # Nova Versão Transformadora
     "arc": 212,    # Almeida Revista e Corrigida
+    "ntlh": 211,   # Nova Tradução na Linguagem de Hoje
 }
 
 # Diretório padrão para salvar estudos

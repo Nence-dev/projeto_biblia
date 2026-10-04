@@ -91,7 +91,7 @@ def eh_pagina_de_desafio_bot(html: str) -> bool:
 def extrair_de_string_og(og_desc: str, title_text: str = "") -> Optional[tuple[str, str]]:
     """
     Tenta extrair a referência e o texto bíblico a partir do conteúdo de og:description e do título.
-    Exemplo: '2Coríntios 10:5 e também todo orgulho humano que não deixa...'
+    Exemplo: 'Salmos 51:10 Ó Deus, cria em mim um coração puro...'
     """
     if not og_desc:
         return None
@@ -102,7 +102,7 @@ def extrair_de_string_og(og_desc: str, title_text: str = "") -> Optional[tuple[s
     referencia_do_titulo = ""
     if title_text:
         match_title = re.search(
-            r"Vers[íi]culo do Dia\s*[-–—]\s*([^—–-]+?)\s*[-–—]",
+            r"Vers[íi]culo do Dia\s*[-–—]\s*([^—–-]+?)(?:\s*[-–—]|$)",
             title_text,
             re.IGNORECASE,
         )
@@ -114,7 +114,8 @@ def extrair_de_string_og(og_desc: str, title_text: str = "") -> Optional[tuple[s
         # Verifica se og_desc começa com a referência (com ou sem espaço no livro, ex: 2Coríntios ou 2 Coríntios)
         for cand in [referencia_do_titulo, ref_norm]:
             if og_desc.lower().startswith(cand.lower()):
-                texto = og_desc[len(cand):].strip(" -–—:\"'“”\t\n")
+                texto = og_desc[len(cand):].strip(" -–—:\"'“”\t\n\r")
+                texto = re.sub(r"\s+", " ", texto).strip()
                 if texto:
                     return ref_norm, texto
 
@@ -126,7 +127,8 @@ def extrair_de_string_og(og_desc: str, title_text: str = "") -> Optional[tuple[s
     )
     if match_desc:
         referencia = normalizar_referencia(match_desc.group(1).strip())
-        texto = match_desc.group(2).strip(" -–—:\"'“”\t\n")
+        texto = match_desc.group(2).strip(" -–—:\"'“”\t\n\r")
+        texto = re.sub(r"\s+", " ", texto).strip()
         if referencia and texto:
             return referencia, texto
 
@@ -308,49 +310,113 @@ def baixar_html_via_curl(url: str) -> Optional[str]:
     return None
 
 
-def baixar_via_jina(url: str) -> Optional[str]:
+def baixar_via_jina(url: str, formato: str = "markdown") -> Optional[str]:
     """Baixa o conteúdo renderizado via Jina Reader (r.jina.ai), contornando proteções Cloudflare em datacenters."""
     try:
         jina_url = f"https://r.jina.ai/{url}"
         session = requests.Session()
-        session.headers.update({
+        headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
             "Accept": "text/html,application/xhtml+xml,text/plain,*/*",
-        })
-        resp = session.get(jina_url, timeout=15)
+        }
+        if formato == "html":
+            headers["X-Return-Format"] = "html"
+        session.headers.update(headers)
+        resp = session.get(jina_url, timeout=20)
         if resp.status_code == 200 and resp.text:
             return resp.text
     except Exception as e:
-        logger.debug("Falha ao baixar via Jina Reader: %s", e)
+        logger.debug("Falha ao baixar via Jina Reader (%s): %s", formato, e)
     return None
 
 
 def extrair_versiculo_jina(texto_jina: str) -> Optional[tuple[str, str]]:
-    """Extrai referência e texto bíblico a partir do output markdown retornado pelo Jina Reader."""
+    """
+    Extrai referência e texto bíblico a partir do output (markdown ou HTML) retornado pelo Jina Reader.
+    Aplica múltiplas estratégias em cascata para cobrir variações do layout do YouVersion no Jina.
+    """
     if not texto_jina:
         return None
 
-    # 1. Pelo cabeçalho Title gerado pelo Jina Reader
+    # Se o retorno do Jina for HTML renderizado, delega para extração robusta de HTML
+    if "<html" in texto_jina.lower() or "og:description" in texto_jina.lower():
+        try:
+            return extrair_referencia_e_texto(texto_jina)
+        except Exception:
+            pass
+
+    # 1. Padrão Alt Text das Imagens Diárias do YouVersion
+    # Ex: [![Image 2: Salmos 51:10 - Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!](...)]
+    # ou "Image 2: Salmos 51:10 - Ó Deus, cria em mim..."
+    match_image = re.search(
+        r"Image\s*\d*:\s*([1-3]?\s?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)?\s+\d+:\d+(?:-\d+)?)\s*[-–—]\s*([^\]\n\r]+)",
+        texto_jina,
+        re.IGNORECASE,
+    )
+    if match_image:
+        ref = normalizar_referencia(match_image.group(1).strip())
+        txt = match_image.group(2).strip(" -–—:\"'“”\t\n\r")
+        txt = re.sub(r"\s+", " ", txt).strip()
+        if ref and txt and len(txt) > 5:
+            return ref, txt
+
+    # 2. Padrão de Pares de Links no corpo do Markdown
+    # Ex: [Ó Deus, cria em mim um coração puro...](https://www.bible.com/pt/bible/211/PSA.51.10.NTLH)
+    # seguido de: [Salmos 51:10 (NTLH)](https://www.bible.com/pt/bible/211/PSA.51.10.NTLH)
+    match_link_pair = re.search(
+        r"\[([^\]\n\r]{10,})\]\(https?://(?:www\.)?bible\.com/[^)]+/bible/\d+/([A-Za-z0-9\.]+)\)\s*"
+        r"(?:\[Image[^\]]*\]\([^)]*\)\s*)*"
+        r"\[([1-3]?\s?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)?\s+\d+:\d+(?:-\d+)?)(?:\s*\([^)]*\))?\]"
+        r"\(https?://(?:www\.)?bible\.com/[^)]+/bible/\d+/\2\)",
+        texto_jina,
+        re.DOTALL | re.IGNORECASE,
+    )
+    if match_link_pair:
+        txt = match_link_pair.group(1).strip(" -–—:\"'“”\t\n\r")
+        txt = re.sub(r"\s+", " ", txt).strip()
+        ref = normalizar_referencia(match_link_pair.group(3).strip())
+        if ref and txt:
+            return ref, txt
+
+    # 3. Padrão Link Simples com Referência Bíblica e Link de Texto Anterior
+    match_link_ref = re.search(
+        r"\[([1-3]?\s?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)?\s+\d+:\d+(?:-\d+)?)(?:\s*\([^)]*\))?\]\(https?://(?:www\.)?bible\.com/[^)]+/bible/\d+/([A-Za-z0-9\.]+)\)",
+        texto_jina,
+        re.IGNORECASE,
+    )
+    if match_link_ref:
+        ref = normalizar_referencia(match_link_ref.group(1).strip())
+        bible_id = match_link_ref.group(2).strip()
+        padrao_busca_txt = rf"\[([^\]\n\r]{{10,}})\]\(https?://(?:www\.)?bible\.com/[^)]+/bible/\d+/{re.escape(bible_id)}\)"
+        for m in re.finditer(padrao_busca_txt, texto_jina, re.IGNORECASE):
+            candidato_txt = m.group(1).strip(" -–—:\"'“”\t\n\r")
+            if not candidato_txt.lower().startswith("ler ") and not candidato_txt.lower().startswith(ref.lower()):
+                candidato_txt = re.sub(r"\s+", " ", candidato_txt).strip()
+                return ref, candidato_txt
+
+    # 4. Pelo cabeçalho Title gerado pelo Jina Reader quando traz a passagem
     match_title = re.search(
-        r"Title:\s*Vers[íi]culo\s+do\s+Dia\s*[-–—]\s*([^—–-]+?)\s*[-–—]\s*(.+?)(?:\s*\|\s*O\s+App|\s*\|\s*Bible|$)",
+        r"Title:\s*Vers[íi]culo\s+do\s+Dia\s*[-–—]\s*([^—–-]+?)\s*[-–—]\s*(.+?)(?:\s*\|\s*O\s+App|\s*\|\s*Bible|\n|\r|$)",
         texto_jina,
         re.IGNORECASE | re.MULTILINE,
     )
     if match_title:
         ref = normalizar_referencia(match_title.group(1).strip())
-        txt = match_title.group(2).strip(" -–—:\"'“”\t\n")
+        txt = match_title.group(2).strip(" -–—:\"'“”\t\n\r")
+        txt = re.sub(r"\s+", " ", txt).strip()
         if ref and txt:
             return ref, txt
 
-    # 2. Pelo título genérico no corpo markdown
+    # 5. Pelo título genérico no corpo markdown
     match_gen = re.search(
-        r"Vers[íi]culo\s+do\s+Dia\s*[-–—]\s*([^—–-]+?)\s*[-–—]\s*(.+?)(?:\s*\|\s*O\s+App|\s*\|\s*Bible|$)",
+        r"Vers[íi]culo\s+do\s+Dia\s*[-–—]\s*([^—–-]+?)\s*[-–—]\s*(.+?)(?:\s*\|\s*O\s+App|\s*\|\s*Bible|\n|\r|$)",
         texto_jina,
         re.IGNORECASE,
     )
     if match_gen:
         ref = normalizar_referencia(match_gen.group(1).strip())
-        txt = match_gen.group(2).strip(" -–—:\"'“”\t\n")
+        txt = match_gen.group(2).strip(" -–—:\"'“”\t\n\r")
+        txt = re.sub(r"\s+", " ", txt).strip()
         if ref and txt:
             return ref, txt
 
@@ -422,22 +488,23 @@ def obter_versiculo_do_dia(
 
     # 2.2 Fallback de Datacenter via Jina Reader (bypassa Cloudflare/WAF em runners CI/CD)
     for url in urls_youversion:
-        try:
-            texto_jina = baixar_via_jina(url)
-            if texto_jina:
-                resultado_jina = extrair_versiculo_jina(texto_jina)
-                if resultado_jina:
-                    ref_jina, txt_jina = resultado_jina
-                    logger.info("Versículo do Dia obtido com sucesso via Jina Reader: %s", ref_jina)
-                    return VersiculoDoDia(
-                        referencia=ref_jina,
-                        texto=txt_jina,
-                        versao=versao_escolhida.upper(),
-                        url_fonte=f"{url} (via Jina Reader)",
-                        coletado_em=data_hoje,
-                    )
-        except Exception as e:
-            logger.debug("Tentativa Jina Reader falhou para %s: %s", url, e)
+        for formato in ["markdown", "html"]:
+            try:
+                conteudo_jina = baixar_via_jina(url, formato=formato)
+                if conteudo_jina:
+                    resultado_jina = extrair_versiculo_jina(conteudo_jina)
+                    if resultado_jina:
+                        ref_jina, txt_jina = resultado_jina
+                        logger.info("Versículo do Dia obtido com sucesso via Jina Reader (%s): %s", formato, ref_jina)
+                        return VersiculoDoDia(
+                            referencia=ref_jina,
+                            texto=txt_jina,
+                            versao=versao_escolhida.upper(),
+                            url_fonte=f"{url} (via Jina Reader {formato})",
+                            coletado_em=data_hoje,
+                        )
+            except Exception as e:
+                logger.debug("Tentativa Jina Reader (%s) falhou para %s: %s", formato, url, e)
 
     # 2.3 Fallback Bíbliaon
     for nome_metodo, fn_download in metodos_download:

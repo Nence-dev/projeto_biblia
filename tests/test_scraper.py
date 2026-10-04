@@ -11,6 +11,7 @@ from src.scraper import (
     normalizar_referencia,
     eh_pagina_de_desafio_bot,
     extrair_versiculo_bibliaon,
+    extrair_versiculo_jina,
     ScraperError,
 )
 from src.versiculos_calendario import obter_versiculo_calendario
@@ -134,11 +135,92 @@ def test_obter_versiculo_calendario():
 
 
 def test_fallback_calendario_quando_web_indisponivel():
-    """Garante que quando todas as fontes web falharem, o Tier 3 retorna o versículo do dia sem travar o CI."""
+    """Garante que quando todas as fontes web falharem, o Tier de contingência retorna o versículo do dia sem travar o CI."""
     with patch("src.scraper.baixar_html_via_requests", return_value=None), \
-         patch("src.scraper.baixar_html_via_curl", return_value=None):
+         patch("src.scraper.baixar_html_via_curl", return_value=None), \
+         patch("src.scraper.baixar_via_jina", return_value=None), \
+         patch("src.scraper.extrair_versiculo_bibliaon", return_value=None):
         versiculo = obter_versiculo_do_dia(versao="nvi")
         assert versiculo is not None
         assert versiculo.referencia != ""
         assert versiculo.texto != ""
         assert "Calendário Bíblico" in versiculo.url_fonte
+
+
+def test_extrair_versiculo_jina_alt_text_image():
+    """Valida extração a partir do formato Markdown real retornado pelo Jina Reader para o YouVersion."""
+    markdown_jina = """
+Title: Versículo do Dia
+
+URL Source: https://www.bible.com/pt/verse-of-the-day
+
+Markdown Content:
+[![Image 1: Logotipo do App da Bíblia](https://www.bible.com/_next/image?url=%2Flogo.png&w=384&q=75)](https://www.bible.com/pt)
+
+4 de outubro de 2026
+
+[![Image 2: Salmos 51:10 - Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!](https://imageproxy.youversionapi.com/640x640/image.jpg)](https://www.bible.com/pt/verse-images/PSA.51.10/91886?version=211)
+
+[Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!](https://www.bible.com/pt/bible/211/PSA.51.10.NTLH)
+
+[Salmos 51:10 (NTLH)](https://www.bible.com/pt/bible/211/PSA.51.10.NTLH)
+"""
+    res = extrair_versiculo_jina(markdown_jina)
+    assert res is not None
+    ref, texto = res
+    assert ref == "Salmos 51:10"
+    assert texto == "Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!"
+
+
+def test_extrair_versiculo_jina_link_pair():
+    """Valida extração quando o markdown do Jina não tem Image alt text mas tem os links bíblicos."""
+    markdown_jina = """
+Title: Versículo do Dia
+
+URL Source: https://www.bible.com/pt/verse-of-the-day
+
+Markdown Content:
+[Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!](https://www.bible.com/pt/bible/211/PSA.51.10.NTLH)
+
+[Salmos 51:10 (NTLH)](https://www.bible.com/pt/bible/211/PSA.51.10.NTLH)
+
+[Ler Salmos 51:10](https://www.bible.com/pt/bible/211/PSA.51.10.NTLH)
+"""
+    res = extrair_versiculo_jina(markdown_jina)
+    assert res is not None
+    ref, texto = res
+    assert ref == "Salmos 51:10"
+    assert "coração puro" in texto
+
+
+def test_extrair_versiculo_jina_title_fallback():
+    """Valida extração quando o título do Jina traz a passagem bíblica."""
+    markdown_jina = """
+Title: Versículo do Dia - Romanos 8:28 - Sabemos que Deus age em todas as coisas | Bible.com
+
+Markdown Content:
+Texto do corpo aqui...
+"""
+    res = extrair_versiculo_jina(markdown_jina)
+    assert res is not None
+    ref, texto = res
+    assert ref == "Romanos 8:28"
+    assert "todas as coisas" in texto
+
+
+def test_obter_versiculo_do_dia_via_jina_sucesso():
+    """Garante que quando requests/curl bloquearem por Cloudflare, o Jina Reader obtém com sucesso o YouVersion."""
+    markdown_jina = """
+Title: Versículo do Dia
+
+[![Image 2: Salmos 51:10 - Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!](https://image.jpg)](https://www.bible.com/pt/verse-images/PSA.51.10/91886)
+"""
+    with patch("src.scraper.baixar_html_via_requests", return_value=None), \
+         patch("src.scraper.baixar_html_via_curl", return_value=None), \
+         patch("src.scraper.baixar_via_jina", return_value=markdown_jina):
+        resultado = obter_versiculo_do_dia(versao="nvi")
+        assert resultado is not None
+        assert resultado.referencia == "Salmos 51:10"
+        assert "coração puro" in resultado.texto
+        assert "Jina Reader" in resultado.url_fonte
+
