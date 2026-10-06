@@ -1521,16 +1521,21 @@ body.zen-mode .content-grid {
     height: 100vh;
     background: var(--bg-surface);
     border-left: 1px solid var(--border-accent);
-    box-shadow: -15px 0 45px rgba(0, 0, 0, 0.7);
+    box-shadow: none;
+    visibility: hidden;
+    pointer-events: none;
     z-index: 1001;
     display: flex;
     flex-direction: column;
     transform: translateX(100%);
-    transition: transform var(--transition-smooth);
+    transition: transform var(--transition-smooth), visibility var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .historico-drawer.is-open {
     transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+    box-shadow: -15px 0 45px rgba(0, 0, 0, 0.7);
 }
 
 .drawer-header {
