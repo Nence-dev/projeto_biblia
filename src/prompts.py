@@ -108,3 +108,65 @@ def montar_prompt_whatsapp(referencia: str, texto: str, versao: str, estudo_gera
 {estudo_gerado}
 \"\"\"
 """
+
+
+PROMPT_DERIVACAO_MINUTO_COM_DEUS = """Com base no estudo bíblico e no versículo acima, elabore um devocional no formato editorial "Minuto com Deus" (estilo página de livro devocional impresso).
+
+DIRETRIZES EDITORIAIS OBRIGATÓRIAS:
+1. TÍTULO CONTEXTUAL (1 a 4 palavras em CAIXA ALTA):
+   - O título DEVE nascer diretamente da essência visceral e do tema central do texto bíblico do dia.
+   - JAMAIS use títulos genéricos e repetidos (como "NOVOS COMEÇOS" para qualquer texto).
+   - Exemplos reais de títulos do devocional físico:
+     * Para João 7.37,38 (rios de água viva fluirão): Título = "INESGOTÁVEL"
+     * Para Apocalipse 2.2-4 (abandono do primeiro amor): Título = "DE VOLTA AO PRIMEIRO AMOR"
+     * Para Salmos 55.22 (entregar o fardo e Deus sustentar): Título = "SUSTENTO INABALÁVEL" ou "ELE TE SUSTENTARÁ"
+     * Para Judas 1.22 (ter misericórdia de quem duvida): Título = "O ABRIGO DA MISERICÓRDIA"
+     * Para Salmos 51.10 (cria em mim um coração puro): Título = "A PUREZA DO CORAÇÃO"
+     * Para Provérbios 4.23 (guardar o coração): Título = "A GUARDA DO CORAÇÃO"
+2. FRASE CURTA DO DIA:
+   - Um pensamento afiado e memorável de 1 a 2 frases (de teólogo, filósofo ou autor cristão como C.S. Lewis, Tim Keller, Agostinho, Spurgeon) que sintetize o coração do tema.
+3. LEITURAS BÍBLICAS COMPLEMENTARES:
+   - Lista de 4 a 6 referências bíblicas correlacionadas em cascata (ex: ["1 PEDRO 5.7", "MATEUS 11.28-30", "SALMOS 68.19", "FILIPENSES 4.6,7", "ISAÍAS 41.10"]).
+4. TEXTO DEVOCIONAL:
+   - Prosa reflexiva, calorosa e pastoral de 3 a 4 parágrafos, abrindo com uma analogia sensível do cotidiano que ilumine a verdade bíblica.
+
+Estruture a resposta no seguinte formato JSON:
+```json
+{
+  "titulo": "TÍTULO CONTEXTUAL EM CAIXA ALTA",
+  "fraseDoDia": "Frase curta e impactante de reflexão para o dia.",
+  "autorFrase": "@autor (ou pensador cristão/filósofo)",
+  "leiturasComplementares": [
+    "LIVRO CAP.VERS",
+    "LIVRO CAP.VERS",
+    "LIVRO CAP.VERS",
+    "LIVRO CAP.VERS"
+  ],
+  "leituraComplementar": "LIVRO CAP.VERS (referência principal para resumo)",
+  "textoDevocional": "Texto corrido reflexivo e pastoral de 3 a 4 parágrafos explicando e aplicando o versículo do dia ao coração do leitor."
+}
+```
+"""
+
+PROMPT_DERIVACAO_CAFE_COM_DEUS_PAI = PROMPT_DERIVACAO_MINUTO_COM_DEUS
+
+
+def montar_prompt_minuto(referencia: str, texto: str, versao: str, estudo_gerado: str) -> str:
+    """Monta o prompt para gerar o momento devocional Minuto com Deus."""
+    return f"""{PROMPT_DERIVACAO_MINUTO_COM_DEUS}
+
+**Passagem:** {referencia} ({versao})
+**Texto Bíblico:** "{texto}"
+
+**Estudo Expositivo Gerado como Base:**
+\"\"\"
+{estudo_gerado}
+\"\"\"
+"""
+
+
+def montar_prompt_cafe(referencia: str, texto: str, versao: str, estudo_gerado: str) -> str:
+    """Retrocompatibilidade com montador de prompt do Café."""
+    return montar_prompt_minuto(referencia, texto, versao, estudo_gerado)
+
+

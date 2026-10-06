@@ -92,6 +92,29 @@ const HISTORICO_ESTUDOS = [
                 "foco": "Ação enérgica de descarregar (hashlek) e a física do suporte contínuo da graça (kul)."
             },
             "chaveHermeneutica": "A promessa bíblica não é a ausência de atrito no mundo, mas a estabilidade estrutural fornecida por Deus quando o ser humano renuncia à ilusão da autossuficiência."
+        },
+        "minutoComDeus": {
+            "titulo": "SUSTENTO INABALÁVEL",
+            "dataCompacta": "06 | OUT",
+            "diaDoAno": "279/365",
+            "fraseDoDia": "Você não foi desenhado para carregar o peso do mundo sozinho; entregue o fardo a Quem sustenta o universo.",
+            "autorFrase": "@cslewis",
+            "leiturasComplementares": [
+                "1 PEDRO 5.7",
+                "MATEUS 11.28-30",
+                "SALMOS 68.19",
+                "FILIPENSES 4.6,7",
+                "ISAÍAS 41.10"
+            ],
+            "leituraComplementar": "1 PEDRO 5.7",
+            "textoDevocional": "Todo ser humano tem uma carga máxima de ruptura. Há dias em que a soma das cobranças, dos prazos e das decepções faz a nossa estrutura parecer prestes a desmoronar. A cultura nos ensina a fingir invulnerabilidade, e o ambiente religioso muitas vezes cobra sorrisos artificiais. Mas Davi, ao escrever o Salmo 55:22 debaixo da dor aguda de uma traição, tomou uma decisão cirúrgica: ele não fingiu força; ele arremessou o peso nos braços de Deus.\n\nO verbo hebraico aqui é enfático: descarregar com ímpeto, jogar fora de si o fardo antes que ele esmague a sua espinha. E a promessa divina não é de mágica, mas de sustento contínuo: 'Ele o susterá; jamais permitirá que o justo venha a cair'. Deus não prometeu evaporar com os desafios da sua terça-feira, mas garantiu ser a coluna inabalável que impede a sua vida de entrar em colapso.\n\nTalvez hoje você tenha acordado com o peito apertado, tentando calcular como resolver tudo na força do próprio braço. O Pai está convidando você a dar um basta na ilusão do controle. Faça o seu melhor com seriedade, mas respire fundo e entregue o resultado a Quem tem ombros infinitamente largos para sustentar a sua caminhada."
+        },
+        "cafeComDeusPai": {
+            "aromaManha": "Puxe a cadeira devagar. Deixe a xícara esquentar suas mãos e dê uma trégua para a pressa de resolver tudo nos próximos cinco minutos. Antes de qualquer ligação, mensagem ou cobrança, o Pai quer apenas que você se sente à mesa com Ele.",
+            "vozDoPai": "Filho, Eu vi cada suspiro que você deu antes de levantar da cama hoje. Eu conheço o nó na garganta e a sensação de que se você soltar uma das cordas, tudo vai desmoronar. Mas olhe para Mim: quem sustenta o universo não dorme e não se cansa. Deixe esse peso sobre a Minha mesa. Você é Meu filho amado, não o gerente solitário do mundo.",
+            "palavraMesa": "Davi escreveu o Salmo 55:22 no dia em que foi traído por quem mais confiava. A dor era imensa, mas ele descobriu o segredo da sanidade: arremessar a carga nos braços de Deus. Entregar não é fraqueza nem covardia; é o maior ato de confiança que um filho pode ter. Deus não prometeu que o trânsito ou as contas sumiriam em um passe de mágica, mas prometeu que a sua alma não vai cair enquanto estiver apoiada n'Ele.",
+            "oracaoMesa": "Pai amado, que bom saber que posso ser vulnerável Contigo sem medo de julgamento. Esta manhã, eu coloco cada ansiedade, cada prazo e cada medo que não consigo controlar diante de Ti. Sustenta a minha mente e acalma o meu coração. Ensina-me a caminhar com paz hoje, sabendo que Tu estás no controle. Em nome de Jesus, amém.",
+            "cafeParaLevar": "Solte o controle e segure na mão do Pai: o que tira o seu sono não assusta a soberania de Deus."
         }
     },
     {
@@ -183,6 +206,29 @@ const HISTORICO_ESTUDOS = [
                 "foco": "Destacar a batalha interna e processual do verbo diakrinomenous."
             },
             "chaveHermeneutica": "A maturidade bíblica se revela na habilidade de acolher quem está em crise, desmantelando a arrogância farisaica que exige certezas artificiais."
+        },
+        "minutoComDeus": {
+            "titulo": "O ABRIGO DA MISERICÓRDIA",
+            "dataCompacta": "05 | OUT",
+            "diaDoAno": "278/365",
+            "fraseDoDia": "A misericórdia não descarta quem está vacilando; ela estende a mão para curar.",
+            "autorFrase": "@timkeller",
+            "leiturasComplementares": [
+                "LUCAS 15.11-24",
+                "MATEUS 12.20",
+                "ROMANOS 14.1",
+                "GÁLATAS 6.1,2",
+                "1 TESSALONICENSES 5.14"
+            ],
+            "leituraComplementar": "LUCAS 15.11-24",
+            "textoDevocional": "Quantas vezes nos sentimos cobrados a demonstrar certezas inabaláveis enquanto por dentro o coração está cheio de perguntas e incertezas? O ambiente do mundo — e muitas vezes até os círculos religiosos — costuma ser implacável com quem vacila, exigindo uma perfeição de fachada que ninguém consegue sustentar por muito tempo.\n\nNo entanto, a recomendação apostólica em Judas 1:22 nos desarma: 'Tenham misericórdia daqueles que duvidam'. O coração de Deus nunca foi um tribunal acusatório contra os que estão confusos ou machucados pelas decepções da caminhada. Pelo contrário: Jesus sempre atraiu a Si os sinceros, os cansados e aqueles que tiveram a coragem de admitir sua fraqueza.\n\nSe hoje você acordou sentindo que sua fé não está do tamanho que você gostaria, saiba que o amor do Pai não oscila conforme a sua autoconfiança. Ele conhece a sua estrutura e se lembra de que você é pó.\n\nReceba essa mesma misericórdia para si mesmo e estenda-a a quem está ao seu lado. Uma palavra paciente e um olhar generoso hoje podem ser o abraço de Deus que alguém precisa desesperadamente para continuar de pé."
+        },
+        "cafeComDeusPai": {
+            "aromaManha": "O café desta manhã vem acompanhado de um respiro de alívio: com o Pai, você não precisa fingir certezas que não sente nem usar máscaras de fé inabalável para ser acolhido.",
+            "vozDoPai": "Filho, quando as dúvidas e as perguntas sinceras baterem à sua porta, não fuja de Mim com medo de reprovação. Eu não Me assusto com os seus questionamentos. Eu sou o Pai que acolhe, não o juiz severo que descarta quem está machucado pela hipocrisia humana.",
+            "palavraMesa": "Judas 1:22 nos ensina a ter misericórdia daqueles que duvidam. Se o Pai nos manda agir assim com o próximo, quanto mais Ele próprio com você! Ele não quer uma fé robótica; Ele deseja um coração sincero que se achega com suas fraquezas e encontra descanso na Sua graça.",
+            "oracaoMesa": "Pai, obrigado por ser o meu porto seguro quando as certezas do mundo balançam. Onde houver dúvida no meu peito hoje, derrama a Tua paz que excede todo o entendimento. Abraça o meu coração e faz-me canal desse mesmo abraço para quem encontrar no meu caminho. Amém.",
+            "cafeParaLevar": "A dúvida sincera não afasta o Pai: ela é o convite para você segurar a mão d'Ele com ainda mais verdade."
         }
     },
     {

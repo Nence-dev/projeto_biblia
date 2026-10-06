@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 800" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Gradiente do Céu ao Entardecer Dourado -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0c08" />
+      <stop offset="25%" stop-color="#1e150d" />
+      <stop offset="55%" stop-color="#3d2712" />
+      <stop offset="78%" stop-color="#8c5825" />
+      <stop offset="90%" stop-color="#d49b43" />
+      <stop offset="100%" stop-color="#f5d28b" />
+    </linearGradient>
+
+    <!-- Brilho do Sol Poente no Horizonte -->
+    <radialGradient id="sunGlow" cx="80%" cy="32%" r="45%">
+      <stop offset="0%" stop-color="#fff8db" stop-opacity="0.9" />
+      <stop offset="20%" stop-color="#e6a845" stop-opacity="0.75" />
+      <stop offset="45%" stop-color="#a86824" stop-opacity="0.4" />
+      <stop offset="75%" stop-color="#3d2310" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#140e08" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Vinheta Escura à Esquerda para Contraste Máximo do Texto -->
+    <linearGradient id="leftVignette" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b0907" stop-opacity="0.98" />
+      <stop offset="35%" stop-color="#0b0907" stop-opacity="0.92" />
+      <stop offset="55%" stop-color="#0b0907" stop-opacity="0.75" />
+      <stop offset="75%" stop-color="#0b0907" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#0b0907" stop-opacity="0.1" />
+    </linearGradient>
+
+    <!-- Gradiente de Névoa nas Montanhas -->
+    <linearGradient id="mistGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#d99e4b" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#140e08" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo: Céu Crepuscular -->
+  <rect width="1920" height="800" fill="url(#skyGrad)" />
+  <circle cx="1520" cy="240" r="450" fill="url(#sunGlow)" />
+
+  <!-- Camada 1: Cordilheira Distante em Bruma -->
+  <path d="M 650 480 Q 900 320 1150 420 T 1500 340 T 1850 440 L 1920 460 L 1920 800 L 650 800 Z" fill="#291a10" opacity="0.6" />
+  <rect x="700" y="320" width="1220" height="480" fill="url(#mistGrad)" />
+
+  <!-- Camada 2: Montanhas Médias -->
+  <path d="M 800 520 L 1020 410 L 1220 490 L 1420 380 L 1650 510 L 1920 430 L 1920 800 L 800 800 Z" fill="#1f140c" opacity="0.85" />
+
+  <!-- Camada 3: Cume Rochoso em Primeiro Plano à Direita -->
+  <path d="M 1050 800 L 1150 620 L 1260 670 L 1380 560 L 1580 610 L 1750 540 L 1920 620 L 1920 800 Z" fill="#150f09" />
+
+  <!-- Detalhe da Bíblia Antiga em Couro sobre a Rocha -->
+  <g transform="translate(1360, 470) scale(1.15)">
+    <!-- Sombra da Bíblia sobre as rochas -->
+    <ellipse cx="140" cy="180" rx="170" ry="28" fill="#000000" opacity="0.65" />
+    <!-- Capa de Couro Marrom Antigo -->
+    <path d="M 10 140 Q 140 185 270 140 L 290 120 Q 140 165 30 120 Z" fill="#2d1709" stroke="#170c04" stroke-width="2" />
+    <path d="M 12 142 L 8 95 Q 140 140 272 95 L 268 142 Q 140 187 12 142 Z" fill="#422410" />
+    <!-- Páginas Douradas / Pergaminho da Bíblia Aberta -->
+    <path d="M 22 95 Q 140 130 258 95 L 260 90 Q 140 125 24 90 Z" fill="#d2ab69" />
+    <!-- Páginas Abertas em Asas com Gravação de Texto -->
+    <path d="M 24 90 C 70 65, 120 70, 138 90 C 158 70, 210 65, 256 90 L 254 84 C 208 59, 158 64, 138 84 C 118 64, 68 59, 22 84 Z" fill="#faf2dd" stroke="#8a6435" stroke-width="1" />
+    <!-- Vinco Central e Fita Marcadora Dourada (Ribbon) -->
+    <path d="M 138 84 L 138 120 Q 145 150 160 175" fill="none" stroke="#b3261e" stroke-width="3" stroke-linecap="round" />
+    <!-- Linhas de Texto em Duas Colunas da Bíblia -->
+    <line x1="45" y1="76" x2="115" y2="76" stroke="#523d24" stroke-width="1" opacity="0.45" />
+    <line x1="45" y1="81" x2="115" y2="81" stroke="#523d24" stroke-width="1" opacity="0.45" />
+    <line x1="45" y1="86" x2="110" y2="86" stroke="#523d24" stroke-width="1" opacity="0.45" />
+    <line x1="160" y1="76" x2="230" y2="76" stroke="#523d24" stroke-width="1" opacity="0.45" />
+    <line x1="160" y1="81" x2="230" y2="81" stroke="#523d24" stroke-width="1" opacity="0.45" />
+    <line x1="160" y1="86" x2="225" y2="86" stroke="#523d24" stroke-width="1" opacity="0.45" />
+    <!-- Fecho de Metal em Latão Antigo da Bíblia -->
+    <rect x="256" y="98" width="12" height="18" rx="2" fill="#c29a4a" stroke="#694f20" stroke-width="1" />
+  </g>
+
+  <!-- Vinheta Esquerda: Escuridão Dramática para Contraste Editorial Puro -->
+  <rect width="1920" height="800" fill="url(#leftVignette)" />
+</svg>

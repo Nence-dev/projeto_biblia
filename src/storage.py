@@ -59,6 +59,7 @@ def salvar_estudo(
     versao: str,
     conteudo_estudo: str,
     conteudo_whatsapp: str = "",
+    conteudo_cafe: dict[str, Any] | str | None = None,
     data_str: str | None = None,
 ) -> Path:
     """
@@ -87,6 +88,23 @@ def salvar_estudo(
 ```
 """
 
+    secao_cafe = ""
+    if conteudo_cafe:
+        if isinstance(conteudo_cafe, dict):
+            texto_cafe = json.dumps(conteudo_cafe, ensure_ascii=False, indent=2)
+        else:
+            texto_cafe = str(conteudo_cafe).strip()
+        secao_cafe = f"""
+
+---
+
+## ☕ Café com Deus Pai
+
+```json
+{texto_cafe}
+```
+"""
+
     conteudo_final = f"""---
 data: "{data_str}"
 referencia: "{referencia}"
@@ -104,6 +122,7 @@ gerado_em: "{agora.isoformat()}"
 
 {conteudo_estudo.strip()}
 {secao_whatsapp}
+{secao_cafe}
 """
 
     caminho_arquivo.write_text(conteudo_final, encoding="utf-8")
@@ -214,6 +233,126 @@ def sanitizar_texto_markdown_para_web(texto: str) -> str:
     texto_formatado = re.sub(r'\n{2,}', '<br><br>', texto_formatado)
     texto_formatado = re.sub(r'\n', ' ', texto_formatado)
     return texto_formatado.strip()
+
+
+def derivar_titulo_e_leituras_minuto(referencia: str, versiculo_texto: str) -> dict[str, Any]:
+    """Deriva um título contextual impactante e leituras bíblicas complementares."""
+    ref_upper = (referencia or "").upper()
+    v_upper = (versiculo_texto or "").upper()
+
+    if "55:22" in ref_upper or "SUSTER" in v_upper or "FARDO" in v_upper or "PREOCUPAÇ" in v_upper:
+        return {
+            "titulo": "SUSTENTO INABALÁVEL",
+            "fraseDoDia": "Você não foi desenhado para carregar o peso do mundo sozinho; entregue o fardo a Quem sustenta o universo.",
+            "autorFrase": "@cslewis",
+            "leiturasComplementares": [
+                "1 PEDRO 5.7",
+                "MATEUS 11.28-30",
+                "SALMOS 68.19",
+                "FILIPENSES 4.6,7",
+                "ISAÍAS 41.10"
+            ],
+            "leituraComplementar": "1 PEDRO 5.7",
+        }
+    if "JUDAS" in ref_upper or "DUVID" in v_upper or "MISERICÓRDIA" in v_upper:
+        return {
+            "titulo": "O ABRIGO DA MISERICÓRDIA",
+            "fraseDoDia": "A misericórdia não descarta quem está vacilando; ela estende a mão para curar.",
+            "autorFrase": "@timkeller",
+            "leiturasComplementares": [
+                "LUCAS 15.11-24",
+                "MATEUS 12.20",
+                "ROMANOS 14.1",
+                "GÁLATAS 6.1,2",
+                "1 TESSALONICENSES 5.14"
+            ],
+            "leituraComplementar": "LUCAS 15.11-24",
+        }
+    if "51:10" in ref_upper or "CORAÇÃO PURO" in v_upper or "PURIFIC" in v_upper:
+        return {
+            "titulo": "A PUREZA DO CORAÇÃO",
+            "fraseDoDia": "Deus não reforma nossa fachada moral; Ele recria o coração a partir do arrependimento sincero.",
+            "autorFrase": "@agostinho",
+            "leiturasComplementares": [
+                "EZEQUIEL 36.26",
+                "MATEUS 5.8",
+                "1 JOÃO 1.9",
+                "SALMOS 24.3,4",
+                "TITO 3.5"
+            ],
+            "leituraComplementar": "EZEQUIEL 36.26",
+        }
+    if "4:23" in ref_upper or "PENSAMENTO" in v_upper or "GUARDA" in v_upper:
+        return {
+            "titulo": "A GUARDA DO CORAÇÃO",
+            "fraseDoDia": "Vigiar o coração não é viver em paranoia; é proteger a nascente pura para que a vida não adoeça.",
+            "autorFrase": "@agostinho",
+            "leiturasComplementares": [
+                "FILIPENSES 4.8",
+                "ROMANOS 12.2",
+                "LUCAS 6.45",
+                "COLOSSENSES 3.2",
+                "SALMOS 139.23,24"
+            ],
+            "leituraComplementar": "FILIPENSES 4.8",
+        }
+    if "8:1" in ref_upper or "CONDENA" in v_upper:
+        return {
+            "titulo": "LIVRES DA CONDENAÇÃO",
+            "fraseDoDia": "A cruz liquidou a sentença penal: quem está em Cristo não deve nada ao tribunal da culpa.",
+            "autorFrase": "@johnstott",
+            "leiturasComplementares": [
+                "JOÃO 5.24",
+                "ISAÍAS 53.5",
+                "ROMANOS 5.1",
+                "COLOSSENSES 2.14",
+                "HEBREUS 10.14"
+            ],
+            "leituraComplementar": "JOÃO 5.24",
+        }
+    if "7:37" in ref_upper or "SEDE" in v_upper or "ÁGUA VIVA" in v_upper:
+        return {
+            "titulo": "INESGOTÁVEL",
+            "fraseDoDia": "Só Deus pode satisfazer o anseio mais íntimo da sua alma.",
+            "autorFrase": "@juniorrostirola",
+            "leiturasComplementares": [
+                "APOCALIPSE 22.17",
+                "JEREMIAS 2.13",
+                "SALMOS 36.9",
+                "JOÃO 4.13,14",
+                "ISAÍAS 55.1",
+                "ISAÍAS 44.3"
+            ],
+            "leituraComplementar": "JOÃO 4.13,14",
+        }
+    if "APOCALIPSE 2" in ref_upper or "PRIMEIRO AMOR" in v_upper:
+        return {
+            "titulo": "DE VOLTA AO PRIMEIRO AMOR",
+            "fraseDoDia": "Lembre-se de onde você caiu e volte ao primeiro amor.",
+            "autorFrase": "@juniorrostirola",
+            "leiturasComplementares": [
+                "JEREMIAS 2.2",
+                "MATEUS 24.12",
+                "HEBREUS 10.32-36",
+                "GÁLATAS 6.9",
+                "HEBREUS 6.10-12",
+                "JOÃO 21.15-17"
+            ],
+            "leituraComplementar": "JEREMIAS 2.2",
+        }
+
+    return {
+        "titulo": "DESCANSO NA PALAVRA",
+        "fraseDoDia": "A Palavra de Deus não é um manual de regras frias, é o alicerce vivo para a sua alma hoje.",
+        "autorFrase": "@cslewis",
+        "leiturasComplementares": [
+            "SALMOS 119.105",
+            "2 TIMÓTEO 3.16,17",
+            "HEBREUS 4.12",
+            "TIAGO 1.22"
+        ],
+        "leituraComplementar": "SALMOS 119.105",
+    }
 
 
 def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
@@ -406,6 +545,78 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
     if match_perg:
         conteudo_pergunta = match_perg.group(1).replace("*", "").strip()
 
+    # 6. Minuto com Deus / Café com Deus Pai
+    match_minuto = re.search(
+        r"##\s*⏱️?\s*Minuto com Deus[^\n]*\n+```(?:json)?\n(.*?)\n```",
+        conteudo_md,
+        re.DOTALL | re.IGNORECASE,
+    )
+    minuto_com_deus = None
+    if match_minuto:
+        try:
+            minuto_com_deus = json.loads(match_minuto.group(1).strip())
+        except Exception:
+            pass
+
+    match_cafe = re.search(
+        r"##\s*☕?\s*Café com Deus Pai[^\n]*\n+```(?:json)?\n(.*?)\n```",
+        conteudo_md,
+        re.DOTALL | re.IGNORECASE,
+    )
+    cafe_com_deus_pai = None
+    if match_cafe:
+        try:
+            cafe_com_deus_pai = json.loads(match_cafe.group(1).strip())
+        except Exception:
+            pass
+
+    info_contextual = derivar_titulo_e_leituras_minuto(referencia, versiculo_texto)
+
+    if minuto_com_deus and not cafe_com_deus_pai:
+        if not minuto_com_deus.get("titulo") or minuto_com_deus.get("titulo") == "NOVOS COMEÇOS":
+            minuto_com_deus["titulo"] = info_contextual["titulo"]
+        if not minuto_com_deus.get("leiturasComplementares"):
+            minuto_com_deus["leiturasComplementares"] = info_contextual["leiturasComplementares"]
+        if not minuto_com_deus.get("leituraComplementar"):
+            minuto_com_deus["leituraComplementar"] = info_contextual["leituraComplementar"]
+
+        cafe_com_deus_pai = {
+            "aromaManha": minuto_com_deus.get("fraseDoDia", info_contextual["fraseDoDia"]),
+            "vozDoPai": minuto_com_deus.get("textoDevocional", ""),
+            "palavraMesa": f"Em {referencia}: \"{versiculo_texto}\".",
+            "oracaoMesa": "Pai amado, que Tua graça nos acompanhe hoje. Amém.",
+            "cafeParaLevar": minuto_com_deus.get("fraseDoDia", info_contextual["fraseDoDia"])
+        }
+    elif cafe_com_deus_pai and not minuto_com_deus:
+        minuto_com_deus = {
+            "titulo": info_contextual["titulo"],
+            "fraseDoDia": cafe_com_deus_pai.get("cafeParaLevar", info_contextual["fraseDoDia"]),
+            "autorFrase": info_contextual["autorFrase"],
+            "leiturasComplementares": info_contextual["leiturasComplementares"],
+            "leituraComplementar": info_contextual["leituraComplementar"],
+            "textoDevocional": f"{cafe_com_deus_pai.get('aromaManha', '')}\n\n{cafe_com_deus_pai.get('palavraMesa', '')}\n\n{cafe_com_deus_pai.get('vozDoPai', '')}"
+        }
+    elif not minuto_com_deus and not cafe_com_deus_pai:
+        minuto_com_deus = {
+            "titulo": info_contextual["titulo"],
+            "fraseDoDia": info_contextual["fraseDoDia"],
+            "autorFrase": info_contextual["autorFrase"],
+            "leiturasComplementares": info_contextual["leiturasComplementares"],
+            "leituraComplementar": info_contextual["leituraComplementar"],
+            "textoDevocional": (
+                f"Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. "
+                f"Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de {referencia} nos resgata: \"{versiculo_texto}\". "
+                f"O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            )
+        }
+        cafe_com_deus_pai = {
+            "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
+            "vozDoPai": f"Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": f"Em {referencia}, o Senhor nos lembra do Seu cuidado presente: \"{versiculo_texto}\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "cafeParaLevar": info_contextual["fraseDoDia"]
+        }
+
     resultado = {
         "data": data_str,
         "dataFormatada": formatar_data_extenso(data_str),
@@ -450,6 +661,8 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
             },
         ],
         "devocionalWhatsApp": zap,
+        "minutoComDeus": minuto_com_deus,
+        "cafeComDeusPai": cafe_com_deus_pai,
     }
 
     if comparacao_extraida:

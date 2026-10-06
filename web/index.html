@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="apple-touch-icon" href="favicon.svg">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.9">
 </head>
 
 <body class="zen-mode">
@@ -36,245 +36,594 @@
         <div class="manuscript-ruled-lines"></div>
     </div>
 
-    <!-- Barra de Navegação Superior -->
+    <!-- Barra de Navegação Superior Sola Scriptura -->
     <header class="navbar" id="main-navbar">
         <div class="navbar-container">
-            <div class="brand">
-                <span class="brand-icon">✝</span>
+            <a href="#" class="brand-link" id="brand-home" aria-label="Sola Scriptura Início">
+                <div class="brand-badge-box">
+                    <span class="brand-cross">†</span>
+                </div>
                 <div class="brand-text">
                     <span class="brand-title">SOLA SCRIPTURA</span>
-                    <span class="brand-subtitle">Teologia Expositiva & Devocional</span>
+                    <span class="brand-subtitle">TEOLOGIA EXPOSITIVA & DEVOCIONAL</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="navbar-actions">
-                <button id="btn-historico" class="action-btn" title="Histórico de Estudos Bíblicos" aria-label="Histórico de Estudos">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                    <span class="btn-text">Histórico</span>
-                </button>
+            <!-- Navegação Central com Indicador Dourado -->
+            <nav class="navbar-center-nav" aria-label="Navegação Principal">
+                <a href="#" class="nav-link" id="nav-inicio">Início</a>
+                <button id="tab-btn-estudo" class="nav-link is-active" role="tab" aria-selected="true" aria-controls="view-estudo">Estudos Expositivos</button>
+                <button id="tab-btn-cafe" class="nav-link" role="tab" aria-selected="false" aria-controls="view-cafe">Devocionais</button>
+                <button id="tab-btn-biblia" class="nav-link" role="tab" aria-selected="false" aria-controls="view-biblia">Bíblia</button>
+                <a href="#sobre" class="nav-link" id="nav-sobre">Sobre</a>
+            </nav>
 
-                <button id="btn-audio" class="action-btn" title="Ouvir reflexão narrada em voz alta" aria-label="Ouvir reflexão">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <!-- Ações à Direita: Busca Arredondada + Botões Utilitários -->
+            <div class="navbar-right-group">
+                <div class="navbar-search-pill" role="search">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <span class="btn-text">Ouvir</span>
-                </button>
+                    <input type="search" id="navbar-search-input" placeholder="Buscar estudos, versículos..." autocomplete="off" />
+                </div>
 
-                <button id="btn-zen" class="action-btn is-active" title="Alternar Modo Foco / Leitura Completa" aria-label="Modo Leitura">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                    </svg>
-                    <span class="btn-text">Sair do Foco</span>
-                </button>
+                <div class="navbar-actions">
+                    <button id="btn-historico" class="action-btn" title="Histórico de Estudos Bíblicos" aria-label="Histórico de Estudos">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span class="btn-text">Histórico</span>
+                    </button>
 
-                <button id="btn-theme" class="action-btn theme-toggle" title="Alternar Modo Escuro / Pergaminho Clássico" aria-label="Alternar Tema">
-                    <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
+                    <button id="btn-audio" class="action-btn" title="Ouvir reflexão narrada em voz alta" aria-label="Ouvir reflexão">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                        <span class="btn-text">Ouvir</span>
+                    </button>
+
+                    <button id="btn-theme" class="action-btn theme-toggle" title="Alternar Tema Claro / Escuro" aria-label="Alternar Tema">
+                        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Conteúdo Principal -->
     <div class="layout-wrapper">
-        <!-- Hero: O Versículo em Destaque -->
-        <header class="hero-section" id="hero-header">
-            <div class="hero-badges">
-                <span class="badge badge-gold" id="meta-data">29 de Setembro de 2026</span>
-                <span class="badge badge-accent" id="meta-versao">NVI</span>
-                <span class="badge badge-outline" id="meta-genero">Literatura de Sabedoria</span>
-            </div>
+        <!-- Hero Cinematográfico (Bíblia nas Montanhas ao Entardecer Dourado) -->
+        <header class="editorial-hero-banner" id="hero-header">
+            <div class="hero-inner-container">
+                <div class="hero-editorial-topline">
+                    <div class="hero-editorial-label">
+                        <span class="hero-tag-text">ESTUDO EXPOSITIVO</span>
+                        <span class="hero-tag-dash" aria-hidden="true">——</span>
+                    </div>
+                    <div class="hero-date-badge" id="hero-date-badge" title="Data do Estudo Bíblico">
+                        <svg class="hero-date-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span id="hero-display-date">6 de Outubro de 2026</span>
+                    </div>
+                </div>
 
-            <div class="verse-card illuminated-codex">
-                <div class="codex-corner codex-tl" aria-hidden="true"></div>
-                <div class="codex-corner codex-tr" aria-hidden="true"></div>
-                <div class="codex-corner codex-bl" aria-hidden="true"></div>
-                <div class="codex-corner codex-br" aria-hidden="true"></div>
-                <span class="quote-mark">“</span>
-                <h1 class="verse-quote" id="verse-text">
-                    Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.
+                <h1 class="hero-quote-heading" id="verse-text">
+                    Entregue suas preocupações ao Senhor, e ele <span class="hero-word-accent">o sustentará;</span> jamais permitirá que o justo venha a cair.
                 </h1>
-                <div class="verse-reference">
-                    <span class="ref-line"></span>
-                    <h2 class="ref-text" id="verse-ref">Provérbios 4:23</h2>
-                    <span class="ref-line"></span>
+
+                <div class="hero-ref-block">
+                    <svg class="hero-book-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    <span class="hero-ref-text" id="verse-ref">Salmos 55:22</span>
+                </div>
+
+                <!-- Badges ocultas para suporte de metadados dinâmicos JS -->
+                <div class="hero-hidden-meta" style="display: none;">
+                    <span id="meta-data">29 de Setembro de 2026</span>
+                    <span id="meta-versao">NVI</span>
+                    <span id="meta-genero">Literatura de Sabedoria</span>
                 </div>
             </div>
         </header>
 
-        <!-- Grade de Conteúdo: Estudo Expositivo + Card WhatsApp -->
-        <main class="content-grid" id="main-grid">
-            <!-- Coluna Principal: Estudo Teológico -->
-            <article class="study-article" id="study-container">
-                <!-- Seção 1: Contexto Histórico -->
-                <section class="study-card" id="card-contexto">
-                    <div class="card-header">
-                        <span class="card-num">01</span>
-                        <h2 class="card-title">O Contexto Histórico e Narrativo</h2>
+        <!-- Visão 1: Estudo Expositivo Teológico (Layout Editorial 70% / 30%) -->
+        <div id="view-estudo" class="tab-view-container is-active" role="tabpanel" aria-labelledby="tab-btn-estudo">
+            <div class="editorial-stage-wrapper">
+                <!-- Breadcrumb Superior -->
+                <nav class="editorial-breadcrumb" aria-label="Navegação em trilha">
+                    <div class="breadcrumb-trail">
+                        <a href="#" class="breadcrumb-item">Início</a>
+                        <span class="breadcrumb-sep">&gt;</span>
+                        <a href="#" class="breadcrumb-item">Estudos Expositivos</a>
+                        <span class="breadcrumb-sep">&gt;</span>
+                        <span class="breadcrumb-active" id="breadcrumb-ref">Salmos 55:22</span>
                     </div>
-                    <div class="card-body" id="conteudo-contexto"></div>
-                </section>
+                    <span class="breadcrumb-date-badge" id="breadcrumb-date">6 de Outubro de 2026</span>
+                </nav>
 
-                <!-- Seção 2: Anatomia do Texto, Comparação de Versões & Termos Originais -->
-                <section class="study-card" id="card-anatomia">
-                    <div class="card-header">
-                        <span class="card-num">02</span>
-                        <h2 class="card-title">A Anatomia do Texto & Teologia Central</h2>
-                    </div>
-                    <div class="card-body">
-                        <!-- Caixa de Comparação Exegética de Versões (NVI vs. Tradução Literal ao Pé da Letra) -->
-                        <div class="comparacao-container" id="comparacao-container"></div>
+                <!-- Grade Editorial Principal: Coluna de Leitura (70%) + Sidebar (30%) -->
+                <div class="editorial-columns-grid">
+                    <!-- Coluna de Leitura Principal -->
+                    <article class="editorial-reader-col" id="study-container">
+                        <!-- Capítulo I: Contexto Histórico -->
+                        <section class="editorial-chapter-block" id="card-contexto">
+                            <div class="chapter-tag-line">
+                                <span class="chapter-roman-tag">CAPÍTULO I</span>
+                                <span class="chapter-dash" aria-hidden="true">——</span>
+                            </div>
+                            <h2 class="chapter-heading">O Contexto Histórico &amp; Narrativo</h2>
+                            <div class="chapter-body-prose" id="conteudo-contexto"></div>
+                        </section>
 
-                        <!-- Explicação da Anatomia -->
-                        <div id="conteudo-anatomia"></div>
-
-                        <!-- Termos Originais no Hebraico/Grego (No final do bloco 2, após o texto) -->
-                        <div class="original-terms-grid" id="termos-grid"></div>
-                    </div>
-                </section>
-
-                <!-- Seção 3: Aplicação Prática -->
-                <section class="study-card" id="card-aplicacao">
-                    <div class="card-header">
-                        <span class="card-num">03</span>
-                        <h2 class="card-title">O Que Tirar Disso para a Prática de Hoje?</h2>
-                    </div>
-                    <div class="card-body" id="conteudo-aplicacao"></div>
-                </section>
-
-                <!-- Seção 4: Conexões Canônicas & Cristo -->
-                <section class="study-card" id="card-canonicas">
-                    <div class="card-header">
-                        <span class="card-num">04</span>
-                        <h2 class="card-title">Conexões Canônicas & A Obra de Cristo</h2>
-                    </div>
-                    <div class="card-body">
-                        <!-- Narrativa Teológica Introdutória -->
-                        <div id="conteudo-canonicas"></div>
-
-                        <!-- Citações de Teólogos Clássicos (John Stott, C.S. Lewis) -->
-                        <div class="quotes-container" id="citacoes-container"></div>
-
-                        <!-- Grid de Versículos Correlacionados -->
-                        <div class="versiculos-relacionados-container" id="versiculos-relacionados-container"></div>
-                    </div>
-                </section>
-
-                <!-- Seção 5: Pergunta Central para Meditação -->
-                <section class="study-card question-card" id="card-pergunta">
-                    <div class="card-header">
-                        <span class="card-icon-gold">🔍</span>
-                        <h2 class="card-title">Pergunta Central para Meditação</h2>
-                    </div>
-                    <div class="question-box" id="conteudo-pergunta"></div>
-
-                    <!-- Bloco Interativo de Foco e Diário Espiritual -->
-                    <div class="meditation-interactive-box">
-                        <div class="meditation-actions">
-                            <button id="btn-copy-pergunta" class="btn btn-sm btn-outline-gold" title="Copiar pergunta para reflexão">
-                                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                                </svg>
-                                <span>Copiar Pergunta</span>
-                            </button>
-                            <button id="btn-toggle-reflexao" class="btn btn-sm btn-outline-gold" title="Anotar reflexão pessoal">
-                                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                </svg>
-                                <span>Anotar Reflexão</span>
-                            </button>
+                        <!-- Box Callout de Citação da Escritura com Aspas Douradas -->
+                        <div class="scripture-callout-card" id="editorial-callout-card">
+                            <div class="callout-quote-symbol" aria-hidden="true">“</div>
+                            <blockquote class="callout-verse-body" id="callout-verse-text">
+                                Toda a Escritura é inspirada por Deus e útil para o ensino, para a repreensão, para a correção e para a instrução na justiça.
+                            </blockquote>
+                            <cite class="callout-verse-cite" id="callout-verse-ref">2 Timóteo 3:16</cite>
                         </div>
-                        <div id="reflection-journal-box" class="reflection-journal-box" style="display: none;">
-                            <textarea id="reflection-textarea" class="reflection-textarea" placeholder="Escreva aqui sua reflexão sincera diante de Deus (salvo com privacidade no seu navegador)..." rows="4"></textarea>
-                            <div class="reflection-save-bar">
-                                <button id="btn-salvar-reflexao" class="btn btn-sm btn-gold">Salvar Reflexão</button>
-                                <span id="reflection-saved-status" class="reflection-saved-status"></span>
+
+                        <!-- Capítulo II: Anatomia do Texto & Teologia Central -->
+                        <section class="editorial-chapter-block" id="card-anatomia">
+                            <div class="chapter-tag-line">
+                                <span class="chapter-roman-tag">CAPÍTULO II</span>
+                                <span class="chapter-dash" aria-hidden="true">——</span>
+                            </div>
+                            <h2 class="chapter-heading">A Anatomia do Texto &amp; Teologia Central</h2>
+                            <div class="chapter-body-prose">
+                                <div id="conteudo-anatomia"></div>
+
+                                <!-- Comparação Exegética de Versões -->
+                                <div class="comparacao-container" id="comparacao-container"></div>
+
+                                <!-- Termos Originais no Hebraico/Grego -->
+                                <div class="original-terms-grid" id="termos-grid"></div>
+                            </div>
+                        </section>
+
+                        <!-- Capítulo III: O Que Tirar Disso para a Prática de Hoje? -->
+                        <section class="editorial-chapter-block" id="card-aplicacao">
+                            <div class="chapter-tag-line">
+                                <span class="chapter-roman-tag">CAPÍTULO III</span>
+                                <span class="chapter-dash" aria-hidden="true">——</span>
+                            </div>
+                            <h2 class="chapter-heading">O Que Tirar Disso para a Prática de Hoje?</h2>
+                            <div class="chapter-body-prose" id="conteudo-aplicacao"></div>
+                        </section>
+
+                        <!-- Capítulo IV: Conexões Canônicas & A Obra de Cristo -->
+                        <section class="editorial-chapter-block" id="card-canonicas">
+                            <div class="chapter-tag-line">
+                                <span class="chapter-roman-tag">CAPÍTULO IV</span>
+                                <span class="chapter-dash" aria-hidden="true">——</span>
+                            </div>
+                            <h2 class="chapter-heading">Conexões Canônicas &amp; A Obra de Cristo</h2>
+                            <div class="chapter-body-prose">
+                                <div id="conteudo-canonicas"></div>
+                                <div class="quotes-container" id="citacoes-container"></div>
+                                <div class="versiculos-relacionados-container" id="versiculos-relacionados-container"></div>
+                            </div>
+                        </section>
+
+                        <!-- Epílogo: Pergunta Central para Meditação -->
+                        <section class="editorial-chapter-block" id="card-pergunta">
+                            <div class="chapter-tag-line">
+                                <span class="chapter-roman-tag">EPÍLOGO</span>
+                                <span class="chapter-dash" aria-hidden="true">——</span>
+                            </div>
+                            <h2 class="chapter-heading">Pergunta Central para Meditação</h2>
+                            <div class="question-box" id="conteudo-pergunta"></div>
+
+                            <!-- Ações de Cópia e Diário Espiritual -->
+                            <div class="meditation-interactive-box">
+                                <div class="meditation-actions">
+                                    <button id="btn-copy-pergunta" class="btn btn-sm btn-outline-gold" title="Copiar pergunta para reflexão">
+                                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                        <span>Copiar Pergunta</span>
+                                    </button>
+                                    <button id="btn-toggle-reflexao" class="btn btn-sm btn-outline-gold" title="Anotar reflexão pessoal">
+                                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                        </svg>
+                                        <span>Anotar Reflexão no Diário</span>
+                                    </button>
+                                </div>
+                                <div id="reflection-journal-box" class="reflection-journal-box" style="display: none;">
+                                    <textarea id="reflection-textarea" class="reflection-textarea" placeholder="Escreva aqui sua reflexão sincera diante de Deus..." rows="4"></textarea>
+                                    <div class="reflection-save-bar">
+                                        <button id="btn-salvar-reflexao" class="btn btn-sm btn-gold">Salvar Reflexão</button>
+                                        <span id="reflection-saved-status" class="reflection-saved-status"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+
+                    <!-- Sidebar Editorial com 4 Cards da Referência -->
+                    <aside class="editorial-sidebar-col" aria-label="Metadados do Estudo e Recursos">
+                        <!-- Card 1: SOBRE ESTE ESTUDO -->
+                        <div class="sidebar-card card-about-study">
+                            <h3 class="sidebar-card-title">SOBRE ESTE ESTUDO</h3>
+                            <div class="study-meta-list">
+                                <div class="meta-row-item">
+                                    <svg class="meta-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                    <div class="meta-row-content">
+                                        <span class="meta-row-label" id="sidebar-meta-livro">Livro dos Salmos</span>
+                                        <span class="meta-row-val" id="sidebar-meta-cap">Capítulo 55</span>
+                                    </div>
+                                </div>
+                                <div class="meta-row-item">
+                                    <svg class="meta-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                                        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                                    </svg>
+                                    <div class="meta-row-content">
+                                        <span class="meta-row-label">Tema</span>
+                                        <span class="meta-row-val" id="sidebar-meta-tema">Confiança em Deus</span>
+                                    </div>
+                                </div>
+                                <div class="meta-row-item">
+                                    <svg class="meta-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    </svg>
+                                    <div class="meta-row-content">
+                                        <span class="meta-row-label">Tipo</span>
+                                        <span class="meta-row-val" id="sidebar-meta-tipo">Estudo Expositivo</span>
+                                    </div>
+                                </div>
+                                <div class="meta-row-item">
+                                    <svg class="meta-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <div class="meta-row-content">
+                                        <span class="meta-row-label">Duração de leitura</span>
+                                        <span class="meta-row-val" id="sidebar-meta-duracao">Aproximadamente 8 min</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-            </article>
 
-            <!-- Coluna Lateral: Devocional Rápido & Ações -->
-            <aside class="sidebar-aside" id="sidebar-container">
-                <div class="sidebar-sticky">
-                    <div class="quick-devotional-card" id="devotional-card">
-                        <div class="devotional-header">
-                            <div class="devotional-title-box">
-                                <span class="badge badge-gold">Versão Síntese</span>
-                                <h2 class="devotional-title">📱 Devocional Rápido</h2>
+
+                        <!-- Card 4: Frase de Impacto Teológico com Aspas Douradas -->
+                        <div class="sidebar-card card-quote-reflection">
+                            <div class="quote-card-symbol" aria-hidden="true">“</div>
+                            <p class="quote-card-body" id="sidebar-quote-body">
+                                A verdadeira confiança não é a ausência de problemas, mas a presença de Deus no meio deles.
+                            </p>
+                            <div class="quote-card-accent-rule" aria-hidden="true"></div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visão 2: Devocionais / Minuto com Deus (Design da Nova Imagem de Referência) -->
+        <div id="view-cafe" class="tab-view-container tab-view-devocional" role="tabpanel" aria-labelledby="tab-btn-cafe" style="display: none;">
+            
+            <div class="devocional-body-wrapper">
+                <div class="devocional-layout-grid">
+                    
+                    <!-- ============================================================
+                         COLUNA LATERAL ESQUERDA (30% / 320px)
+                         ============================================================ -->
+                    <aside class="devocional-sidebar-col">
+                        
+                        <!-- 1. Card Integrado: Citação, Devocional 365 e Leituras Bíblicas -->
+                        <div class="devocional-card-integrated">
+                            <div class="card-integrated-body">
+                                <blockquote class="devocional-quote-text" id="devocional-frase-impacto">
+                                    “Você não foi desenhado para carregar o peso do mundo sozinho; entregue o fardo a Quem sustenta o universo.”
+                                </blockquote>
+                                <span class="devocional-quote-author" id="devocional-frase-autor">@cslewis</span>
+
+                                <div class="devocional-card-divider" aria-hidden="true"></div>
+
+                                <!-- Métrica: Devocional 365 -->
+                                <div class="devocional-metric-section">
+                                    <div class="metric-row">
+                                        <span class="metric-title">DEVOCIONAL 365</span>
+                                        <span class="metric-counter" id="devocional-counter-text">279/365</span>
+                                    </div>
+                                    <div class="devocional-progress-track" aria-hidden="true">
+                                        <div class="devocional-progress-bar" id="devocional-progress-fill" style="width: 76.4%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="devocional-card-divider" aria-hidden="true"></div>
+
+                                <!-- Lista de Leituras Bíblicas (5 passagens da imagem) -->
+                                <div class="devocional-readings-section">
+                                    <div class="readings-title-row">
+                                        <span class="readings-heading">LEITURA BÍBLICA</span>
+                                        <span class="latin-cross" aria-hidden="true">†</span>
+                                    </div>
+                                    <ul class="devocional-readings-list" id="devocional-readings-list">
+                                        <li><a href="#biblia" class="reading-link" data-book="1pedro" data-cap="5">1 Pedro 5:7</a></li>
+                                        <li><a href="#biblia" class="reading-link" data-book="mateus" data-cap="11">Mateus 11:28-30</a></li>
+                                        <li><a href="#biblia" class="reading-link" data-book="filipenses" data-cap="4">Filipenses 4:6-7</a></li>
+                                        <li><a href="#biblia" class="reading-link" data-book="salmos" data-cap="37">Salmos 37:5</a></li>
+                                        <li><a href="#biblia" class="reading-link" data-book="isaias" data-cap="41">Isaías 41:10</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="devotional-body" id="devotional-text"></div>
-
-                        <div class="devotional-actions">
-                            <button id="btn-copy-devocional" class="btn btn-primary" aria-label="Copiar Devocional">
-                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                                </svg>
-                                <span>Copiar Texto</span>
-                            </button>
-
-                            <a id="btn-share-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="Compartilhar no WhatsApp">
-                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.15c-.24.67-1.39 1.28-1.92 1.36-.5.08-1.15.11-3.32-.78-2.62-1.08-4.32-3.76-4.45-3.93-.13-.17-1.07-1.42-1.07-2.72s.68-1.93.92-2.19c.24-.26.53-.33.71-.33.18 0 .36 0 .51.01.17.01.39-.06.61.47.23.54.78 1.9.85 2.04.07.15.12.33.02.53-.1.2-.15.33-.3.51-.15.17-.32.39-.46.52-.15.15-.31.31-.13.62.18.31.79 1.31 1.7 2.11 1.17 1.04 2.15 1.37 2.46 1.52.31.15.49.13.67-.08.18-.21.78-.91.99-1.22.21-.31.42-.26.71-.15.29.11 1.84.87 2.16 1.03.32.16.53.24.61.37.08.13.08.77-.16 1.44z"></path>
-                                </svg>
-                                <span>WhatsApp</span>
-                            </a>
+                        <!-- 2. Card de Anotações Pessoais (Pauta de Linhas) -->
+                        <div class="devocional-notes-card">
+                            <h3 class="notes-card-title">ANOTAÇÕES</h3>
+                            <div class="notebook-ruled-container">
+                                <textarea id="minuto-notes-textarea" class="notebook-lined-textarea" placeholder="Escreva aqui suas reflexões, orações e decisões do dia..." rows="5"></textarea>
+                            </div>
+                            <div class="notes-card-footer">
+                                <button id="btn-save-minuto-notes" class="btn btn-gold-pill">Salvar Anotação</button>
+                                <span id="minuto-notes-status" class="notes-status-text"></span>
+                            </div>
                         </div>
+
+                        <!-- 3. Card Um Minuto Diário (Chamada de ancoragem) -->
+                        <div class="devocional-minute-callout">
+                            <div class="minute-callout-content">
+                                <p class="minute-callout-text">Um minuto diário na presença de Deus para ancorar o seu coração</p>
+                            </div>
+                            <button id="btn-start-minute-prayer" class="btn-circle-gold" title="Iniciar minuto de meditação e oração silenciosa" aria-label="Iniciar oração">
+                                <span class="arrow-gold" aria-hidden="true">→</span>
+                            </button>
+                        </div>
+                    </aside>
+
+                    <!-- ============================================================
+                         COLUNA PRINCIPAL DIREITA (70%)
+                         ============================================================ -->
+                    <main class="devocional-main-col">
+                        
+                        <!-- Header do Devocional Diário -->
+                        <div class="devocional-story-header">
+                            <div class="devocional-meta-topline">
+                                <span class="devocional-story-tag">DEVOCIONAL DIÁRIO ——</span>
+                                <div class="devocional-date-badge" id="devocional-date-badge" title="Data do Devocional">
+                                    <svg class="devocional-date-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span id="devocional-main-date">6 de Outubro de 2026</span>
+                                </div>
+                            </div>
+                            <h2 class="devocional-story-title" id="devocional-main-title">Sustento Inabalável</h2>
+                        </div>
+
+                        <!-- Card do Versículo em Destaque com Borda Dourada Espessa -->
+                        <div class="devocional-verse-accent-card">
+                            <blockquote class="devocional-accent-quote" id="devocional-accent-verse">
+                                “Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.”
+                            </blockquote>
+                            <div class="devocional-accent-ref" id="devocional-accent-ref">SALMOS 55:22</div>
+                        </div>
+
+                        <!-- Prosa Editorial com Drop Cap Iluminado -->
+                        <div class="devocional-story-prose" id="minuto-story-prose">
+                            <p class="devocional-first-p">
+                                <span class="devocional-drop-cap">T</span>odos os dias somos confrontados com ansiedades e pesos que parecem ultrapassar as nossas forças. A correria diária, as cobranças silenciosas e as incertezas do amanhã tentam nos convencer de que estamos sós na travessia. Mas Davi, escrevendo o Salmo 55 debaixo da dor aguda de uma traição, tomou uma decisão cirúrgica: ele não fingiu força; ele arremessou o peso nos braços de Deus.
+                            </p>
+                            <p>
+                                A promessa divina não é de mágica instantânea, mas de sustento estrutural contínuo. Ele não prometeu a ausência de atrito no mundo, mas garantiu ser a coluna inabalável que impede a sua vida de entrar em colapso.
+                            </p>
+                            <p>
+                                Talvez hoje você tenha acordado com o peito apertado, tentando calcular como resolver tudo na força do próprio braço. O Pai está convidando você a dar um basta na ilusão do controle. Faça o seu melhor com seriedade, mas respire fundo e entregue o resultado a Quem tem ombros infinitamente largos para sustentar a sua caminhada.
+                            </p>
+                        </div>
+
+                        <!-- Callout Suave com Aspas Douradas -->
+                        <div class="devocional-quote-callout">
+                            <span class="quote-callout-marks" aria-hidden="true">“</span>
+                            <div class="quote-callout-inner">
+                                <p class="quote-callout-text">Toda Escritura é inspirada por Deus e útil para o ensino, para a repreensão, para a correção, para a educação na justiça.</p>
+                                <span class="quote-callout-cite">2 Timóteo 3:16</span>
+                            </div>
+                        </div>
+
+                        <!-- Card Aplicação Prática com Ramo de Oliveira -->
+                        <div class="devocional-practical-card">
+                            <div class="practical-card-top">
+                                <div class="olive-sprout-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="olive-svg">
+                                        <path d="M12 22v-9c0-3.3 2.7-6 6-6h1"></path>
+                                        <path d="M12 14c-3.3 0-6-2.7-6-6v-1"></path>
+                                        <path d="M12 9c0-3.3 2.7-6 6-6"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="practical-card-title">APLICAÇÃO PRÁTICA</h3>
+                            </div>
+                            <p class="practical-card-prompt" id="devocional-practical-prompt">
+                                Em meio às pressões e incertezas do dia a dia, qual é o fardo específico que você precisa soltar das suas mãos e entregar aos cuidados de Deus hoje?
+                            </p>
+                            <button id="btn-devocional-reflect" class="btn-reflect-action">
+                                <span>Refletir sobre isso</span>
+                                <span class="arrow-gold" aria-hidden="true">→</span>
+                            </button>
+                        </div>
+
+                        <!-- Seção OUTROS ESTUDOS SOBRE SALMOS (3 Cards) -->
+                        <section class="devocional-related-section">
+                            <h3 class="related-section-title">OUTROS ESTUDOS SOBRE SALMOS</h3>
+                            <div class="devocional-mini-cards-grid">
+                                <article class="devocional-mini-card" data-slug="salmo-23" tabindex="0">
+                                    <span class="mini-card-chapter">Salmo 23</span>
+                                    <h4 class="mini-card-title">O Bom Pastor e a provisão na escassez</h4>
+                                    <span class="mini-card-link">Ler estudo <span aria-hidden="true">→</span></span>
+                                </article>
+                                <article class="devocional-mini-card" data-slug="salmo-91" tabindex="0">
+                                    <span class="mini-card-chapter">Salmo 91</span>
+                                    <h4 class="mini-card-title">O refúgio e descanso sob a sombra do Altíssimo</h4>
+                                    <span class="mini-card-link">Ler estudo <span aria-hidden="true">→</span></span>
+                                </article>
+                                <article class="devocional-mini-card" data-slug="salmo-121" tabindex="0">
+                                    <span class="mini-card-chapter">Salmo 121</span>
+                                    <h4 class="mini-card-title">De onde vem o meu socorro nos vales da vida</h4>
+                                    <span class="mini-card-link">Ler estudo <span aria-hidden="true">→</span></span>
+                                </article>
+                            </div>
+                        </section>
+
+                        <!-- Barra de Navegação Inferior -->
+                        <div class="devocional-nav-strip">
+                            <button id="btn-devocional-prev" class="devocional-nav-btn devocional-nav-prev">
+                                <span class="nav-chevron" aria-hidden="true">‹</span>
+                                <span class="nav-label">Estudo Anterior: <strong>Anatomia do texto</strong></span>
+                            </button>
+                            <button id="btn-devocional-next" class="devocional-nav-btn devocional-nav-next">
+                                <span class="nav-label">Próximo Estudo: <strong>A Alegria no Senhor</strong></span>
+                                <span class="nav-chevron" aria-hidden="true">›</span>
+                            </button>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <!-- Toolbar de Compartilhamento -->
+            <footer class="devocional-page-toolbar">
+                <div class="toolbar-hint">
+                    <span class="toolbar-hint-sacred">
+                        <svg class="icon-sacred-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>Devocional diário • Sola Scriptura • 1 Minuto de Edificação</span>
+                    </span>
+                </div>
+                <div class="toolbar-buttons">
+                    <button id="btn-copy-minuto" class="btn btn-minuto-copy" title="Copiar Devocional Formatado">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span>Copiar Mensagem</span>
+                    </button>
+                    <a id="btn-share-whatsapp-minuto" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-minuto-whatsapp">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.15c-.24.67-1.39 1.28-1.92 1.36-.5.08-1.15.11-3.32-.78-2.62-1.08-4.32-3.76-4.45-3.93-.13-.17-1.07-1.42-1.07-2.72s.68-1.93.92-2.19c.24-.26.53-.33.71-.33.18 0 .36 0 .51.01.17.01.39-.06.61.47.23.54.78 1.9.85 2.04.07.15.12.33.02.53-.1.2-.15.33-.3.51-.15.17-.32.39-.46.52-.15.15-.31.31-.13.62.18.31.79 1.31 1.7 2.11 1.17 1.04 2.15 1.37 2.46 1.52.31.15.49.13.67-.08.18-.21.78-.91.99-1.22.21-.31.42-.26.71-.15.29.11 1.84.87 2.16 1.03.32.16.53.24.61.37.08.13.08.77-.16 1.44z"></path>
+                        </svg>
+                        <span>Enviar no WhatsApp</span>
+                    </a>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Visão 3: Leitor Canônico da Bíblia Sagrada -->
+        <div id="view-biblia" class="tab-view-container tab-view-biblia" role="tabpanel" aria-labelledby="tab-btn-biblia" style="display: none;">
+            
+            <!-- Hero Sutil do Leitor Bíblico -->
+            <header class="bible-view-header">
+                <div class="bible-header-inner">
+                    <span class="bible-header-kicker">CANON SACRO & TEXTO INTEGRAL</span>
+                    <h1 class="bible-header-title">Santa Bíblia</h1>
+                    <p class="bible-header-subtitle">Leitura contínua dos 66 livros canônicos do Antigo e Novo Testamento</p>
+                </div>
+            </header>
+
+            <!-- Barra de Controles e Seleção de Texto (Sticky / Flutuante) -->
+            <div class="bible-controls-bar" id="bible-controls">
+                <div class="bible-controls-left">
+                    <div class="bible-select-field">
+                        <label for="bible-select-livro" class="bible-select-label">Livro</label>
+                        <select id="bible-select-livro" class="bible-select" aria-label="Selecionar Livro"></select>
                     </div>
 
-                    <!-- Card Informativo Teológico -->
-                    <div class="info-card">
-                        <h3 class="info-card-title">📖 Sobre o Projeto</h3>
-                        <p class="info-card-text">
-                            Desenvolvido para resgatar a profundidade da <strong>teologia expositiva reformada</strong> conectada aos versículos diários, gerando alimento sólido com aplicação prática e cristocêntrica.
-                        </p>
-                        <div class="info-badges">
-                            <span class="pill">Sola Gratia</span>
-                            <span class="pill">Solus Christus</span>
-                            <span class="pill">Soli Deo Gloria</span>
+                    <div class="bible-select-field">
+                        <label for="bible-select-capitulo" class="bible-select-label">Capítulo</label>
+                        <select id="bible-select-capitulo" class="bible-select bible-select-short" aria-label="Selecionar Capítulo"></select>
+                    </div>
+
+                    <div class="bible-select-field">
+                        <span class="bible-select-label">Versão</span>
+                        <div class="bible-version-fixed-pill" title="Texto canônico traduzido na Nova Versão Internacional">
+                            <span class="version-fixed-tag">NVI</span>
+                            <span class="version-fixed-name">Nova Versão Internacional</span>
                         </div>
                     </div>
                 </div>
-            </aside>
-        </main>
 
-        <!-- Rodapé Nobre com Selo Teológico da Reforma -->
-        <footer class="main-footer" id="main-footer">
-            <div class="footer-seal">
-                <span class="seal-icon" aria-hidden="true">✦</span>
-                <span class="seal-latin">VERBUM DOMINI MANET IN AETERNUM</span>
-                <span class="seal-verse">(1 Pedro 1:25)</span>
+                <div class="bible-controls-right">
+                    <div class="bible-zoom-controls" title="Ajustar tamanho da fonte para leitura">
+                        <button id="btn-bible-zoom-out" class="bible-zoom-btn" aria-label="Diminuir fonte">A-</button>
+                        <span id="bible-zoom-level" class="bible-zoom-text">100%</span>
+                        <button id="btn-bible-zoom-in" class="bible-zoom-btn" aria-label="Aumentar fonte">A+</button>
+                    </div>
+
+                    <button id="btn-bible-highlights" class="btn btn-bible-action" title="Ver meus versículos marcados">
+                        <svg class="icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <span>Marcados (<span id="bible-highlights-count">0</span>)</span>
+                    </button>
+                </div>
             </div>
-            <div class="footer-content">
-                <p class="footer-verse"><em>“Acima de tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.”</em></p>
-                <p class="footer-sub">Projeto Bíblia & Teologia Expositiva • Sola Scriptura • Soli Deo Gloria</p>
+
+            <!-- Canvas de Leitura do Texto Bíblico -->
+            <div class="bible-reading-wrapper">
+                <article class="bible-reading-canvas" id="bible-reading-canvas">
+                    <div class="bible-chapter-headline-block">
+                        <span id="bible-badge-testamento" class="bible-testament-badge">ANTIGO TESTAMENTO</span>
+                        <h2 id="bible-chapter-heading" class="bible-chapter-heading">Salmos 55</h2>
+                        <span id="bible-badge-versao" class="bible-edition-badge">NOVA VERSÃO INTERNACIONAL (NVI)</span>
+                    </div>
+
+                    <div id="bible-verses-list" class="bible-verses-list">
+                        <!-- Versículos gerados dinamicamente via bible-data.js -->
+                    </div>
+
+                    <div class="bible-chapter-footer-nav">
+                        <button id="btn-bible-prev-cap" class="btn-chapter-nav">
+                            <span class="nav-arrow">‹</span>
+                            <span class="nav-text" id="bible-prev-cap-label">Capítulo Anterior</span>
+                        </button>
+                        <div class="bible-chapter-badge-num" id="bible-current-pos-label">Salmos 55 de 150</div>
+                        <button id="btn-bible-next-cap" class="btn-chapter-nav">
+                            <span class="nav-text" id="bible-next-cap-label">Próximo Capítulo</span>
+                            <span class="nav-arrow">›</span>
+                        </button>
+                    </div>
+                </article>
             </div>
-        </footer>
+        </div>
+
     </div>
 
     <!-- Gaveta Lateral de Histórico (Drawer) -->
@@ -293,8 +642,56 @@
         </div>
     </aside>
 
-    <!-- Script de Dados e Aplicação -->
-    <script src="data.js"></script>
-    <script src="app.js"></script>
+    <!-- Gaveta Lateral de Versículos Marcados (Drawer Pessoal) -->
+    <div id="drawer-highlights-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+    <aside id="highlights-drawer" class="historico-drawer highlights-drawer" aria-hidden="true">
+        <div class="drawer-header">
+            <div class="drawer-title-box">
+                <span class="badge badge-gold">Devocional Pessoal</span>
+                <h2 class="drawer-title">✨ Meus Versículos Marcados</h2>
+            </div>
+            <button id="btn-close-highlights-drawer" class="btn-close-drawer" aria-label="Fechar Versículos Marcados">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <div class="highlights-drawer-filter-bar">
+                <span class="filter-label">Filtrar por cor:</span>
+                <div class="filter-pills" id="highlights-filter-pills">
+                    <button class="filter-pill is-active" data-filter="todas">Todas</button>
+                    <button class="filter-pill pill-ouro" data-filter="ouro" title="Ouro Imperial">Ouro</button>
+                    <button class="filter-pill pill-verde" data-filter="verde" title="Verde Oliva">Verde</button>
+                    <button class="filter-pill pill-safira" data-filter="safira" title="Safira Celestial">Safira</button>
+                    <button class="filter-pill pill-purpura" data-filter="purpura" title="Púrpura Real">Púrpura</button>
+                    <button class="filter-pill pill-coral" data-filter="coral" title="Coral">Coral</button>
+                </div>
+            </div>
+            <div id="highlights-drawer-list" class="highlights-drawer-list"></div>
+        </div>
+    </aside>
+
+    <!-- Popover Flutuante de Cores para Marcação de Versículo -->
+    <div id="verse-highlight-popover" class="verse-highlight-popover" style="display: none;" role="dialog" aria-label="Marcar Versículo">
+        <div class="popover-arrow"></div>
+        <div class="popover-content">
+            <span class="popover-label">Marcar versículo:</span>
+            <div class="color-options-row">
+                <button type="button" class="color-dot-btn dot-ouro" data-color="ouro" title="Ouro Imperial (Promessas / Glória)"></button>
+                <button type="button" class="color-dot-btn dot-verde" data-color="verde" title="Verde Oliva (Vida / Obediência)"></button>
+                <button type="button" class="color-dot-btn dot-safira" data-color="safira" title="Safira Celestial (Paz / Graça)"></button>
+                <button type="button" class="color-dot-btn dot-purpura" data-color="purpura" title="Púrpura Real (Soberania / Santidade)"></button>
+                <button type="button" class="color-dot-btn dot-coral" data-color="coral" title="Coral (Exortação / Advertência)"></button>
+                <button type="button" class="color-dot-btn dot-remover" data-color="none" title="Remover Marcação">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de Dados Bíblicos Canônicos, Estudos e Aplicação -->
+    <script src="bible-data.js?v=2.4"></script>
+    <script src="data.js?v=2.1"></script>
+    <script src="app.js?v=2.9"></script>
 </body>
 </html>

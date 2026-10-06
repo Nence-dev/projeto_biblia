@@ -17,70 +17,70 @@
     --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Modo Escuro (Obsidian & Ouro Real - Padrão) */
+/* Modo Escuro (Códice Noturno & Couro Antigo - Padrão) */
 [data-theme="dark"] {
-    --bg-primary: #0a0d13;
-    --bg-surface: #121822;
-    --bg-surface-elevated: #18202e;
-    --bg-surface-hover: #1e283a;
-    --border-subtle: rgba(255, 255, 255, 0.07);
-    --border-accent: rgba(212, 175, 55, 0.25);
-    --border-gold-glow: rgba(212, 175, 55, 0.4);
+    --bg-primary: #120e0b;
+    --bg-surface: #1a1510;
+    --bg-surface-elevated: #241d16;
+    --bg-surface-hover: #2e251d;
+    --border-subtle: rgba(212, 175, 55, 0.12);
+    --border-accent: rgba(184, 134, 11, 0.32);
+    --border-gold-glow: rgba(184, 134, 11, 0.2);
 
-    --text-primary: #f3f6fa;
-    --text-secondary: #a3b1c6;
-    --text-muted: #687994;
+    --text-primary: #ece4d8;
+    --text-secondary: #baa994;
+    --text-muted: #847462;
 
-    --accent-gold: #e0b043;
-    --accent-gold-hover: #f3c45b;
-    --accent-gold-subtle: rgba(224, 176, 67, 0.12);
-    --accent-emerald: #10b981;
-    --accent-emerald-subtle: rgba(16, 185, 129, 0.15);
+    --accent-gold: #cfa138;
+    --accent-gold-hover: #e2b44c;
+    --accent-gold-subtle: rgba(207, 161, 56, 0.12);
+    --accent-emerald: #2d7a52;
+    --accent-emerald-subtle: rgba(45, 122, 82, 0.15);
 
-    /* Ciano & Safira Celestial (Destaque de Comparações Bíblicas) */
-    --accent-cyan: #38bdf8;
-    --accent-cyan-hover: #0ea5e9;
-    --accent-cyan-subtle: rgba(56, 189, 248, 0.12);
-    --accent-cyan-glow: rgba(56, 189, 248, 0.35);
-    --accent-sapphire: #818cf8;
-    --accent-sapphire-subtle: rgba(129, 140, 248, 0.15);
+    /* Tons de latão antigo e vinho sacramental (Sem Neon / Ciano) */
+    --accent-cyan: #b8860b;
+    --accent-cyan-hover: #d4af37;
+    --accent-cyan-subtle: rgba(184, 134, 11, 0.12);
+    --accent-cyan-glow: rgba(184, 134, 11, 0.15);
+    --accent-sapphire: #8a3324;
+    --accent-sapphire-subtle: rgba(138, 51, 36, 0.15);
 
-    --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
-    --shadow-elevated: 0 20px 45px -15px rgba(0, 0, 0, 0.8);
-    --navbar-glass: rgba(10, 13, 19, 0.85);
+    --shadow-soft: 0 4px 16px rgba(10, 7, 5, 0.45);
+    --shadow-elevated: 0 10px 28px rgba(10, 7, 5, 0.65);
+    --navbar-glass: rgba(18, 14, 11, 0.94);
 }
 
 /* Modo Pergaminho Clássico (Light Mode Editorial) */
 [data-theme="light"] {
-    --bg-primary: #f7f4ec;
-    --bg-surface: #ffffff;
-    --bg-surface-elevated: #f0ebd9;
-    --bg-surface-hover: #ebe4cf;
-    --border-subtle: rgba(40, 30, 10, 0.08);
-    --border-accent: rgba(168, 122, 28, 0.3);
-    --border-gold-glow: rgba(168, 122, 28, 0.45);
+    --bg-primary: #f5efe6;
+    --bg-surface: #fbf8f2;
+    --bg-surface-elevated: #ede3d2;
+    --bg-surface-hover: #e4d8c3;
+    --border-subtle: rgba(90, 60, 25, 0.12);
+    --border-accent: rgba(140, 95, 25, 0.3);
+    --border-gold-glow: rgba(140, 95, 25, 0.18);
 
-    --text-primary: #1e2229;
-    --text-secondary: #4a5468;
-    --text-muted: #768399;
+    --text-primary: #261e19;
+    --text-secondary: #574636;
+    --text-muted: #8c7660;
 
-    --accent-gold: #a67615;
-    --accent-gold-hover: #bd8718;
-    --accent-gold-subtle: rgba(166, 118, 21, 0.1);
-    --accent-emerald: #059669;
-    --accent-emerald-subtle: rgba(5, 150, 105, 0.12);
+    --accent-gold: #966f1e;
+    --accent-gold-hover: #ad8328;
+    --accent-gold-subtle: rgba(150, 111, 30, 0.1);
+    --accent-emerald: #1e5a38;
+    --accent-emerald-subtle: rgba(30, 90, 56, 0.1);
 
-    /* Ciano & Safira em Fundo Claro */
-    --accent-cyan: #0284c7;
-    --accent-cyan-hover: #0369a1;
-    --accent-cyan-subtle: rgba(2, 132, 199, 0.1);
-    --accent-cyan-glow: rgba(2, 132, 199, 0.25);
-    --accent-sapphire: #4f46e5;
-    --accent-sapphire-subtle: rgba(79, 70, 229, 0.08);
+    /* Terracota e couro envelhecido no modo claro (Sem Ciano) */
+    --accent-cyan: #7c2d12;
+    --accent-cyan-hover: #9a3412;
+    --accent-cyan-subtle: rgba(124, 45, 18, 0.08);
+    --accent-cyan-glow: rgba(124, 45, 18, 0.12);
+    --accent-sapphire: #6b21a8;
+    --accent-sapphire-subtle: rgba(107, 33, 168, 0.08);
 
-    --shadow-soft: 0 10px 30px -10px rgba(60, 45, 20, 0.12);
-    --shadow-elevated: 0 20px 40px -15px rgba(60, 45, 20, 0.18);
-    --navbar-glass: rgba(247, 244, 236, 0.9);
+    --shadow-soft: 0 4px 14px rgba(45, 30, 15, 0.07);
+    --shadow-elevated: 0 8px 22px rgba(45, 30, 15, 0.12);
+    --navbar-glass: rgba(245, 239, 230, 0.95);
 }
 
 /* Reset Básico */
@@ -88,6 +88,103 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* =====================================================================
+   IMPECCABLE CRAFT FLOOR: SUPERFÍCIES DO NAVEGADOR & ACABAMENTO
+   ===================================================================== */
+
+/* Seleção de Texto Temática (Pergaminho & Âmbar / Ébano) */
+::selection {
+    background: rgba(212, 175, 55, 0.32);
+    color: var(--text-primary);
+}
+
+::-moz-selection {
+    background: rgba(212, 175, 55, 0.32);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] ::selection {
+    background: #e9d5a1;
+    color: #1e150b;
+}
+
+[data-theme="light"] ::-moz-selection {
+    background: #e9d5a1;
+    color: #1e150b;
+}
+
+/* Barra de Rolagem Clássica em Latão & Couro */
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-accent);
+    border-radius: 6px;
+    border: 2px solid var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-gold);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-accent) var(--bg-primary);
+}
+
+/* Foco Visível Nítido e Acessível (Sem anel azul padrão) */
+*:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 3px;
+}
+
+/* Ícones de Navegação e Títulos Autorais */
+.icon-tab {
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    vertical-align: middle;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+.icon-title {
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    vertical-align: middle;
+    stroke: var(--accent-gold);
+    flex-shrink: 0;
+}
+
+.icon-sacred-mini {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    stroke: var(--accent-gold);
+    opacity: 0.85;
+}
+
+.toolbar-hint-sacred {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.devotional-title,
+.info-card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
 }
 
 body {
@@ -215,10 +312,34 @@ body {
     align-items: center;
 }
 
-.brand {
+.brand,
+.brand-link {
     display: flex;
     align-items: center;
     gap: 0.85rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand-badge-box {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-surface-elevated);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+}
+
+.brand-cross {
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+    font-family: var(--font-serif);
+    line-height: 1;
+    transform: translateY(-1px);
 }
 
 .brand-icon {
@@ -234,6 +355,11 @@ body {
     border: 1px solid var(--border-accent);
 }
 
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
 .brand-title {
     display: block;
     font-family: var(--font-display);
@@ -241,14 +367,105 @@ body {
     letter-spacing: 0.15em;
     font-weight: 700;
     color: var(--text-primary);
+    line-height: 1.15;
 }
 
 .brand-subtitle {
     display: block;
-    font-size: 0.72rem;
-    letter-spacing: 0.05em;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
     color: var(--text-muted);
     text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* Navegação Central com Indicador Dourado */
+.navbar-center-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navbar-center-nav .nav-link {
+    background: transparent;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.4rem 0.2rem;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.navbar-center-nav .nav-link:hover {
+    color: var(--text-primary);
+}
+
+.navbar-center-nav .nav-link.is-active {
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.navbar-center-nav .nav-link.is-active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-gold);
+    border-radius: 1px;
+}
+
+/* Grupo Direito: Busca Pílula + Ações */
+.navbar-right-group {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.navbar-search-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    padding: 0.4rem 0.95rem;
+    width: 220px;
+    transition: all var(--transition-fast);
+}
+
+.navbar-search-pill:focus-within {
+    border-color: var(--border-accent);
+    background: var(--bg-surface-elevated);
+    width: 250px;
+    box-shadow: 0 0 0 1px var(--accent-gold-subtle);
+}
+
+.navbar-search-pill .search-icon {
+    width: 14px;
+    height: 14px;
+    stroke: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.navbar-search-pill input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    width: 100%;
+}
+
+.navbar-search-pill input::placeholder {
+    color: var(--text-muted);
+    font-size: 0.78rem;
 }
 
 .navbar-actions {
@@ -296,15 +513,66 @@ body {
 [data-theme="light"] .icon-sun { display: none; }
 [data-theme="light"] .icon-moon { display: block; }
 
+/* Seletor de Modo na Navbar (Estudo Expositivo vs. Minuto com Deus) */
+.navbar-mode-switch {
+    display: inline-flex;
+    align-items: center;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-full);
+    padding: 3px;
+    gap: 3px;
+    box-shadow: var(--shadow-soft);
+}
+
+.navbar-mode-switch .mode-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    padding: 0.44rem 0.92rem;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: var(--font-sans);
+    letter-spacing: 0.01em;
+}
+
+.navbar-mode-switch .mode-tab-btn .tab-icon {
+    font-size: 0.92rem;
+    line-height: 1;
+}
+
+.navbar-mode-switch .mode-tab-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-surface-hover);
+}
+
+.navbar-mode-switch .mode-tab-btn.is-active {
+    color: #ffffff;
+    background: linear-gradient(135deg, #7c3a0e, #542507);
+    border-color: rgba(212, 175, 55, 0.4);
+    box-shadow: 0 2px 6px rgba(35, 15, 5, 0.4);
+}
+
+[data-theme="light"] .navbar-mode-switch .mode-tab-btn.is-active {
+    color: #fffaf0;
+    background: linear-gradient(135deg, #8a4816, #5f2f0a);
+}
+
 /* =====================================================================
    LAYOUT PRINCIPAL
    ===================================================================== */
 .layout-wrapper {
     position: relative;
     z-index: 1;
-    max-width: 1280px;
+    width: 100%;
     margin: 0 auto;
-    padding: 2.5rem 1.5rem 5rem;
+    padding: 0;
 }
 
 /* =====================================================================
@@ -562,54 +830,135 @@ body {
 }
 
 /* =====================================================================
-   CARDS DE ESTUDO TEOLÓGICO
+   TRATADO TEOLÓGICO CONTÍNUO (CÓDICE DE ESTUDO CLÁSSICO - SEM BENTO GRID)
    ===================================================================== */
-.study-article {
+.study-article,
+.study-article.study-codex-volume {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-elevated);
+    padding: 3.2rem 3rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+    gap: 0;
 }
 
+[data-theme="light"] .study-article,
+[data-theme="light"] .study-article.study-codex-volume {
+    background: #fbf8f2;
+    border-color: rgba(140, 95, 25, 0.28);
+    box-shadow: 0 12px 35px -8px rgba(45, 30, 15, 0.12);
+}
+
+/* Moldura de fólio antigo no topo e rodapé do volume */
+.study-article::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.study-section {
+    position: relative;
+    width: 100%;
+}
+
+/* Cabeçalho de Capítulo Clássico */
+.section-chapter-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.4rem;
+}
+
+.chapter-roman {
+    font-family: var(--font-display, "Cinzel", serif);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    display: inline-block;
+}
+
+.section-chapter-title {
+    font-family: var(--font-display, "Cinzel", serif);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--text-primary);
+    line-height: 1.35;
+    margin: 0;
+}
+
+.section-prose {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    max-width: 72ch;
+}
+
+.section-prose em {
+    color: var(--accent-gold);
+    font-style: italic;
+    font-weight: 600;
+}
+
+.section-prose strong {
+    color: var(--text-primary);
+}
+
+.section-prose p {
+    margin-bottom: 1.25rem;
+}
+
+.section-prose p:last-child {
+    margin-bottom: 0;
+}
+
+/* Divisores Sacros com Florão */
+.sacred-chapter-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin: 2.6rem 0;
+    color: var(--accent-gold);
+    opacity: 0.65;
+}
+
+.sacred-chapter-divider .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
+}
+
+.sacred-chapter-divider .divider-fluron {
+    font-size: 1.15rem;
+    color: var(--accent-gold);
+    line-height: 1;
+    user-select: none;
+}
+
+/* Compatibilidade retroativa neutra caso classes antigas existam */
 .study-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    padding: 2.25rem;
-    box-shadow: var(--shadow-soft);
-    transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    margin-bottom: 0;
 }
 
 .study-card:hover {
-    border-color: var(--border-accent);
-    transform: translateY(-2px);
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.4rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-subtle);
-}
-
-.card-num {
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: var(--accent-gold);
-    background: var(--accent-gold-subtle);
-    padding: 0.25rem 0.6rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-accent);
-}
-
-.card-title {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--text-primary);
+    border-color: transparent;
+    transform: none;
 }
 
 .card-body {
@@ -1382,25 +1731,22 @@ body.zen-mode .content-grid {
 }
 
 /* =====================================================================
-   CAIXA DE COMPARAÇÃO EXEGÉTICA DE VERSÕES (DESIGN PADRÃO EDITORIAL)
+   CAIXA DE COMPARAÇÃO EXEGÉTICA DE VERSÕES (SOLA SCRIPTURA / OURO VELHO)
+   Design sóbrio, acadêmico e reverente de Bíblia de Estudo Clássica
    ===================================================================== */
 .comparacao-container {
-    margin: 2rem 0;
+    margin: 2.25rem 0;
 }
 
 .translation-comparison-card {
-    background: var(--bg-surface-elevated);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
+    background: #14100c;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: var(--radius-md, 12px);
     padding: 1.85rem;
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
     position: relative;
     overflow: hidden;
-    transition: border-color var(--transition-smooth);
-}
-
-.translation-comparison-card:hover {
-    border-color: var(--border-accent);
+    transition: border-color var(--transition-smooth, 0.25s ease);
 }
 
 .translation-comparison-card::before {
@@ -1409,8 +1755,8 @@ body.zen-mode .content-grid {
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.6) 50%, rgba(212, 175, 55, 0.15) 100%);
 }
 
 .comparison-card-header {
@@ -1423,21 +1769,23 @@ body.zen-mode .content-grid {
 .comparison-header-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: var(--accent-gold-subtle);
+    gap: 0.55rem;
+    background: rgba(212, 175, 55, 0.08);
     color: var(--accent-gold);
-    border: 1px solid var(--border-accent);
+    border: 1px solid rgba(212, 175, 55, 0.3);
     padding: 0.4rem 0.95rem;
-    border-radius: var(--radius-full);
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
+    border-radius: 9999px;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
 .comparison-header-badge svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
+    color: var(--accent-gold);
 }
 
 .comparison-grid {
@@ -1460,30 +1808,30 @@ body.zen-mode .content-grid {
 }
 
 .comparison-column {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    padding: 1.35rem;
+    background: #1a1510;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    padding: 1.4rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: all var(--transition-fast);
+    transition: all 0.2s ease;
 }
 
 .comparison-column:hover {
-    border-color: var(--border-accent);
+    border-color: rgba(212, 175, 55, 0.45);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .comparison-column.col-original {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
+    background: #18130e;
+    border-color: rgba(212, 175, 55, 0.24);
 }
 
 .comparison-column.col-original:hover {
-    border-color: var(--border-accent);
-    box-shadow: var(--shadow-soft);
+    border-color: var(--accent-gold);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 .col-header {
@@ -1492,15 +1840,15 @@ body.zen-mode .content-grid {
     gap: 0.35rem;
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border-subtle);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .version-tag {
     font-family: var(--font-display);
-    font-size: 0.9rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    color: var(--text-primary);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #f7eedf;
 }
 
 .version-tag.original-tag {
@@ -1508,11 +1856,12 @@ body.zen-mode .content-grid {
 }
 
 .emphasis-tag {
-    font-size: 0.75rem;
-    color: var(--text-muted);
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    color: #a89885;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
 }
 
 .comparison-quote-box {
@@ -1522,86 +1871,110 @@ body.zen-mode .content-grid {
 
 .comparison-text {
     font-family: var(--font-serif);
-    font-size: 1.28rem;
+    font-size: 1.18rem;
     font-style: italic;
-    line-height: 1.55;
-    color: var(--text-primary);
+    line-height: 1.7;
+    color: #eae1d3;
+    margin: 0;
 }
 
+.comparison-text.original-text {
+    color: #f7eedf;
+}
+
+[data-theme="light"] .comparison-text.original-text {
+    color: #4a2c11;
+}
 
 .comparison-focus-box {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: var(--radius-sm);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-left: 3px solid rgba(212, 175, 55, 0.4);
+    border-radius: 6px;
     padding: 0.65rem 0.85rem;
-    font-size: 0.82rem;
-    line-height: 1.45;
-    border-left: 3px solid var(--border-accent);
+    font-size: 0.84rem;
+    line-height: 1.5;
 }
 
 .comparison-focus-box.original-focus-box {
     border-left-color: var(--accent-gold);
-    background: var(--accent-gold-subtle);
+    background: rgba(212, 175, 55, 0.06);
 }
 
 .focus-label {
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-weight: 700;
     color: var(--accent-gold);
     margin-right: 0.35rem;
     text-transform: uppercase;
-    font-size: 0.72rem;
-    letter-spacing: 0.05em;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
 }
 
 .focus-desc {
-    color: var(--text-secondary);
+    color: #c9bdaf;
 }
 
-/* Divisor Visual VS */
+/* Divisor Visual VS Clássico */
 .comparison-divider {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.35rem;
+    gap: 0.25rem;
+    padding: 0 0.35rem;
 }
 
-.divider-icon {
-    font-size: 1.25rem;
+.divider-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #14100c;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--accent-gold);
-}
-
-.divider-label {
     font-family: var(--font-display);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Síntese Hermenêutica */
+/* Síntese Hermenêutica / Nota de Estudo */
 .comparison-synthesis-box {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    padding: 1.15rem 1.35rem;
+    background: #18130e;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    padding: 1.25rem 1.45rem;
     border-left: 3px solid var(--accent-gold);
 }
 
 .synthesis-header {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-bottom: 0.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.synthesis-icon {
     font-size: 0.85rem;
     color: var(--accent-gold);
-    margin-bottom: 0.4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
 }
 
 .synthesis-text {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
+    font-family: var(--font-serif);
+    font-size: 0.98rem;
+    color: #e5dac9;
+    line-height: 1.7;
+    margin: 0;
 }
 
 /* =====================================================================
@@ -1782,5 +2155,3189 @@ body.zen-mode .content-grid {
     height: 12px;
     vertical-align: middle;
     margin-right: 4px;
+}
+
+/* ==========================================================================
+   NAVEGAÇÃO POR ABAS: ESTUDO EXPOSITIVO & CAFÉ COM DEUS PAI
+   ========================================================================== */
+
+.mode-navigation-bar {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0 2rem 0;
+    width: 100%;
+}
+
+.tabs-segmented-control {
+    display: inline-flex;
+    background: var(--bg-surface-elevated, rgba(18, 24, 38, 0.7));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle, rgba(224, 176, 67, 0.2));
+    border-radius: var(--radius-full, 9999px);
+    padding: 0.35rem;
+    gap: 0.35rem;
+    box-shadow: 0 8px 30px -6px rgba(0, 0, 0, 0.35);
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.mode-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.65rem 1.4rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-full, 9999px);
+    color: var(--text-secondary, #94a3b8);
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    position: relative;
+    user-select: none;
+}
+
+.mode-tab-btn .tab-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: transform 0.25s ease;
+}
+
+.mode-tab-btn .tab-label {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.mode-tab-btn .tab-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.18rem 0.6rem;
+    border-radius: var(--radius-full, 9999px);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-muted, #64748b);
+    transition: all 0.25s ease;
+    letter-spacing: 0.02em;
+}
+
+.mode-tab-btn:hover {
+    color: var(--text-primary, #f8fafc);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.mode-tab-btn:hover .tab-icon {
+    transform: scale(1.15);
+}
+
+/* Estado Ativo: Estudo Expositivo */
+#tab-btn-estudo.is-active {
+    background: linear-gradient(135deg, rgba(224, 176, 67, 0.18), rgba(224, 176, 67, 0.08));
+    color: var(--accent-gold, #e0b043);
+    border-color: rgba(224, 176, 67, 0.4);
+    box-shadow: 0 4px 15px -2px rgba(224, 176, 67, 0.25);
+}
+
+#tab-btn-estudo.is-active .tab-badge {
+    background: rgba(224, 176, 67, 0.2);
+    color: var(--accent-gold, #e0b043);
+}
+
+/* Estado Ativo: Café com Deus Pai (Tons Nobres de Café & Papiro Fosco Seco) */
+#tab-btn-cafe.is-active {
+    background: linear-gradient(135deg, rgba(120, 80, 40, 0.22), rgba(60, 40, 20, 0.2));
+    color: var(--accent-gold, #c9ad76);
+    border-color: rgba(180, 140, 80, 0.35);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#tab-btn-cafe.is-active .tab-badge {
+    background: rgba(180, 140, 80, 0.2);
+    color: #dfcaa0;
+}
+
+/* Transição de visualização das abas */
+.tab-view-container {
+    animation: tabFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tabFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   EXPERIÊNCIA: MINUTO COM DEUS (DEVOCIONAL ESTILO FOLHA DE LIVRO IMPRESSO SECO)
+   ========================================================================== */
+
+.tab-view-minuto {
+    width: 100%;
+}
+
+.minuto-book-canvas {
+    max-width: 940px;
+    margin: 1rem auto 3.5rem auto;
+    padding: 0 0.5rem;
+}
+
+/* O corpo da folha de livro impresso com acabamento seco e tátil */
+.minuto-book-page {
+    position: relative;
+    background: #faf7f0;
+    border: 1px solid #dfd3c3;
+    border-radius: 8px;
+    padding: 2.2rem 2.8rem 2rem 2.8rem;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.03),
+        0 14px 30px -10px rgba(50, 35, 20, 0.09);
+    color: #2b231c;
+    transition: all 0.3s ease;
+}
+
+/* Modo Noturno: Encadernação Nobre e Papel Sépia Escuro Fosco (ZERO NEON) */
+[data-theme="dark"] .minuto-book-page,
+body:not([data-theme="light"]) .minuto-book-page {
+    background: #171411;
+    border: 1px solid #362c20;
+    box-shadow: 
+        0 14px 35px -8px rgba(0, 0, 0, 0.75),
+        inset 0 0 70px rgba(0, 0, 0, 0.45);
+    color: #ece3d3;
+}
+
+/* Cabeçalho da Folha: Data Compacta à Esquerda | Título em Caixa Alta à Direita */
+.minuto-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid rgba(180, 140, 80, 0.2);
+}
+
+.minuto-header-date {
+    font-family: var(--font-display, "Inter", sans-serif);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6a441e;
+}
+
+[data-theme="dark"] .minuto-header-date,
+body:not([data-theme="light"]) .minuto-header-date {
+    color: #c9ad76;
+}
+
+.minuto-header-title {
+    font-family: var(--font-serif, "Cinzel", "Playfair Display", Georgia, serif);
+    font-size: 1.65rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin: 0;
+    color: #432810;
+}
+
+[data-theme="dark"] .minuto-header-title,
+body:not([data-theme="light"]) .minuto-header-title {
+    color: #dfcaa0;
+}
+
+/* Grade Editorial: Sidebar Esquerda 290px + Coluna de História */
+.minuto-editorial-grid {
+    display: grid;
+    grid-template-columns: 290px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-top: 0;
+}
+
+/* Sidebar Esquerda (Relógio de Bolso no topo + Card Arqueado + Anotações) */
+.minuto-sidebar-col {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+}
+
+/* ==========================================================================
+   RELÓGIO DE BOLSO ANTIGO ABERTO (HUNTER CASE POCKET WATCH COM TAMPA GRAVADA)
+   ========================================================================== */
+.minuto-pocket-watch-wrap {
+    width: 100%;
+    max-width: 290px;
+    margin: 0 auto 1.35rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pocket-watch-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+}
+
+/* Elementos do SVG do Relógio de Bolso: Gravura em Latão Fosco e Aço */
+.pw-metal-rim {
+    fill: #3b2816;
+    stroke: #876231;
+    stroke-width: 2;
+}
+
+.pw-engraved-stroke {
+    stroke: #9d753d;
+    opacity: 0.7;
+}
+
+.pw-metal-hatch {
+    fill: #22160b;
+    stroke: #5e4120;
+    stroke-width: 1.2;
+}
+
+.pw-lid-plate {
+    fill: #1d1209;
+    stroke: #785226;
+    stroke-width: 1.5;
+}
+
+.pw-flourish {
+    stroke: #c29d60;
+    opacity: 0.85;
+}
+
+.pw-flourish-dot {
+    fill: #c29d60;
+}
+
+.pw-txt-minuto {
+    font-family: var(--font-display, "Inter", sans-serif);
+    font-size: 8.5px;
+    font-weight: 800;
+    letter-spacing: 2.2px;
+    fill: #e8d3b0;
+}
+
+.pw-txt-com {
+    font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+    font-size: 9px;
+    font-style: italic;
+    fill: #c9ad76;
+}
+
+.pw-txt-deus {
+    font-family: var(--font-serif, "Cinzel", Georgia, serif);
+    font-size: 14.5px;
+    font-weight: 900;
+    letter-spacing: 3.5px;
+    fill: #f5ede0;
+}
+
+.pw-hinge-pin {
+    fill: #553c22;
+    stroke: #8c6435;
+    stroke-width: 1;
+}
+
+.pw-bow-ring {
+    stroke: #8c6435;
+}
+
+.pw-crown-knob,
+.pw-neck-stem {
+    fill: #614324;
+    stroke: #8c6435;
+    stroke-width: 1;
+}
+
+.pw-bezel-inner {
+    fill: #24170c;
+    stroke: #5d3f1f;
+    stroke-width: 1;
+}
+
+.pw-dial-face {
+    fill: #f4ecdc; /* pergaminho seco de época */
+    stroke: #80613a;
+    stroke-width: 1.5;
+}
+
+.pw-minute-track line {
+    stroke: #453422;
+}
+
+.pw-roman-numerals text {
+    font-family: var(--font-serif, "Cinzel", Georgia, serif);
+    font-size: 9px;
+    font-weight: 700;
+    fill: #2a1f14;
+}
+
+.pw-hand {
+    fill: #1a120b;
+    stroke: #1a120b;
+    stroke-width: 0.5;
+}
+
+.pw-center-pin {
+    fill: #5a3c1e;
+    stroke: #8c6435;
+    stroke-width: 1;
+}
+
+.pw-center-dot {
+    fill: #d2b27b;
+}
+
+/* Adaptação no Modo Escuro do Relógio de Bolso */
+[data-theme="dark"] .pw-dial-face,
+body:not([data-theme="light"]) .pw-dial-face {
+    fill: #ede4d1;
+    stroke: #725028;
+}
+
+[data-theme="dark"] .pw-roman-numerals text,
+body:not([data-theme="light"]) .pw-roman-numerals text {
+    fill: #261b11;
+}
+
+[data-theme="dark"] .pw-minute-track line,
+body:not([data-theme="light"]) .pw-minute-track line {
+    stroke: #3b2a1a;
+}
+
+/* Moldura Curva Arqueada (Card Lateral Fosco) */
+.minuto-arched-card {
+    border: 1px solid #d8cca4;
+    border-radius: 14px;
+    padding: 1.3rem 1.15rem;
+    background: rgba(248, 244, 235, 0.85);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .minuto-arched-card,
+body:not([data-theme="light"]) .minuto-arched-card {
+    border-color: #362c20;
+    background: rgba(26, 22, 18, 0.75);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+.minuto-quote-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.minuto-quote-body {
+    font-family: var(--font-serif, "Georgia", serif);
+    font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.45;
+    color: #4a2c11;
+    margin: 0;
+}
+
+[data-theme="dark"] .minuto-quote-body,
+body:not([data-theme="light"]) .minuto-quote-body {
+    color: #ece3d3;
+}
+
+.minuto-quote-author {
+    font-family: var(--font-display, sans-serif);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #6a441e;
+    opacity: 0.85;
+}
+
+[data-theme="dark"] .minuto-quote-author,
+body:not([data-theme="light"]) .minuto-quote-author {
+    color: #a89b88;
+}
+
+.minuto-card-divider {
+    height: 1px;
+    background: #e2d7c7;
+}
+
+[data-theme="dark"] .minuto-card-divider,
+body:not([data-theme="light"]) .minuto-card-divider {
+    background: #362c20;
+}
+
+.minuto-meta-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.metric-label {
+    font-family: var(--font-display, sans-serif);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6a441e;
+}
+
+[data-theme="dark"] .metric-label,
+body:not([data-theme="light"]) .metric-label {
+    color: #a89069;
+}
+
+.metric-val {
+    font-family: var(--font-serif, "Cinzel", "Georgia", serif);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #3b230d;
+}
+
+[data-theme="dark"] .metric-val,
+body:not([data-theme="light"]) .metric-val {
+    color: #e0d5c1;
+}
+
+.minuto-meta-reading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.reading-label {
+    font-family: var(--font-display, sans-serif);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6a441e;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+[data-theme="dark"] .reading-label,
+body:not([data-theme="light"]) .reading-label {
+    color: #a89069;
+}
+
+.latin-cross {
+    font-size: 0.9rem;
+    color: #8c5a2b;
+    font-weight: 900;
+    line-height: 1;
+}
+
+[data-theme="dark"] .latin-cross,
+body:not([data-theme="light"]) .latin-cross {
+    color: #c9ad76;
+}
+
+.reading-refs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.15rem;
+}
+
+.reading-ref,
+.reading-ref-item {
+    font-family: var(--font-serif, "Georgia", serif);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38200b;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+}
+
+[data-theme="dark"] .reading-ref,
+body:not([data-theme="light"]) .reading-ref,
+[data-theme="dark"] .reading-ref-item,
+body:not([data-theme="light"]) .reading-ref-item {
+    color: #ece3d3;
+}
+
+/* Bloco de Anotações Pessoais */
+.minuto-notes-block {
+    margin-top: 1.4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.notes-heading {
+    font-family: var(--font-display, sans-serif);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6a441e;
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+}
+
+[data-theme="dark"] .notes-heading,
+body:not([data-theme="light"]) .notes-heading {
+    color: #c9ad76;
+}
+
+.notebook-ruled-box {
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 25px,
+        rgba(150, 110, 60, 0.18) 26px
+    );
+    border-radius: 4px;
+    padding: 0 2px;
+}
+
+[data-theme="dark"] .notebook-ruled-box,
+body:not([data-theme="light"]) .notebook-ruled-box {
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 25px,
+        rgba(180, 140, 80, 0.16) 26px
+    );
+}
+
+.notebook-ruled-textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.88rem;
+    line-height: 26px;
+    padding: 0 4px;
+    color: #2b231c;
+    resize: vertical;
+    outline: none;
+}
+
+[data-theme="dark"] .notebook-ruled-textarea,
+body:not([data-theme="light"]) .notebook-ruled-textarea {
+    color: #ede5d8;
+}
+
+.notebook-ruled-textarea::placeholder {
+    color: rgba(100, 70, 40, 0.55);
+    font-style: italic;
+    font-size: 0.82rem;
+}
+
+[data-theme="dark"] .notebook-ruled-textarea::placeholder,
+body:not([data-theme="light"]) .notebook-ruled-textarea::placeholder {
+    color: rgba(180, 160, 130, 0.45);
+}
+
+.minuto-notes-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+}
+
+.btn-minuto-save {
+    background: #6a441e;
+    color: #f7f2ea;
+    font-size: 0.76rem;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 0.45rem 0.65rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.btn-minuto-save:hover {
+    background: #805426;
+    transform: translateY(-1px);
+}
+
+[data-theme="dark"] .btn-minuto-save,
+body:not([data-theme="light"]) .btn-minuto-save {
+    background: #4a341e;
+    color: #ece3d3;
+    border: 1px solid #6b4d2e;
+}
+
+[data-theme="dark"] .btn-minuto-save:hover,
+body:not([data-theme="light"]) .btn-minuto-save:hover {
+    background: #5b4025;
+}
+
+.minuto-status-msg {
+    font-size: 0.72rem;
+    color: #15803d;
+    font-weight: 600;
+    text-align: center;
+    min-height: 1.1rem;
+}
+
+[data-theme="dark"] .minuto-status-msg,
+body:not([data-theme="light"]) .minuto-status-msg {
+    color: #86efac;
+}
+
+/* Coluna Principal Direita (Versículo do Dia + Texto Devocional) */
+.minuto-story-col {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin-top: 0;
+}
+
+/* Versículo do Topo: Agora integrado no topo da coluna de história */
+.minuto-verse-banner {
+    width: 100%;
+    margin-bottom: 1.6rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px dashed rgba(180, 140, 80, 0.25);
+    text-align: left;
+}
+
+.minuto-verse-quote {
+    font-family: var(--font-serif, "Georgia", "Merriweather", serif);
+    font-style: italic;
+    font-size: 1.12rem;
+    line-height: 1.68;
+    color: #2b231c;
+    margin: 0 0 0.5rem 0;
+}
+
+[data-theme="dark"] .minuto-verse-quote,
+body:not([data-theme="light"]) .minuto-verse-quote {
+    color: #f0e6d6;
+}
+
+.minuto-verse-ref {
+    font-family: var(--font-display, "Inter", sans-serif);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6a441e;
+}
+
+[data-theme="dark"] .minuto-verse-ref,
+body:not([data-theme="light"]) .minuto-verse-ref {
+    color: #c9ad76;
+}
+
+.minuto-story-prose {
+    font-family: var(--font-serif, "Georgia", "Merriweather", serif);
+    font-size: 1.06rem;
+    line-height: 1.8;
+    color: #2b231c;
+}
+
+[data-theme="dark"] .minuto-story-prose,
+body:not([data-theme="light"]) .minuto-story-prose {
+    color: #dfd5c4;
+}
+
+.minuto-story-prose p {
+    margin-bottom: 1.35rem;
+    text-align: justify;
+    hyphens: auto;
+    max-width: 72ch;
+}
+
+.minuto-story-prose p:last-child {
+    margin-bottom: 0;
+}
+
+/* DROP CAP: Primeira letra clássica de livro impresso fosca e seca */
+.minuto-story-prose p:first-of-type::first-letter,
+.minuto-drop-cap {
+    float: left;
+    font-family: var(--font-serif, "Cinzel", "Playfair Display", Georgia, serif);
+    font-size: 4.4rem;
+    line-height: 0.8;
+    padding-top: 4px;
+    padding-right: 14px;
+    padding-bottom: 2px;
+    font-weight: 900;
+    color: #5c3817;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .minuto-story-prose p:first-of-type::first-letter,
+body:not([data-theme="light"]) .minuto-story-prose p:first-of-type::first-letter,
+[data-theme="dark"] .minuto-drop-cap,
+body:not([data-theme="light"]) .minuto-drop-cap {
+    color: #c9ad76;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Ornamento de Rodapé */
+.minuto-page-ornament {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2.2rem 0 1rem 0;
+}
+
+.ornament-ring {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #d4c5b2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(248, 244, 235, 0.6);
+}
+
+[data-theme="dark"] .ornament-ring,
+body:not([data-theme="light"]) .ornament-ring {
+    border-color: #3d3124;
+    background: rgba(26, 22, 18, 0.6);
+}
+
+.ornament-lens {
+    font-size: 0.78rem;
+    color: #6a441e;
+}
+
+[data-theme="dark"] .ornament-lens,
+body:not([data-theme="light"]) .ornament-lens {
+    color: #c9ad76;
+}
+
+/* Barra Inferior da Folha: Ações e Compartilhamento */
+.minuto-page-toolbar {
+    border-top: 1px solid #e7ded1;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+[data-theme="dark"] .minuto-page-toolbar,
+body:not([data-theme="light"]) .minuto-page-toolbar {
+    border-color: #362c20;
+}
+
+.toolbar-hint {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #6a441e;
+    font-style: italic;
+}
+
+[data-theme="dark"] .toolbar-hint,
+body:not([data-theme="light"]) .toolbar-hint {
+    color: #c9ad76;
+}
+
+.toolbar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btn-minuto-copy {
+    background: #6a441e;
+    color: #f7f2ea;
+    padding: 0.6rem 1.15rem;
+    border-radius: var(--radius-full, 9999px);
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-minuto-copy:hover {
+    background: #805426;
+    transform: translateY(-1px);
+}
+
+[data-theme="dark"] .btn-minuto-copy,
+body:not([data-theme="light"]) .btn-minuto-copy {
+    background: #4a341e;
+    color: #ece3d3;
+    border: 1px solid #6b4d2e;
+}
+
+[data-theme="dark"] .btn-minuto-copy:hover,
+body:not([data-theme="light"]) .btn-minuto-copy:hover {
+    background: #5b4025;
+}
+
+.btn-minuto-whatsapp {
+    background: #235c38;
+    color: #f0fdf4;
+    padding: 0.6rem 1.15rem;
+    border-radius: var(--radius-full, 9999px);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-minuto-whatsapp:hover {
+    background: #2e7a4b;
+    transform: translateY(-1px);
+}
+
+/* Responsividade Mobile para Minuto com Deus */
+@media (max-width: 860px) {
+    .minuto-book-page {
+        padding: 1.8rem 1.4rem 1.6rem 1.4rem;
+    }
+
+    .minuto-editorial-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .minuto-sidebar-col {
+        align-items: center;
+        max-width: 290px;
+        margin: 0 auto;
+        width: 100%;
+        gap: 1.25rem;
+    }
+
+    .minuto-pocket-watch-wrap {
+        width: 100%;
+        max-width: 290px;
+        margin: 0 auto;
+    }
+
+    .minuto-arched-card {
+        width: 100%;
+    }
+
+    .minuto-page-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .toolbar-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 540px) {
+    .minuto-header-title {
+        font-size: 1.35rem;
+    }
+
+    .minuto-story-prose {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .minuto-story-prose p:first-of-type::first-letter {
+        font-size: 3.6rem;
+        padding-right: 10px;
+    }
+}
+
+/* ==========================================================================
+   MODO IMERSIVO TOTAL: MINUTO COM DEUS (ATMOSFERA DE LEITURA BÍBLICA CLÁSSICA)
+   ========================================================================== */
+body.is-mode-minuto {
+    background-color: var(--bg-primary);
+    transition: background-color var(--transition-smooth);
+}
+
+body.is-mode-minuto .layout-wrapper {
+    padding-top: 1.25rem;
+    max-width: 980px;
+}
+
+body.is-mode-minuto .sacred-manuscript-bg {
+    opacity: 0.9;
+}
+
+body.is-mode-minuto .navbar {
+    border-bottom-color: var(--border-accent);
+}
+
+@media (max-width: 960px) {
+    .navbar-container {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    .navbar-actions {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .navbar-mode-switch {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   DESIGN EDITORIAL SOLA SCRIPTURA (INSPIRADO NA REFERÊNCIA CINEMATOGRÁFICA)
+   ========================================================================== */
+
+/* 1. Hero Cinematográfico (Bíblia nas Montanhas ao Entardecer) */
+.editorial-hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    background-color: #0c0907;
+    background-image:
+        linear-gradient(to right, rgba(10, 7, 5, 0.96) 0%, rgba(14, 10, 7, 0.88) 42%, rgba(14, 10, 7, 0.45) 75%, rgba(14, 10, 7, 0.15) 100%),
+        url('assets/hero_bible.svg');
+    background-position: center right, center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-inner-container {
+    max-width: 1220px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 4.8rem 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-editorial-topline {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-bottom: 1.15rem;
+}
+
+.hero-editorial-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 0;
+}
+
+.hero-date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: rgba(22, 17, 12, 0.72);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 999px;
+    padding: 0.22rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #e5cf98;
+    backdrop-filter: blur(6px);
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-date-icon {
+    width: 13px;
+    height: 13px;
+    stroke: var(--accent-gold);
+    flex-shrink: 0;
+}
+
+.hero-tag-dash {
+    color: rgba(223, 177, 91, 0.6);
+}
+
+.hero-quote-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.6vw, 2.75rem);
+    line-height: 1.28;
+    font-weight: 600;
+    color: #faf5ed;
+    max-width: 840px;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+    letter-spacing: -0.01em;
+}
+
+.hero-word-accent {
+    color: #e5b95c;
+    font-style: italic;
+    text-shadow: 0 0 1px rgba(229, 185, 92, 0.4);
+}
+
+.hero-ref-block {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.hero-book-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--accent-gold);
+    flex-shrink: 0;
+}
+
+.hero-ref-text {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #e8dcc4;
+}
+
+/* 2. Área Editorial Principal (Fundo Nobre e Breadcrumb) */
+.editorial-stage-wrapper {
+    background: var(--bg-primary);
+    min-height: 600px;
+    padding: 1.8rem 1.8rem 4.5rem;
+    transition: background-color var(--transition-smooth);
+}
+
+[data-theme="light"] .editorial-stage-wrapper {
+    background: #fbf9f4;
+}
+
+.editorial-breadcrumb {
+    max-width: 1220px;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.breadcrumb-trail {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.breadcrumb-date-badge {
+    color: var(--accent-gold);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.breadcrumb-item {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.breadcrumb-item:hover {
+    color: var(--text-primary);
+}
+
+.breadcrumb-sep {
+    color: rgba(180, 150, 100, 0.45);
+    font-size: 0.72rem;
+}
+
+.breadcrumb-active {
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+/* 3. Grade Editorial (70% Leitura / 30% Sidebar) */
+.editorial-columns-grid {
+    max-width: 1220px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* 4. Coluna de Leitura (Esquerda) */
+.editorial-reader-col {
+    min-width: 0;
+}
+
+.editorial-chapter-block {
+    margin-bottom: 3rem;
+}
+
+.chapter-tag-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 0.4rem;
+}
+
+.chapter-roman-tag {
+    letter-spacing: 0.18em;
+}
+
+.chapter-dash {
+    color: var(--border-accent);
+}
+
+.chapter-heading {
+    font-family: var(--font-serif);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+    line-height: 1.32;
+}
+
+[data-theme="light"] .chapter-heading {
+    color: #1f1710;
+}
+
+.chapter-body-prose {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    line-height: 1.84;
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .chapter-body-prose {
+    color: #3f3224;
+}
+
+.chapter-body-prose p {
+    margin-bottom: 1.25rem;
+    text-align: justify;
+}
+
+/* Callout da Escritura com Aspas Douradas Monumentais */
+.scripture-callout-card {
+    background: var(--bg-surface);
+    border-left: 3px solid var(--accent-gold);
+    border-top: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    padding: 1.8rem 2.2rem 1.6rem;
+    margin: 2.6rem 0;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+}
+
+[data-theme="light"] .scripture-callout-card {
+    background: #fbf8f0;
+    border-color: #e8dcc6;
+    border-left-color: var(--accent-gold);
+}
+
+.callout-quote-symbol {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    line-height: 0.75;
+    color: var(--accent-gold);
+    opacity: 0.85;
+    margin-bottom: 0.4rem;
+    user-select: none;
+}
+
+.callout-verse-body {
+    font-family: var(--font-serif);
+    font-size: 1.28rem;
+    line-height: 1.65;
+    font-style: italic;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+[data-theme="light"] .callout-verse-body {
+    color: #231b14;
+}
+
+.callout-verse-cite {
+    display: block;
+    text-align: right;
+    margin-top: 0.95rem;
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    font-style: normal;
+}
+
+/* Interação da Meditação e Diário Espiritual */
+.meditation-interactive-box {
+    margin-top: 1.5rem;
+}
+
+.meditation-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.btn-outline-gold {
+    background: transparent;
+    border: 1px solid var(--border-accent);
+    color: var(--accent-gold);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-outline-gold:hover {
+    background: var(--accent-gold-subtle);
+    border-color: var(--accent-gold);
+    transform: translateY(-1px);
+}
+
+.reflection-journal-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-accent);
+    border-radius: 6px;
+    padding: 1.2rem;
+    margin-top: 1rem;
+}
+
+.reflection-textarea {
+    width: 100%;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    padding: 0.85rem;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+.reflection-textarea:focus {
+    border-color: var(--accent-gold);
+    outline: none;
+}
+
+.reflection-save-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+}
+
+.btn-gold {
+    background: var(--accent-gold);
+    color: #120e0b;
+    border: none;
+    padding: 0.45rem 1rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-gold:hover {
+    filter: brightness(1.1);
+}
+
+.reflection-saved-status {
+    font-size: 0.8rem;
+    color: var(--accent-emerald);
+}
+
+/* 5. Sidebar Editorial (Direita - 4 Cards de Referência) */
+.editorial-sidebar-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    position: sticky;
+    top: 5rem;
+}
+
+.sidebar-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition-fast);
+}
+
+[data-theme="light"] .sidebar-card {
+    background: #ffffff;
+    border-color: #ebd9c0;
+    box-shadow: 0 4px 14px rgba(60, 40, 20, 0.05);
+}
+
+.sidebar-card-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.15rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+[data-theme="light"] .sidebar-card-title {
+    color: #8a735c;
+    border-bottom-color: #f2e7d7;
+}
+
+/* Card 1: SOBRE ESTE ESTUDO */
+.study-meta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.meta-row-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.meta-row-icon {
+    width: 17px;
+    height: 17px;
+    stroke: var(--accent-gold);
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.meta-row-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-row-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.meta-row-val {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .meta-row-val {
+    color: #261e19;
+}
+
+/* Card 2: APLICAÇÃO PRÁTICA (Destaque Escuro Contrastante da Imagem) */
+.card-practical-highlight {
+    background: #18120c !important;
+    border: 1px solid rgba(223, 177, 91, 0.35) !important;
+    border-radius: 6px;
+    padding: 1.6rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+}
+
+.practical-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.practical-card-icon {
+    width: 18px;
+    height: 18px;
+    stroke: #dfb15b;
+}
+
+.practical-card-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #dfb15b;
+    margin: 0;
+}
+
+.practical-card-body {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #dfd4c5;
+    margin-bottom: 1.25rem;
+}
+
+.btn-practical-action {
+    background: #dfb15b;
+    color: #17110a;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.68rem 1.15rem;
+    border-radius: 4px;
+    border: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-practical-action:hover {
+    background: #f0c56b;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(223, 177, 91, 0.25);
+}
+
+.btn-practical-action .arrow-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+/* Card 3: OUTROS ESTUDOS SOBRE SALMOS */
+.related-series-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.related-series-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.55rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    transition: background var(--transition-fast);
+}
+
+.related-series-item:hover {
+    background: var(--bg-surface-elevated);
+}
+
+[data-theme="light"] .related-series-item:hover {
+    background: #f5edd9;
+}
+
+.series-thumb-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--border-subtle);
+}
+
+.series-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.series-item-title {
+    font-family: var(--font-serif);
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .series-item-title {
+    color: #231b14;
+}
+
+.series-item-sub {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.series-chevron {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-left: 0.3rem;
+}
+
+/* Card 4: Frase de Impacto Teológico com Aspas Douradas */
+.card-quote-reflection {
+    text-align: center;
+    position: relative;
+    padding: 1.8rem 1.5rem;
+}
+
+.quote-card-symbol {
+    font-family: var(--font-serif);
+    font-size: 3.4rem;
+    line-height: 0.75;
+    color: var(--accent-gold);
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+.quote-card-body {
+    font-family: var(--font-serif);
+    font-size: 1.08rem;
+    line-height: 1.62;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+[data-theme="light"] .quote-card-body {
+    color: #453628;
+}
+
+.quote-card-accent-rule {
+    width: 44px;
+    height: 2px;
+    background: var(--accent-gold);
+    margin: 0 auto;
+    border-radius: 1px;
+}
+
+/* 6. Faixa Inferior de Fechamento Editorial */
+.editorial-bottom-strip {
+    background: #0e0b08;
+    border-top: 1px solid rgba(212, 175, 55, 0.22);
+    padding: 2.4rem 1.5rem;
+    text-align: center;
+    width: 100%;
+}
+
+.strip-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.strip-quote {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #dfd4c5;
+    margin-bottom: 0.4rem;
+}
+
+.strip-cite {
+    font-family: var(--font-display);
+    font-size: 0.84rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    font-weight: 700;
+}
+
+/* 7. Responsividade Mobile */
+@media (max-width: 992px) {
+    .editorial-columns-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .editorial-sidebar-col {
+        position: static;
+    }
+
+    .hero-quote-heading {
+        font-size: 1.85rem;
+    }
+
+    .navbar-center-nav {
+        gap: 1rem;
+    }
+
+    .navbar-search-pill {
+        width: 170px;
+    }
+}
+
+@media (max-width: 680px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .navbar-center-nav {
+        justify-content: center;
+        overflow-x: auto;
+        padding-bottom: 0.3rem;
+    }
+
+    .navbar-right-group {
+        justify-content: space-between;
+    }
+
+    .navbar-search-pill {
+        display: none;
+    }
+
+    .hero-quote-heading {
+        font-size: 1.55rem;
+    }
+
+    .scripture-callout-card {
+        padding: 1.3rem 1.4rem;
+    }
+
+    .callout-quote-symbol {
+        font-size: 3rem;
+    }
+
+    .callout-verse-body {
+        font-size: 1.1rem;
+    }
+}
+
+/* ==========================================================================
+   8. NOVA ABA DEVOCIONAIS (DESIGN FIEL À IMAGEM DE REFERÊNCIA)
+   Hero com Lanterna a Óleo & Bíblia, Sidebar com Bússola & Relógio,
+   Anotações Pautadas, Aplicação com Ramo de Oliveira e 3 Cards de Salmos.
+   ========================================================================== */
+
+.tab-view-devocional {
+    width: 100%;
+    animation: fadeInView 0.35s ease-out;
+}
+
+@keyframes fadeInView {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Devocional Banner: Lanterna a Óleo e Bíblia Aberta */
+.devocional-hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 380px;
+    background-color: #0b0907;
+    background-image: url('assets/hero_devocional_lantern.svg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3.5rem 1.5rem;
+    overflow: hidden;
+}
+
+.devocional-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(14, 11, 8, 0.45) 0%, rgba(10, 8, 6, 0.85) 100%);
+    pointer-events: none;
+}
+
+.devocional-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.devocional-hero-date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: rgba(18, 14, 10, 0.7);
+    color: var(--accent-gold);
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.devocional-hero-date-badge .badge-arrow {
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+}
+
+.devocional-hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #f7eedf;
+    text-transform: uppercase;
+    line-height: 1.15;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.devocional-hero-verse {
+    font-family: var(--font-serif);
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    font-style: italic;
+    color: #e5dac9;
+    line-height: 1.6;
+    max-width: 740px;
+    margin: 0;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.devocional-hero-ref {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-display);
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    padding-top: 0.25rem;
+}
+
+.devocional-hero-ref .cross-icon {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+/* Estrutura do Corpo do Devocional */
+.devocional-body-wrapper {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem 1.5rem;
+}
+
+.devocional-layout-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 2.75rem;
+    align-items: start;
+}
+
+/* Sidebar Esquerda */
+.devocional-sidebar-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.85rem;
+}
+
+/* 1. Card Integrado com Foto */
+.devocional-card-integrated {
+    background: #14100c;
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.card-photo-header {
+    width: 100%;
+    background: #0f0b08;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.compass-watch-img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-integrated-body {
+    padding: 1.5rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.devocional-quote-text {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #e2d7c5;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.devocional-quote-author {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.devocional-card-divider {
+    height: 1px;
+    width: 100%;
+    background: rgba(212, 175, 55, 0.15);
+}
+
+/* Métrica: Devocional 365 */
+.devocional-metric-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.metric-title {
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #a89885;
+    text-transform: uppercase;
+}
+
+.metric-counter {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    letter-spacing: 0.06em;
+}
+
+.devocional-progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.devocional-progress-bar {
+    height: 100%;
+    background: var(--accent-gold);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+/* Leituras Bíblicas (5 passagens) */
+.devocional-readings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.readings-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.readings-heading {
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #a89885;
+    text-transform: uppercase;
+}
+
+.readings-title-row .latin-cross {
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+}
+
+.devocional-readings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.devocional-readings-list li a {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    color: #d8cdbe;
+    text-decoration: none;
+    padding: 0.25rem 0.4rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.devocional-readings-list li a:hover {
+    color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateX(4px);
+}
+
+/* 2. Card de Anotações Pessoais */
+.devocional-notes-card {
+    background: #14100c;
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: 12px;
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.notes-card-title {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #a89885;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.notebook-ruled-container {
+    background: #1a1510;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 8px;
+    padding: 0.75rem 0.85rem;
+    background-image: repeating-linear-gradient(transparent, transparent 27px, rgba(212, 175, 55, 0.08) 28px);
+    background-position: 0 10px;
+}
+
+.notebook-lined-textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #eae1d3;
+    font-family: var(--font-serif);
+    font-size: 0.92rem;
+    line-height: 28px;
+    resize: vertical;
+    outline: none;
+    box-shadow: none;
+}
+
+.notebook-lined-textarea::placeholder {
+    color: #7d7062;
+    font-style: italic;
+}
+
+.notes-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.btn-gold-pill {
+    background: var(--accent-gold);
+    color: #1a140c;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.45rem 1.15rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-gold-pill:hover {
+    background: #e6be48;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(212, 175, 55, 0.25);
+}
+
+.notes-status-text {
+    font-size: 0.78rem;
+    color: #4ade80;
+}
+
+/* 3. Card Um Minuto Diário */
+.devocional-minute-callout {
+    background: #15110d;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 12px;
+    padding: 1.25rem 1.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.minute-callout-text {
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    font-style: italic;
+    color: #d6cab8;
+    line-height: 1.45;
+    margin: 0;
+}
+
+.btn-circle-gold {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    color: #1a140c;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.btn-circle-gold:hover {
+    background: #e6be48;
+    transform: scale(1.06);
+}
+
+/* ============================================================
+   COLUNA PRINCIPAL DIREITA (70%)
+   ============================================================ */
+.devocional-main-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+}
+
+.devocional-story-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.devocional-meta-topline {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+}
+
+.devocional-date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    background: rgba(24, 19, 14, 0.85);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 999px;
+    padding: 0.2rem 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #e5cf98;
+    letter-spacing: 0.02em;
+}
+
+.devocional-date-icon {
+    width: 13px;
+    height: 13px;
+    stroke: var(--accent-gold);
+    flex-shrink: 0;
+}
+
+.devocional-story-tag {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+}
+
+.devocional-story-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+    font-weight: 700;
+    color: #f7eedf;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Card do Versículo em Destaque */
+.devocional-verse-accent-card {
+    background: #15110c;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-left: 4px solid var(--accent-gold);
+    border-radius: 0 10px 10px 0;
+    padding: 1.6rem 1.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.devocional-accent-quote {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #faebd7;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.devocional-accent-ref {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+}
+
+/* Prosa Editorial com Drop Cap */
+.devocional-story-prose {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+    color: #dfd4c4;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.85;
+}
+
+.devocional-story-prose p {
+    margin: 0;
+}
+
+.devocional-first-p {
+    font-size: 1.08rem;
+}
+
+.devocional-drop-cap {
+    float: left;
+    font-family: var(--font-serif);
+    font-size: 3.6rem;
+    line-height: 0.85;
+    padding-top: 4px;
+    padding-right: 12px;
+    padding-bottom: 2px;
+    color: var(--accent-gold);
+    font-weight: 700;
+}
+
+/* Callout Suave com Aspas Douradas */
+.devocional-quote-callout {
+    position: relative;
+    background: #14100c;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 10px;
+    padding: 1.6rem 2rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.quote-callout-marks {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--accent-gold);
+    opacity: 0.75;
+}
+
+.quote-callout-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.quote-callout-text {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: #dfd4c5;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.quote-callout-cite {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+}
+
+/* Card Aplicação Prática com Ramo de Oliveira */
+.devocional-practical-card {
+    background: #15110d;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.practical-card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.olive-sprout-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold);
+}
+
+.olive-svg {
+    width: 20px;
+    height: 20px;
+}
+
+.practical-card-title {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.practical-card-prompt {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: #e5dac9;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.btn-reflect-action {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--accent-gold);
+    font-family: var(--font-display);
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 9999px;
+    padding: 0.55rem 1.35rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-reflect-action:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--accent-gold);
+    transform: translateX(4px);
+}
+
+.btn-reflect-action .arrow-gold {
+    transition: transform 0.2s ease;
+}
+
+.btn-reflect-action:hover .arrow-gold {
+    transform: translateX(3px);
+}
+
+/* Seção OUTROS ESTUDOS SOBRE SALMOS (3 Cards) */
+.devocional-related-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.related-section-title {
+    font-family: var(--font-display);
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #a89885;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.devocional-mini-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.devocional-mini-card {
+    background: #14100c;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+    padding: 1.35rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.devocional-mini-card:hover {
+    border-color: var(--accent-gold);
+    background: #1a1510;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.mini-card-chapter {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+}
+
+.mini-card-title {
+    font-family: var(--font-serif);
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: #eae1d3;
+    line-height: 1.45;
+    margin: 0;
+    flex: 1;
+}
+
+.mini-card-link {
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.devocional-mini-card:hover .mini-card-link {
+    color: var(--accent-gold);
+}
+
+/* Barra de Navegação Inferior */
+.devocional-nav-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+.devocional-nav-btn {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 8px;
+    padding: 0.65rem 1.25rem;
+    color: #dfd4c5;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.devocional-nav-btn strong {
+    color: var(--accent-gold);
+}
+
+.devocional-nav-btn:hover {
+    border-color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-1px);
+}
+
+.devocional-nav-btn .nav-chevron {
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+}
+
+/* Toolbar de Compartilhamento do Devocional */
+.devocional-page-toolbar {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* ==========================================================================
+   9. NOVA ABA BÍBLIA (LEITOR CANÔNICO DAS ESCRITURAS)
+   Leitura contínua dos 66 livros canônicos, seletores, controle de zoom,
+   e navegação de capítulos.
+   ========================================================================== */
+
+.tab-view-biblia {
+    width: 100%;
+    animation: fadeInView 0.35s ease-out;
+}
+
+.bible-view-header {
+    background: #0d0a07;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 2.75rem 1.5rem 2.25rem 1.5rem;
+    text-align: center;
+}
+
+.bible-header-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bible-header-kicker {
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+}
+
+.bible-header-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #f7eedf;
+    margin: 0;
+}
+
+.bible-header-subtitle {
+    font-family: var(--font-serif);
+    font-size: 0.96rem;
+    font-style: italic;
+    color: #a89885;
+    margin: 0;
+}
+
+/* Barra de Controles Sticky */
+.bible-controls-bar {
+    position: sticky;
+    top: 72px;
+    z-index: 90;
+    background: rgba(14, 11, 8, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.bible-controls-left {
+    display: flex;
+    align-items: center;
+    gap: 1.15rem;
+    flex-wrap: wrap;
+}
+
+.bible-select-field {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.bible-select-label {
+    font-family: var(--font-display);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #a89885;
+    text-transform: uppercase;
+}
+
+.bible-select {
+    background: #1a1510;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #f5ece0;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    border-radius: 6px;
+    padding: 0.45rem 0.85rem;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bible-select:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.bible-version-fixed-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: #1a1510;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 6px;
+    padding: 0.38rem 0.75rem;
+    user-select: none;
+}
+
+.version-fixed-tag {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.15);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+}
+
+.version-fixed-name {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #e5dac9;
+    font-weight: 500;
+}
+
+.bible-select-short {
+    min-width: 80px;
+}
+
+.bible-controls-right {
+    display: flex;
+    align-items: center;
+    gap: 1.15rem;
+}
+
+.bible-zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: #1a1510;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 6px;
+    padding: 0.2rem 0.5rem;
+}
+
+.bible-zoom-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-gold);
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    padding: 0.2rem 0.45rem;
+    border-radius: 4px;
+    transition: background 0.15s ease;
+}
+
+.bible-zoom-btn:hover {
+    background: rgba(212, 175, 55, 0.15);
+}
+
+.bible-zoom-text {
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    color: #a89885;
+    min-width: 42px;
+    text-align: center;
+}
+
+.btn-bible-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 6px;
+    color: var(--accent-gold);
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-bible-action:hover {
+    background: rgba(212, 175, 55, 0.12);
+    border-color: var(--accent-gold);
+}
+
+/* Canvas de Leitura Bíblica */
+.bible-reading-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem 1.5rem;
+}
+
+.bible-reading-canvas {
+    background: #120e0a;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 3rem 3.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.bible-chapter-headline-block {
+    text-align: center;
+    padding-bottom: 2.25rem;
+    margin-bottom: 2.25rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bible-testament-badge {
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+}
+
+.bible-chapter-heading {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #f7eedf;
+    margin: 0;
+}
+
+.bible-edition-badge {
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    color: #8c7d6c;
+    text-transform: uppercase;
+}
+
+/* Versículos em Formato Canônico e Contínuo (Bíblia de Estudo Real) */
+.bible-verses-list {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.18rem;
+    line-height: 2.1;
+    color: #ded3c2;
+    text-align: justify;
+    hyphens: auto;
+    transition: font-size 0.2s ease;
+}
+
+.bible-paragraph {
+    margin-bottom: 1.5rem;
+    text-indent: 1.6rem;
+    line-height: 2.15;
+}
+
+/* Poesia bíblica (Salmos, etc.): estrofes sem recuo excessivo, mas com respiração rítmica */
+.bible-paragraph.bible-poetic-stanza {
+    text-indent: 0;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(212, 175, 55, 0.15);
+    margin-bottom: 1.35rem;
+}
+
+.bible-verse-item {
+    display: inline;
+    position: relative;
+    padding: 0.12rem 0.22rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.18s ease, box-shadow 0.18s ease;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.bible-verse-item:hover {
+    background: rgba(212, 175, 55, 0.12);
+}
+
+.bible-verse-num {
+    font-family: var(--font-display);
+    font-size: 0.72em;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-right: 0.22rem;
+    margin-left: 0.3rem;
+    user-select: none;
+    vertical-align: super;
+    line-height: 1;
+}
+
+.bible-verse-item:first-child .bible-verse-num {
+    margin-left: 0;
+}
+
+/* Marcações / Destaques Coloridos (Marca-texto Devocional) */
+.bible-verse-item.highlight-ouro {
+    background: rgba(212, 175, 55, 0.25);
+    border-bottom: 2px solid #d4af37;
+    box-shadow: 0 1px 3px rgba(212, 175, 55, 0.15);
+}
+
+.bible-verse-item.highlight-verde {
+    background: rgba(34, 197, 94, 0.22);
+    border-bottom: 2px solid #22c55e;
+    box-shadow: 0 1px 3px rgba(34, 197, 94, 0.15);
+}
+
+.bible-verse-item.highlight-safira {
+    background: rgba(56, 189, 248, 0.22);
+    border-bottom: 2px solid #38bdf8;
+    box-shadow: 0 1px 3px rgba(56, 189, 248, 0.15);
+}
+
+.bible-verse-item.highlight-purpura {
+    background: rgba(168, 85, 247, 0.22);
+    border-bottom: 2px solid #a855f7;
+    box-shadow: 0 1px 3px rgba(168, 85, 247, 0.15);
+}
+
+.bible-verse-item.highlight-coral {
+    background: rgba(244, 63, 94, 0.22);
+    border-bottom: 2px solid #f43f5e;
+    box-shadow: 0 1px 3px rgba(244, 63, 94, 0.15);
+}
+
+/* Pulso temporário ao navegar para o versículo */
+.bible-verse-item.is-target-highlight {
+    animation: pulseTargetVerse 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseTargetVerse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
+    }
+    30% {
+        box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
+        background: rgba(212, 175, 55, 0.35);
+    }
+}
+
+/* =====================================================================
+   POPOVER FLUTUANTE DE CORES (MARCA-TEXTO)
+   ===================================================================== */
+.verse-highlight-popover {
+    position: absolute;
+    z-index: 1050;
+    background: #18130e;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 9999px;
+    padding: 0.4rem 0.75rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.4);
+    animation: popoverFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-50%);
+}
+
+@keyframes popoverFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 6px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+    }
+}
+
+.popover-content {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.popover-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #a89885;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.color-options-row {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.color-dot-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.color-dot-btn:hover {
+    transform: scale(1.22);
+    border-color: #ffffff;
+}
+
+.color-dot-btn.dot-ouro { background: #d4af37; }
+.color-dot-btn.dot-verde { background: #22c55e; }
+.color-dot-btn.dot-safira { background: #38bdf8; }
+.color-dot-btn.dot-purpura { background: #a855f7; }
+.color-dot-btn.dot-coral { background: #f43f5e; }
+
+.color-dot-btn.dot-remover {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px dashed rgba(255, 255, 255, 0.35);
+    color: #c9bdaf;
+}
+
+.color-dot-btn.dot-remover:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
+.color-dot-btn.dot-remover svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* =====================================================================
+   GAVETA LATERAL DE VERSÍCULOS MARCADOS (DRAWER)
+   ===================================================================== */
+.highlights-drawer-filter-bar {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.95rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.highlights-drawer-filter-bar .filter-label {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    color: #a89885;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.filter-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 9999px;
+    padding: 0.22rem 0.65rem;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    color: #c9bdaf;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.filter-pill:hover,
+.filter-pill.is-active {
+    background: var(--accent-gold);
+    color: #1a1208;
+    border-color: var(--accent-gold);
+    font-weight: 700;
+}
+
+.highlights-drawer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.highlight-card-item {
+    background: #18130e;
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: 8px;
+    padding: 1.15rem 1.25rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.highlight-card-item:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.highlight-card-item.border-ouro { border-left: 4px solid #d4af37; }
+.highlight-card-item.border-verde { border-left: 4px solid #22c55e; }
+.highlight-card-item.border-safira { border-left: 4px solid #38bdf8; }
+.highlight-card-item.border-purpura { border-left: 4px solid #a855f7; }
+.highlight-card-item.border-coral { border-left: 4px solid #f43f5e; }
+
+.highlight-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.highlight-card-ref {
+    font-family: var(--font-display);
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    letter-spacing: 0.04em;
+}
+
+.highlight-card-delete-btn {
+    background: transparent;
+    border: none;
+    color: #8c7d6c;
+    cursor: pointer;
+    padding: 0.2rem 0.35rem;
+    border-radius: 4px;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.highlight-card-delete-btn:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+}
+
+.highlight-card-text {
+    font-family: var(--font-serif);
+    font-size: 0.96rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: #ded3c2;
+    margin: 0;
+}
+
+.highlights-empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #a89885;
+}
+
+.highlights-empty-state svg {
+    width: 38px;
+    height: 38px;
+    stroke: var(--accent-gold);
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
+}
+
+.highlights-empty-state h4 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: #f7eedf;
+    margin-bottom: 0.35rem;
+}
+
+.highlights-empty-state p {
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* Paginação Inferior da Bíblia */
+.bible-chapter-footer-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+.btn-chapter-nav {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    padding: 0.65rem 1.35rem;
+    color: #e5dac9;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-chapter-nav:hover {
+    border-color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--accent-gold);
+}
+
+.bible-chapter-badge-num {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #a89885;
+    text-transform: uppercase;
+}
+
+/* Responsividade Mobile para Devocional e Leitor Bíblico */
+@media (max-width: 992px) {
+    .devocional-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+    }
+
+    .devocional-sidebar-col {
+        order: 2;
+    }
+
+    .devocional-main-col {
+        order: 1;
+    }
+
+    .devocional-mini-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bible-reading-canvas {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .devocional-hero-banner {
+        min-height: 320px;
+        padding: 2.5rem 1.25rem;
+    }
+
+    .devocional-hero-title {
+        font-size: 1.85rem;
+    }
+
+    .devocional-hero-verse {
+        font-size: 1rem;
+    }
+
+    .devocional-quote-callout {
+        padding: 1.25rem;
+    }
+
+    .devocional-nav-strip {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .devocional-nav-btn {
+        justify-content: center;
+    }
+
+    .bible-controls-bar {
+        position: static;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.85rem;
+    }
+
+    .bible-controls-left, .bible-controls-right {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .bible-chapter-footer-nav {
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    .btn-chapter-nav {
+        width: 100%;
+        justify-content: center;
+    }
 }
 

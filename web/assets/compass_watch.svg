@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 190" width="100%" height="100%">
+  <defs>
+    <!-- Fundo de Madeira/Couro Escuro -->
+    <linearGradient id="cwBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#140e0a"/>
+      <stop offset="50%" stop-color="#1c140d"/>
+      <stop offset="100%" stop-color="#0d0805"/>
+    </linearGradient>
+
+    <!-- Metal de Latão/Bronze Dourado Velho -->
+    <linearGradient id="brassMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#846328"/>
+      <stop offset="25%" stop-color="#d4af37"/>
+      <stop offset="50%" stop-color="#b8860b"/>
+      <stop offset="75%" stop-color="#dfb15b"/>
+      <stop offset="100%" stop-color="#5a4019"/>
+    </linearGradient>
+
+    <!-- Mostrador de Pergaminho/Marfim -->
+    <radialGradient id="dialIvory" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fdfbf7"/>
+      <stop offset="70%" stop-color="#f4ecd8"/>
+      <stop offset="100%" stop-color="#e2d2b4"/>
+    </radialGradient>
+
+    <!-- Vidro do Relógio / Reflexo de Luz -->
+    <linearGradient id="glassReflect" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo da Imagem -->
+  <rect width="340" height="190" fill="url(#cwBg)"/>
+
+  <!-- ==========================================
+       OBJETO 1: BÚSSOLA NÁUTICA ANTIGA (À ESQUERDA)
+       ========================================== -->
+  <g transform="translate(95, 100)">
+    <!-- Sombra suave projetada -->
+    <circle cx="2" cy="6" r="68" fill="#000000" opacity="0.6"/>
+
+    <!-- Caixa de Latão / Aro Externo -->
+    <circle cx="0" cy="0" r="66" fill="url(#brassMetal)"/>
+    <circle cx="0" cy="0" r="62" fill="#24170d"/>
+    <circle cx="0" cy="0" r="60" fill="url(#brassMetal)"/>
+    <circle cx="0" cy="0" r="56" fill="#140e0a"/>
+
+    <!-- Mostrador da Bússola -->
+    <circle cx="0" cy="0" r="53" fill="url(#dialIvory)"/>
+
+    <!-- Rosa dos Ventos Entalhada em Ouro e Preto -->
+    <!-- Pontas Cardeais Principais (Norte, Sul, Leste, Oeste) -->
+    <!-- Norte (Ponta Escura / Magnética) -->
+    <polygon points="0,-45 7,-5 0,0" fill="#1a140f"/>
+    <polygon points="0,-45 -7,-5 0,0" fill="#b8860b"/>
+    <!-- Sul -->
+    <polygon points="0,45 7,5 0,0" fill="#b8860b"/>
+    <polygon points="0,45 -7,5 0,0" fill="#1a140f"/>
+    <!-- Leste -->
+    <polygon points="45,0 5,7 0,0" fill="#b8860b"/>
+    <polygon points="45,0 5,-7 0,0" fill="#1a140f"/>
+    <!-- Oeste -->
+    <polygon points="-45,0 -5,7 0,0" fill="#1a140f"/>
+    <polygon points="-45,0 -5,-7 0,0" fill="#b8860b"/>
+
+    <!-- Pontas Colaterais (NE, SE, SW, NW) -->
+    <polygon points="28,-28 4,-4 0,0" fill="#846328" opacity="0.85"/>
+    <polygon points="28,28 4,4 0,0" fill="#846328" opacity="0.85"/>
+    <polygon points="-28,28 -4,4 0,0" fill="#846328" opacity="0.85"/>
+    <polygon points="-28,-28 -4,-4 0,0" fill="#846328" opacity="0.85"/>
+
+    <!-- Graus Periféricos -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#6b4c1b" stroke-width="0.8"/>
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#6b4c1b" stroke-width="0.5" stroke-dasharray="1.5,1.5"/>
+
+    <!-- Letras Cardeais -->
+    <text x="0" y="-34" text-anchor="middle" font-family="'Cinzel', Georgia, serif" font-size="8" font-weight="bold" fill="#1a140f">N</text>
+    <text x="0" y="41" text-anchor="middle" font-family="'Cinzel', Georgia, serif" font-size="8" font-weight="bold" fill="#1a140f">S</text>
+    <text x="37" y="3" text-anchor="middle" font-family="'Cinzel', Georgia, serif" font-size="8" font-weight="bold" fill="#1a140f">E</text>
+    <text x="-37" y="3" text-anchor="middle" font-family="'Cinzel', Georgia, serif" font-size="8" font-weight="bold" fill="#1a140f">W</text>
+
+    <!-- Pino Central da Agulha -->
+    <circle cx="0" cy="0" r="4.5" fill="url(#brassMetal)"/>
+    <circle cx="0" cy="0" r="1.5" fill="#1a140f"/>
+
+    <!-- Vidro Curvo / Reflexo Diagonal -->
+    <circle cx="0" cy="0" r="53" fill="url(#glassReflect)"/>
+  </g>
+
+  <!-- ==========================================
+       OBJETO 2: RELÓGIO DE BOLSO ANTIGO (À DIREITA)
+       ========================================== -->
+  <g transform="translate(245, 95)">
+    <!-- Argola e Coroa de Dar Corda no Topo -->
+    <path d="M -12,-72 C -12,-86 12,-86 12,-72" fill="none" stroke="url(#brassMetal)" stroke-width="3.5" stroke-linecap="round"/>
+    <rect x="-6" y="-72" width="12" height="9" rx="1.5" fill="url(#brassMetal)"/>
+    <rect x="-4" y="-63" width="8" height="5" fill="#52391e"/>
+
+    <!-- Sombra suave projetada -->
+    <circle cx="2" cy="6" r="66" fill="#000000" opacity="0.6"/>
+
+    <!-- Aro Externo Torneado em Latão -->
+    <circle cx="0" cy="0" r="64" fill="url(#brassMetal)"/>
+    <circle cx="0" cy="0" r="60" fill="#24170d"/>
+    <circle cx="0" cy="0" r="58" fill="url(#brassMetal)"/>
+    <circle cx="0" cy="0" r="55" fill="#1a120c"/>
+
+    <!-- Mostrador de Porcelana / Marfim de Época -->
+    <circle cx="0" cy="0" r="52" fill="url(#dialIvory)"/>
+    <circle cx="0" cy="0" r="47" fill="none" stroke="#785924" stroke-width="0.8"/>
+
+    <!-- Trilha de 60 Minutos e Pontos de Época -->
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#1a140f" stroke-width="0.6" stroke-dasharray="1,2.5"/>
+
+    <!-- Numerais Romanos Clássicos (I a XII) -->
+    <g font-family="'Cinzel', Georgia, serif" font-size="7.5" font-weight="bold" fill="#140e0a" text-anchor="middle" dominant-baseline="central">
+      <text x="0" y="-37">XII</text>
+      <text x="18" y="-33">I</text>
+      <text x="32" y="-19">II</text>
+      <text x="37" y="0">III</text>
+      <text x="32" y="19">IV</text>
+      <text x="18" y="33">V</text>
+      <text x="0" y="37">VI</text>
+      <text x="-18" y="33">VII</text>
+      <text x="-32" y="19">VIII</text>
+      <text x="-37" y="0">IX</text>
+      <text x="-32" y="-19">X</text>
+      <text x="-18" y="-33">XI</text>
+    </g>
+
+    <!-- Assinatura Elegante do Fabricante no Mostrador -->
+    <text x="0" y="-12" text-anchor="middle" font-family="Georgia, serif" font-size="4" font-style="italic" fill="#785924">Chronometer</text>
+
+    <!-- Sub-mostrador de Segundos (Às 6 horas) -->
+    <circle cx="0" cy="20" r="11" fill="none" stroke="#8c6b2d" stroke-width="0.6"/>
+    <line x1="0" y1="20" x2="6" y2="17" stroke="#1a140f" stroke-width="0.7"/>
+    <circle cx="0" cy="20" r="1" fill="#1a140f"/>
+
+    <!-- Ponteiros Clássicos Trabalhados (Spade Hands) -->
+    <!-- Ponteiro das Horas (apontando para 10h) -->
+    <path d="M 0,0 L -18,-15 C -20,-17 -22,-14 -19,-12 Z" fill="#140e0a"/>
+    <!-- Ponteiro dos Minutos (apontando para 2h) -->
+    <path d="M 0,0 L 22,-20 C 24,-22 26,-19 23,-17 Z" fill="#140e0a"/>
+
+    <!-- Pino Central do Mostrador -->
+    <circle cx="0" cy="0" r="3" fill="url(#brassMetal)"/>
+    <circle cx="0" cy="0" r="1.2" fill="#1a140f"/>
+
+    <!-- Reflexo de Vidro Biselado -->
+    <circle cx="0" cy="0" r="52" fill="url(#glassReflect)"/>
+  </g>
+</svg>

@@ -161,3 +161,4 @@ def test_exportar_web_data(tmp_path, monkeypatch):
     assert "Provérbios 4:23" in conteudo_js
     assert "comparacaoTraducoes" in conteudo_js
     assert "versiculosRelacionados" in conteudo_js
+    assert "cafeComDeusPai" in conteudo_js
