@@ -566,7 +566,7 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
 
     # 6. Minuto com Deus / Café com Deus Pai
     match_minuto = re.search(
-        r"##\s*[⏱️☕]?\s*(?:Devocional\s+)?(?:Minuto com Deus|Café com Deus Pai)[^\n]*\n+```(?:json)?\n(.*?)\n```",
+        r"##\s*[⏱️☕]?\s*(?:Devocional\s+)?(?:Minuto com Deus|Café com Deus Pai)[^\n]*[\s\S]*?```(?:json)?\n(.*?)\n```",
         conteudo_md,
         re.DOTALL | re.IGNORECASE,
     )
@@ -578,7 +578,7 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
             pass
 
     match_cafe = re.search(
-        r"##\s*☕?\s*Café com Deus Pai[^\n]*\n+```(?:json)?\n(.*?)\n```",
+        r"##\s*☕?\s*Café com Deus Pai[^\n]*[\s\S]*?```(?:json)?\n(.*?)\n```",
         conteudo_md,
         re.DOTALL | re.IGNORECASE,
     )
