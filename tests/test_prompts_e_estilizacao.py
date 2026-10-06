@@ -84,3 +84,16 @@ def test_versiculos_relacionados_nao_sao_truncados():
     assert "Darei a vocês um coração novo e porei dentro de vocês um espírito novo" in conteudo_js
     assert "Destruímos argumentos e toda pretensão que se levanta contra o conhecimento de Deus" in conteudo_js
     assert "Enganoso é o coração, mais do que todas as coisas, e desesperadamente corrupto" in conteudo_js
+
+
+def test_tom_autoral_dialogo_urbano_e_equilibrio():
+    """Valida se o prompt incorpora a voz autoral: Engenharia, Teologia, Rock Urbano, ironia e equilíbrio."""
+    prompt_lower = SYSTEM_PROMPT_TEOLOGICO.lower()
+    assert "engenharia" in prompt_lower
+    assert "teologia" in prompt_lower
+    assert "rock urbano" in prompt_lower or "rock" in prompt_lower
+    assert "ironia" in prompt_lower
+    assert "universitário" in prompt_lower
+    assert "formalismo pedante" in prompt_lower or "zero formalismo" in prompt_lower
+    assert "não tão informal" in prompt_lower or "nem formal" in prompt_lower
+

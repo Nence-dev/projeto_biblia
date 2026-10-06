@@ -4,6 +4,188 @@
  */
 const HISTORICO_ESTUDOS = [
     {
+        "data": "2026-10-06",
+        "dataFormatada": "6 de Outubro de 2026",
+        "referencia": "Salmos 55:22",
+        "versao": "NVI",
+        "modelo": "gemini-3.5-flash",
+        "geradoEm": "2026-10-06T07:25:00.000000",
+        "versiculoTexto": "Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.",
+        "genero": "Poesia Lírica / Lamento e Confiança",
+        "secoes": [
+            {
+                "id": "contexto",
+                "titulo": "1. O Contexto Histórico e Narrativo",
+                "icone": "scroll",
+                "conteudo": "Para entender o peso dessa frase, a primeira coisa que precisamos fazer é arrancar o verniz piegas com que o mercado religioso costuma plastificar os Salmos. Salmos 55 não nasceu em um retiro espiritual confortável nem no silêncio contemplativo de um mosteiro. Ele foi escrito sob o impacto de um golpe sujo. Davi está vivendo um dos episódios mais amargos da sua trajetória política e pessoal: a traição não veio de um filisteu pagão ou de um inimigo declarado, mas de um confidente íntimo, alguém com quem dividia a mesa, os segredos de Estado e os bancos do santuário — a tradição aponta para Aitofel durante a rebelião de Absalão.<br><br>O ambiente urbano de Jerusalém descrito no poema é de colapso institucional: violência, intriga e discórdia circulando pelas praças. A dor da deslealdade tem esse efeito corrosivo: ela desestabiliza o chão, rouba o sono e faz o sujeito desejar criar asas de pomba para fugir e sumir no deserto (Salmo 55:6). É nesse cenário de esgotamento nervoso, onde o cinismo e a paranoia seriam as reações mais naturais de qualquer pessoa sã, que surge a virada do versículo 22. Davi não faz um discurso motivacional barato para si mesmo. Ele faz um cálculo lúcido sobre os limites das forças humanas diante de uma crise que foge completamente ao seu controle."
+            },
+            {
+                "id": "anatomia",
+                "titulo": "2. A Anatomia do Texto e Teologia Central",
+                "icone": "book-open",
+                "termosOriginais": [
+                    {
+                        "termo": "Hashlek (הַשְׁלֵךְ)",
+                        "significado": "Arremessar / Lançar com ímpeto",
+                        "explicacao": "Ação decidida de transferir a carga que o ego não foi projetado para carregar."
+                    },
+                    {
+                        "termo": "Yehab (יְהָב)",
+                        "significado": "Fardo atribuído / Peso do lote",
+                        "explicacao": "A soma das tensões, decepções e demandas que sobrecarregam a mente."
+                    },
+                    {
+                        "termo": "Yekalkeleka (יְכַלְכְּלֶךָ)",
+                        "significado": "Ele te conterá / Te sustentará",
+                        "explicacao": "Suporte estrutural e contínuo que preserva a integridade do indivíduo na tempestade."
+                    }
+                ],
+                "conteudo": "Em termos de engenharia existencial, todo sistema tem um limite de fadiga e carga de ruptura. Quando a carga imposta ultrapassa a resistência do material, a estrutura entra em colapso. O hebraico original aqui não usa meias palavras. O verbo traduzido por 'entregue' é <em>Hashlek</em> (הַשְׁלֵךְ), a forma imperativa de <em>shalak</em>. Não se trata de colocar suavemente no altar com elegância litúrgica; significa arremessar, descarregar com força, jogar para longe de si como quem se desfaz de um fardo pesado demais antes que ele esmague a espinha.<br><br>O objeto desse arremesso é <em>Yehab</em> (יְהָב) — aquilo que foi colocado sobre você, a sua cota de peso existencial, as ansiedades e tarefas que a vida descarregou nos seus ombros. E a contrapartida divina não é mágica, mas de sustento: <em>Yekalkeleka</em> (יְכַלְכְּלֶךָ), derivado da raiz <em>kul</em>, um termo técnico que evoca conter, nutrir, suportar a capacidade de carga e fornecer estabilidade contínua. Deus não promete necessariamente evaporar com o problema do cenário amanhã de manhã; Ele promete ser o alicerce que impede que a sua estrutura ceda. A garantia final é que Ele jamais deixará o justo em estado de <em>Mot</em> (מוֹט) — vacilante, derrapando em colapso catastrófico."
+            },
+            {
+                "id": "aplicacao",
+                "titulo": "3. O que tirar disso para a prática de hoje?",
+                "icone": "compass",
+                "conteudo": "A cultura contemporânea nos adestra desde o vestibular a operar como microempresas individuais de autossuficiência. Você precisa dar conta da carreira, da pós-graduação, das contas que chegam no início do mês, da saúde mental, da vida afetiva e ainda manter um sorriso performático nos encontros sociais. Para piorar, o meio religioso costuma acrescentar uma camada cruel de culpa a essa equação: se você está ansioso ou sobrecarregado, insinuam que sua fé é fraca, que faltou jejum ou que você não fez a 'declaração positiva' certa no culto de domingo.<br><br>Esse tipo de espiritualidade de consumo é uma farsa mercadológica. O Salmo 55:22 joga uma ducha de água fria nessa cobrança neurótica. Ter fardos pesados não é sinal de apostasia; é a constatação óbvia de que somos criaturas finitas em um mundo quebrado. A insanidade começa quando tentamos gerenciar sozinhos cargas que pertencem exclusivamente a Deus. Entregar o fardo não é apatia irresponsável ou fuga da realidade; é um ato cirúrgico de humildade intelectual. É acordar na segunda-feira, olhar para o volume de problemas e admitir: 'Eu faço a minha parte com seriedade, mas o resultado e a sustentação da história não estão nas minhas mãos'. A graça liberta você da obrigação doentia de ser o seu próprio salvador."
+            },
+            {
+                "id": "canonicas",
+                "titulo": "4. Conexões Canônicas e Autores da Mesma Linha",
+                "icone": "link",
+                "citacoes": [
+                    {
+                        "autor": "Francis Schaeffer",
+                        "obra": "O Deus que se Revela",
+                        "texto": "O início do verdadeiro relacionamento com Deus é o reconhecimento de que nós não somos o centro do universo e não temos a capacidade intrínseca de sustentar o significado de nossas próprias vidas."
+                    }
+                ],
+                "versiculosRelacionados": [
+                    {
+                        "referencia": "1 Pedro 5:7",
+                        "texto": "Lancem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês."
+                    },
+                    {
+                        "referencia": "Mateus 11:28",
+                        "texto": "Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso."
+                    }
+                ],
+                "conteudo": "Esse mesmo movimento de descarregar a tensão no Criador ecoa com força total no Novo Testamento. O apóstolo Pedro retoma literalmente essa imagem ao escrever para comunidades que enfrentavam a fornalha da opressão em <strong>1 Pedro 5:7</strong> (<em>\"Lancem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês\"</em>). Jesus Cristo fez do convite ao descanso o coração do Seu ministério terreno em <strong>Mateus 11:28</strong> (<em>\"Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso\"</em>), mostrando que o Deus das Escrituras não é um capataz religioso exigindo metas desumanas, mas o Redentor que carrega o madeiro por nós.<br><br>Diante da dor da traição e do desmoronamento dos apoios humanos, a teologia reformada nos ensina que a segurança do crente repousa no pacto inabalável de Deus, e não na firmeza dos nossos sentimentos instáveis."
+            },
+            {
+                "id": "fechamento",
+                "titulo": "5. Fechamento: A Pergunta Central",
+                "icone": "help-circle",
+                "conteudo": "Qual é a carga específica que você está insistindo em carregar sozinho por puro orgulho ou medo de perder o controle, fingindo que sua força é suficiente para não desmoronar?"
+            }
+        ],
+        "whatsapp": "*Salmos 55:22 (NVI)*\n> *\"Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.\"*\n\nTodo mundo tem um limite de carga. O problema é que a gente vive numa rotina insana de metas, cobranças e prazos — e ainda tem que aguentar discurso religioso de gente dizendo que quem tem fé não se cansa nem tem medo.\n\nDavi escreveu esse versículo quando tomou uma rasteira feia de um amigo próximo. A cidade estava um caos e a vontade dele era sumir no mapa. Em vez de fingir uma espiritualidade inabalável de vitrine, ele usou uma palavra forte no hebraico: *Hashlek* — arremessar, jogar fora de si o peso antes que ele quebre a coluna.\n\nDeus não promete um conto de fadas sem problemas na terça-feira; Ele promete o sustento estrutural que impede a sua alma de entrar em colapso. Você não precisa ser o super-herói da sua própria vida nem bancar o crente perfeito. Faça o que precisa ser feito com seriedade, mas jogue a ansiedade do resultado nos ombros de Quem realmente tem força para segurar o mundo.\n\n*A pergunta do dia:* Qual problema você continua tentando controlar na força do braço, quando a única saída sensata é descarregar nas mãos de Deus?",
+        "comparacaoTraducoes": {
+            "titulo": "Comparação Exegética de Versões",
+            "versaoPrincipal": {
+                "sigla": "NVI",
+                "texto": "Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.",
+                "foco": "Clareza fluida da comunicação contemporânea, conectando fardo com ansiedade interior."
+            },
+            "versaoLiteral": {
+                "sigla": "Tradução Literal",
+                "texto": "Arremessa sobre o Senhor o teu fardo que te foi dado, e Ele mesmo te sustentará; não dará para sempre vacilação ao justo.",
+                "foco": "Ação enérgica de descarregar (hashlek) e a física do suporte contínuo da graça (kul)."
+            },
+            "chaveHermeneutica": "A promessa bíblica não é a ausência de atrito no mundo, mas a estabilidade estrutural fornecida por Deus quando o ser humano renuncia à ilusão da autossuficiência."
+        }
+    },
+    {
+        "data": "2026-10-05",
+        "dataFormatada": "5 de Outubro de 2026",
+        "referencia": "Judas 1:22",
+        "versao": "NVI",
+        "modelo": "gemini-3.5-flash",
+        "geradoEm": "2026-10-05T19:05:00.000000",
+        "versiculoTexto": "Tenham misericórdia daqueles que duvidam",
+        "genero": "Epístola Pastoral / Defesa da Fé",
+        "secoes": [
+            {
+                "id": "contexto",
+                "titulo": "1. O Contexto Histórico e Narrativo",
+                "icone": "scroll",
+                "conteudo": "A carta de Judas é um dos textos mais cortantes do Novo Testamento. Ela não tem rodeios clericais. Judas pretendia escrever uma carta tranquila sobre a salvação comum, mas foi obrigado a mudar de rota diante de um escândalo institucional: infiltrados que transformaram a graça de Deus em salvo-conduto para exploração moral e mercantilismo da fé. O cenário do final do primeiro século era de tensão bruta: sob o peso do Império Romano por fora e a corrosão da hipocrisia de líderes corruptos por dentro, as comunidades cristãs estavam desorientadas.<br><br>O problema é que todo escândalo religioso gera estilhaços colaterais na vida das pessoas comuns. Quando a liderança falha e o discurso não fecha com a prática, quem paga a conta é o universitário, o jovem que está tentando crer e o trabalhador exausto. O ambiente fica tóxico e a desconfiança explode. Em vez de ordenar um tribunal de inquisição ou exigir que todo mundo finja certezas absolutas para manter a fachada do grupo, Judas traz um freio de emergência cirúrgico no versículo 22: diante da quebra de confiança, a ordem apostólica não é expulsar quem está vacilando, mas agir com misericórdia real."
+            },
+            {
+                "id": "anatomia",
+                "titulo": "2. A Anatomia do Texto e Teologia Central",
+                "icone": "book-open",
+                "termosOriginais": [
+                    {
+                        "termo": "Eleeo (ἐλεέω)",
+                        "significado": "Ter misericórdia ativa",
+                        "explicacao": "Compaixão que estende a mão e entra no chão da dor alheia."
+                    },
+                    {
+                        "termo": "Diakrinomenos (διακρινόμενος)",
+                        "significado": "Estar dividido / Vacilar",
+                        "explicacao": "A angústia sincera de quem quer caminhar, mas está ferido pela contradição das circunstâncias."
+                    },
+                    {
+                        "termo": "Soteria (σωτηρία)",
+                        "significado": "Salvação integral",
+                        "explicacao": "A obra consumada de Cristo que sustenta o crente para além das suas oscilações emocionais."
+                    }
+                ],
+                "conteudo": "Em um ambiente religioso que idolatra a performance e a certeza inabalável, Judas introduz uma postura anti-institucional revolucionária. O termo original para 'tenham misericórdia' é <em>Eleeo</em> (ἐλεέω) — um verbo que não significa apenas sentir pena à distância, mas um mover prático das entranhas que resulta em socorro, acolhimento e suporte tangível. Não é benevolência condescendente; é resgate.<br><br>O alvo dessa misericórdia são aqueles que estão <em>Diakrinomenous</em> (διακρινομένους), o particípio presente do verbo <em>diakrino</em>. No grego, esse termo não designa o cínico arrogante que zomba da verdade para justificar sua canalhice; designa o sujeito que está com o coração cindido, disputando consigo mesmo, oscilando entre o desejo de crer e o cansaço das decepções que acumulou. A lógica da graça aqui é cristalina: Deus não condiciona o Seu amor à nossa capacidade de manter um placar cognitivo perfeito. A fé cristã não é um clube de quem nunca teve insônia questionando a vida, mas o refúgio seguro de quem reconhece que só Cristo é a âncora firme quando todas as certezas humanas desmoronam."
+            },
+            {
+                "id": "aplicacao",
+                "titulo": "3. O que tirar disso para a prática de hoje?",
+                "icone": "compass",
+                "conteudo": "A igreja moderna muitas vezes funciona como uma vitrine de certezas ensaiadas. As pessoas entram nos templos com medo de admitir que estão esgotadas, que o casamento está por um fio ou que não conseguem conciliar o sofrimento do mundo com a pregação triunfalista dos púlpitos. Criou-se a ilusão de que ter dúvidas é um defeito de caráter ou pecado mortal, e isso empurra os mais lúcidos para fora da comunhão.<br><br>Judas 1:22 quebra essa hipocrisia ao meio. Duvidar no meio do tiroteio não faz de você um traidor; faz de você um ser humano respirando a poluição de um mundo quebrado. A fé não é a ausência de perguntas difíceis; é a decisão corajosa de colocar essas perguntas nos pés de Jesus, em vez de comprar respostas prontas de gurus da autoajuda gospel. Para o dia a dia na faculdade, no escritório ou na mesa de casa, o recado é direto: pare de cobrar de si e dos outros uma perfeição fingida. Estenda a mão para quem está cambaleando. A graça de Deus é espaçosa o suficiente para aguentar as nossas perguntas honestas."
+            },
+            {
+                "id": "canonicas",
+                "titulo": "4. Conexões Canônicas e Autores da Mesma Linha",
+                "icone": "link",
+                "citacoes": [
+                    {
+                        "autor": "Tim Keller",
+                        "obra": "A Razão de Deus",
+                        "texto": "Uma fé que nunca foi testada por perguntas difíceis e dúvidas honestas é como um músculo que nunca foi exercitado: no primeiro choque da realidade, ela atrofia."
+                    }
+                ],
+                "versiculosRelacionados": [
+                    {
+                        "referencia": "Marcos 9:24",
+                        "texto": "Imediatamente o pai do menino exclamou: 'Creio, ajuda-me a vencer a minha incredulidade!'"
+                    },
+                    {
+                        "referencia": "João 20:27",
+                        "texto": "Disse a Tomé: 'Coloque o seu dedo aqui; veja as minhas mãos. Estenda a mão e coloque-a no meu lado. Parem de duvidar e creiam.'"
+                    }
+                ],
+                "conteudo": "Jesus operou exatamente nessa frequência durante todo o Seu ministério. Diante de um pai desesperado com o filho enfermo em <strong>Marcos 9:24</strong> (<em>\"Imediatamente o pai do menino exclamou: 'Creio, ajuda-me a vencer a minha incredulidade!'\"</em>), Cristo não o repreendeu pela contradição; Ele o acolheu e restaurou o menino. Da mesma forma, quando Tomé exigiu provas concretas da ressurreição em <strong>João 20:27</strong> (<em>\"Disse a Tomé: 'Coloque o seu dedo aqui; veja as minhas mãos. Estenda a mão e coloque-a no meu lado. Parem de duvidar e creiam'\"</em>), o Salvador não o excomungou; ofereceu Suas próprias feridas."
+            },
+            {
+                "id": "fechamento",
+                "titulo": "5. Fechamento: A Pergunta Central",
+                "icone": "help-circle",
+                "conteudo": "Você tem tratado suas dúvidas e as dos outros com o julgamento arrogante de um tribunal religioso ou com a paciência acolhedora da graça de Cristo?"
+            }
+        ],
+        "whatsapp": "*Judas 1:22 (NVI)*\n> *\"Tenham misericórdia daqueles que duvidam\"*\n\nO meio religioso adora vender a imagem de que todo mundo tem que ter certeza absoluta de tudo o tempo todo. Virou um concurso de aparências: quem admite que está confuso ou cansado é logo taxado de \"fraco na fé\".\n\nJudas escreveu o oposto disso. Ele estava lidando com uma época de escândalos e desilusões, e deu uma ordem expressa: em vez de julgar quem está com o coração dividido (*diakrinomenos*), acolha com misericórdia ativa (*eleeo*).\n\nDúvida sincera não é rebeldia; é o grito de quem quer uma fé com substância, e não uma historinha para boi dormir. Jesus nunca enxotou Tomé quando ele pediu para ver as feridas, nem rejeitou o pai que admitiu: \"Eu creio, mas me ajuda na minha falta de fé\".\n\n*A pergunta do dia:* Você tem estendido a mão para quem está em crise ou virou o juiz que aponta o dedo para quem fraquejou no caminho?",
+        "comparacaoTraducoes": {
+            "titulo": "Comparação Exegética de Versões",
+            "versaoPrincipal": {
+                "sigla": "NVI",
+                "texto": "Tenham misericórdia daqueles que duvidam",
+                "foco": "Clareza imediata e aplicação direta ao acolhimento dos que hesitam."
+            },
+            "versaoLiteral": {
+                "sigla": "Tradução Literal",
+                "texto": "E, por um lado, tende misericórdia daqueles que estão em conflito interno [divididos em si mesmos]",
+                "foco": "Destacar a batalha interna e processual do verbo diakrinomenous."
+            },
+            "chaveHermeneutica": "A maturidade bíblica se revela na habilidade de acolher quem está em crise, desmantelando a arrogância farisaica que exige certezas artificiais."
+        }
+    },
+    {
         "data": "2026-10-04",
         "dataFormatada": "4 de Outubro de 2026",
         "referencia": "Salmos 51:10",

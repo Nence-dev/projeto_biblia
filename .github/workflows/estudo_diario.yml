@@ -70,13 +70,14 @@ jobs:
           fi
           echo "Executando comando: $CMD"
           eval $CMD
+          python -c "from src.storage import exportar_todos_estudos_para_web_data; exportar_todos_estudos_para_web_data()"
 
       - name: Salvar Novo Estudo e Dados Web no Repositório
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: Estudo Bíblico do Dia & Atualização Web [skip ci]"
           file_pattern: "estudos/*.md web/data.js"
-          branch: ${{ github.ref_name }}
+          branch: ${{ github.ref_name || 'main' }}
 
   deploy-pages:
     # Executa sempre que gerar-estudo tiver sucesso ou se tiver sido pulado
@@ -91,7 +92,7 @@ jobs:
       - name: Checkout do Repositório Atualizado
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          ref: ${{ github.ref_name || 'main' }}
           fetch-depth: 0
 
       - name: Configurar GitHub Pages

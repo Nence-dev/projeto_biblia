@@ -92,6 +92,12 @@ class GeminiClient:
         """Executa a chamada de geração com retry exponencial e fallback de modelos."""
         # Monta lista de prioridade de modelos
         modelos_para_tentar = [self.model_name]
+        try:
+            for m in self.descobrir_modelos_disponiveis():
+                if m not in modelos_para_tentar:
+                    modelos_para_tentar.append(m)
+        except Exception:
+            pass
         for m in MODELOS_PADRAO_FALLBACK:
             if m not in modelos_para_tentar:
                 modelos_para_tentar.append(m)
@@ -103,7 +109,10 @@ class GeminiClient:
             for tentativa in range(1, max_tentativas + 1):
                 try:
                     if self._use_new_sdk:
-                        config_kwargs = {"temperature": 0.7}
+                        config_kwargs = {
+                            "temperature": 0.7,
+                            "max_output_tokens": 8192,
+                        }
                         if system_instruction:
                             config_kwargs["system_instruction"] = system_instruction
 
@@ -113,24 +122,39 @@ class GeminiClient:
                             contents=prompt,
                             config=config,
                         )
-                        if not response.text:
+                        texto_resposta = response.text
+                        if not texto_resposta or not texto_resposta.strip():
                             raise LLMError("A API do Gemini retornou uma resposta vazia.")
-                        
+
+                        # Verificação anti-truncamento: estudos longos que começaram com as seções mas cortaram antes do fim
+                        if len(texto_resposta) > 800 and ("### 1." in texto_resposta or "## 1." in texto_resposta) and "### 5." not in texto_resposta and "## 5." not in texto_resposta:
+                            raise LLMError("A resposta gerada pelo modelo foi truncada antes da seção 5 de fechamento.")
+
                         self.model_name = modelo_atual
-                        return response.text
+                        return texto_resposta
                     else:
                         # Caminho legado
-                        model_kwargs = {"model_name": modelo_atual}
+                        model_kwargs = {
+                            "model_name": modelo_atual,
+                            "generation_config": {
+                                "temperature": 0.7,
+                                "max_output_tokens": 8192,
+                            },
+                        }
                         if system_instruction:
                             model_kwargs["system_instruction"] = system_instruction
 
                         model = self._legacy_genai.GenerativeModel(**model_kwargs)
                         response = model.generate_content(prompt)
-                        if not response.text:
+                        texto_resposta = response.text
+                        if not texto_resposta or not texto_resposta.strip():
                             raise LLMError("A API do Gemini retornou uma resposta vazia.")
-                        
+
+                        if len(texto_resposta) > 800 and ("### 1." in texto_resposta or "## 1." in texto_resposta) and "### 5." not in texto_resposta and "## 5." not in texto_resposta:
+                            raise LLMError("A resposta gerada pelo modelo foi truncada antes da seção 5 de fechamento.")
+
                         self.model_name = modelo_atual
-                        return response.text
+                        return texto_resposta
 
                 except Exception as exc:
                     ultimo_erro = exc
