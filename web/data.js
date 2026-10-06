@@ -11,47 +11,31 @@ const HISTORICO_ESTUDOS = [
         "modelo": "gemini-3.5-flash",
         "geradoEm": "2026-10-06T07:25:00.000000",
         "versiculoTexto": "Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.",
-        "genero": "Poesia Lírica / Lamento e Confiança",
+        "genero": "Literatura de Sabedoria / Bíblica",
         "secoes": [
             {
                 "id": "contexto",
                 "titulo": "1. O Contexto Histórico e Narrativo",
                 "icone": "scroll",
-                "conteudo": "Para entender o peso dessa frase, a primeira coisa que precisamos fazer é arrancar o verniz piegas com que o mercado religioso costuma plastificar os Salmos. Salmos 55 não nasceu em um retiro espiritual confortável nem no silêncio contemplativo de um mosteiro. Ele foi escrito sob o impacto de um golpe sujo. Davi está vivendo um dos episódios mais amargos da sua trajetória política e pessoal: a traição não veio de um filisteu pagão ou de um inimigo declarado, mas de um confidente íntimo, alguém com quem dividia a mesa, os segredos de Estado e os bancos do santuário — a tradição aponta para Aitofel durante a rebelião de Absalão.<br><br>O ambiente urbano de Jerusalém descrito no poema é de colapso institucional: violência, intriga e discórdia circulando pelas praças. A dor da deslealdade tem esse efeito corrosivo: ela desestabiliza o chão, rouba o sono e faz o sujeito desejar criar asas de pomba para fugir e sumir no deserto (Salmo 55:6). É nesse cenário de esgotamento nervoso, onde o cinismo e a paranoia seriam as reações mais naturais de qualquer pessoa sã, que surge a virada do versículo 22. Davi não faz um discurso motivacional barato para si mesmo. Ele faz um cálculo lúcido sobre os limites das forças humanas diante de uma crise que foge completamente ao seu controle."
+                "conteudo": "Para entender o peso dessa frase, a primeira coisa que precisamos fazer é arrancar o verniz piegas com que o mercado religioso costuma plastificar os Salmos. Salmos 55 não nasceu em um retiro espiritual confortável nem no silêncio contemplativo de um mosteiro. Ele foi escrito sob o impacto de um golpe sujo. Davi está vivendo um dos episódios mais amargos da sua trajetória política e pessoal: a traição não veio de um filisteu pagão ou de um inimigo declarado, mas de um confidente íntimo, alguém com quem dividia a mesa, os segredos de Estado e os bancos do santuário — a tradição aponta para Aitofel durante a rebelião de Absalão.<br><br>O ambiente urbano de Jerusalém descrito no poema é de colapso institucional: violência, intriga e discórdia circulando pelas praças. A dor da deslealdade tem esse efeito corrosivo: ela desestabiliza o chão, rouba o sono e faz o sujeito desejar criar asas de pomba para fugir e sumir no deserto (Salmo 55:6). É nesse cenário de esgotamento nervoso, onde o cinismo e a paranoia seriam as reações mais naturais de qualquer pessoa sã, que surge a virada do versículo 22. Davi não faz um discurso motivacional barato para si mesmo. Ele faz um cálculo lúcido sobre os limites das forças humanas diante de uma crise que foge completamente ao seu controle.<br><br>---"
             },
             {
                 "id": "anatomia",
                 "titulo": "2. A Anatomia do Texto e Teologia Central",
                 "icone": "book-open",
-                "termosOriginais": [
-                    {
-                        "termo": "Hashlek (הַשְׁלֵךְ)",
-                        "significado": "Arremessar / Lançar com ímpeto",
-                        "explicacao": "Ação decidida de transferir a carga que o ego não foi projetado para carregar."
-                    },
-                    {
-                        "termo": "Yehab (יְהָב)",
-                        "significado": "Fardo atribuído / Peso do lote",
-                        "explicacao": "A soma das tensões, decepções e demandas que sobrecarregam a mente."
-                    },
-                    {
-                        "termo": "Yekalkeleka (יְכַלְכְּלֶךָ)",
-                        "significado": "Ele te conterá / Te sustentará",
-                        "explicacao": "Suporte estrutural e contínuo que preserva a integridade do indivíduo na tempestade."
-                    }
-                ],
-                "conteudo": "Em termos de engenharia existencial, todo sistema tem um limite de fadiga e carga de ruptura. Quando a carga imposta ultrapassa a resistência do material, a estrutura entra em colapso. O hebraico original aqui não usa meias palavras. O verbo traduzido por 'entregue' é <em>Hashlek</em> (הַשְׁלֵךְ), a forma imperativa de <em>shalak</em>. Não se trata de colocar suavemente no altar com elegância litúrgica; significa arremessar, descarregar com força, jogar para longe de si como quem se desfaz de um fardo pesado demais antes que ele esmague a espinha.<br><br>O objeto desse arremesso é <em>Yehab</em> (יְהָב) — aquilo que foi colocado sobre você, a sua cota de peso existencial, as ansiedades e tarefas que a vida descarregou nos seus ombros. E a contrapartida divina não é mágica, mas de sustento: <em>Yekalkeleka</em> (יְכַלְכְּלֶךָ), derivado da raiz <em>kul</em>, um termo técnico que evoca conter, nutrir, suportar a capacidade de carga e fornecer estabilidade contínua. Deus não promete necessariamente evaporar com o problema do cenário amanhã de manhã; Ele promete ser o alicerce que impede que a sua estrutura ceda. A garantia final é que Ele jamais deixará o justo em estado de <em>Mot</em> (מוֹט) — vacilante, derrapando em colapso catastrófico."
+                "termosOriginais": [],
+                "conteudo": "Em termos de engenharia existencial, todo sistema tem um limite de fadiga e carga de ruptura. Quando a carga imposta ultrapassa a resistência do material, a estrutura entra em colapso. O hebraico original aqui não usa meias palavras. O verbo traduzido por \"entregue\" é <em>hashlek</em> (הַשְׁלֵךְ), a forma imperativa de <em>shalak</em>. Não se trata de colocar suavemente no altar com elegância litúrgica; significa arremessar, descarregar com força, jogar para longe de si como quem se desfaz de um fardo pesado demais antes que ele esmague a espinha.<br><br>O objeto desse arremesso é <em>yehab</em> (יְהָב) — aquilo que foi colocado sobre você, a sua cota de peso existencial, as ansiedades e tarefas que a vida descarregou nos seus ombros. E a contrapartida divina não é mágica, mas de sustento: <em>yekalkeleka</em> (יְכַלְכְּלֶךָ), derivado da raiz <em>kul</em>, um termo técnico que evoca conter, nutrir, suportar a capacidade de carga e fornecer estabilidade contínua. Deus não promete necessariamente evaporar com o problema do cenário amanhã de manhã; Ele promete ser o alicerce que impede que a sua estrutura ceda. A garantia final é que Ele jamais deixará o justo em estado de <em>mot</em> (מוֹט) — vacilante, derrapando em colapso catastrófico."
             },
             {
                 "id": "aplicacao",
                 "titulo": "3. O que tirar disso para a prática de hoje?",
                 "icone": "compass",
-                "conteudo": "A cultura contemporânea nos adestra desde o vestibular a operar como microempresas individuais de autossuficiência. Você precisa dar conta da carreira, da pós-graduação, das contas que chegam no início do mês, da saúde mental, da vida afetiva e ainda manter um sorriso performático nos encontros sociais. Para piorar, o meio religioso costuma acrescentar uma camada cruel de culpa a essa equação: se você está ansioso ou sobrecarregado, insinuam que sua fé é fraca, que faltou jejum ou que você não fez a 'declaração positiva' certa no culto de domingo.<br><br>Esse tipo de espiritualidade de consumo é uma farsa mercadológica. O Salmo 55:22 joga uma ducha de água fria nessa cobrança neurótica. Ter fardos pesados não é sinal de apostasia; é a constatação óbvia de que somos criaturas finitas em um mundo quebrado. A insanidade começa quando tentamos gerenciar sozinhos cargas que pertencem exclusivamente a Deus. Entregar o fardo não é apatia irresponsável ou fuga da realidade; é um ato cirúrgico de humildade intelectual. É acordar na segunda-feira, olhar para o volume de problemas e admitir: 'Eu faço a minha parte com seriedade, mas o resultado e a sustentação da história não estão nas minhas mãos'. A graça liberta você da obrigação doentia de ser o seu próprio salvador."
+                "conteudo": "A cultura contemporânea nos adestra desde o vestibular a operar como microempresas individuais de autossuficiência. Você precisa dar conta da carreira, da pós-graduação, das contas que chegam no início do mês, da saúde mental, da vida afetiva e ainda manter um sorriso performático nos encontros sociais. Para piorar, o meio religioso costuma acrescentar uma camada cruel de culpa a essa equação: se você está ansioso ou sobrecarregado, insinuam que sua fé é fraca, que faltou jejum ou que você não fez a \"declaração positiva\" certa no culto de domingo.<br><br>Esse tipo de espiritualidade de consumo é uma farsa mercadológica. O Salmo 55:22 joga uma ducha de água fria nessa cobrança neurótica. Ter fardos pesados não é sinal de apostasia; é a constatação óbvia de que somos criaturas finitas em um mundo quebrado. A insanidade começa quando tentamos gerenciar sozinhos cargas que pertencem exclusivamente a Deus. Entregar o fardo não é apatia irresponsável ou fuga da realidade; é um ato cirúrgico de humildade intelectual. É acordar na segunda-feira, olhar para o volume de problemas e admitir: \"Eu faço a minha parte com seriedade, mas o resultado e a sustentação da história não estão nas minhas mãos\". A graça liberta você da obrigação doentia de ser o seu próprio salvador.<br><br>---"
             },
             {
                 "id": "canonicas",
-                "titulo": "4. Conexões Canônicas e Autores da Mesma Linha",
-                "icone": "link",
+                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
+                "icone": "cross",
                 "citacoes": [
                     {
                         "autor": "Francis Schaeffer",
@@ -59,38 +43,32 @@ const HISTORICO_ESTUDOS = [
                         "texto": "O início do verdadeiro relacionamento com Deus é o reconhecimento de que nós não somos o centro do universo e não temos a capacidade intrínseca de sustentar o significado de nossas próprias vidas."
                     }
                 ],
-                "versiculosRelacionados": [
-                    {
-                        "referencia": "1 Pedro 5:7",
-                        "texto": "Lancem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês."
-                    },
-                    {
-                        "referencia": "Mateus 11:28",
-                        "texto": "Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso."
-                    }
-                ],
-                "conteudo": "Esse mesmo movimento de descarregar a tensão no Criador ecoa com força total no Novo Testamento. O apóstolo Pedro retoma literalmente essa imagem ao escrever para comunidades que enfrentavam a fornalha da opressão em <strong>1 Pedro 5:7</strong> (<em>\"Lancem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês\"</em>). Jesus Cristo fez do convite ao descanso o coração do Seu ministério terreno em <strong>Mateus 11:28</strong> (<em>\"Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso\"</em>), mostrando que o Deus das Escrituras não é um capataz religioso exigindo metas desumanas, mas o Redentor que carrega o madeiro por nós.<br><br>Diante da dor da traição e do desmoronamento dos apoios humanos, a teologia reformada nos ensina que a segurança do crente repousa no pacto inabalável de Deus, e não na firmeza dos nossos sentimentos instáveis."
+                "conteudo": "Esse mesmo movimento de descarregar a tensão no Criador ecoa com força total no Novo Testamento. O apóstolo Pedro retoma literalmente essa imagem ao escrever para comunidades que enfrentavam a fornalha da opressão em <strong>1 Pedro 5:7</strong> (<em>\"Lancem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês\"</em>). Jesus Cristo fez do convite ao descanso o coração do Seu ministério terreno em <strong>Mateus 11:28</strong> (<em>\"Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso\"</em>), mostrando que o Deus das Escrituras não é um capataz religioso exigindo metas desumanas, mas o Redentor que carrega o madeiro por nós.<br><br>Diante da dor da traição e do desmoronamento dos apoios humanos, a teologia reformada nos ensina que a segurança do crente repousa no pacto inabalável de Deus, e não na firmeza dos nossos sentimentos instáveis. Como observou o filósofo e pensador cristão Francis Schaeffer ao confrontar a autossuficiência do homem moderno:<br><br>---"
             },
             {
                 "id": "fechamento",
-                "titulo": "5. Fechamento: A Pergunta Central",
+                "titulo": "5. Pergunta Central para Meditação",
                 "icone": "help-circle",
-                "conteudo": "Qual é a carga específica que você está insistindo em carregar sozinho por puro orgulho ou medo de perder o controle, fingindo que sua força é suficiente para não desmoronar?"
+                "pergunta": "Qual é a carga específica que você está insistindo em carregar sozinho por puro orgulho ou medo de perder o controle, fingindo que sua força é suficiente para não desmoronar?"
             }
         ],
-        "whatsapp": "*Salmos 55:22 (NVI)*\n> *\"Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.\"*\n\nTodo mundo tem um limite de carga. O problema é que a gente vive numa rotina insana de metas, cobranças e prazos — e ainda tem que aguentar discurso religioso de gente dizendo que quem tem fé não se cansa nem tem medo.\n\nDavi escreveu esse versículo quando tomou uma rasteira feia de um amigo próximo. A cidade estava um caos e a vontade dele era sumir no mapa. Em vez de fingir uma espiritualidade inabalável de vitrine, ele usou uma palavra forte no hebraico: *Hashlek* — arremessar, jogar fora de si o peso antes que ele quebre a coluna.\n\nDeus não promete um conto de fadas sem problemas na terça-feira; Ele promete o sustento estrutural que impede a sua alma de entrar em colapso. Você não precisa ser o super-herói da sua própria vida nem bancar o crente perfeito. Faça o que precisa ser feito com seriedade, mas jogue a ansiedade do resultado nos ombros de Quem realmente tem força para segurar o mundo.\n\n*A pergunta do dia:* Qual problema você continua tentando controlar na força do braço, quando a única saída sensata é descarregar nas mãos de Deus?",
+        "devocionalWhatsApp": "*Salmos 55:22 (NVI)*\n> *\"Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.\"*\n\nTodo mundo tem um limite de carga. O problema é que a gente vive numa rotina insana de metas, cobranças e prazos — e ainda tem que aguentar discurso religioso de gente dizendo que quem tem fé não se cansa nem tem medo.\n\nDavi escreveu esse versículo quando tomou uma rasteira feia de um amigo próximo. A cidade estava um caos e a vontade dele era sumir no mapa. Em vez de fingir uma espiritualidade inabalável de vitrine, ele usou uma palavra forte no hebraico: *Hashlek* — arremessar, jogar fora de si o peso antes que ele quebre a coluna.\n\nDeus não promete um conto de fadas sem problemas na terça-feira; Ele promete o sustento estrutural que impede a sua alma de entrar em colapso. Você não precisa ser o super-herói da sua própria vida nem bancar o crente perfeito. Faça o que precisa ser feito com seriedade, mas jogue a ansiedade do resultado nos ombros de Quem realmente tem força para segurar o mundo.\n\n*A pergunta do dia:* Qual problema você continua tentando controlar na força do braço, quando a única saída sensata é descarregar nas mãos de Deus?",
         "comparacaoTraducoes": {
             "titulo": "Comparação Exegética de Versões",
             "versaoPrincipal": {
-                "sigla": "NVI",
+                "sigla": "NVI (Nova Versão Internacional)",
                 "texto": "Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.",
+                "rotulo": "Tradução Dinâmica Contemporânea",
                 "foco": "Clareza fluida da comunicação contemporânea, conectando fardo com ansiedade interior."
             },
-            "versaoLiteral": {
-                "sigla": "Tradução Literal",
+            "versaoOriginal": {
+                "sigla": "Literal (Tradução ao Pé da Letra)",
+                "rotulo": "Equivalência Formal Estrita",
+                "textoLiteral": "Arremessa sobre o Senhor o teu fardo que te foi dado, e Ele mesmo te sustentará; não dará para sempre vacilação ao justo.",
                 "texto": "Arremessa sobre o Senhor o teu fardo que te foi dado, e Ele mesmo te sustentará; não dará para sempre vacilação ao justo.",
-                "foco": "Ação enérgica de descarregar (hashlek) e a física do suporte contínuo da graça (kul)."
+                "foco": "Ação enérgica de descarregar (*hashlek*) e a física do suporte contínuo da graça (*kul*)."
             },
+            "notaHermeneutica": "A promessa bíblica não é a ausência de atrito no mundo, mas a estabilidade estrutural fornecida por Deus quando o ser humano renuncia à ilusão da autossuficiência.",
             "chaveHermeneutica": "A promessa bíblica não é a ausência de atrito no mundo, mas a estabilidade estrutural fornecida por Deus quando o ser humano renuncia à ilusão da autossuficiência."
         },
         "minutoComDeus": {
@@ -125,47 +103,31 @@ const HISTORICO_ESTUDOS = [
         "modelo": "gemini-3.5-flash",
         "geradoEm": "2026-10-05T19:05:00.000000",
         "versiculoTexto": "Tenham misericórdia daqueles que duvidam",
-        "genero": "Epístola Pastoral / Defesa da Fé",
+        "genero": "Literatura de Sabedoria / Bíblica",
         "secoes": [
             {
                 "id": "contexto",
                 "titulo": "1. O Contexto Histórico e Narrativo",
                 "icone": "scroll",
-                "conteudo": "A carta de Judas é um dos textos mais cortantes do Novo Testamento. Ela não tem rodeios clericais. Judas pretendia escrever uma carta tranquila sobre a salvação comum, mas foi obrigado a mudar de rota diante de um escândalo institucional: infiltrados que transformaram a graça de Deus em salvo-conduto para exploração moral e mercantilismo da fé. O cenário do final do primeiro século era de tensão bruta: sob o peso do Império Romano por fora e a corrosão da hipocrisia de líderes corruptos por dentro, as comunidades cristãs estavam desorientadas.<br><br>O problema é que todo escândalo religioso gera estilhaços colaterais na vida das pessoas comuns. Quando a liderança falha e o discurso não fecha com a prática, quem paga a conta é o universitário, o jovem que está tentando crer e o trabalhador exausto. O ambiente fica tóxico e a desconfiança explode. Em vez de ordenar um tribunal de inquisição ou exigir que todo mundo finja certezas absolutas para manter a fachada do grupo, Judas traz um freio de emergência cirúrgico no versículo 22: diante da quebra de confiança, a ordem apostólica não é expulsar quem está vacilando, mas agir com misericórdia real."
+                "conteudo": "A carta de Judas é um dos textos mais cortantes do Novo Testamento. Ela não tem rodeios clericais. Judas pretendia escrever uma carta tranquila sobre a salvação comum, mas foi obrigado a mudar de rota diante de um escândalo institucional: infiltrados que transformaram a graça de Deus em salvo-conduto para exploração moral e mercantilismo da fé. O cenário do final do primeiro século era de tensão bruta: sob o peso do Império Romano por fora e a corrosão da hipocrisia de líderes corruptos por dentro, as comunidades cristãs estavam desorientadas.<br><br>O problema é que todo escândalo religioso gera estilhaços colaterais na vida das pessoas comuns. Quando a liderança falha e o discurso não fecha com a prática, quem paga a conta é o universitário, o jovem que está tentando crer e o trabalhador exausto. O ambiente fica tóxico e a desconfiança explode. Em vez de ordenar um tribunal de inquisição ou exigir que todo mundo finja certezas absolutas para manter a fachada do grupo, Judas traz um freio de emergência cirúrgico no versículo 22: diante da quebra de confiança, a ordem apostólica não é expulsar quem está vacilando, mas agir com misericórdia real.<br><br>---"
             },
             {
                 "id": "anatomia",
                 "titulo": "2. A Anatomia do Texto e Teologia Central",
                 "icone": "book-open",
-                "termosOriginais": [
-                    {
-                        "termo": "Eleeo (ἐλεέω)",
-                        "significado": "Ter misericórdia ativa",
-                        "explicacao": "Compaixão que estende a mão e entra no chão da dor alheia."
-                    },
-                    {
-                        "termo": "Diakrinomenos (διακρινόμενος)",
-                        "significado": "Estar dividido / Vacilar",
-                        "explicacao": "A angústia sincera de quem quer caminhar, mas está ferido pela contradição das circunstâncias."
-                    },
-                    {
-                        "termo": "Soteria (σωτηρία)",
-                        "significado": "Salvação integral",
-                        "explicacao": "A obra consumada de Cristo que sustenta o crente para além das suas oscilações emocionais."
-                    }
-                ],
-                "conteudo": "Em um ambiente religioso que idolatra a performance e a certeza inabalável, Judas introduz uma postura anti-institucional revolucionária. O termo original para 'tenham misericórdia' é <em>Eleeo</em> (ἐλεέω) — um verbo que não significa apenas sentir pena à distância, mas um mover prático das entranhas que resulta em socorro, acolhimento e suporte tangível. Não é benevolência condescendente; é resgate.<br><br>O alvo dessa misericórdia são aqueles que estão <em>Diakrinomenous</em> (διακρινομένους), o particípio presente do verbo <em>diakrino</em>. No grego, esse termo não designa o cínico arrogante que zomba da verdade para justificar sua canalhice; designa o sujeito que está com o coração cindido, disputando consigo mesmo, oscilando entre o desejo de crer e o cansaço das decepções que acumulou. A lógica da graça aqui é cristalina: Deus não condiciona o Seu amor à nossa capacidade de manter um placar cognitivo perfeito. A fé cristã não é um clube de quem nunca teve insônia questionando a vida, mas o refúgio seguro de quem reconhece que só Cristo é a âncora firme quando todas as certezas humanas desmoronam."
+                "termosOriginais": [],
+                "conteudo": "Em um ambiente religioso que idolatra a performance e a certeza inabalável, Judas introduz uma postura anti-institucional revolucionária. O termo original para \"tenham misericórdia\" é <em>eleeo</em> (ἐλεέω) — um verbo que não significa apenas sentir pena à distância, mas um mover prático das entranhas que resulta em socorro, acolhimento e suporte tangível. Não é benevolência condescendente; é resgate.<br><br>O alvo dessa misericórdia são aqueles que estão <em>diakrinomenous</em> (διακρινομένους), o particípio presente do verbo <em>diakrino</em>. No grego, esse termo não designa o cínico arrogante que zomba da verdade para justificar sua canalhice; designa o sujeito que está com o coração cindido, disputando consigo mesmo, oscilando entre o desejo de crer e o cansaço das decepções que acumulou. A lógica da graça aqui é cristalina: Deus não condiciona o Seu amor à nossa capacidade de manter um placar cognitivo perfeito. A fé cristã não é um clube de quem nunca teve insônia questionando a vida, mas o refúgio seguro de quem reconhece que só Cristo é a âncora firme quando todas as certezas humanas desmoronam."
             },
             {
                 "id": "aplicacao",
                 "titulo": "3. O que tirar disso para a prática de hoje?",
                 "icone": "compass",
-                "conteudo": "A igreja moderna muitas vezes funciona como uma vitrine de certezas ensaiadas. As pessoas entram nos templos com medo de admitir que estão esgotadas, que o casamento está por um fio ou que não conseguem conciliar o sofrimento do mundo com a pregação triunfalista dos púlpitos. Criou-se a ilusão de que ter dúvidas é um defeito de caráter ou pecado mortal, e isso empurra os mais lúcidos para fora da comunhão.<br><br>Judas 1:22 quebra essa hipocrisia ao meio. Duvidar no meio do tiroteio não faz de você um traidor; faz de você um ser humano respirando a poluição de um mundo quebrado. A fé não é a ausência de perguntas difíceis; é a decisão corajosa de colocar essas perguntas nos pés de Jesus, em vez de comprar respostas prontas de gurus da autoajuda gospel. Para o dia a dia na faculdade, no escritório ou na mesa de casa, o recado é direto: pare de cobrar de si e dos outros uma perfeição fingida. Estenda a mão para quem está cambaleando. A graça de Deus é espaçosa o suficiente para aguentar as nossas perguntas honestas."
+                "conteudo": "A igreja moderna muitas vezes funciona como uma vitrine de certezas ensaiadas. As pessoas entram nos templos com medo de admitir que estão esgotadas, que o casamento está por um fio ou que não conseguem conciliar o sofrimento do mundo com a pregação triunfalista dos púlpitos. Criou-se a ilusão de que ter dúvidas é um defeito de caráter ou pecado mortal, e isso empurra os mais lúcidos para fora da comunhão.<br><br>Judas 1:22 quebra essa hipocrisia ao meio. Duvidar no meio do tiroteio não faz de você um traidor; faz de você um ser humano respirando a poluição de um mundo quebrado. A fé não é a ausência de perguntas difíceis; é a decisão corajosa de colocar essas perguntas nos pés de Jesus, em vez de comprar respostas prontas de gurus da autoajuda gospel. Para o dia a dia na faculdade, no escritório ou na mesa de casa, o recado é direto: pare de cobrar de si e dos outros uma perfeição fingida. Estenda a mão para quem está cambaleando. A graça de Deus é espaçosa o suficiente para aguentar as nossas perguntas honestas.<br><br>---"
             },
             {
                 "id": "canonicas",
-                "titulo": "4. Conexões Canônicas e Autores da Mesma Linha",
-                "icone": "link",
+                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
+                "icone": "cross",
                 "citacoes": [
                     {
                         "autor": "Tim Keller",
@@ -173,38 +135,32 @@ const HISTORICO_ESTUDOS = [
                         "texto": "Uma fé que nunca foi testada por perguntas difíceis e dúvidas honestas é como um músculo que nunca foi exercitado: no primeiro choque da realidade, ela atrofia."
                     }
                 ],
-                "versiculosRelacionados": [
-                    {
-                        "referencia": "Marcos 9:24",
-                        "texto": "Imediatamente o pai do menino exclamou: 'Creio, ajuda-me a vencer a minha incredulidade!'"
-                    },
-                    {
-                        "referencia": "João 20:27",
-                        "texto": "Disse a Tomé: 'Coloque o seu dedo aqui; veja as minhas mãos. Estenda a mão e coloque-a no meu lado. Parem de duvidar e creiam.'"
-                    }
-                ],
                 "conteudo": "Jesus operou exatamente nessa frequência durante todo o Seu ministério. Diante de um pai desesperado com o filho enfermo em <strong>Marcos 9:24</strong> (<em>\"Imediatamente o pai do menino exclamou: 'Creio, ajuda-me a vencer a minha incredulidade!'\"</em>), Cristo não o repreendeu pela contradição; Ele o acolheu e restaurou o menino. Da mesma forma, quando Tomé exigiu provas concretas da ressurreição em <strong>João 20:27</strong> (<em>\"Disse a Tomé: 'Coloque o seu dedo aqui; veja as minhas mãos. Estenda a mão e coloque-a no meu lado. Parem de duvidar e creiam'\"</em>), o Salvador não o excomungou; ofereceu Suas próprias feridas."
             },
             {
                 "id": "fechamento",
-                "titulo": "5. Fechamento: A Pergunta Central",
+                "titulo": "5. Pergunta Central para Meditação",
                 "icone": "help-circle",
-                "conteudo": "Você tem tratado suas dúvidas e as dos outros com o julgamento arrogante de um tribunal religioso ou com a paciência acolhedora da graça de Cristo?"
+                "pergunta": "Você tem tratado suas dúvidas e as dos outros com o julgamento arrogante de um tribunal religioso ou com a paciência acolhedora da graça de Cristo?"
             }
         ],
-        "whatsapp": "*Judas 1:22 (NVI)*\n> *\"Tenham misericórdia daqueles que duvidam\"*\n\nO meio religioso adora vender a imagem de que todo mundo tem que ter certeza absoluta de tudo o tempo todo. Virou um concurso de aparências: quem admite que está confuso ou cansado é logo taxado de \"fraco na fé\".\n\nJudas escreveu o oposto disso. Ele estava lidando com uma época de escândalos e desilusões, e deu uma ordem expressa: em vez de julgar quem está com o coração dividido (*diakrinomenos*), acolha com misericórdia ativa (*eleeo*).\n\nDúvida sincera não é rebeldia; é o grito de quem quer uma fé com substância, e não uma historinha para boi dormir. Jesus nunca enxotou Tomé quando ele pediu para ver as feridas, nem rejeitou o pai que admitiu: \"Eu creio, mas me ajuda na minha falta de fé\".\n\n*A pergunta do dia:* Você tem estendido a mão para quem está em crise ou virou o juiz que aponta o dedo para quem fraquejou no caminho?",
+        "devocionalWhatsApp": "*Judas 1:22 (NVI)*\n> *\"Tenham misericórdia daqueles que duvidam\"*\n\nO meio religioso adora vender a imagem de que todo mundo tem que ter certeza absoluta de tudo o tempo todo. Virou um concurso de aparências: quem admite que está confuso ou cansado é logo taxado de \"fraco na fé\".\n\nJudas escreveu o oposto disso. Ele estava lidando com uma época de escândalos e desilusões, e deu uma ordem expressa: em vez de julgar quem está com o coração dividido (*diakrinomenos*), acolha com misericórdia ativa (*eleeo*). \n\nDúvida sincera não é rebeldia; é o grito de quem quer uma fé com substância, e não uma historinha para boi dormir. Jesus nunca enxotou Tomé quando ele pediu para ver as feridas, nem rejeitou o pai que admitiu: \"Eu creio, mas me ajuda na minha falta de fé\". \n\n*A pergunta do dia:* Você tem estendido a mão para quem está em crise ou virou o juiz que aponta o dedo para quem fraquejou no caminho?",
         "comparacaoTraducoes": {
             "titulo": "Comparação Exegética de Versões",
             "versaoPrincipal": {
-                "sigla": "NVI",
+                "sigla": "NVI (Nova Versão Internacional)",
                 "texto": "Tenham misericórdia daqueles que duvidam",
+                "rotulo": "Tradução Dinâmica Contemporânea",
                 "foco": "Clareza imediata e aplicação direta ao acolhimento dos que hesitam."
             },
-            "versaoLiteral": {
-                "sigla": "Tradução Literal",
+            "versaoOriginal": {
+                "sigla": "Literal (Tradução ao Pé da Letra)",
+                "rotulo": "Equivalência Formal Estrita",
+                "textoLiteral": "E, por um lado, tende misericórdia daqueles que estão em conflito interno [divididos em si mesmos]",
                 "texto": "E, por um lado, tende misericórdia daqueles que estão em conflito interno [divididos em si mesmos]",
-                "foco": "Destacar a batalha interna e processual do verbo diakrinomenous."
+                "foco": "Destacar a batalha interna e processual do verbo *diakrinomenous*."
             },
+            "notaHermeneutica": "A maturidade bíblica se revela na habilidade de acolher quem está em crise, desmantelando a arrogância farisaica que exige certezas artificiais.",
             "chaveHermeneutica": "A maturidade bíblica se revela na habilidade de acolher quem está em crise, desmantelando a arrogância farisaica que exige certezas artificiais."
         },
         "minutoComDeus": {
@@ -239,42 +195,26 @@ const HISTORICO_ESTUDOS = [
         "modelo": "gemini-3.5-flash",
         "geradoEm": "2026-10-04T12:00:00.000000",
         "versiculoTexto": "Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!",
-        "genero": "Poesia Penitencial / Oração Bíblica",
+        "genero": "Literatura de Sabedoria / Bíblica",
         "secoes": [
             {
                 "id": "contexto",
                 "titulo": "1. O Contexto Histórico e Narrativo",
                 "icone": "scroll",
-                "conteudo": "O Salmo 51 é o ápice da literatura penitencial das Escrituras e nasce no momento mais sombrio da biografia do rei Davi. Ele não está compondo uma poesia abstrata no palácio; está de joelhos no pó após ser confrontado com cirúrgica coragem pelo profeta Natã (2 Samuel 12). O monarca de Israel havia cometido adultério com Bate-Seba e, para ocultar o escândalo, orquestrara o assassinato covarde de Urias, um dos seus soldados mais leais. Por meses, Davi silenciou a culpa sob uma máscara de normalidade institucional e religiosa, enquanto seus ossos envelheciam e o seu vigor se esvaía em tormento interior (Salmo 32:3-4).<br><br>Quando o dedo profético de Natã aponta para o peito do rei com a sentença irrefutável — <em>'Tu és este homem!'</em> —, a armadura do autoengano de Davi desmorona. Ele não recorre a justificativas atenuantes, não culpa a fragilidade humana nem transfere responsabilidades políticas. Davi compreende que, sob o manto do adultério e do homicídio, havia uma raiz muito mais profunda e maligna: uma falência ontológica do coração. Ele percebe que rituais exteriores, sacrifícios de animais ou meras resoluções morais não podiam lavar a lepra da sua alma. Era preciso ir à raiz de onde brotam os afetos, os desejos e as decisões humanas."
+                "conteudo": "O Salmo 51 é o ápice da literatura penitencial das Escrituras e nasce no momento mais sombrio da biografia do rei Davi. Ele não está compondo uma poesia abstrata no palácio; está de joelhos no pó após ser confrontado com cirúrgica coragem pelo profeta Natã (2 Samuel 12). O monarca de Israel havia cometido adultério com Bate-Seba e, para ocultar o escândalo, orquestrara o assassinato covarde de Urias, um dos seus soldados mais leais. Por meses, Davi silenciou a culpa sob uma máscara de normalidade institucional e religiosa, enquanto seus ossos envelheciam e o seu vigor se esvaía em tormento interior (Salmo 32:3-4).<br><br>Quando o dedo profético de Natã aponta para o peito do rei com a sentença irrefutável — <em>\"Tu és este homem!\"</em> —, a armadura do autoengano de Davi desmorona. Ele não recorre a justificativas atenuantes, não culpa a fragilidade humana nem transfere responsabilidades políticas. Davi compreende que, sob o manto do adultério e do homicídio, havia uma raiz muito mais profunda e maligna: uma falência ontológica do coração. Ele percebe que rituais exteriores, sacrifícios de animais ou meras resoluções morais não podiam lavar a lepra da sua alma. Era preciso ir à raiz de onde brotam os afetos, os desejos e as decisões humanas."
             },
             {
                 "id": "anatomia",
                 "titulo": "2. A Anatomia do Texto e Teologia Central",
                 "icone": "book-open",
-                "termosOriginais": [
-                    {
-                        "termo": "Bara (בָּרָא)",
-                        "significado": "Criar do nada / Obra divina exclusiva",
-                        "explicacao": "Mesmo verbo teológico de Gênesis 1:1; ação soberana divina que produz algo inteiramente novo a partir do nada (creatio ex nihilo)."
-                    },
-                    {
-                        "termo": "Lev tahor (לֵב טָהוֹר)",
-                        "significado": "Coração puro / Purificado de ídolos",
-                        "explicacao": "Centro de comando dos afetos, intelecto e volição, lavado de toda contaminação moral e cerimonial."
-                    },
-                    {
-                        "termo": "Ruach nachon (רוּחַ נָכוֹן)",
-                        "significado": "Espírito reto / Firme e inabalável",
-                        "explicacao": "Disposição interior constante, estabelecida e leal a Deus, que não vacila diante das seduções do pecado."
-                    }
-                ],
-                "conteudo": "A grandeza teológica deste versículo reside no vocabulário exegético singular que Davi emprega no original hebraico. Ao clamar <em>'cria em mim'</em>, ele utiliza o verbo <strong>Bara (בָּרָא)</strong>. Nas Escrituras hebraicas, o sujeito de <em>bara</em> é, sem exceção, unicamente Deus. É exatamente o mesmo verbo teológico solene de <strong>Gênesis 1:1</strong> (<em>Bereshit bara Elohim...</em> — 'No princípio criou Deus...'). O verbo <em>bara</em> designa a produção soberana de algo inteiramente novo a partir do nada (<em>creatio ex nihilo</em>), algo que nenhuma criatura possui a capacidade de manufaturar. Davi não pede a Deus uma reforma moral, um polimento de hábitos ou uma segunda chance para tentar ser melhor. Ele confessa a total incapacidade humana de regenerar a si mesma.<br><br>O objeto dessa criação milagrosa é um <strong>Lev tahor (לֵב טָהוֹר)</strong> — um 'coração puro'. No pensamento semítico e bíblico, o coração (<em>lev</em>) é o centro de comando de todo o ser: intelecto, volição, desejos primários e consciência moral. <em>Tahor</em> evoca a pureza que pode subsistir na presença gloriosa do Santo de Israel. Em paralelismo poético, Davi suplica: <em>'dá-me uma vontade nova e firme'</em> — renova em mim um <strong>Ruach nachon (רוּחַ נָכוֹן)</strong>, um 'espírito reto, estabelecido, resoluto, inabalável'."
+                "termosOriginais": [],
+                "conteudo": "A grandeza teológica deste versículo reside no vocabulário exegético singular que Davi emprega no original hebraico. Ao clamar <em>\"cria em mim\"</em>, ele utiliza o verbo <strong>Bara (בָּרָא)</strong>. Nas Escrituras hebraicas, o sujeito de <em>bara</em> é, sem exceção, unicamente Deus. É exatamente o mesmo verbo teológico solene de <strong>Gênesis 1:1</strong> (<em>Bereshit bara Elohim...</em> — \"No princípio criou Deus...\"). O verbo <em>bara</em> designa a produção soberana de algo inteiramente novo a partir do nada (<em>creatio ex nihilo</em>), algo que nenhuma criatura possui a capacidade de manufaturar. Davi não pede a Deus uma reforma moral, um polimento de hábitos ou uma segunda chance para tentar ser melhor. Ele confessa a total incapacidade humana de regenerar a si mesma: \"Senhor, se Tu não criares em mim algo que não existe, continuarei sendo um adúltero e um homicida em potencial\".<br><br>O objeto dessa criação milagrosa é um <strong>Lev tahor (לֵב טָהוֹר)</strong> — um \"coração puro\". No pensamento semítico e bíblico, o coração (<em>lev</em>) não é a sede de sentimentos românticos efêmeros, mas o centro de comando de todo o ser: intelecto, volição, desejos primários e consciência moral. <em>Tahor</em> evoca a pureza cerimonial e moral que pode subsistir na presença gloriosa do Santo de Israel. Em paralelismo poético, Davi suplica: <em>\"dá-me uma vontade nova e firme\"</em> — no hebraico, renova em mim um <strong>Ruach nachon (רוּחַ נָכוֹן)</strong>, um \"espírito reto, estabelecido, resoluto, inabalável\". O coração humano é naturalmente instável e idólatra; por isso, a graça precisa não apenas perdoar a culpa passada, mas implantar uma lealdade firme e constante que não se deixe seduzir pelos atalhos do pecado."
             },
             {
                 "id": "aplicacao",
                 "titulo": "3. O que tirar disso para a prática de hoje?",
                 "icone": "compass",
-                "conteudo": "Vivemos sob a tirania do perfeccionismo moralista e da autoajuda cosmética. As filosofias modernas e a psicologia popular insistem na falácia de que 'o ser humano é intrinsecamente bom e precisa apenas olhar para dentro de si para encontrar sua melhor versão'. Na prática da fé, muitos cristãos caem no ativismo exaustivo de tentar 'remendar' a própria conduta: prometem a si mesmos que nunca mais cairão naquele pecado secreto, dobram promessas morais e tentam comprar paz de consciência através de uma rotina religiosa performática.<br><br>O Salmo 51:10 destrói essa ilusão de autonomia. Não temos poder em nós mesmos para desintoxicar os nossos afetos caídos. Olhar para dentro de si em busca de pureza é como procurar luz no fundo de um poço escuro. A oração de Davi nos ensina a orar com desespero santo e realismo bíblico: precisamos de um transplante de coração, não de uma maquiagem comportamental. A maturidade espiritual começa quando paramos de justificar nossas fraquezas e admitimos diante de Deus: 'Pai, eu não consigo gerar em mim a santidade que Tu exiges. Cria Tu em mim o que eu jamais poderei produzir pelas minhas próprias forças'."
+                "conteudo": "Vivemos sob a tirania do perfeccionismo moralista e da autoajuda cosmética. As filosofias modernas e a psicologia popular insistem na falácia de que \"o ser humano é intrinsecamente bom e precisa apenas olhar para dentro de si para encontrar sua melhor versão\". Na prática da fé, muitos cristãos caem no ativismo exaustivo de tentar \"remendar\" a própria conduta: prometem a si mesmos que nunca mais cairão naquele pecado secreto, dobram promessas morais e tentam comprar paz de consciência através de uma rotina religiosa performática. <br><br>O Salmo 51:10 destrói essa ilusão de autonomia. Não temos poder em nós mesmos para desintoxicar os nossos afetos caídos. Olhar para dentro de si em busca de pureza é como procurar luz no fundo de um poço escuro. A oração de Davi nos ensina a orar com desespero santo e realismo bíblico: precisamos de um transplante de coração, não de uma maquiagem comportamental. A maturidade espiritual começa quando paramos de justificar nossas fraquezas e admitimos diante de Deus: \"Pai, eu não consigo gerar em mim a santidade que Tu exiges. Cria Tu em mim o que eu jamais poderei produzir pelas minhas próprias forças\"."
             },
             {
                 "id": "canonicas",
@@ -287,73 +227,22 @@ const HISTORICO_ESTUDOS = [
                         "texto": "Davi não orou: 'Senhor, melhora o meu velho coração; remenda a minha antiga natureza'. Ele sabia que a carne para nada aproveita. Ele orou por criação (Bara), porque somente Aquele que formou o homem no pó no princípio pode fazer um homem novo a partir de um pecador arruinado."
                     }
                 ],
-                "conteudo": "O clamor desesperado de Davi no Sinai e no Saltério encontra a sua promessa profética definitiva na Nova Aliança. Séculos mais tarde, o Senhor responde ao anseio de Davi através do profeta <strong>Ezequiel 36:26</strong>: <em>'Darei a vocês um coração novo e porei um espírito novo em vocês; tirarei de vocês o coração de pedra e lhes darei um coração de carne.'</em> E em <strong>Jeremias 31:33</strong>, Deus assegura que a Sua lei não seria mais escrita em tábuas de pedra exteriores, mas gravada diretamente no interior do Seu povo.<br><br>Essa promessa se cumpre plenamente e com perfeição na cruz e na ressurreição de Jesus Cristo. Em <strong>2 Coríntios 5:17</strong>, o apóstolo Paulo proclama a consumação daquele mesmo verbo criador: <em>'Portanto, se alguém está em Cristo, é nova criação (kainē ktisis). As coisas antigas já passaram; eis que surgiram coisas novas!'</em> A purificação que Davi antevia ao clamar por hissopo (<em>Salmo 51:7</em>) foi derramada de uma vez por todas pelo sangue do Cordeiro, como confirma <strong>1 João 1:9</strong>: <em>'Se confessarmos os nossos pecados, ele é fiel e justo para nos perdoar os pecados e nos purificar de toda injustiça.'</em>"
+                "conteudo": "O clamor desesperado de Davi no Sinai e no Saltério encontra a sua promessa profética definitiva na Nova Aliança. Séculos mais tarde, o Senhor responde ao anseio de Davi através do profeta <strong>Ezequiel 36:26</strong>: <em>\"Darei a vocês um coração novo e porei um espírito novo em vocês; tirarei de vocês o coração de pedra e lhes darei um coração de carne.\"</em> E em <strong>Jeremias 31:33</strong>, Deus assegura que a Sua lei não seria mais escrita em tábuas de pedra exteriores, mas gravada diretamente no interior do Seu povo.<br><br>Essa promessa se cumpre plenamente e com perfeição na cruz e na ressurreição de Jesus Cristo. Em <strong>2 Coríntios 5:17</strong>, o apóstolo Paulo proclama a consumação daquele mesmo verbo criador: <em>\"Portanto, se alguém está em Cristo, é nova criação (kainē ktisis). As coisas antigas já passaram; eis que surgiram coisas novas!\"</em> A purificação que Davi antevia ao clamar por hissopo (<em>Salmo 51:7</em>) foi derramada de uma vez por todas pelo sangue do Cordeiro, como confirma <strong>1 João 1:9</strong>: <em>\"Se confessarmos os nossos pecados, ele é fiel e justo para nos perdoar os pecados e nos purificar de toda injustiça.\"</em> Sobre o mistério regenerador desta oração, o príncipe dos pregadores, Charles Spurgeon, advertiu com incomparável lucidez:"
             },
             {
                 "id": "fechamento",
                 "titulo": "5. Pergunta Central para Meditação",
                 "icone": "help-circle",
-                "pergunta": "Em quais áreas da sua vida espiritual você ainda está tentando consertar suas atitudes com promessas humanas e força de vontade, em vez de se prostrar e suplicar que Deus realize um milagre soberano de recriação no seu coração?"
+                "pergunta": ""
             }
         ],
-        "devocionalWhatsApp": "🌿 *Salmos 51:10 (YouVersion / NTLH)* 📖\n> *\"Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!\"*\n\n---\n\nA gente gasta uma energia absurda tentando 'consertar' a nossa própria vida. \n\nQuando erramos feio, a primeira reação é prometer a nós mesmos: *\"Desta vez vai ser diferente. Vou me policiar mais, vou ser mais focado, vou me esforçar o dobro\"*. Tratamos o nosso coração como quem tenta colar um vaso despedaçado com fita adesiva barata.\n\nMas Davi entendeu algo que muda tudo: o pecado não quebra apenas as nossas regras; ele quebra a nossa própria natureza. \n\nQuando Davi orou este versículo, ele havia chegado ao fundo do poço. Ele não pediu a Deus: *\"Senhor, me ajuda a melhorar meus hábitos\"*. Ele usou a palavra hebraica *Bara* — a mesmíssima palavra de Gênesis 1:1 para a criação do universo do nada. Davi estava dizendo: *\"Deus, se o Senhor não criar algo absolutamente novo dentro de mim, eu não tenho saída.\"*\n\nA boa notícia do Evangelho é que Deus não remenda a nossa velha natureza; em Cristo, Ele nos faz uma *Nova Criação* (2 Coríntios 5:17). Você não precisa viver na neurose de tentar ser bom o suficiente por esforço próprio. A pureza e a firmeza que você procura não brotam da sua força de vontade, mas da graça soberana do Pai.\n\nEntregue suas ruínas nas mãos do Criador e descanse na graça que renova tudo!\n\n---\n\n💡 *Para pensar hoje:*\nQue área da sua vida você ainda está tentando consertar na base do esforço próprio, em vez de pedir que Deus crie um coração novo em você?\n\nTenha um dia abençoado e renovado na presença do Senhor! 🌱"
+        "devocionalWhatsApp": "🌿 *Salmos 51:10 (YouVersion / NTLH)* 📖\n> *\"Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!\"*\n\n---\n\nA gente gasta uma energia absurda tentando \"consertar\" a nossa própria vida. \n\nQuando erramos feio, a primeira reação é prometer a nós mesmos: *\"Desta vez vai ser diferente. Vou me policiar mais, vou ser mais focado, vou me esforçar o dobro\"*. Tratamos o nosso coração como quem tenta colar um vaso despedaçado com fita adesiva barata.\n\nMas Davi entendeu algo que muda tudo: o pecado não quebra apenas as nossas regras; ele quebra a nossa própria natureza. \n\nQuando Davi orou este versículo, ele havia chegado ao fundo do poço. Ele não pediu a Deus: *\"Senhor, me ajuda a melhorar meus hábitos\"*. Ele usou a palavra hebraica *Bara* — a mesmíssima palavra de Gênesis 1:1 para a criação do universo do nada. Davi estava dizendo: *\"Deus, se o Senhor não criar algo absolutamente novo dentro de mim, eu não tenho saída.\"*\n\nA boa notícia do Evangelho é que Deus não remenda a nossa velha natureza; em Cristo, Ele nos faz uma *Nova Criação* (2 Coríntios 5:17). Você não precisa viver na neurose de tentar ser bom o suficiente por esforço próprio. A pureza e a firmeza que você procura não brotam da sua força de vontade, mas da graça soberana do Pai.\n\nEntregue suas ruínas nas mãos do Criador e descanse na graça que renova tudo!\n\n---\n\n💡 *Para pensar hoje:*\nQue área da sua vida você ainda está tentando consertar na base do esforço próprio, em vez de pedir que Deus crie um coração novo em você?\n\nTenha um dia abençoado e renovado na presença do Senhor! 🌱"
     },
     {
         "data": "2026-10-04",
         "dataFormatada": "4 de Outubro de 2026",
         "referencia": "Gálatas 5:1",
         "versao": "NVI",
-        "modelo": "gemini-3.5-flash",
-        "geradoEm": "2026-10-04T12:34:15.421968",
-        "versiculoTexto": "Foi para a liberdade que Cristo nos libertou. Portanto, permaneçam firmes e não se deixem submeter novamente a um jugo de escravidão.",
-        "genero": "Literatura de Sabedoria / Bíblica",
-        "secoes": [
-            {
-                "id": "contexto",
-                "titulo": "1. O Contexto Histórico e Narrativo",
-                "icone": "scroll",
-                "conteudo": "A Galácia não era apenas uma região geográfica, mas o palco de uma das maiores crises teológicas da igreja primitiva. Paulo escreve esta carta com uma urgência quase febril, sem as habituais saudações afetuosas que costumam abrir suas epístolas. O motivo era grave: falsos mestres, conhecidos como judaizadores, haviam se infiltrado naquelas comunidades recém-formadas. Eles não negavam a Cristo de forma explícita, mas tentavam 'completar' a obra da cruz. Ensinavam que, para ser verdadeiramente aceito por Deus, o crente gentio precisava se submeter à lei de Moisés, adotando rituais como a circuncisão e as regras dietéticas. Paulo percebe que essa exigência aparentemente piedosa era, na verdade, um atentado contra o próprio Evangelho. O apóstolo escreve para resgatar os gálatas de um retrocesso espiritual trágico, mostrando que retroceder à lei não é um sinal de maturidade, mas sim uma apostasia disfarçada de santidade."
-            },
-            {
-                "id": "anatomia",
-                "titulo": "2. A Anatomia do Texto e Teologia Central",
-                "icone": "book-open",
-                "termosOriginais": [],
-                "conteudo": "A construção gramatical que Paulo utiliza no início do versículo é de uma força extraordinária. No grego, a expressão é <em>tē eleutheria hēmas Christos ēleutherōsen</em>, que pode ser traduzida literalmente como 'para a liberdade, Cristo nos libertou'. O uso repetido da palavra 'liberdade' (<em>eleutheria</em>) e do verbo 'libertar' (<em>eleutherōsen</em>) não é redundância estilística, mas uma ênfase teológica absoluta. A liberdade não é apenas um meio para alcançar outra coisa; ela é o próprio destino e o ambiente da nova vida em Cristo. O verbo no tempo aoristo indica uma ação definitiva, consumada na cruz. <br><br>Em seguida, Paulo introduz o imperativo <em>stēkete</em> ('permaneçam firmes' ou 'fiquem de pé'), uma metáfora militar de soldados que mantêm sua posição sob ataque. O perigo contra o qual eles devem resistir é o retorno ao <em>zygō douleias</em>, o 'jugo de escravidão'. Na antiguidade, o jugo era a peça de madeira que unia os bois para o trabalho forçado, frequentemente usada como metáfora para a submissão política ou religiosa. Para Paulo, tentar se justificar diante de Deus pelo cumprimento de regras morais ou rituais é colocar voluntariamente o pescoço sob uma canga de escravidão que esmaga a alma e anula a suficiência da graça."
-            },
-            {
-                "id": "aplicacao",
-                "titulo": "3. O que tirar disso para a prática de hoje?",
-                "icone": "compass",
-                "conteudo": "Na nossa realidade contemporânea, o 'jugo de escravidão' raramente se apresenta na forma de circuncisão ou rituais judaicos antigos. Ele se disfarça em roupagens modernas e altamente sedutoras. Caímos nessa armadilha quando transformamos a fé cristã em um sistema de pontuação espiritual, onde nossa paz e senso de aceitação dependem do nosso desempenho diário. É a neurose do ativismo religioso, a busca obsessiva por aprovação em ambientes eclesiásticos performáticos e a ilusão de que podemos barganhar com Deus através de sacrifícios autoimpostos. <br><br>O moralismo moderno gera crentes cansados, cínicos e secretamente frustrados, que vivem sob o medo constante de não serem bons o suficiente. A exortação de Paulo nos chama de volta à realidade do descanso em Cristo. Permanecer firme na liberdade significa aceitar que nosso valor e nossa segurança já foram estabelecidos na cruz, libertando-nos da necessidade de usar a religião como um mecanismo de controle ou de autopromoção. A verdadeira espiritualidade não nasce do esforço para alcançar a Deus, mas da resposta grata ao fato de que Ele já nos alcançou."
-            },
-            {
-                "id": "canonicas",
-                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
-                "icone": "cross",
-                "citacoes": [
-                    {
-                        "autor": "Martinho Lutero",
-                        "obra": "Comentário aos Gálatas",
-                        "texto": "Se perdermos o artigo da justificação pela fé somente, perderemos tudo. Pois onde a graça não é mantida pura, a lei inevitavelmente reintroduz a escravidão e o terror na consciência humana."
-                    }
-                ],
-                "conteudo": "Esta dinâmica de libertação e resistência ecoa por todas as Escrituras. O próprio Jesus aponta para essa realidade em <strong>João 8:36</strong> (<em>'Portanto, se o Filho os libertar, vocês serão de fato livres.'</em>), mostrando que a verdadeira liberdade não é autonomia egoísta, mas a restauração da nossa identidade filial. Paulo aprofunda essa verdade em <strong>Romanos 8:15</strong> (<em>'Pois vocês não receberam um espírito que os escravize para novamente terem medo, mas receberam o Espírito que os adota como filhos, por meio do qual clamamos: Aba, Pai.'</em>), contrastando o pavor da servidão com a intimidade da adoção. <br><br>Esse contraste fica ainda mais nítido quando lembramos o convite de Jesus em <strong>Mateus 11:28-30</strong> (<em>'Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso. Tomem sobre vocês o meu jugo e aprendam de mim, pois sou manso e humilde de coração, e vocês encontrarão descanso para as suas almas. Pois o meu jugo é suave e o meu fardo é leve.'</em>), onde o único 'jugo' aceitável é aquele que, em vez de esmagar, traz descanso e leveza."
-            },
-            {
-                "id": "fechamento",
-                "titulo": "5. Pergunta Central para Meditação",
-                "icone": "help-circle",
-                "pergunta": "Qual área da sua vida espiritual ou diária você ainda está tentando carregar no esforço próprio e nas regras de desempenho, recusando-se a descansar na suficiência da graça que Cristo já conquistou para você?"
-            }
-        ],
-        "devocionalWhatsApp": "*Gálatas 5:1* 📖 \n*\"Foi para a liberdade que Cristo nos libertou. Portanto, permaneçam firmes e não se deixem submeter novamente a um jugo de escravidão.\"*\n\n---\n\nA gente tem uma mania estranha de achar que a vida com Deus é uma planilha de metas. \n\nSe o dia foi produtivo e conseguimos orar, ler a Bíblia e ser 'bonzinhos', nos sentimos aceitos. Mas se falhamos, caímos na armadilha de achar que Deus virou as costas para nós. \n\nIsso não é fé, é *neurose de desempenho*. \n\nTrocamos as regras dos fariseus antigos pelas nossas próprias cobranças modernas: o ativismo religioso, a busca por aprovação e a ilusão de que podemos barganhar com o Criador através do nosso comportamento perfeito. O resultado? Uma geração de cristãos cansados, frustrados e secretamente esgotados.\n\nMas a mensagem do Evangelho é um choque de realidade: *Cristo já libertou você.* E foi para que você viva livre, não para voltar para a gaiola do moralismo.\n\nA cruz não foi um 'empurrãozinho' para você tentar conquistar o resto por esforço próprio. A obra está consumada. Descansar na Graça significa entender que o seu valor e a sua aceitação diante do Pai não oscilam conforme a sua performance do dia. \n\nVocê não precisa provar nada para ninguém — nem para Deus. Você já é amado. Você já foi aceito. Fique firme nessa certeza e tire esse peso das costas.\n\n---\n\n*Para pensar hoje:* 🤔\nO que você ainda está tentando carregar no esforço próprio e na cobrança pessoal, recusando-se a descansar na suficiência da graça que Cristo já conquistou para você?\n\nTenha um dia leve na presença do Pai! 🌱"
-    },
-    {
-        "data": "2026-10-03",
-        "dataFormatada": "3 de Outubro de 2026",
-        "referencia": "Êxodo 20:8",
-        "versao": "NTLH",
         "modelo": "gemini-3.5-flash",
         "geradoEm": "2026-10-04T12:34:15.421968",
         "versiculoTexto": "Foi para a liberdade que Cristo nos libertou. Portanto, permaneçam firmes e não se deixem submeter novamente a um jugo de escravidão.",
@@ -395,7 +284,7 @@ const HISTORICO_ESTUDOS = [
                 "id": "fechamento",
                 "titulo": "5. Pergunta Central para Meditação",
                 "icone": "help-circle",
-                "pergunta": "Qual área da sua vida espiritual ou diária você ainda está tentando carregar no esforço próprio e nas regras de desempenho, recusando-se a descansar na suficiência da graça que Cristo já conquistou para você?"
+                "pergunta": ""
             }
         ],
         "devocionalWhatsApp": "*Gálatas 5:1* 📖 \n*\"Foi para a liberdade que Cristo nos libertou. Portanto, permaneçam firmes e não se deixem submeter novamente a um jugo de escravidão.\"*\n\n---\n\nA gente tem uma mania estranha de achar que a vida com Deus é uma planilha de metas. \n\nSe o dia foi produtivo e conseguimos orar, ler a Bíblia e ser \"bonzinhos\", nos sentimos aceitos. Mas se falhamos, caímos na armadilha de achar que Deus virou as costas para nós. \n\nIsso não é fé, é *neurose de desempenho*. \n\nTrocamos as regras dos fariseus antigos pelas nossas próprias cobranças modernas: o ativismo religioso, a busca por aprovação e a ilusão de que podemos barganhar com o Criador através do nosso comportamento perfeito. O resultado? Uma geração de cristãos cansados, frustrados e secretamente esgotados.\n\nMas a mensagem do Evangelho é um choque de realidade: *Cristo já libertou você.* E foi para que você viva livre, não para voltar para a gaiola do moralismo.\n\nA cruz não foi um \"empurrãozinho\" para você tentar conquistar o resto por esforço próprio. A obra está consumada. Descansar na Graça significa entender que o seu valor e a sua aceitação diante do Pai não oscilam conforme a sua performance do dia. \n\nVocê não precisa provar nada para ninguém — nem para Deus. Você já é amado. Você já foi aceito. Fique firme nessa certeza e tire esse peso das costas.\n\n---\n\n*Para pensar hoje:* 🤔\nO que você ainda está tentando carregar no esforço próprio e na cobrança pessoal, recusando-se a descansar na suficiência da graça que Cristo já conquistou para você?\n\nTenha um dia leve na presença do Pai! 🌱"
@@ -742,6 +631,7 @@ const HISTORICO_ESTUDOS = [
             "versaoOriginal": {
                 "sigla": "Literal (Tradução ao Pé da Letra)",
                 "rotulo": "Equivalência Formal Estrita",
+                "textoLiteral": "Acima de tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.",
                 "texto": "Acima de tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.",
                 "foco": "Coração (Lev) como centro de comando integrado (mente, vontade e afetos); Fontes (Totsawot Chayyim) da existência."
             },
@@ -852,6 +742,7 @@ const HISTORICO_ESTUDOS = [
             "versaoOriginal": {
                 "sigla": "Literal (Tradução ao Pé da Letra)",
                 "rotulo": "Equivalência Formal Estrita",
+                "textoLiteral": "Nenhuma condenação, portanto, há agora para os que estão em Cristo Jesus.",
                 "texto": "Nenhuma condenação, portanto, há agora para os que estão em Cristo Jesus.",
                 "foco": "Katakrima: extinção jurídica simultânea tanto do veredito de culpa quanto da execução da pena penal."
             },
