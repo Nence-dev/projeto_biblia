@@ -940,8 +940,14 @@ function trocarAba(nomeAba, persistir = true) {
     const viewCafe = document.getElementById("view-cafe") || document.getElementById("view-minuto");
     const viewBiblia = document.getElementById("view-biblia");
     const heroHeader = document.getElementById("hero-header");
+    const navHighlights = document.getElementById("nav-btn-highlights");
 
     if (!btnEstudo || !btnCafe || !viewEstudo || !viewCafe) return;
+
+    if (navHighlights) {
+        navHighlights.classList.remove("is-active");
+        navHighlights.setAttribute("aria-selected", "false");
+    }
 
     if (nomeAba === "biblia") {
         if (btnBiblia) {
@@ -1964,6 +1970,7 @@ function inicializarFiltrosMarcacoes() {
 function abrirGavetaMarcacoes() {
     const drawer = document.getElementById("highlights-drawer");
     const backdrop = document.getElementById("drawer-highlights-backdrop");
+    const navHighlights = document.getElementById("nav-btn-highlights");
     if (!drawer || !backdrop) return;
 
     fecharPopoverCores();
@@ -1973,11 +1980,17 @@ function abrirGavetaMarcacoes() {
     backdrop.classList.add("is-open");
     backdrop.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+
+    if (navHighlights) {
+        navHighlights.classList.add("is-active");
+        navHighlights.setAttribute("aria-selected", "true");
+    }
 }
 
 function fecharGavetaMarcacoes() {
     const drawer = document.getElementById("highlights-drawer");
     const backdrop = document.getElementById("drawer-highlights-backdrop");
+    const navHighlights = document.getElementById("nav-btn-highlights");
     if (!drawer || !backdrop) return;
 
     drawer.classList.remove("is-open");
@@ -1985,6 +1998,11 @@ function fecharGavetaMarcacoes() {
     backdrop.classList.remove("is-open");
     backdrop.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+
+    if (navHighlights) {
+        navHighlights.classList.remove("is-active");
+        navHighlights.setAttribute("aria-selected", "false");
+    }
 }
 
 function renderizarListaMarcacoes() {

@@ -420,30 +420,6 @@ body {
     border-radius: 1px;
 }
 
-.navbar-center-nav .nav-link-highlights {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    color: var(--accent-gold);
-    background: var(--accent-gold-subtle);
-    padding: 0.35rem 0.75rem !important;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--border-accent);
-    font-size: 0.82rem;
-    transition: all var(--transition-fast);
-}
-
-.navbar-center-nav .nav-link-highlights:hover {
-    background: var(--accent-gold);
-    color: #1a1612 !important;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(212, 163, 89, 0.25);
-}
-
-.navbar-center-nav .nav-link-highlights svg {
-    stroke: currentColor;
-    flex-shrink: 0;
-}
 
 /* Grupo Direito: Busca Pílula + Ações */
 .navbar-right-group {
