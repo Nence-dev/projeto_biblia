@@ -40,12 +40,26 @@ def executar():
         on_status=lambda msg: print(f"  [Status] {msg}"),
     )
     
+    print("Gerando Devocional Narrativo com história viva (Café com Deus Pai)...")
+    try:
+        devocional_narrativo = client.gerar_devocional_narrativo(
+            referencia=versiculo.referencia,
+            texto=versiculo.texto,
+            versao=versiculo.versao,
+            estudo_gerado=estudo,
+            on_status=lambda msg: print(f"  [Status] {msg}"),
+        )
+    except Exception as exc:
+        print(f"  ⚠️ Aviso ao gerar devocional narrativo: {exc}")
+        devocional_narrativo = None
+
     caminho = salvar_estudo(
         referencia=versiculo.referencia,
         texto_versiculo=versiculo.texto,
         versao=versiculo.versao,
         conteudo_estudo=estudo,
         conteudo_whatsapp=whatsapp,
+        conteudo_cafe=devocional_narrativo,
         data_str=data_hoje,
     )
     print(f"Estudo salvo em: {caminho}")

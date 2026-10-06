@@ -4,6 +4,129 @@
  */
 const HISTORICO_ESTUDOS = [
     {
+        "data": "2026-10-07",
+        "dataFormatada": "7 de Outubro de 2026",
+        "referencia": "João 14:27",
+        "versao": "NVI",
+        "modelo": "gemini-3.5-flash",
+        "geradoEm": "2026-10-07T03:23:00.000000",
+        "versiculoTexto": "Deixo a paz a vocês; a minha paz lhes dou. Não a dou como o mundo a dá. Não se perturbe o seu coração, nem tenham medo.",
+        "genero": "Evangelhos / Discurso de Despedida",
+        "secoes": [
+            {
+                "id": "contexto",
+                "titulo": "1. O Contexto Histórico e Narrativo",
+                "icone": "scroll",
+                "conteudo": "O cenário de João 14 não é uma celebração triunfalista, mas a atmosfera densa e carregada do cenáculo em Jerusalém, poucas horas antes do Getsêmani e da cruz. No capítulo anterior, Jesus havia anunciado a traição de Judas, a negação iminente de Pedro e a Sua própria partida física. Os discípulos estavam em choque e desorientados: o Mestre que eles seguiram por três anos, no qual depositaram todas as esperanças messiânicas, acabara de declarar que iria para um lugar onde eles não poderiam segui-Lo de imediato. A sensação de orfandade, vulnerabilidade política e perigo iminente dominava a sala.<br><br>É exatamente no epicentro dessa tempestade emocional que Jesus pronuncia o Seu testamento espiritual. No mundo antigo greco-romano, a paz (<em>Pax Romana</em>) era mantida pela espada, pela coerção militar de legiões e pelo medo do imperador. Para o mundo secular, paz é apenas uma trégua temporária entre dois conflitos, ou a ausência momentânea de problemas externos. Mas Jesus oferece algo de uma ordem ontológica completamente distinta. Ele não deixa herança de moedas, terras ou isenção de perseguições; Ele deixa a Sua própria paz — a mesma serenidade imperturbável com a qual Ele caminharia voluntariamente em direção à cruz no dia seguinte.<br><br>---"
+            },
+            {
+                "id": "anatomia",
+                "titulo": "2. A Anatomia do Texto e Teologia Central",
+                "icone": "book-open",
+                "termosOriginais": [
+                    {
+                        "termo": "Eirēnē (εἰρήνη)",
+                        "significado": "Paz / Shalom Messiânico / Reconciliação",
+                        "explicacao": "Mais que mera ausência de conflito exterior; significa integridade de alma, harmonia e comunhão restabelecida com Deus."
+                    },
+                    {
+                        "termo": "Tarassesthō (ταρασσέσθω)",
+                        "significado": "Não se perturbe / Não se agite como água revolta",
+                        "explicacao": "Imperativo presente com negação no grego, ordenando estancar a comoção interna contínua provocada pela angústia."
+                    },
+                    {
+                        "termo": "Deiliatō (δειλιάτω)",
+                        "significado": "Não tenha medo / Não se acovarde",
+                        "explicacao": "Verbo que descreve o recuo covarde diante da batalha. Cristo ordena coragem fundamentada em Sua vitória."
+                    }
+                ],
+                "conteudo": "A riqueza exegética desse versículo reside no contraste radical entre a dádiva de Cristo e as ilusões de segurança deste século. O substantivo grego utilizado para paz é <em>eirēnē</em> (εἰρήνη), que no vocabulário dos Evangelhos herda toda a densidade do hebraico <em>shalom</em>. Não se trata de uma apatia estóica ou de um entorpecimento psicológico diante da dor, mas de plenitude de vida, integridade de alma e reconciliação definitiva com Deus. É uma paz que não depende de fatores climáticos ou financeiros; ela flui da aliança incondicional entre o Pai e o Filho.<br><br>Ao declarar <em>\"não a dou como o mundo a dá\"</em>, Jesus denuncia a fragilidade dos acordos humanos. O mundo dá a paz de maneira condicional, superficial e temporária — exige garantias humanas e colapsa ao primeiro sinal de crise. Cristo, porém, a outorga por meio da graça consumada na cruz. Na sequência, Jesus emite duas ordens imperativas rigorosas: <em>mē tarassesthō</em> (μὴ ταρασσέσθω) — a proibição de permitir que o coração seja sacudido como águas em turbulência violenta — e <em>mēde deiliatō</em> (μηδὲ δειλιάτω), que proíbe o recuo acovardado diante do perigo. A ausência de medo não é mérito da fibra moral do crente, mas consequência direta da posse dessa dádiva de Cristo."
+            },
+            {
+                "id": "aplicacao",
+                "titulo": "3. O que tirar disso para a prática de hoje?",
+                "icone": "compass",
+                "conteudo": "A modernidade hiperconectada nos vende a ilusão de que a paz é o resultado de uma equação controlável: basta ter a conta bancária farta, a despensa abastecida, o plano de saúde pago e a agenda rigidamente organizada. No entanto, basta um diagnóstico médico inesperado, uma demissão sumária ou uma mensagem no WhatsApp para que essa falsa paz de vidro se esfacele no chão. Vivemos na era dos ansiolíticos e da exaustão crônica exatamente porque tentamos comprar a paz com moedas que este mundo quebrado não é capaz de cunhar.<br><br>A exortação de Jesus em João 14:27 é um chamado lúcido para mudar a fonte onde ancoramos a nossa segurança. A paz de Cristo não promete uma vida sem boletos, sem luto ou sem oposições; pelo contrário, no capítulo 16 Ele avisa com franqueza: <em>\"No mundo vocês terão aflições\"</em>. Ter a paz de Cristo significa saber que o desfecho da sua história já foi resolvido na ressurreição. Quando as circunstâncias ao seu redor desmoronarem, você não precisa fingir que não dói; você apenas se apoia na verdade de que o Salvador está no mesmo barco com você, e o comando da tempestade continua sob Seus pés soberanos.<br><br>---"
+            },
+            {
+                "id": "canonicas",
+                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
+                "icone": "cross",
+                "citacoes": [
+                    {
+                        "autor": "J.C. Ryle",
+                        "obra": "Meditações nos Evangelhos: João",
+                        "texto": "A paz que Cristo dá não é a calmaria efêmera de um mar dormente, mas a âncora firme da alma ancorada na rocha eterna durante o mais violento temporal."
+                    },
+                    {
+                        "autor": "C.S. Lewis",
+                        "obra": "Mero Cristianismo",
+                        "texto": "Deus não pode nos dar uma felicidade e uma paz separadas de Si mesmo, porque isso simplesmente não existe fora d'Ele."
+                    }
+                ],
+                "conteudo": "A promessa de Jesus no cenáculo encontra ressonância contínua em todo o cânon bíblico. O profeta Isaías já antecipava séculos antes o segredo da estabilidade mental em <strong>Isaías 26:3</strong> (<em>\"Tu guardarás em perfeita paz aquele cujo propósito está firme, porque em ti confia\"</em>). No Novo Testamento, Paulo instrui os crentes de Filipos a transferirem suas súplicas a Deus para que a <em>\"paz de Deus, que excede todo o entendimento, guardará os seus corações e as suas mentes em Cristo Jesus\"</em> (<strong>Filipenses 4:7</strong>), usando a metáfora de uma guarnição militar protegendo uma fortaleza. Em <strong>Romanos 5:1</strong>, a raiz teológica é exposta: <em>\"Tendo sido, pois, justificados pela fé, temos paz com Deus, por nosso Senhor Jesus Cristo\"</em>.<br><br>---"
+            },
+            {
+                "id": "fechamento",
+                "titulo": "5. Pergunta Central para Meditação",
+                "icone": "help-circle",
+                "pergunta": "Onde você tem buscado refúgio quando o medo bate à porta: no controle frágil das suas próprias estratégias humanas ou no descanso inabalável da paz que Cristo já conquistou para você?"
+            }
+        ],
+        "devocionalWhatsApp": "*João 14:27 (NVI)*\n> *\"Deixo a paz a vocês; a minha paz lhes dou. Não a dou como o mundo a dá. Não se perturbe o seu coração, nem tenham medo.\"*\n\nA gente vive tentando controlar tudo para conseguir um pouco de tranquilidade: dinheiro guardado, planos para o futuro, rotina calculada. O problema é que a paz que o mundo oferece é frágil como vidro — qualquer imprevisto quebra.\n\nJesus falou essas palavras no cenáculo, poucas horas antes de ser preso e crucificado. Os discípulos estavam apavorados. Em vez de prometer que a vida seria fácil ou sem problemas, Ele entregou um legado eterno: *Eirēnē* — a própria paz de Deus, que não depende de circunstâncias favoráveis, mas da certeza de que Ele é o Senhor sobre todo o caos.\n\nA paz de Cristo não é a ausência de tempestades na sua semana; é a certeza inabalável de que o Salvador está no barco com você.\n\n*Para refletir hoje:* O que tem tirado o seu sono ultimamente? Respire fundo e entregue esse medo nas mãos d'Aquele que venceu o mundo por você.",
+        "minutoComDeus": {
+            "titulo": "A PAZ INABALÁVEL",
+            "fraseDoDia": "A paz de Cristo não é a ausência de tempestades ao redor, mas a presença soberana do Salvador no barco da sua vida.",
+            "autorFrase": "@juniorrostirola",
+            "leiturasComplementares": [
+                "FILIPENSES 4.6,7",
+                "COLOSSENSES 3.15",
+                "ISAÍAS 26.3",
+                "ROMANOS 5.1",
+                "SALMOS 4.8"
+            ],
+            "leituraComplementar": "FILIPENSES 4.6,7",
+            "historiaContexto": "A história real de Horatio Spafford compondo 'Sou Feliz com Jesus' no local do naufrágio de suas filhas",
+            "textoDevocional": "Em novembro de 1873, um advogado e empresário de Chicago chamado Horatio Spafford colocou sua esposa e quatro filhas pequenas a bordo do navio Ville du Havre rumo à Europa. Dias antes, ele havia perdido grande parte de suas economias no trágico Grande Incêndio de Chicago, mas planejava encontrar sua família em breve. No meio da escuridão do Oceano Atlântico, o navio colidiu violentamente com outra embarcação e afundou em meros doze minutos. Quando a esposa sobreviveu e enviou o telegrama com as devastadoras palavras: 'Salva sozinha, o que devo fazer?', o mundo de Spafford desmoronou em um abismo de luto indescritível.<br><br>Horatio embarcou no primeiro navio para encontrar a esposa destroçada na Inglaterra. Durante a travessia, o capitão o chamou ao convés e apontou para as águas escuras: 'Estamos passando exatamente sobre o local onde o navio de suas filhas afundou'. Naquele exato instante, onde qualquer coração humano seria engolido pelo desespero, pela revolta e pelo colapso mental, as palavras de Jesus em João 14:27 ecoaram nas profundezas de sua alma: 'Deixo a paz a vocês; a minha paz lhes dou. Não a dou como o mundo a dá'. Spafford desceu para a sua cabine, pegou uma caneta e, com lágrimas nos olhos, não escreveu palavras de derrota, mas os versos imortais do hino: 'Se paz a mais doce me deres gozar, se dor a mais forte sofrer... Sou feliz com Jesus, sou feliz com Jesus, meu Senhor!'.<br><br>Quantas vezes você já sentiu que o seu chão estava afundando sob os seus pés? A dor das perdas inesperadas, as noites em claro encarando o teto e a sensação de que as circunstâncias fugiram completamente do seu controle têm o poder de paralisar a nossa existência. O mundo tenta nos convencer de que a paz é apenas uma trégua quando tudo vai bem na conta bancária ou nos relacionamentos. Mas a paz que Cristo legou a você no cenáculo não depende da ausência de tempestades ao redor. Ela é a âncora viva da presença do Salvador dentro do seu coração, garantindo que as águas mais profundas da vida não têm permissão para afogar a sua alma.<br><br>Não permita que o medo ou a turbulência das notícias ditem o ritmo do seu dia. Respire fundo, entregue a dor que você não consegue resolver nos braços do Pai e descanse na certeza inabalável de que Ele venceu o mundo. Em um mundo agitado por tempestades, seja ancorado pela paz de Jesus."
+        },
+        "cafeComDeusPai": {
+            "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
+            "vozDoPai": "Filho, Eu sei o que tem inquietado seus pensamentos e as perdas que tentaram abalar a sua fé. O mundo tenta lhe roubar a serenidade com circunstâncias e incertezas, mas a Minha paz é uma herança perpétua que nenhuma tempestade deste mundo pode arrancar de você.",
+            "palavraMesa": "Em João 14:27, Jesus nos assegura: \"Deixo a paz a vocês; a minha paz lhes dou. Não a dou como o mundo a dá. Não se perturbe o seu coração, nem tenham medo.\". Essa paz guarda o seu coração e governa as suas horas de hoje.",
+            "oracaoMesa": "Senhor Jesus, obrigado por não me deixares órfão e por me entregares a Tua paz perfeita. Sossega a agitação da minha alma e ajuda-me a caminhar neste dia ancorado na certeza da Tua presença soberana sobre as águas. Amém.",
+            "cafeParaLevar": "A paz de Cristo não é a ausência de tempestades ao redor, mas a presença soberana do Salvador no barco da sua vida."
+        },
+        "comparacaoTraducoes": {
+            "titulo": "Comparação Exegética de Versões",
+            "versaoPrincipal": {
+                "sigla": "NVI (Nova Versão Internacional)",
+                "texto": "Deixo a paz a vocês; a minha paz lhes dou. Não a dou como o mundo a dá. Não se perturbe o seu coração, nem tenham medo.",
+                "rotulo": "Tradução Dinâmica Contemporânea",
+                "foco": "A promessa consoladora do Salvador aos discípulos com uma dádiva pessoal e eterna."
+            },
+            "versaoOriginal": {
+                "sigla": "Literal (Tradução ao Pé da Letra)",
+                "rotulo": "Equivalência Formal Estrita",
+                "textoLiteral": "Paz vos deixo, a minha paz vos dou; não como o mundo dá, eu vo-la dou. Não se turbe o vosso coração, nem se intimide.",
+                "texto": "Paz vos deixo, a minha paz vos dou; não como o mundo dá, eu vo-la dou. Não se turbe o vosso coração, nem se intimide.",
+                "foco": "Eirēnē (εἰρήνη) como shalom messiânico e o imperativo negativo mē tarassesthō (cessar a agitação interior)."
+            },
+            "notaHermeneutica": "No cenáculo, antes da cruz, Jesus lega aos discípulos não bens terrenos ou ausência de conflitos, mas a Sua própria paz — reconciliação plena com Deus que dissipa o pânico e o medo."
+        },
+        "versiculosRelacionados": [
+            {
+                "referencia": "Filipenses 4:7",
+                "texto": "E a paz de Deus, que excede todo o entendimento, guardará os seus corações e as suas mentes em Cristo Jesus.",
+                "contexto": "Paulo descreve a paz sobrenatural que atua como sentinela guardando o íntimo do crente."
+            },
+            {
+                "referencia": "Isaías 26:3",
+                "texto": "Tu guardarás em perfeita paz aquele cujo propósito está firme, porque em ti confia.",
+                "contexto": "A profecia do shalom perfeito para quem ancora a mente no Senhor."
+            }
+        ]
+    },
+    {
         "data": "2026-10-06",
         "dataFormatada": "6 de Outubro de 2026",
         "referencia": "Salmos 55:22",

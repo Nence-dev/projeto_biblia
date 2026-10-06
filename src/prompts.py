@@ -110,40 +110,52 @@ def montar_prompt_whatsapp(referencia: str, texto: str, versao: str, estudo_gera
 """
 
 
-PROMPT_DERIVACAO_MINUTO_COM_DEUS = """Com base no estudo bíblico e no versículo acima, elabore um devocional no formato editorial "Minuto com Deus" (estilo página de livro devocional impresso).
+PROMPT_DERIVACAO_MINUTO_COM_DEUS = """Com base no estudo bíblico e no versículo acima, elabore um devocional vivo, vibrante e comovente no formato editorial do devocional "Café com Deus Pai" / "Minuto com Deus" (estilo página de livro devocional impresso de alto impacto emocional e espiritual).
 
-DIRETRIZES EDITORIAIS OBRIGATÓRIAS:
+DIRETRIZES EDITORIAIS OBRIGATÓRIAS (ESTILO 'CAFÉ COM DEUS PAI'):
 1. TÍTULO CONTEXTUAL (1 a 4 palavras em CAIXA ALTA):
-   - O título DEVE nascer diretamente da essência visceral e do tema central do texto bíblico do dia.
-   - JAMAIS use títulos genéricos e repetidos (como "NOVOS COMEÇOS" para qualquer texto).
-   - Exemplos reais de títulos do devocional físico:
-     * Para João 7.37,38 (rios de água viva fluirão): Título = "INESGOTÁVEL"
-     * Para Apocalipse 2.2-4 (abandono do primeiro amor): Título = "DE VOLTA AO PRIMEIRO AMOR"
-     * Para Salmos 55.22 (entregar o fardo e Deus sustentar): Título = "SUSTENTO INABALÁVEL" ou "ELE TE SUSTENTARÁ"
-     * Para Judas 1.22 (ter misericórdia de quem duvida): Título = "O ABRIGO DA MISERICÓRDIA"
-     * Para Salmos 51.10 (cria em mim um coração puro): Título = "A PUREZA DO CORAÇÃO"
-     * Para Provérbios 4.23 (guardar o coração): Título = "A GUARDA DO CORAÇÃO"
-2. FRASE CURTA DO DIA:
-   - Um pensamento afiado e memorável de 1 a 2 frases (de teólogo, filósofo ou autor cristão como C.S. Lewis, Tim Keller, Agostinho, Spurgeon) que sintetize o coração do tema.
-3. LEITURAS BÍBLICAS COMPLEMENTARES:
-   - Lista de 4 a 6 referências bíblicas correlacionadas em cascata (ex: ["1 PEDRO 5.7", "MATEUS 11.28-30", "SALMOS 68.19", "FILIPENSES 4.6,7", "ISAÍAS 41.10"]).
-4. TEXTO DEVOCIONAL:
-   - Prosa reflexiva, calorosa e pastoral de 3 a 4 parágrafos, abrindo com uma analogia sensível do cotidiano que ilumine a verdade bíblica.
+   - O título DEVE nascer diretamente da essência e do tema central do texto bíblico do dia.
+   - Exemplos reais: "A PAZ INABALÁVEL", "ELE CUIDA DE VOCÊ", "A IMPORTÂNCIA DO TESTEMUNHO", "A BREVIDADE DA VIDA", "INESGOTÁVEL", "O ABRIGO DA MISERICÓRDIA".
+   - PROIBIDO títulos genéricos e repetitivos como "NOVOS COMEÇOS" ou "REFLEXÃO DO DIA".
 
-Estruture a resposta no seguinte formato JSON:
+2. FRASE CURTA DE IMPACTO (Para o card lateral / selo):
+   - Um pensamento afiado e memorável de 1 a 2 frases (estilo Júnior Rostirola / pensador cristão) que sirva como lema para carregar no coração durante o dia. Exemplo: "Em um mundo cheio de ódio, seja amor.", "Você acessa o milagre por meio da sua confiança em Deus.", "A paz de Cristo não é a ausência de tempestades ao redor, mas a presença soberana do Salvador no barco da sua vida."
+   - Autor: @juniorrostirola, @cslewis, @timkeller, etc.
+
+3. LEITURAS BÍBLICAS COMPLEMENTARES:
+   - Lista de 4 a 6 referências bíblicas correlacionadas (ex: ["FILIPENSES 4.6,7", "COLOSSENSES 3.15", "ISAÍAS 26.3", "ROMANOS 5.1", "SALMOS 4.8"]).
+   - Uma leitura complementar principal (ex: "FILIPENSES 4.6,7").
+
+4. TEXTO DEVOCIONAL VIVO E ESTRUTURADO EM 4 MOVIMENTOS (OBRIGATÓRIO TER HISTÓRIA DE TERCEIRO):
+   O texto deve ter exatamente 4 parágrafos robustos, calorosos e envolventes, fluindo nesta ordem:
+
+   - Parágrafo 1 (O Gancho Narrativo com História Real de Terceiro ou Drama Bíblico Vivo):
+     NÃO comece com conceitos teóricos abstratos! Comece contando uma HISTÓRIA CONCRETA: pode ser um episódio real da história/biografia de alguém (ex: a história de Horatio Spafford ao compor 'Sou Feliz com Jesus' no local do naufrágio das filhas, a trajetória de superação de Corrie ten Boom, um relato marcante de perdão ou cura) OU uma narrativa bíblica contada com profunda textura de sentimentos humanos (como a viúva de Sarepta sem horizonte com um punhado de farinha esperando a morte em 1 Reis 17, ou o homem atormentado de Gadara em Marcos 5). Mostre o drama, a dor, o dilema ou a pergunta existencial da vida real.
+
+   - Parágrafo 2 (A Tensão da Vida e a Virada da Palavra):
+     Aprofunde a verdade do versículo no contexto dessa história. Mostre onde a força humana falhou e como a revelação de Deus interveio. Destaque a atitude de fé, obediência ou rendição que abriu a porta para a graça transformadora.
+
+   - Parágrafo 3 (Aplicação Pastoral Direta ao Coração do Leitor):
+     Conecte de forma íntima e empática com o leitor: "Quantas vezes você também se viu diante de um cenário onde...?", "Talvez hoje você tenha acordado no último fio de esperança...". Mostre o cuidado pessoal do Pai, tirando o peso da culpa religiosa e oferecendo acolhimento real para o dia de hoje.
+
+   - Parágrafo 4 (Fechamento com Chamada de Fé e Ousadia):
+     Finalize com uma convocação prática e revigorante. Uma declaração de encorajamento que dê coragem ao leitor para sair da página pronto para enfrentar o dia ancorado na certeza do amor e da soberania de Deus (ex: "Confie, entregue e obedeça, para que o milagre aconteça.", "Em um mundo cheio de ansiedade, seja paz.").
+
+Estruture a resposta no seguinte formato JSON estrito:
 ```json
 {
   "titulo": "TÍTULO CONTEXTUAL EM CAIXA ALTA",
   "fraseDoDia": "Frase curta e impactante de reflexão para o dia.",
-  "autorFrase": "@autor (ou pensador cristão/filósofo)",
+  "autorFrase": "@juniorrostirola",
   "leiturasComplementares": [
     "LIVRO CAP.VERS",
     "LIVRO CAP.VERS",
     "LIVRO CAP.VERS",
     "LIVRO CAP.VERS"
   ],
-  "leituraComplementar": "LIVRO CAP.VERS (referência principal para resumo)",
-  "textoDevocional": "Texto corrido reflexivo e pastoral de 3 a 4 parágrafos explicando e aplicando o versículo do dia ao coração do leitor."
+  "leituraComplementar": "LIVRO CAP.VERS",
+  "historiaContexto": "Nome ou breve síntese da história/fato real ilustrado",
+  "textoDevocional": "Texto completo em 4 parágrafos separados por duas quebras de linha (\\n\\n), seguindo rigorosamente os 4 movimentos narrativos com a história de terceiro."
 }
 ```
 """

@@ -11,6 +11,7 @@ from src.prompts import (
     SYSTEM_PROMPT_TEOLOGICO,
     montar_prompt_usuario,
     montar_prompt_whatsapp,
+    montar_prompt_minuto,
 )
 
 logger = logging.getLogger(__name__)
@@ -241,6 +242,22 @@ class GeminiClient:
         prompt_whatsapp = montar_prompt_whatsapp(referencia, texto, versao, estudo_gerado)
         return self._generate(
             prompt=prompt_whatsapp,
+            system_instruction=SYSTEM_PROMPT_TEOLOGICO,
+            on_status=on_status,
+        )
+
+    def gerar_devocional_narrativo(
+        self,
+        referencia: str,
+        texto: str,
+        versao: str,
+        estudo_gerado: str,
+        on_status: Optional[Callable[[str], None]] = None,
+    ) -> str:
+        """Gera o devocional vivo e narrativo (estilo Café com Deus Pai) com histórias reais de terceiros."""
+        prompt_minuto = montar_prompt_minuto(referencia, texto, versao, estudo_gerado)
+        return self._generate(
+            prompt=prompt_minuto,
             system_instruction=SYSTEM_PROMPT_TEOLOGICO,
             on_status=on_status,
         )

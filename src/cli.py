@@ -214,6 +214,20 @@ def executar_fluxo(args: argparse.Namespace) -> None:
             console.print(f"[yellow]Aviso: Não foi possível gerar a derivação para WhatsApp: {err}[/yellow]")
             whatsapp_gerado = ""
 
+    # 4.1 Geração do Devocional Narrativo Vivo com histórias de terceiros (Café com Deus Pai)
+    with console.status("[bold yellow]Elaborando Devocional Narrativo com histórias vivas (Café com Deus Pai)...", spinner="dots"):
+        try:
+            devocional_gerado = client.gerar_devocional_narrativo(
+                referencia=versiculo.referencia,
+                texto=versiculo.texto,
+                versao=versiculo.versao,
+                estudo_gerado=estudo_gerado,
+                on_status=lambda msg: console.log(f"[yellow]{msg}[/yellow]"),
+            )
+        except LLMError as err:
+            console.print(f"[yellow]Aviso: Não foi possível gerar o devocional narrativo: {err}[/yellow]")
+            devocional_gerado = ""
+
     # 5. Salvamento no armazenamento local em Markdown
     caminho_salvo = salvar_estudo(
         referencia=versiculo.referencia,
@@ -221,6 +235,7 @@ def executar_fluxo(args: argparse.Namespace) -> None:
         versao=versiculo.versao,
         conteudo_estudo=estudo_gerado,
         conteudo_whatsapp=whatsapp_gerado,
+        conteudo_cafe=devocional_gerado,
         data_str=data_hoje,
     )
 

@@ -94,11 +94,15 @@ def salvar_estudo(
             texto_cafe = json.dumps(conteudo_cafe, ensure_ascii=False, indent=2)
         else:
             texto_cafe = str(conteudo_cafe).strip()
+            if "```" in texto_cafe:
+                m = re.search(r"```(?:json)?\s*(.*?)\s*```", texto_cafe, re.DOTALL)
+                if m:
+                    texto_cafe = m.group(1).strip()
         secao_cafe = f"""
 
 ---
 
-## ☕ Café com Deus Pai
+## ⏱️ Devocional Minuto com Deus / Café com Deus Pai
 
 ```json
 {texto_cafe}
@@ -341,6 +345,21 @@ def derivar_titulo_e_leituras_minuto(referencia: str, versiculo_texto: str) -> d
             "leituraComplementar": "JEREMIAS 2.2",
         }
 
+    if "14:27" in ref_upper or ("PAZ" in v_upper and "PERTURBE" in v_upper):
+        return {
+            "titulo": "A PAZ INABALÁVEL",
+            "fraseDoDia": "A paz de Cristo não é a ausência de tempestades ao redor, mas a presença soberana do Salvador no barco da sua vida.",
+            "autorFrase": "@cslewis",
+            "leiturasComplementares": [
+                "FILIPENSES 4.6,7",
+                "COLOSSENSES 3.15",
+                "ISAÍAS 26.3",
+                "ROMANOS 5.1",
+                "SALMOS 4.8"
+            ],
+            "leituraComplementar": "FILIPENSES 4.6,7",
+        }
+
     return {
         "titulo": "DESCANSO NA PALAVRA",
         "fraseDoDia": "A Palavra de Deus não é um manual de regras frias, é o alicerce vivo para a sua alma hoje.",
@@ -547,7 +566,7 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
 
     # 6. Minuto com Deus / Café com Deus Pai
     match_minuto = re.search(
-        r"##\s*⏱️?\s*Minuto com Deus[^\n]*\n+```(?:json)?\n(.*?)\n```",
+        r"##\s*[⏱️☕]?\s*(?:Devocional\s+)?(?:Minuto com Deus|Café com Deus Pai)[^\n]*\n+```(?:json)?\n(.*?)\n```",
         conteudo_md,
         re.DOTALL | re.IGNORECASE,
     )
@@ -564,7 +583,7 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
         re.DOTALL | re.IGNORECASE,
     )
     cafe_com_deus_pai = None
-    if match_cafe:
+    if match_cafe and not minuto_com_deus:
         try:
             cafe_com_deus_pai = json.loads(match_cafe.group(1).strip())
         except Exception:
@@ -572,13 +591,23 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
 
     info_contextual = derivar_titulo_e_leituras_minuto(referencia, versiculo_texto)
 
-    if minuto_com_deus and not cafe_com_deus_pai:
-        if not minuto_com_deus.get("titulo") or minuto_com_deus.get("titulo") == "NOVOS COMEÇOS":
+    if minuto_com_deus:
+        if not minuto_com_deus.get("titulo") or minuto_com_deus.get("titulo") in ["NOVOS COMEÇOS", "REFLEXÃO DO DIA"]:
             minuto_com_deus["titulo"] = info_contextual["titulo"]
         if not minuto_com_deus.get("leiturasComplementares"):
             minuto_com_deus["leiturasComplementares"] = info_contextual["leiturasComplementares"]
         if not minuto_com_deus.get("leituraComplementar"):
             minuto_com_deus["leituraComplementar"] = info_contextual["leituraComplementar"]
+        if not minuto_com_deus.get("autorFrase"):
+            minuto_com_deus["autorFrase"] = info_contextual["autorFrase"]
+
+        texto_dev = minuto_com_deus.get("textoDevocional", "")
+        if "<br" not in texto_dev and "\n\n" in texto_dev:
+            texto_dev_formatado = "<br><br>".join([p.strip() for p in texto_dev.split("\n\n") if p.strip()])
+            minuto_com_deus["textoDevocional"] = texto_dev_formatado
+        elif "<br" not in texto_dev and "\n" in texto_dev:
+            texto_dev_formatado = "<br><br>".join([p.strip() for p in texto_dev.split("\n") if p.strip()])
+            minuto_com_deus["textoDevocional"] = texto_dev_formatado
 
         cafe_com_deus_pai = {
             "aromaManha": minuto_com_deus.get("fraseDoDia", info_contextual["fraseDoDia"]),
@@ -588,13 +617,14 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
             "cafeParaLevar": minuto_com_deus.get("fraseDoDia", info_contextual["fraseDoDia"])
         }
     elif cafe_com_deus_pai and not minuto_com_deus:
+        texto_dev = cafe_com_deus_pai.get("textoDevocional") or f"{cafe_com_deus_pai.get('aromaManha', '')}\n\n{cafe_com_deus_pai.get('palavraMesa', '')}\n\n{cafe_com_deus_pai.get('vozDoPai', '')}"
         minuto_com_deus = {
-            "titulo": info_contextual["titulo"],
-            "fraseDoDia": cafe_com_deus_pai.get("cafeParaLevar", info_contextual["fraseDoDia"]),
-            "autorFrase": info_contextual["autorFrase"],
-            "leiturasComplementares": info_contextual["leiturasComplementares"],
-            "leituraComplementar": info_contextual["leituraComplementar"],
-            "textoDevocional": f"{cafe_com_deus_pai.get('aromaManha', '')}\n\n{cafe_com_deus_pai.get('palavraMesa', '')}\n\n{cafe_com_deus_pai.get('vozDoPai', '')}"
+            "titulo": cafe_com_deus_pai.get("titulo") or info_contextual["titulo"],
+            "fraseDoDia": cafe_com_deus_pai.get("fraseDoDia") or cafe_com_deus_pai.get("cafeParaLevar", info_contextual["fraseDoDia"]),
+            "autorFrase": cafe_com_deus_pai.get("autorFrase", info_contextual["autorFrase"]),
+            "leiturasComplementares": cafe_com_deus_pai.get("leiturasComplementares", info_contextual["leiturasComplementares"]),
+            "leituraComplementar": cafe_com_deus_pai.get("leituraComplementar", info_contextual["leituraComplementar"]),
+            "textoDevocional": texto_dev
         }
     elif not minuto_com_deus and not cafe_com_deus_pai:
         minuto_com_deus = {
@@ -836,6 +866,70 @@ def exportar_todos_estudos_para_web_data(
                                 "autor": "John Stott",
                                 "obra": "A Mensagem de Romanos",
                                 "texto": "Estar em Cristo significa que a nossa segurança não repousa na firmeza da nossa fé, mas na fidelidade daquele em quem fomos enxertados."
+                            }
+                        ]
+
+            # Enriquecimento exegético e comparativo para João 14:27
+            elif "14:27" in dados.get("referencia", "") and not dados.get("comparacaoTraducoes"):
+                dados["comparacaoTraducoes"] = {
+                    "titulo": "Comparação Exegética de Versões",
+                    "versaoPrincipal": {
+                        "sigla": "NVI (Nova Versão Internacional)",
+                        "texto": "Deixo a paz a vocês; a minha paz lhes dou. Não a dou como o mundo a dá. Não se perturbe o seu coração, nem tenham medo.",
+                        "rotulo": "Tradução Dinâmica Contemporânea",
+                        "foco": "A promessa consoladora do Salvador aos discípulos com uma dádiva pessoal e eterna."
+                    },
+                    "versaoOriginal": {
+                        "sigla": "Literal (Tradução ao Pé da Letra)",
+                        "rotulo": "Equivalência Formal Estrita",
+                        "textoLiteral": "Paz vos deixo, a minha paz vos dou; não como o mundo dá, eu vo-la dou. Não se turbe o vosso coração, nem se intimide.",
+                        "texto": "Paz vos deixo, a minha paz vos dou; não como o mundo dá, eu vo-la dou. Não se turbe o vosso coração, nem se intimide.",
+                        "foco": "Eirēnē (εἰρήνη) como shalom messiânico e o imperativo negativo mē tarassesthō (cessar a agitação interior)."
+                    },
+                    "notaHermeneutica": "No cenáculo, antes da cruz, Jesus lega aos discípulos não bens terrenos ou ausência de conflitos, mas a Sua própria paz — reconciliação plena com Deus que dissipa o pânico e o medo."
+                }
+                dados["versiculosRelacionados"] = [
+                    {
+                        "referencia": "Filipenses 4:7",
+                        "texto": "E a paz de Deus, que excede todo o entendimento, guardará os seus corações e as suas mentes em Cristo Jesus.",
+                        "contexto": "Paulo descreve a paz sobrenatural que atua como sentinela guardando o íntimo do crente."
+                    },
+                    {
+                        "referencia": "Isaías 26:3",
+                        "texto": "Tu guardarás em perfeita paz aquele cujo propósito está firme, porque em ti confia.",
+                        "contexto": "A profecia do shalom perfeito para quem ancora a mente no Senhor."
+                    }
+                ]
+                for secao in dados.get("secoes", []):
+                    if secao["id"] == "anatomia" and not secao.get("termosOriginais"):
+                        secao["termosOriginais"] = [
+                            {
+                                "termo": "Eirēnē (εἰρήνη)",
+                                "significado": "Paz / Shalom Messiânico / Reconciliação",
+                                "explicacao": "Mais que mera ausência de conflito exterior; significa integridade de alma, harmonia e comunhão restabelecida com Deus."
+                            },
+                            {
+                                "termo": "Tarassesthō (ταρασσέσθω)",
+                                "significado": "Não se perturbe / Não se agite como água revolta",
+                                "explicacao": "Imperativo presente com negação no grego, ordenando estancar a comoção interna contínua provocada pela angústia."
+                            },
+                            {
+                                "termo": "Deiliatō (δειλιάτω)",
+                                "significado": "Não tenha medo / Não se acovarde",
+                                "explicacao": "Verbo que descreve o recuo covarde diante da batalha. Cristo ordena coragem fundamentada em Sua vitória."
+                            }
+                        ]
+                    if secao["id"] == "canonicas" and not secao.get("citacoes"):
+                        secao["citacoes"] = [
+                            {
+                                "autor": "J.C. Ryle",
+                                "obra": "Meditações nos Evangelhos: João",
+                                "texto": "A paz que Cristo dá não é a calmaria efêmera de um mar dormente, mas a âncora firme da alma ancorada na rocha eterna durante o mais violento temporal."
+                            },
+                            {
+                                "autor": "C.S. Lewis",
+                                "obra": "Mero Cristianismo",
+                                "texto": "Deus não pode nos dar uma felicidade e uma paz separadas de Si mesmo, porque isso simplesmente não existe fora d'Ele."
                             }
                         ]
 

@@ -1306,22 +1306,30 @@ function renderizarConteudoMinuto(data) {
     if (elStoryProse) {
         const textoCompleto = minutoData.textoDevocional || "";
         const paragrafos = textoCompleto
-            .split(/\n{2,}|\n/)
+            .split(/<br\s*\/?>\s*<br\s*\/?>|\n{2,}/)
             .map(p => p.trim())
             .filter(p => p.length > 0);
 
         if (paragrafos.length > 0) {
             elStoryProse.innerHTML = paragrafos.map((p, idx) => {
+                let htmlP = p.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                             .replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>')
+                             .replace(/_([^_]+)_/g, '<em>$1</em>');
                 if (idx === 0) {
-                    const primeiraLetra = p.charAt(0);
-                    const restanteTexto = p.slice(1);
-                    return `
-                        <p class="devocional-first-p">
-                            <span class="devocional-drop-cap">${escapeHtml(primeiraLetra)}</span>${escapeHtml(restanteTexto)}
-                        </p>
-                    `;
+                    const textoLimpo = htmlP.replace(/<[^>]+>/g, "");
+                    const primeiraLetra = textoLimpo.charAt(0);
+                    const idxPrimeira = htmlP.indexOf(primeiraLetra);
+                    if (idxPrimeira !== -1) {
+                        const antes = htmlP.slice(0, idxPrimeira);
+                        const depois = htmlP.slice(idxPrimeira + 1);
+                        return `
+                            <p class="devocional-first-p">
+                                ${antes}<span class="devocional-drop-cap">${primeiraLetra}</span>${depois}
+                            </p>
+                        `;
+                    }
                 }
-                return `<p>${escapeHtml(p)}</p>`;
+                return `<p>${htmlP}</p>`;
             }).join("");
         } else {
             elStoryProse.innerHTML = "<p>Momento devocional sendo preparado com carinho.</p>";
