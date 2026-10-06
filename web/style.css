@@ -420,6 +420,31 @@ body {
     border-radius: 1px;
 }
 
+.navbar-center-nav .nav-link-highlights {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--accent-gold);
+    background: var(--accent-gold-subtle);
+    padding: 0.35rem 0.75rem !important;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-accent);
+    font-size: 0.82rem;
+    transition: all var(--transition-fast);
+}
+
+.navbar-center-nav .nav-link-highlights:hover {
+    background: var(--accent-gold);
+    color: #1a1612 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(212, 163, 89, 0.25);
+}
+
+.navbar-center-nav .nav-link-highlights svg {
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
 /* Grupo Direito: Busca Pílula + Ações */
 .navbar-right-group {
     display: flex;
@@ -3009,6 +3034,83 @@ body:not([data-theme="light"]) .btn-minuto-copy:hover {
     transform: translateY(-1px);
 }
 
+/* Barra de Navegação Inferior de Devocionais (Anterior / Próximo) */
+.devocional-nav-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.2rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid rgba(212, 163, 89, 0.22);
+}
+
+.devocional-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem 1.15rem;
+    background: rgba(248, 244, 235, 0.85);
+    border: 1px solid rgba(180, 140, 80, 0.35);
+    border-radius: 8px;
+    color: #4a2c11;
+    font-family: var(--font-sans, "Inter", sans-serif);
+    font-size: 0.86rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .devocional-nav-btn,
+body:not([data-theme="light"]) .devocional-nav-btn {
+    background: rgba(30, 24, 18, 0.85);
+    border-color: rgba(180, 140, 80, 0.28);
+    color: #ece3d3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.devocional-nav-btn:hover:not(:disabled) {
+    background: var(--accent-gold, #d4a359);
+    color: #1a1612 !important;
+    border-color: var(--accent-gold, #d4a359);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(212, 163, 89, 0.28);
+}
+
+.devocional-nav-btn:hover:not(:disabled) strong,
+.devocional-nav-btn:hover:not(:disabled) .nav-chevron {
+    color: #1a1612 !important;
+}
+
+.devocional-nav-btn strong {
+    color: var(--accent-gold, #c9ad76);
+}
+
+.devocional-nav-btn .nav-chevron {
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--accent-gold, #c9ad76);
+    flex-shrink: 0;
+}
+
+.devocional-nav-btn:disabled,
+.devocional-nav-btn.is-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(180, 140, 80, 0.15);
+    color: var(--text-muted, #8a7e72);
+    transform: none;
+    box-shadow: none;
+}
+
+[data-theme="dark"] .devocional-nav-btn:disabled,
+body:not([data-theme="light"]) .devocional-nav-btn:disabled {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #7a6e60;
+}
+
 /* Responsividade Mobile para Minuto com Deus */
 @media (max-width: 860px) {
     .minuto-book-page {
@@ -5271,6 +5373,92 @@ body.is-mode-minuto .navbar {
     color: #a89885;
     text-transform: uppercase;
 }
+
+/* ==========================================================================
+   BARRA DE NAVEGAÇÃO INFERIOR DO DEVOCIONAL (ANTERIOR / PRÓXIMO)
+   ========================================================================== */
+.devocional-nav-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.devocional-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.85rem 1.6rem;
+    background: rgba(30, 24, 18, 0.75);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 9999px;
+    color: #ebdcc5;
+    font-family: var(--font-display, "Inter", sans-serif);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    user-select: none;
+}
+
+.devocional-nav-btn:hover:not(:disabled):not(.is-disabled) {
+    background: rgba(212, 175, 55, 0.16);
+    border-color: var(--accent-gold, #cfa85a);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+}
+
+.devocional-nav-btn .nav-chevron {
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--accent-gold, #cfa85a);
+    font-weight: 300;
+}
+
+.devocional-nav-btn .nav-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.devocional-nav-btn .nav-label strong {
+    color: var(--accent-gold, #cfa85a);
+    font-weight: 700;
+}
+
+.devocional-nav-btn:disabled,
+.devocional-nav-btn.is-disabled {
+    opacity: 0.55;
+    background: rgba(20, 16, 12, 0.4);
+    border-color: rgba(212, 175, 55, 0.15);
+    cursor: not-allowed;
+    color: #8f8270;
+    box-shadow: none;
+    transform: none;
+}
+
+.devocional-nav-btn.is-waiting {
+    opacity: 0.85;
+    background: rgba(45, 34, 20, 0.6);
+    border-color: rgba(212, 175, 55, 0.3);
+    cursor: pointer;
+    color: #d1c0a5;
+}
+
+.devocional-nav-btn.is-waiting:hover {
+    background: rgba(212, 175, 55, 0.12);
+    border-color: var(--accent-gold, #cfa85a);
+    color: #f7eedf;
+    transform: translateY(-1px);
+}
+
 
 /* Responsividade Mobile para Devocional e Leitor Bíblico */
 @media (max-width: 992px) {

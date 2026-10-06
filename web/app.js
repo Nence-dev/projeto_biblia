@@ -881,26 +881,22 @@ function inicializarNavegacaoAbas() {
         btnBiblia.addEventListener("click", () => trocarAba("biblia"));
     }
 
-    // Links de Navegação da Barra Sola Scriptura
-    const navInicio = document.getElementById("nav-inicio");
+    // Clique na Marca para ir ao Topo/Estudo Expositivo
     const brandHome = document.getElementById("brand-home");
     const irParaInicio = (e) => {
         if (e) e.preventDefault();
         trocarAba("estudo");
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
-    if (navInicio) navInicio.addEventListener("click", irParaInicio);
     if (brandHome) brandHome.addEventListener("click", irParaInicio);
 
-    const navSobre = document.getElementById("nav-sobre");
-    if (navSobre) {
-        navSobre.addEventListener("click", (e) => {
+    // Botão Versículos Marcados no Menu Superior (abre o Drawer de destaques de qualquer tela)
+    const navHighlights = document.getElementById("nav-btn-highlights");
+    if (navHighlights) {
+        navHighlights.addEventListener("click", (e) => {
             e.preventDefault();
-            const footer = document.getElementById("main-footer");
-            if (footer) {
-                footer.scrollIntoView({ behavior: "smooth", block: "start" });
-            } else {
-                showToast("Sola Scriptura • Teologia Expositiva & Devocional", "info");
+            if (typeof abrirGavetaMarcacoes === "function") {
+                abrirGavetaMarcacoes();
             }
         });
     }
@@ -1342,6 +1338,84 @@ function renderizarConteudoMinuto(data) {
         const textoZap = gerarTextoCompartilhamentoMinuto(data, minutoData);
         btnShareWhatsapp.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoZap)}`;
     }
+
+    // 6. Atualiza Barra de Navegação Inferior (Anterior / Próximo Devocional)
+    atualizarNavegacaoInferiorDevocional();
+}
+
+/**
+ * Atualiza a barra de navegação inferior do devocional com as datas reais:
+ * Anterior: Data do dia anterior
+ * Próximo: Data do próximo dia (ou 'Aguardar amanhã' se for o dia de hoje)
+ */
+function atualizarNavegacaoInferiorDevocional() {
+    const btnPrev = document.getElementById("btn-devocional-prev");
+    const btnNext = document.getElementById("btn-devocional-next");
+
+    if (!btnPrev || !btnNext) return;
+
+    // 1. Botão Anterior (Dia passado / mais antigo na lista decrescente: currentIndex + 1)
+    const indexAnterior = currentIndex + 1;
+    if (indexAnterior < listaEstudos.length) {
+        const estudoAnterior = listaEstudos[indexAnterior];
+        const dataFormatada = estudoAnterior.dataFormatada || formatarDataPorExtenso(estudoAnterior.data);
+        btnPrev.disabled = false;
+        btnPrev.classList.remove("is-disabled");
+        btnPrev.setAttribute("aria-disabled", "false");
+        btnPrev.innerHTML = `
+            <span class="nav-chevron" aria-hidden="true">‹</span>
+            <span class="nav-label">Anterior: <strong>${escapeHtml(dataFormatada)}</strong></span>
+        `;
+        btnPrev.onclick = (e) => {
+            if (e) e.preventDefault();
+            irParaEstudo(indexAnterior);
+            trocarAba("cafe");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    } else {
+        btnPrev.disabled = true;
+        btnPrev.classList.add("is-disabled");
+        btnPrev.setAttribute("aria-disabled", "true");
+        btnPrev.innerHTML = `
+            <span class="nav-chevron" aria-hidden="true">‹</span>
+            <span class="nav-label">Anterior: <em>Início do acervo</em></span>
+        `;
+        btnPrev.onclick = null;
+    }
+
+    // 2. Botão Próximo (Dia futuro / mais recente: currentIndex - 1)
+    const indexProximo = currentIndex - 1;
+    if (indexProximo >= 0) {
+        const estudoProximo = listaEstudos[indexProximo];
+        const dataFormatada = estudoProximo.dataFormatada || formatarDataPorExtenso(estudoProximo.data);
+        btnNext.disabled = false;
+        btnNext.classList.remove("is-disabled", "is-waiting");
+        btnNext.setAttribute("aria-disabled", "false");
+        btnNext.innerHTML = `
+            <span class="nav-label">Próximo: <strong>${escapeHtml(dataFormatada)}</strong></span>
+            <span class="nav-chevron" aria-hidden="true">›</span>
+        `;
+        btnNext.onclick = (e) => {
+            if (e) e.preventDefault();
+            irParaEstudo(indexProximo);
+            trocarAba("cafe");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    } else {
+        // Estamos no estudo mais recente publicado (Hoje)
+        btnNext.disabled = false; // Permite toque no mobile para ler o aviso
+        btnNext.classList.remove("is-disabled");
+        btnNext.classList.add("is-waiting");
+        btnNext.setAttribute("aria-disabled", "false");
+        btnNext.innerHTML = `
+            <span class="nav-label">Próximo: <strong>Aguardar amanhã</strong></span>
+            <span class="nav-chevron" aria-hidden="true">›</span>
+        `;
+        btnNext.onclick = (e) => {
+            if (e) e.preventDefault();
+            showToast("⏳ O devocional de amanhã será publicado às 05:23!", "info");
+        };
+    }
 }
 
 /**
@@ -1462,32 +1536,7 @@ function inicializarAcoesMinuto() {
     });
 
     // Barra de Navegação Inferior (Anterior / Próximo)
-    const btnDevPrev = document.getElementById("btn-devocional-prev");
-    const btnDevNext = document.getElementById("btn-devocional-next");
-
-    if (btnDevPrev) {
-        btnDevPrev.addEventListener("click", () => {
-            if (currentIndex < listaEstudos.length - 1) {
-                irParaEstudo(currentIndex + 1);
-                renderizarConteudoMinuto(listaEstudos[currentIndex]);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-            } else {
-                showToast("Você já está no primeiro estudo do arquivo.", "info");
-            }
-        });
-    }
-
-    if (btnDevNext) {
-        btnDevNext.addEventListener("click", () => {
-            if (currentIndex > 0) {
-                irParaEstudo(currentIndex - 1);
-                renderizarConteudoMinuto(listaEstudos[currentIndex]);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-            } else {
-                showToast("Você já está no estudo mais recente.", "info");
-            }
-        });
-    }
+    atualizarNavegacaoInferiorDevocional();
 }
 
 /**
@@ -1808,10 +1857,14 @@ function definirMarcacaoVersiculo(livroId, capituloNum, versoNum, cor, texto) {
 }
 
 function atualizarContadorMarcacoes() {
-    const countEl = document.getElementById("bible-highlights-count");
-    if (!countEl) return;
     const marcacoes = carregarMarcacoesBiblia();
-    countEl.textContent = Object.keys(marcacoes).length;
+    const total = Object.keys(marcacoes).length;
+
+    const countEl = document.getElementById("bible-highlights-count");
+    if (countEl) countEl.textContent = total;
+
+    const navCountEl = document.getElementById("nav-highlights-count");
+    if (navCountEl) navCountEl.textContent = total;
 }
 
 function atualizarVersiculoNoDOM(key, cor) {

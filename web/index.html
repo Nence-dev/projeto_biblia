@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Versículo do Dia & Teologia Expositiva</title>
     <meta name="description" content="Estudo bíblico expositivo, reflexão reformada e devocional diário sobre o Versículo do Dia.">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="apple-touch-icon" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=3.5">
 </head>
 
 <body class="zen-mode">
@@ -51,11 +54,15 @@
 
             <!-- Navegação Central com Indicador Dourado -->
             <nav class="navbar-center-nav" aria-label="Navegação Principal">
-                <a href="#" class="nav-link" id="nav-inicio">Início</a>
                 <button id="tab-btn-estudo" class="nav-link is-active" role="tab" aria-selected="true" aria-controls="view-estudo">Estudos Expositivos</button>
                 <button id="tab-btn-cafe" class="nav-link" role="tab" aria-selected="false" aria-controls="view-cafe">Devocionais</button>
                 <button id="tab-btn-biblia" class="nav-link" role="tab" aria-selected="false" aria-controls="view-biblia">Bíblia</button>
-                <a href="#sobre" class="nav-link" id="nav-sobre">Sobre</a>
+                <button id="nav-btn-highlights" class="nav-link nav-link-highlights" aria-label="Ver versículos marcados">
+                    <svg class="icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px; margin-right: 5px; display: inline-block; vertical-align: -2px;">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <span>Versículos Marcados (<span id="nav-highlights-count">0</span>)</span>
+                </button>
             </nav>
 
             <!-- Ações à Direita: Busca Arredondada + Botões Utilitários -->
@@ -504,12 +511,12 @@
 
                         <!-- Barra de Navegação Inferior -->
                         <div class="devocional-nav-strip">
-                            <button id="btn-devocional-prev" class="devocional-nav-btn devocional-nav-prev">
+                            <button id="btn-devocional-prev" class="devocional-nav-btn devocional-nav-prev" type="button" title="Ir para o devocional do dia anterior">
                                 <span class="nav-chevron" aria-hidden="true">‹</span>
-                                <span class="nav-label">Estudo Anterior: <strong>Anatomia do texto</strong></span>
+                                <span class="nav-label">Anterior: <strong>Carregando...</strong></span>
                             </button>
-                            <button id="btn-devocional-next" class="devocional-nav-btn devocional-nav-next">
-                                <span class="nav-label">Próximo Estudo: <strong>A Alegria no Senhor</strong></span>
+                            <button id="btn-devocional-next" class="devocional-nav-btn devocional-nav-next" type="button" title="Próximo devocional">
+                                <span class="nav-label">Próximo: <strong>Aguardar amanhã</strong></span>
                                 <span class="nav-chevron" aria-hidden="true">›</span>
                             </button>
                         </div>
@@ -586,13 +593,6 @@
                         <span id="bible-zoom-level" class="bible-zoom-text">100%</span>
                         <button id="btn-bible-zoom-in" class="bible-zoom-btn" aria-label="Aumentar fonte">A+</button>
                     </div>
-
-                    <button id="btn-bible-highlights" class="btn btn-bible-action" title="Ver meus versículos marcados">
-                        <svg class="icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                        </svg>
-                        <span>Marcados (<span id="bible-highlights-count">0</span>)</span>
-                    </button>
                 </div>
             </div>
 
@@ -691,7 +691,7 @@
 
     <!-- Script de Dados Bíblicos Canônicos, Estudos e Aplicação -->
     <script src="bible-data.js?v=2.5"></script>
-    <script src="data.js?v=3.0"></script>
-    <script src="app.js?v=3.0"></script>
+    <script src="data.js?v=3.5"></script>
+    <script src="app.js?v=3.5"></script>
 </body>
 </html>

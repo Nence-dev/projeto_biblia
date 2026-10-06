@@ -2,15 +2,15 @@ name: Estudo Bíblico Diário & Publicação Web (GitHub Pages)
 
 on:
   schedule:
-    # Executa todos os dias às 06:23 UTC (03:23 horário de Brasília - minuto ímpar e fila limpa)
-    - cron: '23 6 * * *'
+    # Executa todos os dias às 08:23 UTC (05:23 horário de Brasília - fila limpa)
+    - cron: '23 8 * * *'
   workflow_dispatch:
     inputs:
       force:
         description: 'Forçar regeneração mesmo que o estudo de hoje já exista'
         required: false
         type: boolean
-        default: false
+        default: true
       versiculo:
         description: 'Passagem manual opcional (ex: Romanos 8:28 ou Salmos 23:1)'
         required: false
@@ -61,12 +61,9 @@ jobs:
           GEMINI_MODEL: ${{ secrets.GEMINI_MODEL || 'gemini-3.5-flash' }}
           BIBLIA_VERSAO: ${{ secrets.BIBLIA_VERSAO || 'nvi' }}
         run: |
-          CMD="python main.py"
-          if [ "${{ inputs.force }}" = "true" ]; then
-            CMD="$CMD --force"
-          fi
+          CMD="python main.py --force"
           if [ -n "${{ inputs.versiculo }}" ]; then
-            CMD="$CMD --versiculo '${{ inputs.versiculo }}'"
+            CMD="python main.py --force --versiculo '${{ inputs.versiculo }}'"
           fi
           echo "Executando comando: $CMD"
           eval $CMD

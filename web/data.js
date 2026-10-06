@@ -4,12 +4,12 @@
  */
 const HISTORICO_ESTUDOS = [
     {
-        "data": "2026-10-07",
-        "dataFormatada": "7 de Outubro de 2026",
+        "data": "2026-10-06",
+        "dataFormatada": "6 de Outubro de 2026",
         "referencia": "João 14:27",
         "versao": "NVI",
         "modelo": "gemini-3.5-flash",
-        "geradoEm": "2026-10-07T03:23:00.000000",
+        "geradoEm": "2026-10-06T18:00:00.000000",
         "versiculoTexto": "Deixo a paz a vocês; a minha paz lhes dou. Não a dou como o mundo a dá. Não se perturbe o seu coração, nem tenham medo.",
         "genero": "Literatura de Sabedoria / Bíblica",
         "secoes": [
@@ -95,95 +95,6 @@ const HISTORICO_ESTUDOS = [
                 "foco": "Ênfase na natureza da dádiva messiânica (*eirēnē*) e no imperativo de cessar a agitação interna (*mē tarassesthō*)."
             },
             "notaHermeneutica": "A paz do Salvador é um legado jurídico e relacional irrevogável: na cruz Ele comprou a nossa reconciliação, desarmando o tribunal da condenação e a raiz de todo o pavor existencial."
-        }
-    },
-    {
-        "data": "2026-10-06",
-        "dataFormatada": "6 de Outubro de 2026",
-        "referencia": "Salmos 55:22",
-        "versao": "NVI",
-        "modelo": "gemini-3.5-flash",
-        "geradoEm": "2026-10-06T07:25:00.000000",
-        "versiculoTexto": "Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.",
-        "genero": "Literatura de Sabedoria / Bíblica",
-        "secoes": [
-            {
-                "id": "contexto",
-                "titulo": "1. O Contexto Histórico e Narrativo",
-                "icone": "scroll",
-                "conteudo": "Para entender o peso dessa frase, a primeira coisa que precisamos fazer é arrancar o verniz piegas com que o mercado religioso costuma plastificar os Salmos. Salmos 55 não nasceu em um retiro espiritual confortável nem no silêncio contemplativo de um mosteiro. Ele foi escrito sob o impacto de um golpe sujo. Davi está vivendo um dos episódios mais amargos da sua trajetória política e pessoal: a traição não veio de um filisteu pagão ou de um inimigo declarado, mas de um confidente íntimo, alguém com quem dividia a mesa, os segredos de Estado e os bancos do santuário — a tradição aponta para Aitofel durante a rebelião de Absalão.<br><br>O ambiente urbano de Jerusalém descrito no poema é de colapso institucional: violência, intriga e discórdia circulando pelas praças. A dor da deslealdade tem esse efeito corrosivo: ela desestabiliza o chão, rouba o sono e faz o sujeito desejar criar asas de pomba para fugir e sumir no deserto (Salmo 55:6). É nesse cenário de esgotamento nervoso, onde o cinismo e a paranoia seriam as reações mais naturais de qualquer pessoa sã, que surge a virada do versículo 22. Davi não faz um discurso motivacional barato para si mesmo. Ele faz um cálculo lúcido sobre os limites das forças humanas diante de uma crise que foge completamente ao seu controle.<br><br>---"
-            },
-            {
-                "id": "anatomia",
-                "titulo": "2. A Anatomia do Texto e Teologia Central",
-                "icone": "book-open",
-                "termosOriginais": [],
-                "conteudo": "Em termos de engenharia existencial, todo sistema tem um limite de fadiga e carga de ruptura. Quando a carga imposta ultrapassa a resistência do material, a estrutura entra em colapso. O hebraico original aqui não usa meias palavras. O verbo traduzido por \"entregue\" é <em>hashlek</em> (הַשְׁלֵךְ), a forma imperativa de <em>shalak</em>. Não se trata de colocar suavemente no altar com elegância litúrgica; significa arremessar, descarregar com força, jogar para longe de si como quem se desfaz de um fardo pesado demais antes que ele esmague a espinha.<br><br>O objeto desse arremesso é <em>yehab</em> (יְהָב) — aquilo que foi colocado sobre você, a sua cota de peso existencial, as ansiedades e tarefas que a vida descarregou nos seus ombros. E a contrapartida divina não é mágica, mas de sustento: <em>yekalkeleka</em> (יְכַלְכְּלֶךָ), derivado da raiz <em>kul</em>, um termo técnico que evoca conter, nutrir, suportar a capacidade de carga e fornecer estabilidade contínua. Deus não promete necessariamente evaporar com o problema do cenário amanhã de manhã; Ele promete ser o alicerce que impede que a sua estrutura ceda. A garantia final é que Ele jamais deixará o justo em estado de <em>mot</em> (מוֹט) — vacilante, derrapando em colapso catastrófico."
-            },
-            {
-                "id": "aplicacao",
-                "titulo": "3. O que tirar disso para a prática de hoje?",
-                "icone": "compass",
-                "conteudo": "A cultura contemporânea nos adestra desde o vestibular a operar como microempresas individuais de autossuficiência. Você precisa dar conta da carreira, da pós-graduação, das contas que chegam no início do mês, da saúde mental, da vida afetiva e ainda manter um sorriso performático nos encontros sociais. Para piorar, o meio religioso costuma acrescentar uma camada cruel de culpa a essa equação: se você está ansioso ou sobrecarregado, insinuam que sua fé é fraca, que faltou jejum ou que você não fez a \"declaração positiva\" certa no culto de domingo.<br><br>Esse tipo de espiritualidade de consumo é uma farsa mercadológica. O Salmo 55:22 joga uma ducha de água fria nessa cobrança neurótica. Ter fardos pesados não é sinal de apostasia; é a constatação óbvia de que somos criaturas finitas em um mundo quebrado. A insanidade começa quando tentamos gerenciar sozinhos cargas que pertencem exclusivamente a Deus. Entregar o fardo não é apatia irresponsável ou fuga da realidade; é um ato cirúrgico de humildade intelectual. É acordar na segunda-feira, olhar para o volume de problemas e admitir: \"Eu faço a minha parte com seriedade, mas o resultado e a sustentação da história não estão nas minhas mãos\". A graça liberta você da obrigação doentia de ser o seu próprio salvador.<br><br>---"
-            },
-            {
-                "id": "canonicas",
-                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
-                "icone": "cross",
-                "citacoes": [
-                    {
-                        "autor": "Francis Schaeffer",
-                        "obra": "O Deus que se Revela",
-                        "texto": "O início do verdadeiro relacionamento com Deus é o reconhecimento de que nós não somos o centro do universo e não temos a capacidade intrínseca de sustentar o significado de nossas próprias vidas."
-                    }
-                ],
-                "conteudo": "Esse mesmo movimento de descarregar a tensão no Criador ecoa com força total no Novo Testamento. O apóstolo Pedro retoma literalmente essa imagem ao escrever para comunidades que enfrentavam a fornalha da opressão em <strong>1 Pedro 5:7</strong> (<em>\"Lancem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês\"</em>). Jesus Cristo fez do convite ao descanso o coração do Seu ministério terreno em <strong>Mateus 11:28</strong> (<em>\"Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso\"</em>), mostrando que o Deus das Escrituras não é um capataz religioso exigindo metas desumanas, mas o Redentor que carrega o madeiro por nós.<br><br>Diante da dor da traição e do desmoronamento dos apoios humanos, a teologia reformada nos ensina que a segurança do crente repousa no pacto inabalável de Deus, e não na firmeza dos nossos sentimentos instáveis. Como observou o filósofo e pensador cristão Francis Schaeffer ao confrontar a autossuficiência do homem moderno:<br><br>---"
-            },
-            {
-                "id": "fechamento",
-                "titulo": "5. Pergunta Central para Meditação",
-                "icone": "help-circle",
-                "pergunta": "Qual é a carga específica que você está insistindo em carregar sozinho por puro orgulho ou medo de perder o controle, fingindo que sua força é suficiente para não desmoronar?"
-            }
-        ],
-        "devocionalWhatsApp": "*Salmos 55:22 (NVI)*\n> *\"Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.\"*\n\nTodo mundo tem um limite de carga. O problema é que a gente vive numa rotina insana de metas, cobranças e prazos — e ainda tem que aguentar discurso religioso de gente dizendo que quem tem fé não se cansa nem tem medo.\n\nDavi escreveu esse versículo quando tomou uma rasteira feia de um amigo próximo. A cidade estava um caos e a vontade dele era sumir no mapa. Em vez de fingir uma espiritualidade inabalável de vitrine, ele usou uma palavra forte no hebraico: *Hashlek* — arremessar, jogar fora de si o peso antes que ele quebre a coluna.\n\nDeus não promete um conto de fadas sem problemas na terça-feira; Ele promete o sustento estrutural que impede a sua alma de entrar em colapso. Você não precisa ser o super-herói da sua própria vida nem bancar o crente perfeito. Faça o que precisa ser feito com seriedade, mas jogue a ansiedade do resultado nos ombros de Quem realmente tem força para segurar o mundo.\n\n*A pergunta do dia:* Qual problema você continua tentando controlar na força do braço, quando a única saída sensata é descarregar nas mãos de Deus?",
-        "minutoComDeus": {
-            "titulo": "SUSTENTO INABALÁVEL",
-            "fraseDoDia": "Você não foi desenhado para carregar o peso do mundo sozinho; entregue o fardo a Quem sustenta o universo.",
-            "autorFrase": "@cslewis",
-            "leiturasComplementares": [
-                "1 PEDRO 5.7",
-                "MATEUS 11.28-30",
-                "SALMOS 68.19",
-                "FILIPENSES 4.6,7",
-                "ISAÍAS 41.10"
-            ],
-            "leituraComplementar": "1 PEDRO 5.7",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de Salmos 55:22 nos resgata: \"Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
-        },
-        "cafeComDeusPai": {
-            "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em Salmos 55:22, o Senhor nos lembra do Seu cuidado presente: \"Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
-            "cafeParaLevar": "Você não foi desenhado para carregar o peso do mundo sozinho; entregue o fardo a Quem sustenta o universo."
-        },
-        "comparacaoTraducoes": {
-            "titulo": "Comparação Exegética de Versões",
-            "versaoPrincipal": {
-                "sigla": "NVI (Nova Versão Internacional)",
-                "texto": "Entregue suas preocupações ao Senhor, e ele o susterá; jamais permitirá que o justo venha a cair.",
-                "rotulo": "Tradução Dinâmica Contemporânea",
-                "foco": "Clareza fluida da comunicação contemporânea, conectando fardo com ansiedade interior."
-            },
-            "versaoOriginal": {
-                "sigla": "Literal (Tradução ao Pé da Letra)",
-                "rotulo": "Equivalência Formal Estrita",
-                "textoLiteral": "Arremessa sobre o Senhor o teu fardo que te foi dado, e Ele mesmo te sustentará; não dará para sempre vacilação ao justo.",
-                "texto": "Arremessa sobre o Senhor o teu fardo que te foi dado, e Ele mesmo te sustentará; não dará para sempre vacilação ao justo.",
-                "foco": "Ação enérgica de descarregar (*hashlek*) e a física do suporte contínuo da graça (*kul*)."
-            },
-            "notaHermeneutica": "A promessa bíblica não é a ausência de atrito no mundo, mas a estabilidade estrutural fornecida por Deus quando o ser humano renuncia à ilusão da autossuficiência."
         }
     },
     {
