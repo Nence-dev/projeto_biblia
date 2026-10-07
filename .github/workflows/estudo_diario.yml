@@ -2,8 +2,11 @@ name: Estudo Bíblico Diário & Publicação Web (GitHub Pages)
 
 on:
   schedule:
-    # Executa todos os dias às 08:23 UTC (05:23 horário de Brasília - fila limpa)
-    - cron: '23 8 * * *'
+    # Execuções matinais escalonadas (05:17, 05:47, 06:17, 06:47 BRT) imunes a congestionamento de fila
+    - cron: '17 8 * * *'
+    - cron: '47 8 * * *'
+    - cron: '17 9 * * *'
+    - cron: '47 9 * * *'
   workflow_dispatch:
     inputs:
       force:
@@ -35,7 +38,7 @@ concurrency:
 
 jobs:
   gerar-estudo:
-    # Gera novo estudo apenas no horario agendado (05:23) ou acionamento manual (nao em push de layout)
+    # Gera novo estudo no horário agendado ou acionamento manual
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
@@ -57,19 +60,42 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Executar Coleta e Geração Teológica Diária
+      - name: Executar Coleta e Geração Teológica Diária (Idempotente)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL || 'gemini-3.5-flash' }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL || 'gemini-2.5-flash' }}
           BIBLIA_VERSAO: ${{ secrets.BIBLIA_VERSAO || 'nvi' }}
         run: |
-          CMD="python main.py --force"
-          if [ -n "${{ inputs.versiculo }}" ]; then
-            CMD="python main.py --force --versiculo '${{ inputs.versiculo }}'"
-          fi
-          echo "Executando comando: $CMD"
-          eval $CMD
-          python -c "from src.storage import exportar_todos_estudos_para_web_data; exportar_todos_estudos_para_web_data()"
+          python -c "
+          import sys
+          from src.storage import estudo_hoje_esta_completo
+
+          is_schedule = '${{ github.event_name }}' == 'schedule'
+          is_manual = '${{ github.event_name }}' == 'workflow_dispatch'
+          force_input = '${{ inputs.force }}' == 'true'
+          tem_versiculo = bool('${{ inputs.versiculo }}')
+
+          if is_schedule and estudo_hoje_esta_completo():
+              print('✅ Estudo e devocional de hoje já existem íntegros. Encerrando execução redundante com sucesso.')
+              sys.exit(0)
+
+          if is_manual and not force_input and not tem_versiculo and estudo_hoje_esta_completo():
+              print('✅ Estudo de hoje já existe e force está inativo. Encerrando sem regenerar.')
+              sys.exit(0)
+
+          import subprocess
+          cmd = ['python', 'main.py', '--force']
+          if tem_versiculo:
+              cmd.extend(['--versiculo', '${{ inputs.versiculo }}'])
+          print(f'Executando: {\" \".join(cmd)}')
+          res = subprocess.run(cmd)
+          if res.returncode != 0:
+              sys.exit(res.returncode)
+
+          from src.storage import exportar_todos_estudos_para_web_data
+          exportar_todos_estudos_para_web_data()
+          print('✅ Dados web exportados com sucesso.')
+          "
 
       - name: Salvar Novo Estudo e Dados Web no Repositório
         uses: stefanzweifel/git-auto-commit-action@v5

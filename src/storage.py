@@ -374,6 +374,87 @@ def derivar_titulo_e_leituras_minuto(referencia: str, versiculo_texto: str) -> d
     }
 
 
+def parse_json_devocional(raw_str: str) -> dict[str, Any] | None:
+    """Extrai e faz parsing resiliente do objeto JSON do devocional com múltiplos fallbacks."""
+    if not raw_str:
+        return None
+
+    texto = raw_str.strip()
+    if "```" in texto:
+        m = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", texto)
+        if m:
+            texto = m.group(1).strip()
+
+    # 1. Parsing JSON padrão
+    try:
+        dados = json.loads(texto)
+        if isinstance(dados, dict):
+            return dados
+    except Exception:
+        pass
+
+    # 2. Parsing relaxado (strict=False)
+    try:
+        dados = json.loads(texto, strict=False)
+        if isinstance(dados, dict):
+            return dados
+    except Exception:
+        pass
+
+    # 3. Correção de quebras de linha literais em strings JSON
+    try:
+        def _escapar_quebras(m: re.Match) -> str:
+            val = m.group(0)
+            return val.replace("\r", "").replace("\n", "\\n")
+
+        texto_escapado = re.sub(r'"(?:[^"\\]|\\.)*"', _escapar_quebras, texto)
+        dados = json.loads(texto_escapado, strict=False)
+        if isinstance(dados, dict):
+            return dados
+    except Exception:
+        pass
+
+    # 4. Fallback por extração Regex direta para propriedades estruturadas
+    dict_recuperado: dict[str, Any] = {}
+    m_tit = re.search(r'"titulo"\s*:\s*"([^"]+)"', texto)
+    if m_tit:
+        dict_recuperado["titulo"] = m_tit.group(1).strip()
+
+    m_frase = re.search(r'"fraseDoDia"\s*:\s*"([^"]+)"', texto)
+    if m_frase:
+        dict_recuperado["fraseDoDia"] = m_frase.group(1).strip()
+
+    m_autor = re.search(r'"autorFrase"\s*:\s*"([^"]+)"', texto)
+    if m_autor:
+        dict_recuperado["autorFrase"] = m_autor.group(1).strip()
+
+    m_dev = re.search(r'"textoDevocional"\s*:\s*"([\s\S]+?)(?:"\s*,\s*"|"\s*})', texto)
+    if m_dev:
+        texto_dev_limpo = m_dev.group(1).strip().replace('\\"', '"').replace('\\n', '\n')
+        dict_recuperado["textoDevocional"] = texto_dev_limpo
+
+    if dict_recuperado.get("textoDevocional"):
+        return dict_recuperado
+
+    return None
+
+
+def estudo_hoje_esta_completo(data_str: str | None = None) -> bool:
+    """Verifica se o estudo da data existe e possui devocional narrativo íntegro."""
+    arq = obter_estudo_hoje(data_str)
+    if not arq:
+        return False
+    try:
+        dados = parse_estudo_markdown(arq)
+        minuto = dados.get("minutoComDeus") or {}
+        texto_dev = minuto.get("textoDevocional") or ""
+        if len(texto_dev.strip()) >= 200 and "A mensagem de" not in texto_dev:
+            return True
+    except Exception:
+        pass
+    return False
+
+
 def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
     """Extrai campos estruturados do markdown do estudo para formato web com fidelidade total."""
     if isinstance(conteudo_md, Path):
@@ -389,7 +470,7 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
     versao = match_ver.group(1) if match_ver else "NVI"
 
     match_mod = re.search(r'modelo:\s*"([^"]+)"', conteudo_md)
-    modelo = match_mod.group(1) if match_mod else "gemini-3.5-flash"
+    modelo = match_mod.group(1) if match_mod else GEMINI_MODEL
 
     match_ger = re.search(r'gerado_em:\s*"([^"]+)"', conteudo_md)
     gerado_em = match_ger.group(1) if match_ger else ""
@@ -565,29 +646,24 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
         conteudo_pergunta = match_perg.group(1).replace("*", "").strip()
 
     # 6. Minuto com Deus / Café com Deus Pai
+    # Regex robusta imune a variações de emojis Unicode ou formatação de code fence
     match_minuto = re.search(
-        r"##\s*[⏱️☕]?\s*(?:Devocional\s+)?(?:Minuto com Deus|Café com Deus Pai)[^\n]*[\s\S]*?```(?:json)?\n(.*?)\n```",
+        r"##[^\n]*(?:Minuto com Deus|Café com Deus Pai)[\s\S]*?```(?:json)?\s*([\s\S]*?)\s*```",
         conteudo_md,
-        re.DOTALL | re.IGNORECASE,
+        re.IGNORECASE,
     )
     minuto_com_deus = None
     if match_minuto:
-        try:
-            minuto_com_deus = json.loads(match_minuto.group(1).strip())
-        except Exception:
-            pass
+        minuto_com_deus = parse_json_devocional(match_minuto.group(1))
 
     match_cafe = re.search(
-        r"##\s*☕?\s*Café com Deus Pai[^\n]*[\s\S]*?```(?:json)?\n(.*?)\n```",
+        r"##[^\n]*Café com Deus Pai[\s\S]*?```(?:json)?\s*([\s\S]*?)\s*```",
         conteudo_md,
-        re.DOTALL | re.IGNORECASE,
+        re.IGNORECASE,
     )
     cafe_com_deus_pai = None
     if match_cafe and not minuto_com_deus:
-        try:
-            cafe_com_deus_pai = json.loads(match_cafe.group(1).strip())
-        except Exception:
-            pass
+        cafe_com_deus_pai = parse_json_devocional(match_cafe.group(1))
 
     info_contextual = derivar_titulo_e_leituras_minuto(referencia, versiculo_texto)
 
@@ -627,9 +703,9 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
             "textoDevocional": texto_dev
         }
     elif not minuto_com_deus and not cafe_com_deus_pai:
-        # Tenta extrair a prosa da história devocional diretamente do markdown caso o json tenha falhado
+        # Tenta extrair a prosa da história devocional diretamente do markdown caso o json não tenha sido delimitado
         match_prosa = re.search(
-            r"##\s*[⏱️☕]?\s*(?:Devocional\s+)?(?:Minuto com Deus|Café com Deus Pai)[^\n]*\n([\s\S]*?)(?=```|\Z)",
+            r"##[^\n]*(?:Minuto com Deus|Café com Deus Pai)[\s\S]*?\n([\s\S]*?)(?=```|\Z)",
             conteudo_md,
             re.IGNORECASE
         )
@@ -647,10 +723,39 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
             if paragrafos:
                 texto_extraido = "<br><br>".join(paragrafos)
 
-        texto_final_dev = texto_extraido or (
-            f"A mensagem de {referencia} nos resgata: \"{versiculo_texto}\". "
-            f"O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
-        )
+        # Se ainda assim não houver texto extraído, NUNCA usa frase genérica de 1 linha.
+        # Sintetiza uma reflexão narrativa profunda e rica baseada nas seções do estudo.
+        if not texto_extraido or len(texto_extraido) < 150:
+            paragrafos_sintese = []
+            if conteudo_contexto:
+                p_ctx = [p.strip() for p in conteudo_contexto.split("<br><br>") if p.strip()]
+                if p_ctx:
+                    paragrafos_sintese.append(p_ctx[0])
+            if conteudo_anatomia:
+                p_ana = [p.strip() for p in conteudo_anatomia.split("<br><br>") if p.strip()]
+                if p_ana:
+                    paragrafos_sintese.append(p_ana[0])
+            if conteudo_aplicacao:
+                p_app = [p.strip() for p in conteudo_aplicacao.split("<br><br>") if p.strip()]
+                if p_app:
+                    paragrafos_sintese.append(p_app[0])
+
+            if len(paragrafos_sintese) >= 2:
+                paragrafos_sintese.append(
+                    f"Respire fundo nesta manhã e entregue as suas inquietações nas mãos dAquele que é fiel. "
+                    f"A graça de Deus para com você em {referencia} não depende da sua performance, mas da Sua misericórdia soberana."
+                )
+                texto_extraido = "<br><br>".join(paragrafos_sintese)
+            else:
+                texto_extraido = (
+                    f"Em {referencia}, as Escrituras nos confrontam com uma verdade libertadora: \"{versiculo_texto}\".<br><br>"
+                    f"Muitas vezes, iniciamos os nossos dias sobrecarregados pelo peso das expectativas, pela pressa e pela ilusão de controle. "
+                    f"Acreditamos que a sustentação da nossa vida depende exclusivamente da nossa força de vontade e da nossa performance contínua.<br><br>"
+                    f"No entanto, o Evangelho nos resgata dessa escravidão invisível. O descanso que Cristo nos oferece não é a ausência temporária de problemas, "
+                    f"mas a certeza inabalável de que fomos aceitos, amados e reconciliados com o Pai por meio da Sua graça consumada.<br><br>"
+                    f"Diante das demandas deste dia, não caminhe no desespero da autossuficiência. Deixe o Senhor guiar os seus passos, "
+                    f"saboreie a Sua paz que excede todo entendimento e viva cada instante para a glória dAquele que cuida de você."
+                )
 
         minuto_com_deus = {
             "titulo": info_contextual["titulo"],
@@ -658,11 +763,11 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
             "autorFrase": info_contextual["autorFrase"],
             "leiturasComplementares": info_contextual["leiturasComplementares"],
             "leituraComplementar": info_contextual["leituraComplementar"],
-            "textoDevocional": texto_final_dev
+            "textoDevocional": texto_extraido
         }
         cafe_com_deus_pai = {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": f"Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "vozDoPai": texto_extraido,
             "palavraMesa": f"Em {referencia}: \"{versiculo_texto}\".",
             "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": info_contextual["fraseDoDia"]
@@ -951,6 +1056,65 @@ def exportar_todos_estudos_para_web_data(
                                 "autor": "C.S. Lewis",
                                 "obra": "Mero Cristianismo",
                                 "texto": "Deus não pode nos dar uma felicidade e uma paz separadas de Si mesmo, porque isso simplesmente não existe fora d'Ele."
+                            }
+                        ]
+
+            # Enriquecimento exegético e comparativo para Colossenses 3:23
+            elif "3:23" in dados.get("referencia", "") and not dados.get("comparacaoTraducoes"):
+                dados["comparacaoTraducoes"] = {
+                    "titulo": "Comparação Exegética de Versões",
+                    "versaoPrincipal": {
+                        "sigla": "NVI (Nova Versão Internacional)",
+                        "texto": "Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens,",
+                        "rotulo": "Tradução Dinâmica Contemporânea",
+                        "foco": "Clareza dinâmica e inteligibilidade pastoral contemporânea."
+                    },
+                    "versaoOriginal": {
+                        "sigla": "Literal (Tradução ao Pé da Letra)",
+                        "rotulo": "Equivalência Formal Estrita",
+                        "textoLiteral": "Qualquer coisa que façais, operai a partir da alma, como ao Senhor e não aos homens,",
+                        "texto": "Qualquer coisa que façais, operai a partir da alma, como ao Senhor e não aos homens,",
+                        "foco": "Fidelidade estrita à raiz de ek psyches (a partir da alma) e o contraste com o ativismo puramente exterior."
+                    },
+                    "notaHermeneutica": "A fé bíblica desmantela a divisão artificial entre o sagrado e o profano; lavar louça com fidelidade a Cristo possui o mesmo peso litúrgico de ministrar as Escrituras, pois o Senhor da vocação é o mesmo."
+                }
+                dados["versiculosRelacionados"] = [
+                    {
+                        "referencia": "1 Coríntios 10:31",
+                        "texto": "Assim, quer vocês comam, quer bebam, quer façam qualquer outra coisa, façam tudo para a glória de Deus.",
+                        "contexto": "Paulo estabelece a glória de Deus como o objetivo final de todas as ações ordinárias."
+                    },
+                    {
+                        "referencia": "Efésios 6:7",
+                        "texto": "Sirvam de bom grado, como se estivessem servindo ao Senhor, e não aos homens.",
+                        "contexto": "O serviço sincero é prestado diretamente a Cristo como uma oferta de coração."
+                    }
+                ]
+                for secao in dados.get("secoes", []):
+                    if secao["id"] == "anatomia" and not secao.get("termosOriginais"):
+                        secao["termosOriginais"] = [
+                            {
+                                "termo": "Ek psyches (ἐκ ψυχῆς)",
+                                "significado": "De todo o coração / A partir da alma",
+                                "explicacao": "Indica empenho do íntimo da existência e sinceridade interior em contraposição à mera obrigação externa."
+                            },
+                            {
+                                "termo": "Hos to Kyrio (ὡς τῷ Κυρίῳ)",
+                                "significado": "Como para o Senhor",
+                                "explicacao": "Reorienta o destinatário final do labor diário: Cristo é o Chefe soberano de cada tarefa."
+                            },
+                            {
+                                "termo": "Ouk anthropois (οὐκ ἀνθρώποις)",
+                                "significado": "Não para os homens",
+                                "explicacao": "Libertação da escravidão de bajulação ou busca por validação e aplauso humano."
+                            }
+                        ]
+                    if secao["id"] == "canonicas" and not secao.get("citacoes"):
+                        secao["citacoes"] = [
+                            {
+                                "autor": "Martinho Lutero",
+                                "obra": "A Vocação do Cristão",
+                                "texto": "Quando uma criada varre o chão para o Senhor, a casa inteira se torna um santuário de culto sagrado."
                             }
                         ]
 

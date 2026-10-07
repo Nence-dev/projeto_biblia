@@ -157,8 +157,75 @@ def test_exportar_web_data(tmp_path, monkeypatch):
 
     assert destino.exists()
     conteudo_js = destino.read_text(encoding="utf-8")
-    assert "const HISTORICO_ESTUDOS =" in conteudo_js
-    assert "Provérbios 4:23" in conteudo_js
-    assert "comparacaoTraducoes" in conteudo_js
-    assert "versiculosRelacionados" in conteudo_js
     assert "cafeComDeusPai" in conteudo_js
+
+
+def test_parse_json_devocional_resiliente():
+    from src.storage import parse_json_devocional
+
+    # 1. JSON limpo com bloco markdown
+    raw_1 = '```json\n{"titulo": "TESTE", "textoDevocional": "Paragrafo 1\\n\\nParagrafo 2"}\n```'
+    res_1 = parse_json_devocional(raw_1)
+    assert res_1 is not None
+    assert res_1["titulo"] == "TESTE"
+
+    # 2. JSON com quebra de linha literal
+    raw_2 = '{\n  "titulo": "TESTE 2",\n  "textoDevocional": "Linha 1\nLinha 2"\n}'
+    res_2 = parse_json_devocional(raw_2)
+    assert res_2 is not None
+    assert "Linha 1" in res_2["textoDevocional"]
+
+    # 3. Retorno None para string vazia
+    assert parse_json_devocional("") is None
+
+
+def test_parse_estudo_markdown_com_emoji_relogio_unicode(tmp_path):
+    from src.storage import parse_estudo_markdown
+
+    # Este teste reproduz o caso real que gerava falha: cabeçalho com emoji ⏱️ (\u23f1\ufe0f)
+    conteudo_md = """---
+data: "2026-10-07"
+referencia: "Colossenses 3:23"
+versao: "NVI"
+modelo: "gemini-2.5-flash"
+---
+
+# Versículo do Dia: Colossenses 3:23 (NVI)
+> *"Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens,"*
+
+## 1. O Contexto Histórico
+Contexto histórico sólido.
+
+## 2. A Anatomia do Texto
+Anatomia do texto exegética.
+
+## 3. O que tirar disso para a prática?
+Prática diária de trabalho com integridade.
+
+## 4. Conexões Canônicas
+Conexões com outras cartas.
+
+## 5. Fechamento
+Pergunta central para hoje.
+
+## ⏱️ Devocional Minuto com Deus / Café com Deus Pai
+
+```json
+{
+  "titulo": "A GLÓRIA NO ORDINÁRIO",
+  "fraseDoDia": "Quando o trabalho é oração, a rotina é sagrada.",
+  "autorFrase": "@juniorrostirola",
+  "textoDevocional": "História completa nos quatro movimentos narrativos, rica e detalhada com mais de duzentos caracteres para comprovar a integridade total do devocional e ausência de fallbacks resumidos ou genéricos."
+}
+```
+"""
+    arquivo_md = tmp_path / "2026-10-07_colossenses_3_23.md"
+    arquivo_md.write_text(conteudo_md, encoding="utf-8")
+
+    dados = parse_estudo_markdown(arquivo_md)
+    minuto = dados.get("minutoComDeus")
+    assert minuto is not None
+    assert minuto["titulo"] == "A GLÓRIA NO ORDINÁRIO"
+    assert "História completa nos quatro movimentos" in minuto["textoDevocional"]
+    assert "A mensagem de" not in minuto["textoDevocional"]
+

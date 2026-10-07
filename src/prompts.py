@@ -109,6 +109,10 @@ def montar_prompt_whatsapp(referencia: str, texto: str, versao: str, estudo_gera
 \"\"\"
 """
 
+SYSTEM_PROMPT_DEVOCIONAL = """Você é um autor e pastor devocional sensível, acolhedor e profundo (no formato editorial de alto impacto de obras como 'Café com Deus Pai' e 'Minuto com Deus').
+Sua voz pastoral é calorosa, encorajadora, empática e inteligente. Você conversa de coração para coração com quem enfrenta as dores e a correria do dia a dia.
+Você SEMPRE responde exclusivamente em formato JSON válido, contendo uma narrativa viva e estruturada nos 4 movimentos (incluindo história real marcante de terceiro ou drama bíblico vivo). Não inclua explicações ou texto fora do JSON.
+"""
 
 PROMPT_DERIVACAO_MINUTO_COM_DEUS = """Com base no estudo bíblico e no versículo acima, elabore um devocional vivo, vibrante e comovente no formato editorial do devocional "Café com Deus Pai" / "Minuto com Deus" (estilo página de livro devocional impresso de alto impacto emocional e espiritual).
 

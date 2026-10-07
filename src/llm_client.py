@@ -9,6 +9,7 @@ from typing import Callable, Optional
 from src.config import validate_api_key, GEMINI_MODEL, ConfigError
 from src.prompts import (
     SYSTEM_PROMPT_TEOLOGICO,
+    SYSTEM_PROMPT_DEVOCIONAL,
     montar_prompt_usuario,
     montar_prompt_whatsapp,
     montar_prompt_minuto,
@@ -16,15 +17,13 @@ from src.prompts import (
 
 logger = logging.getLogger(__name__)
 
-# Modelos recomendados para fallback estático (família Gemini 3.x)
+# Modelos recomendados para fallback estático (família Gemini 2.x e 1.5)
 MODELOS_PADRAO_FALLBACK = [
-    "gemini-3.5-flash",
-    "gemini-3.5-flash-lite",
-    "gemini-3.1-pro",
-    "gemini-3.6-flash",
-    "gemini-3.8-flash",
+    "gemini-2.5-flash",
     "gemini-2.0-flash",
     "gemini-1.5-flash",
+    "gemini-2.5-pro",
+    "gemini-1.5-pro",
 ]
 
 
@@ -256,8 +255,27 @@ class GeminiClient:
     ) -> str:
         """Gera o devocional vivo e narrativo (estilo Café com Deus Pai) com histórias reais de terceiros."""
         prompt_minuto = montar_prompt_minuto(referencia, texto, versao, estudo_gerado)
-        return self._generate(
+        
+        # Primeira tentativa de geração com instrução específica devocional
+        resultado = self._generate(
             prompt=prompt_minuto,
-            system_instruction=SYSTEM_PROMPT_TEOLOGICO,
+            system_instruction=SYSTEM_PROMPT_DEVOCIONAL,
             on_status=on_status,
         )
+
+        # Validação de integridade: se não contiver textoDevocional com substância, retenta
+        if not resultado or len(resultado.strip()) < 200 or "textoDevocional" not in resultado:
+            if on_status:
+                on_status("⚠️ Devocional narrativo gerado incompleto. Retentando geração com foco estrito...")
+            prompt_reforco = (
+                f"{prompt_minuto}\n\n"
+                "ATENÇÃO CRÍTICA: Responda OBRIGATORIAMENTE em JSON válido com o campo 'textoDevocional' "
+                "contendo os 4 parágrafos completos da história e aplicação."
+            )
+            resultado = self._generate(
+                prompt=prompt_reforco,
+                system_instruction=SYSTEM_PROMPT_DEVOCIONAL,
+                on_status=on_status,
+            )
+
+        return resultado
