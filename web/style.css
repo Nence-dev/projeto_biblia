@@ -5461,16 +5461,70 @@ body.is-mode-minuto .navbar {
 /* Responsividade Mobile para Devocional e Leitor Bíblico */
 @media (max-width: 992px) {
     .devocional-layout-grid {
-        grid-template-columns: 1fr;
-        gap: 2.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
     }
 
-    .devocional-sidebar-col {
+    /* Descompacta as colunas laterais no mobile para criar fluxo editorial contínuo e inteligente */
+    .devocional-sidebar-col,
+    .devocional-main-col {
+        display: contents;
+    }
+
+    /* 1. Topo: Cabeçalho com Selo Devocional Diário e Título */
+    .devocional-story-header {
+        order: 1;
+    }
+
+    /* 2. Versículo Chave em Destaque */
+    .devocional-verse-accent-card {
         order: 2;
     }
 
-    .devocional-main-col {
-        order: 1;
+    /* 3. Card Integrado: Frase de Impacto, Contador 365 e LEITURA BÍBLICA no topo da página */
+    .devocional-card-integrated {
+        order: 3;
+        width: 100%;
+    }
+
+    /* 4. Prosa Editorial / Narrativa Histórica */
+    .devocional-story-prose {
+        order: 4;
+    }
+
+    /* 5. Citação Inspiradora / Callout com Aspas Douradas */
+    .devocional-quote-callout {
+        order: 5;
+    }
+
+    /* 6. Aplicação Prática Pastoral */
+    .devocional-practical-card {
+        order: 6;
+    }
+
+    /* 7. Card de ANOTAÇÕES PESSOAIS (Logo após a Aplicação Prática, no ponto perfeito para reflexão) */
+    .devocional-notes-card {
+        order: 7;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    /* 8. Card de Um Minuto Diário de Oração */
+    .devocional-minute-callout {
+        order: 8;
+        width: 100%;
+    }
+
+    /* 9. Outros Estudos Relacionados */
+    .devocional-related-section {
+        order: 9;
+    }
+
+    /* 10. Barra de Navegação Inferior (Anterior / Próximo) */
+    .devocional-nav-strip {
+        order: 10;
+        margin-top: 2rem;
     }
 
     .devocional-mini-cards-grid {
@@ -5529,6 +5583,24 @@ body.is-mode-minuto .navbar {
     .btn-chapter-nav {
         width: 100%;
         justify-content: center;
+    }
+
+    .devocional-card-integrated {
+        border-radius: 10px;
+    }
+
+    .card-integrated-body {
+        padding: 1.25rem 1.15rem;
+    }
+
+    .devocional-notes-card {
+        border-radius: 10px;
+        padding: 1.15rem;
+    }
+
+    .notebook-lined-textarea {
+        min-height: 120px;
+        font-size: 0.95rem;
     }
 }
 
