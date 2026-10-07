@@ -65,13 +65,14 @@ const HISTORICO_ESTUDOS = [
                 "SALMOS 4.8"
             ],
             "leituraComplementar": "FILIPENSES 4.6,7",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de João 14:27 nos resgata: \"Deixo a paz a vocês; a minha paz dou a vocês. Não a dou como o mundo a dá. Não se perturbe o seu coração, nem tenham medo.\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "historiaContexto": "A história real de Horatio Spafford compondo 'Sou Feliz com Jesus' no local do naufrágio de suas filhas",
+            "textoDevocional": "Em novembro de 1873, um advogado e empresário de Chicago chamado Horatio Spafford colocou sua esposa e quatro filhas pequenas a bordo do navio Ville du Havre rumo à Europa. Dias antes, ele havia perdido grande parte de suas economias no trágico Grande Incêndio de Chicago, mas planejava encontrar sua família em breve. No meio da escuridão do Oceano Atlântico, o navio colidiu violentamente com outra embarcação e afundou em meros doze minutos. Quando a esposa sobreviveu e enviou o telegrama com as devastadoras palavras: 'Salva sozinha, o que devo fazer?', o mundo de Spafford desmoronou em um abismo de luto indescritível.<br><br>Horatio embarcou no primeiro navio para encontrar a esposa destroçada na Inglaterra. Durante a travessia, o capitão o chamou ao convés e apontou para as águas escuras: 'Estamos passando exatamente sobre o local onde o navio de suas filhas afundou'. Naquele exato instante, onde qualquer coração humano seria engolido pelo desespero, pela revolta e pelo colapso mental, as palavras de Jesus em João 14:27 ecoaram nas profundezas de sua alma: 'Deixo a paz a vocês; a minha paz lhes dou. Não a dou como o mundo a dá'. Spafford desceu para a sua cabine, pegou uma caneta e, com lágrimas nos olhos, não escreveu palavras de derrota, mas os versos imortais do hino: 'Se paz a mais doce me deres gozar, se dor a mais forte sofrer... Sou feliz com Jesus, sou feliz com Jesus, meu Senhor!'.<br><br>Quantas vezes você já sentiu que o seu chão estava afundando sob os seus pés? A dor das perdas inesperadas, as noites em claro encarando o teto e a sensação de que as circunstâncias fugiram completamente do seu controle têm o poder de paralisar a nossa existência. O mundo tenta nos convencer de que a paz é apenas uma trégua quando tudo vai bem na conta bancária ou nos relacionamentos. Mas a paz que Cristo legou a você no cenáculo não depende da ausência de tempestades ao redor. Ela é a âncora viva da presença do Salvador dentro do seu coração, garantindo que as águas mais profundas da vida não têm permissão para afogar a sua alma.<br><br>Não permita que o medo ou a turbulência das notícias ditem o ritmo do seu dia. Respire fundo, entregue a dor que você não consegue resolver nos braços do Pai e descanse na certeza inabalável de que Ele venceu o mundo. Em um mundo agitado por tempestades, seja ancorado pela paz de Jesus."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em João 14:27, o Senhor nos lembra do Seu cuidado presente: \"Deixo a paz a vocês; a minha paz dou a vocês. Não a dou como o mundo a dá. Não se perturbe o seu coração, nem tenham medo.\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Em novembro de 1873, um advogado e empresário de Chicago chamado Horatio Spafford colocou sua esposa e quatro filhas pequenas a bordo do navio Ville du Havre rumo à Europa. Dias antes, ele havia perdido grande parte de suas economias no trágico Grande Incêndio de Chicago, mas planejava encontrar sua família em breve. No meio da escuridão do Oceano Atlântico, o navio colidiu violentamente com outra embarcação e afundou em meros doze minutos. Quando a esposa sobreviveu e enviou o telegrama com as devastadoras palavras: 'Salva sozinha, o que devo fazer?', o mundo de Spafford desmoronou em um abismo de luto indescritível.<br><br>Horatio embarcou no primeiro navio para encontrar a esposa destroçada na Inglaterra. Durante a travessia, o capitão o chamou ao convés e apontou para as águas escuras: 'Estamos passando exatamente sobre o local onde o navio de suas filhas afundou'. Naquele exato instante, onde qualquer coração humano seria engolido pelo desespero, pela revolta e pelo colapso mental, as palavras de Jesus em João 14:27 ecoaram nas profundezas de sua alma: 'Deixo a paz a vocês; a minha paz lhes dou. Não a dou como o mundo a dá'. Spafford desceu para a sua cabine, pegou uma caneta e, com lágrimas nos olhos, não escreveu palavras de derrota, mas os versos imortais do hino: 'Se paz a mais doce me deres gozar, se dor a mais forte sofrer... Sou feliz com Jesus, sou feliz com Jesus, meu Senhor!'.<br><br>Quantas vezes você já sentiu que o seu chão estava afundando sob os seus pés? A dor das perdas inesperadas, as noites em claro encarando o teto e a sensação de que as circunstâncias fugiram completamente do seu controle têm o poder de paralisar a nossa existência. O mundo tenta nos convencer de que a paz é apenas uma trégua quando tudo vai bem na conta bancária ou nos relacionamentos. Mas a paz que Cristo legou a você no cenáculo não depende da ausência de tempestades ao redor. Ela é a âncora viva da presença do Salvador dentro do seu coração, garantindo que as águas mais profundas da vida não têm permissão para afogar a sua alma.<br><br>Não permita que o medo ou a turbulência das notícias ditem o ritmo do seu dia. Respire fundo, entregue a dor que você não consegue resolver nos braços do Pai e descanse na certeza inabalável de que Ele venceu o mundo. Em um mundo agitado por tempestades, seja ancorado pela paz de Jesus.",
+            "palavraMesa": "Em João 14:27: \"Deixo a paz a vocês; a minha paz dou a vocês. Não a dou como o mundo a dá. Não se perturbe o seu coração, nem tenham medo.\".",
+            "oracaoMesa": "Senhor Jesus, obrigado por Tua presença soberana que acalma a tempestade e ancora o meu coração na Tua paz. Amém.",
             "cafeParaLevar": "A paz de Cristo não é a ausência de tempestades ao redor, mas a presença soberana do Salvador no barco da sua vida."
         },
         "comparacaoTraducoes": {
@@ -154,13 +155,13 @@ const HISTORICO_ESTUDOS = [
                 "1 TESSALONICENSES 5.14"
             ],
             "leituraComplementar": "LUCAS 15.11-24",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de Judas 1:22 nos resgata: \"Tenham misericórdia daqueles que duvidam\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "textoDevocional": "A mensagem de Judas 1:22 nos resgata: \"Tenham misericórdia daqueles que duvidam\". O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em Judas 1:22, o Senhor nos lembra do Seu cuidado presente: \"Tenham misericórdia daqueles que duvidam\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": "Em Judas 1:22: \"Tenham misericórdia daqueles que duvidam\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": "A misericórdia não descarta quem está vacilando; ela estende a mão para curar."
         },
         "comparacaoTraducoes": {
@@ -243,13 +244,13 @@ const HISTORICO_ESTUDOS = [
                 "TITO 3.5"
             ],
             "leituraComplementar": "EZEQUIEL 36.26",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de Salmos 51:10 nos resgata: \"Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "textoDevocional": "A mensagem de Salmos 51:10 nos resgata: \"Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!\". O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em Salmos 51:10, o Senhor nos lembra do Seu cuidado presente: \"Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": "Em Salmos 51:10: \"Ó Deus, cria em mim um coração puro e dá-me uma vontade nova e firme!\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": "Deus não reforma nossa fachada moral; Ele recria o coração a partir do arrependimento sincero."
         }
     },
@@ -314,13 +315,13 @@ const HISTORICO_ESTUDOS = [
                 "TIAGO 1.22"
             ],
             "leituraComplementar": "SALMOS 119.105",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de Gálatas 5:1 nos resgata: \"Foi para a liberdade que Cristo nos libertou. Portanto, permaneçam firmes e não se deixem submeter novamente a um jugo de escravidão.\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "textoDevocional": "A mensagem de Gálatas 5:1 nos resgata: \"Foi para a liberdade que Cristo nos libertou. Portanto, permaneçam firmes e não se deixem submeter novamente a um jugo de escravidão.\". O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em Gálatas 5:1, o Senhor nos lembra do Seu cuidado presente: \"Foi para a liberdade que Cristo nos libertou. Portanto, permaneçam firmes e não se deixem submeter novamente a um jugo de escravidão.\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": "Em Gálatas 5:1: \"Foi para a liberdade que Cristo nos libertou. Portanto, permaneçam firmes e não se deixem submeter novamente a um jugo de escravidão.\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": "A Palavra de Deus não é um manual de regras frias, é o alicerce vivo para a sua alma hoje."
         }
     },
@@ -385,13 +386,13 @@ const HISTORICO_ESTUDOS = [
                 "TIAGO 1.22"
             ],
             "leituraComplementar": "SALMOS 119.105",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de Salmos 19:1 nos resgata: \"Os céus declaram a glória de Deus; o firmamento proclama a obra das suas mãos.\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "textoDevocional": "A mensagem de Salmos 19:1 nos resgata: \"Os céus declaram a glória de Deus; o firmamento proclama a obra das suas mãos.\". O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em Salmos 19:1, o Senhor nos lembra do Seu cuidado presente: \"Os céus declaram a glória de Deus; o firmamento proclama a obra das suas mãos.\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": "Em Salmos 19:1: \"Os céus declaram a glória de Deus; o firmamento proclama a obra das suas mãos.\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": "A Palavra de Deus não é um manual de regras frias, é o alicerce vivo para a sua alma hoje."
         }
     },
@@ -456,13 +457,13 @@ const HISTORICO_ESTUDOS = [
                 "TIAGO 1.22"
             ],
             "leituraComplementar": "SALMOS 119.105",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de Êxodo 20:8 nos resgata: \"Guarde o sábado, que é um dia santo.\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "textoDevocional": "A mensagem de Êxodo 20:8 nos resgata: \"Guarde o sábado, que é um dia santo.\". O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em Êxodo 20:8, o Senhor nos lembra do Seu cuidado presente: \"Guarde o sábado, que é um dia santo.\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": "Em Êxodo 20:8: \"Guarde o sábado, que é um dia santo.\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": "A Palavra de Deus não é um manual de regras frias, é o alicerce vivo para a sua alma hoje."
         }
     },
@@ -527,13 +528,13 @@ const HISTORICO_ESTUDOS = [
                 "TIAGO 1.22"
             ],
             "leituraComplementar": "SALMOS 119.105",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de Colossenses 1:16-17 nos resgata: \"Pois nele foram criadas todas as coisas nos céus e na terra, as visíveis e as invisíveis; tudo foi criado por ele e para ele. Ele é antes de todas as coisas, e nele tudo subsiste.\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "textoDevocional": "A mensagem de Colossenses 1:16-17 nos resgata: \"Pois nele foram criadas todas as coisas nos céus e na terra, as visíveis e as invisíveis; tudo foi criado por ele e para ele. Ele é antes de todas as coisas, e nele tudo subsiste.\". O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em Colossenses 1:16-17, o Senhor nos lembra do Seu cuidado presente: \"Pois nele foram criadas todas as coisas nos céus e na terra, as visíveis e as invisíveis; tudo foi criado por ele e para ele. Ele é antes de todas as coisas, e nele tudo subsiste.\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": "Em Colossenses 1:16-17: \"Pois nele foram criadas todas as coisas nos céus e na terra, as visíveis e as invisíveis; tudo foi criado por ele e para ele. Ele é antes de todas as coisas, e nele tudo subsiste.\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": "A Palavra de Deus não é um manual de regras frias, é o alicerce vivo para a sua alma hoje."
         }
     },
@@ -599,13 +600,13 @@ const HISTORICO_ESTUDOS = [
                 "SALMOS 139.23,24"
             ],
             "leituraComplementar": "FILIPENSES 4.8",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de 2 Coríntios 10:5 nos resgata: \"Destruímos argumentos e toda pretensão que se levanta contra o conhecimento de Deus, e levamos cativo todo pensamento, para torná-lo obediente a Cristo.\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "textoDevocional": "A mensagem de 2 Coríntios 10:5 nos resgata: \"Destruímos argumentos e toda pretensão que se levanta contra o conhecimento de Deus, e levamos cativo todo pensamento, para torná-lo obediente a Cristo.\". O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em 2 Coríntios 10:5, o Senhor nos lembra do Seu cuidado presente: \"Destruímos argumentos e toda pretensão que se levanta contra o conhecimento de Deus, e levamos cativo todo pensamento, para torná-lo obediente a Cristo.\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": "Em 2 Coríntios 10:5: \"Destruímos argumentos e toda pretensão que se levanta contra o conhecimento de Deus, e levamos cativo todo pensamento, para torná-lo obediente a Cristo.\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": "Vigiar o coração não é viver em paranoia; é proteger a nascente pura para que a vida não adoeça."
         }
     },
@@ -670,13 +671,13 @@ const HISTORICO_ESTUDOS = [
                 "TIAGO 1.22"
             ],
             "leituraComplementar": "SALMOS 119.105",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de Jó 38:41 nos resgata: \"Quem dá alimento aos corvos quando os seus filhotes clamam a Deus e vagueiam por falta de comida?\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "textoDevocional": "A mensagem de Jó 38:41 nos resgata: \"Quem dá alimento aos corvos quando os seus filhotes clamam a Deus e vagueiam por falta de comida?\". O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em Jó 38:41, o Senhor nos lembra do Seu cuidado presente: \"Quem dá alimento aos corvos quando os seus filhotes clamam a Deus e vagueiam por falta de comida?\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": "Em Jó 38:41: \"Quem dá alimento aos corvos quando os seus filhotes clamam a Deus e vagueiam por falta de comida?\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": "A Palavra de Deus não é um manual de regras frias, é o alicerce vivo para a sua alma hoje."
         }
     },
@@ -768,13 +769,13 @@ const HISTORICO_ESTUDOS = [
                 "SALMOS 139.23,24"
             ],
             "leituraComplementar": "FILIPENSES 4.8",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de Provérbios 4:23 nos resgata: \"Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "textoDevocional": "A mensagem de Provérbios 4:23 nos resgata: \"Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.\". O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em Provérbios 4:23, o Senhor nos lembra do Seu cuidado presente: \"Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": "Em Provérbios 4:23: \"Tenha cuidado com o que você pensa, pois a sua vida é dirigida pelos seus pensamentos.\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": "Vigiar o coração não é viver em paranoia; é proteger a nascente pura para que a vida não adoeça."
         },
         "comparacaoTraducoes": {
@@ -900,13 +901,13 @@ const HISTORICO_ESTUDOS = [
                 "HEBREUS 10.14"
             ],
             "leituraComplementar": "JOÃO 5.24",
-            "textoDevocional": "Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de Romanos 8:1 nos resgata: \"Portanto, agora já não há condenação para os que estão em Cristo Jesus.\". O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
+            "textoDevocional": "A mensagem de Romanos 8:1 nos resgata: \"Portanto, agora já não há condenação para os que estão em Cristo Jesus.\". O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
         },
         "cafeComDeusPai": {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": "Em Romanos 8:1, o Senhor nos lembra do Seu cuidado presente: \"Portanto, agora já não há condenação para os que estão em Cristo Jesus.\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": "Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": "Em Romanos 8:1: \"Portanto, agora já não há condenação para os que estão em Cristo Jesus.\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": "A cruz liquidou a sentença penal: quem está em Cristo não deve nada ao tribunal da culpa."
         },
         "comparacaoTraducoes": {

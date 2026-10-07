@@ -52,7 +52,7 @@ Aponte cirurgicamente onde o nosso coração cai na tentação da autossuficiên
 
 ### 4. Conexões Canônicas e Autores da Mesma Linha
 Conecte a passagem com outros textos da Escritura mostrando a unidade da redenção em Cristo.
-OBRIGATÓRIO: Toda referência bíblica complementar mencionada deve vir em negrito e seguida imediatamente do seu texto bíblico literal transcrito entre aspas e itálico: **Livro Cap:Vers** (*"Texto do versículo..."*). Transcreva literalmente as palavras da passagem citada para que o leitor nunca veja uma referência sem o seu conteúdo.
+OBRIGATÓRIO: Toda referência bíblica complementar mencionada deve vir em negrito e acompanhada do texto literal com o texto do versículo em seguida transcrito entre aspas e itálico: **Livro Cap:Vers** (*"Texto do versículo..."*). Transcreva literalmente as palavras da passagem citada para que o leitor nunca veja uma referência sem o seu conteúdo.
 Cite também o pensamento de autores lúcidos da tradição reformada, apologistas ou pensadores clássicos e contemporâneos (ex.: C.S. Lewis, Tim Keller, Agostinho, Martyn Lloyd-Jones, John Stott, A.W. Tozer, Francis Schaeffer).
 Formate a citação no bloco padrão:
 > "Texto da citação aqui."

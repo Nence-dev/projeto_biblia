@@ -5060,6 +5060,28 @@ body.is-mode-minuto .navbar {
     box-shadow: 0 1px 3px rgba(244, 63, 94, 0.15);
 }
 
+/* Versículo(s) em Evidência / Spotlight (Acionado ao clicar na Leitura Bíblica do Devocional) */
+.bible-verse-item.is-in-evidence {
+    background: rgba(212, 175, 55, 0.35) !important;
+    border-radius: 6px !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.6), 0 4px 18px rgba(212, 175, 55, 0.35) !important;
+    animation: pulseSpotlightVerse 2s ease-in-out infinite alternate;
+    transition: all 0.3s ease;
+    display: inline;
+    padding: 0.15rem 0.35rem !important;
+}
+
+@keyframes pulseSpotlightVerse {
+    0% {
+        background: rgba(212, 175, 55, 0.28);
+        box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.45), 0 2px 10px rgba(212, 175, 55, 0.2);
+    }
+    100% {
+        background: rgba(212, 175, 55, 0.52);
+        box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.8), 0 0 24px rgba(212, 175, 55, 0.5);
+    }
+}
+
 /* Pulso temporário ao navegar para o versículo */
 .bible-verse-item.is-target-highlight {
     animation: pulseTargetVerse 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;

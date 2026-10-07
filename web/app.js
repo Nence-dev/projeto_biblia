@@ -619,7 +619,10 @@ function inicializarCopiaWhatsApp() {
         }
 
         try {
-            await navigator.clipboard.writeText(estudo.devocionalWhatsApp);
+            const textoSanitizado = (typeof sanitizarTextoParaWhatsApp === "function")
+                ? sanitizarTextoParaWhatsApp(estudo.devocionalWhatsApp)
+                : estudo.devocionalWhatsApp;
+            await navigator.clipboard.writeText(textoSanitizado);
             
             const spanTexto = btnCopy.querySelector("span");
             const textoOriginal = spanTexto ? spanTexto.textContent : "Copiar Texto";
@@ -1237,41 +1240,62 @@ function renderizarConteudoMinuto(data) {
         }
     }
 
-    // Leituras Bíblicas da Sidebar (Lista com 5 passagens)
+    // Leituras Bíblicas da Sidebar (Lista com passagens clicáveis)
     const elReadingsList = document.getElementById("devocional-readings-list");
     if (elReadingsList) {
         let leituras = [
-            { label: "1 Pedro 5:7", book: "1pedro", cap: 5 },
-            { label: "Mateus 11:28-30", book: "mateus", cap: 11 },
-            { label: "Filipenses 4:6-7", book: "filipenses", cap: 4 },
-            { label: "Salmos 37:5", book: "salmos", cap: 37 },
-            { label: "Isaías 41:10", book: "isaias", cap: 41 }
+            "FILIPENSES 4.6,7",
+            "COLOSSENSES 3.15",
+            "ISAÍAS 26.3",
+            "ROMANOS 5.1",
+            "SALMOS 4.8"
         ];
 
         if (Array.isArray(minutoData.leiturasComplementares) && minutoData.leiturasComplementares.length > 0) {
-            leituras = minutoData.leiturasComplementares.map(ref => {
-                const parts = ref.split(" ");
-                const bookName = parts[0].toLowerCase().replace(/\./g, "");
-                const cap = parseInt(parts[1], 10) || 1;
-                return { label: ref, book: bookName, cap };
-            });
+            leituras = minutoData.leiturasComplementares;
         }
 
-        elReadingsList.innerHTML = leituras.map(item => `
+        const leiturasParsed = leituras.map(ref => {
+            const parsed = parseReferenciaBiblica(ref);
+            if (parsed) {
+                return {
+                    label: ref,
+                    book: parsed.bookId,
+                    cap: parsed.cap,
+                    verses: parsed.versos
+                };
+            }
+            return {
+                label: ref,
+                book: "salmos",
+                cap: 55,
+                verses: []
+            };
+        });
+
+        elReadingsList.innerHTML = leiturasParsed.map(item => `
             <li>
-                <a href="#biblia" class="reading-link" data-book="${escapeHtml(item.book)}" data-cap="${item.cap}">
+                <a href="#biblia" class="reading-link" data-book="${escapeHtml(item.book)}" data-cap="${item.cap}" data-verses="${escapeHtml(JSON.stringify(item.verses))}" title="Ler ${escapeHtml(item.label)} na Bíblia">
                     ${escapeHtml(item.label)}
                 </a>
             </li>
         `).join("");
 
-        // Conecta cada link da lista de leituras para abrir direto no Leitor Bíblico
+        // Conecta cada link da lista de leituras para abrir direto no Leitor Bíblico com versículos em evidência
         elReadingsList.querySelectorAll(".reading-link").forEach(link => {
             link.addEventListener("click", (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 const book = link.getAttribute("data-book") || "salmos";
                 const cap = parseInt(link.getAttribute("data-cap"), 10) || 1;
-                abrirPassagemNaBiblia(book, cap);
+                const rawVerses = link.getAttribute("data-verses");
+                let verses = [];
+                try {
+                    verses = rawVerses ? JSON.parse(rawVerses) : [];
+                } catch (err) {
+                    verses = [];
+                }
+                abrirPassagemNaBiblia(book, cap, verses);
             });
         });
     }
@@ -1432,20 +1456,53 @@ function renderizarConteudoCafe(data) {
 }
 
 /**
+ * Sanitiza texto retirando qualquer variação de <br>, tags HTML e entidades para formatação limpa no WhatsApp.
+ */
+function sanitizarTextoParaWhatsApp(texto) {
+    if (!texto) return "";
+    let t = String(texto);
+    // Trata variações de quebras de linha HTML reais e entidades escapadas
+    t = t.replace(/(?:<br\s*[\/]?>|&lt;\s*br\s*[\/]?&gt;)+/gi, "\n\n");
+    t = t.replace(/<\/p>/gi, "\n\n").replace(/<p[^>]*>/gi, "");
+    // Converte negrito e itálico HTML para markdown do WhatsApp
+    t = t.replace(/<strong[^>]*>(.*?)<\/strong>/gi, "*$1*")
+         .replace(/<b[^>]*>(.*?)<\/b>/gi, "*$1*")
+         .replace(/<em[^>]*>(.*?)<\/em>/gi, "_$1_")
+         .replace(/<i[^>]*>(.*?)<\/i>/gi, "_$1_");
+    // Remove tags residuais
+    t = t.replace(/<[^>]+>/g, "");
+    // Decodifica entidades HTML comuns
+    t = t.replace(/&quot;/g, '"')
+         .replace(/&#39;/g, "'")
+         .replace(/&amp;/g, "&")
+         .replace(/&lt;/g, "<")
+         .replace(/&gt;/g, ">")
+         .replace(/&nbsp;/g, " ");
+    // Normaliza quebras de linha e limita espaços excessivos
+    t = t.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+    t = t.replace(/\n{3,}/g, "\n\n");
+    return t.trim();
+}
+
+/**
  * Formata a mensagem completa de Devocional para cópia ou WhatsApp.
  */
 function gerarTextoCompartilhamentoMinuto(data, minutoData) {
-    const vTexto = data.versiculoTexto || data.versiculo || "";
+    const vTexto = sanitizarTextoParaWhatsApp(data.versiculoTexto || data.versiculo || "");
     const leiturasFormatadas = Array.isArray(minutoData.leiturasComplementares)
         ? minutoData.leiturasComplementares.join(" • ")
         : (minutoData.leituraComplementar || "");
 
+    const textoDev = sanitizarTextoParaWhatsApp(minutoData.textoDevocional || "");
+    const fraseImpacto = sanitizarTextoParaWhatsApp(minutoData.fraseDoDia || "");
+    const autor = (minutoData.autorFrase || "").replace(/<[^>]+>/g, "").trim();
+
     return `⏱️ *DEVOCIONAL DIÁRIO* | ${minutoData.titulo}\n` +
            `📅 *${minutoData.dataCompacta}* • Devocional ${minutoData.diaDoAno}\n\n` +
            `📖 *Versículo Chave:*\n"${vTexto}"\n— *${data.referencia}*\n\n` +
-           `💡 *Reflexão:*\n"${minutoData.fraseDoDia}" (${minutoData.autorFrase})\n\n` +
+           `💡 *Reflexão:*\n"${fraseImpacto}" (${autor})\n\n` +
            `✝️ *Leitura Bíblica:*\n${leiturasFormatadas}\n\n` +
-           `🕊️ *Estudo:*\n${minutoData.textoDevocional}\n\n` +
+           `🕊️ *Estudo:*\n${textoDev}\n\n` +
            `✨ Sola Scriptura • Que o Senhor sustente a sua caminhada hoje!`;
 }
 
@@ -1469,6 +1526,18 @@ function inicializarAcoesMinuto() {
                 .catch(() => {
                     showToast("Não foi possível copiar automaticamente.", "error");
                 });
+        });
+    }
+
+    // Botão Compartilhar WhatsApp com link sempre atualizado dinamicamente
+    const btnShareWhatsapp = document.getElementById("btn-share-whatsapp-minuto") || document.getElementById("btn-share-whatsapp-cafe");
+    if (btnShareWhatsapp) {
+        btnShareWhatsapp.addEventListener("click", () => {
+            const data = listaEstudos[currentIndex];
+            if (!data) return;
+            const minutoData = obterDadosMinutoComFallback(data);
+            const textoZap = gerarTextoCompartilhamentoMinuto(data, minutoData);
+            btnShareWhatsapp.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoZap)}`;
         });
     }
 
@@ -2138,16 +2207,110 @@ function navegarCapituloBiblico(delta) {
 }
 
 /**
- * Abre diretamente uma passagem específica no Leitor Bíblico a partir de qualquer link do site.
+ * Analisa referências bíblicas em múltiplos formatos (ex: "FILIPENSES 4.6,7", "1 PEDRO 5.7", "MATEUS 11.28-30").
+ * Retorna { bookId, cap, versos, label }
  */
-function abrirPassagemNaBiblia(bookId, capNum) {
-    const livroAlvo = BIBLE_BOOKS.find(b => b.id === bookId || b.id.includes(bookId) || bookId.includes(b.id));
+function parseReferenciaBiblica(refStr) {
+    if (!refStr) return null;
+    const s = String(refStr).trim();
+
+    // Grupo 1: Nome do livro (com possível prefixo 1, 2 ou 3)
+    // Grupo 2: Capítulo
+    // Grupo 3: Versículo(s) após : ou .
+    const match = s.match(/^((?:[123]\s*)?[A-Za-zÀ-ÿ]+)\s+(\d+)(?:[:.](\d+(?:[-,]\d+)*))?/i);
+    if (!match) return null;
+
+    const rawNomeLivro = match[1].toLowerCase().replace(/\s+/g, "").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const cap = parseInt(match[2], 10) || 1;
+    const versosStr = match[3] || "";
+
+    const versos = [];
+    if (versosStr) {
+        if (versosStr.includes("-")) {
+            const partes = versosStr.split("-").map(n => parseInt(n.trim(), 10));
+            if (!isNaN(partes[0]) && !isNaN(partes[1])) {
+                for (let v = partes[0]; v <= partes[1]; v++) versos.push(v);
+            }
+        } else if (versosStr.includes(",")) {
+            versosStr.split(",").forEach(part => {
+                const n = parseInt(part.trim(), 10);
+                if (!isNaN(n)) versos.push(n);
+            });
+        } else {
+            const n = parseInt(versosStr.trim(), 10);
+            if (!isNaN(n)) versos.push(n);
+        }
+    }
+
+    // Busca o livro correspondente em BIBLE_BOOKS
+    let bookId = "salmos";
+    if (typeof BIBLE_BOOKS !== "undefined" && Array.isArray(BIBLE_BOOKS)) {
+        const livro = BIBLE_BOOKS.find(b => {
+            const idNorm = b.id.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const nomeNorm = b.nome.toLowerCase().replace(/\s+/g, "").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const abrevNorm = b.abrev.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            return idNorm === rawNomeLivro || nomeNorm === rawNomeLivro || abrevNorm === rawNomeLivro;
+        });
+        if (livro) {
+            bookId = livro.id;
+        } else {
+            bookId = rawNomeLivro;
+        }
+    }
+
+    return { bookId, cap, versos, label: s };
+}
+
+/**
+ * Remove qualquer versículo que esteja com a classe de evidência ativa.
+ */
+function removerEvidenciasVersiculos() {
+    const emEvidencia = document.querySelectorAll(".bible-verse-item.is-in-evidence");
+    if (emEvidencia.length > 0) {
+        emEvidencia.forEach(el => el.classList.remove("is-in-evidence"));
+    }
+}
+
+/**
+ * Coloca em evidência os versículos selecionados e centraliza a visualização neles.
+ */
+function destacarVersiculosEmEvidencia(versos) {
+    removerEvidenciasVersiculos();
+    if (!versos || !versos.length) return;
+
+    let primeiroElemento = null;
+    versos.forEach(num => {
+        const item = document.querySelector(`.bible-verse-item[data-verse-num="${num}"]`);
+        if (item) {
+            item.classList.add("is-in-evidence");
+            if (!primeiroElemento) {
+                primeiroElemento = item;
+            }
+        }
+    });
+
+    if (primeiroElemento) {
+        primeiroElemento.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+        const canvas = document.getElementById("bible-reading-canvas");
+        if (canvas) canvas.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+}
+
+/**
+ * Abre diretamente uma passagem específica no Leitor Bíblico e destaca versículos em evidência.
+ * @param {string} bookId - ID do livro
+ * @param {number} capNum - Número do capítulo
+ * @param {Array<number>} versosHighlight - Lista opcional de versículos a colocar em evidência
+ */
+function abrirPassagemNaBiblia(bookId, capNum, versosHighlight = []) {
+    const livroAlvo = BIBLE_BOOKS.find(b => b.id === bookId || b.id.includes(bookId) || (bookId && bookId.includes(b.id)));
     if (livroAlvo) {
         bibleState.bookId = livroAlvo.id;
         bibleState.chapter = Math.min(livroAlvo.capitulos, Math.max(1, capNum || 1));
     } else {
-        bibleState.bookId = "salmos";
-        bibleState.chapter = capNum || 55;
+        bibleState.bookId = bookId || "salmos";
+        bibleState.chapter = capNum || 1;
     }
 
     const selectLivro = document.getElementById("bible-select-livro");
@@ -2161,9 +2324,34 @@ function abrirPassagemNaBiblia(bookId, capNum) {
     trocarAba("biblia");
     carregarCapituloBiblicoAtual();
 
-    const canvas = document.getElementById("bible-reading-canvas");
-    if (canvas) canvas.scrollIntoView({ behavior: "smooth", block: "start" });
-    showToast(`Lendo ${livroAlvo ? livroAlvo.nome : 'Bíblia'} capítulo ${bibleState.chapter}`, "info");
+    if (Array.isArray(versosHighlight) && versosHighlight.length > 0) {
+        // Aguarda renderização dos versículos no DOM para aplicar a evidência e scroll
+        setTimeout(() => {
+            destacarVersiculosEmEvidencia(versosHighlight);
+            // Retry defensivo caso a transição de abas ou renderização assíncrona demore
+            setTimeout(() => {
+                const jaDestacado = document.querySelector(".bible-verse-item.is-in-evidence");
+                if (!jaDestacado) {
+                    destacarVersiculosEmEvidencia(versosHighlight);
+                }
+            }, 250);
+        }, 140);
+    } else {
+        const canvas = document.getElementById("bible-reading-canvas");
+        if (canvas) canvas.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    const nomeFormatado = livroAlvo ? livroAlvo.nome : (bookId || "Bíblia");
+    const versosTxt = (versosHighlight && versosHighlight.length > 0) ? `:${versosHighlight.join(",")}` : "";
+    showToast(`📖 Lendo ${nomeFormatado} ${bibleState.chapter}${versosTxt}`, "info");
 }
+
+// Remove evidência de versículos ao clicar em qualquer outro lugar da página
+document.addEventListener("click", (e) => {
+    // Se o clique não foi no próprio versículo em evidência, nem em link de leitura bíblica, limpa a evidência
+    if (!e.target.closest(".bible-verse-item.is-in-evidence") && !e.target.closest(".reading-link")) {
+        removerEvidenciasVersiculos();
+    }
+});
 
 

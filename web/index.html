@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="apple-touch-icon" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=3.6">
+    <link rel="stylesheet" href="style.css?v=3.8">
 </head>
 
 <body class="zen-mode">
@@ -170,7 +170,11 @@
                 <!-- Grade Editorial Principal: Coluna de Leitura (70%) + Sidebar (30%) -->
                 <div class="editorial-columns-grid">
                     <!-- Coluna de Leitura Principal -->
-                    <article class="editorial-reader-col" id="study-container">
+                    <article class="editorial-reader-col illuminated-codex" id="study-container">
+                        <div class="codex-corner codex-tl" aria-hidden="true"></div>
+                        <div class="codex-corner codex-tr" aria-hidden="true"></div>
+                        <div class="codex-corner codex-bl" aria-hidden="true"></div>
+                        <div class="codex-corner codex-br" aria-hidden="true"></div>
                         <!-- Capítulo I: Contexto Histórico -->
                         <section class="editorial-chapter-block" id="card-contexto">
                             <div class="chapter-tag-line">
@@ -617,9 +621,14 @@
                     </div>
                 </article>
             </div>
+            <!-- Rodapé Litúrgico & Selo Teológico Sacro -->
+            <footer class="study-footer-seal-block" style="text-align: center; padding: 2rem 0 1rem;">
+                <div class="footer-seal" title="Selo de Teologia Bíblica Expositiva Sola Scriptura">
+                    <span class="seal-icon" aria-hidden="true">†</span>
+                    <span class="seal-latin">VERBUM DOMINI MANET IN AETERNUM</span>
+                </div>
+            </footer>
         </div>
-
-    </div>
 
     <!-- Gaveta Lateral de Histórico (Drawer) -->
     <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
@@ -686,7 +695,7 @@
 
     <!-- Script de Dados Bíblicos Canônicos, Estudos e Aplicação -->
     <script src="bible-data.js?v=2.5"></script>
-    <script src="data.js?v=3.6"></script>
-    <script src="app.js?v=3.6"></script>
+    <script src="data.js?v=3.8"></script>
+    <script src="app.js?v=3.8"></script>
 </body>
 </html>

@@ -627,23 +627,44 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
             "textoDevocional": texto_dev
         }
     elif not minuto_com_deus and not cafe_com_deus_pai:
+        # Tenta extrair a prosa da história devocional diretamente do markdown caso o json tenha falhado
+        match_prosa = re.search(
+            r"##\s*[⏱️☕]?\s*(?:Devocional\s+)?(?:Minuto com Deus|Café com Deus Pai)[^\n]*\n([\s\S]*?)(?=```|\Z)",
+            conteudo_md,
+            re.IGNORECASE
+        )
+        texto_extraido = ""
+        if match_prosa:
+            raw_p = match_prosa.group(1).strip()
+            linhas_prosa = []
+            for lin in raw_p.split("\n"):
+                l_s = lin.strip()
+                if not l_s:
+                    linhas_prosa.append("")
+                elif not l_s.startswith("#") and not l_s.startswith(">") and not l_s.startswith("**Leituras") and not l_s.startswith("*Para refletir"):
+                    linhas_prosa.append(l_s)
+            paragrafos = [p.strip() for p in "\n".join(linhas_prosa).split("\n\n") if p.strip() and len(p.strip()) > 30]
+            if paragrafos:
+                texto_extraido = "<br><br>".join(paragrafos)
+
+        texto_final_dev = texto_extraido or (
+            f"A mensagem de {referencia} nos resgata: \"{versiculo_texto}\". "
+            f"O Senhor nos convida a descansar na Sua fidelidade soberana para cada instante deste dia."
+        )
+
         minuto_com_deus = {
             "titulo": info_contextual["titulo"],
             "fraseDoDia": info_contextual["fraseDoDia"],
             "autorFrase": info_contextual["autorFrase"],
             "leiturasComplementares": info_contextual["leiturasComplementares"],
             "leituraComplementar": info_contextual["leituraComplementar"],
-            "textoDevocional": (
-                f"Há momentos na vida em que sentimos que o peso das circunstâncias ultrapassa as nossas forças. "
-                f"Naquele instante, a ansiedade parece ditar o fim da história. Mas a mensagem de {referencia} nos resgata: \"{versiculo_texto}\". "
-                f"O Senhor não nos chamou para sermos os sustentadores solitários de nossa própria vida, mas para descarregarmos a carga sobre os Seus ombros fortes."
-            )
+            "textoDevocional": texto_final_dev
         }
         cafe_com_deus_pai = {
             "aromaManha": "Puxe a cadeira devagar e respire fundo. Antes de qualquer notificação ou pressa do dia, o Pai está aqui com você, servindo paz fresca sobre a mesa da sua vida.",
-            "vozDoPai": f"Filho, Eu conheço cada inquietação que você trouxe para este dia. Você não precisa carregar o peso do amanhã sozinho. Descanse o coração nas Minhas mãos.",
-            "palavraMesa": f"Em {referencia}, o Senhor nos lembra do Seu cuidado presente: \"{versiculo_texto}\". Esta promessa é um abraço seguro de quem nunca dorme cuidando de você.",
-            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça e a confiar que o Teu amor é suficiente para cada passo das minhas próximas horas. Amém.",
+            "vozDoPai": f"Filho, Eu conheço cada inquietação que você trouxe para este dia. Descanse o coração nas Minhas mãos.",
+            "palavraMesa": f"Em {referencia}: \"{versiculo_texto}\".",
+            "oracaoMesa": "Meu Pai, obrigado por esta manhã e por Tua presença paciente. Ensina-me a saborear Tua graça. Amém.",
             "cafeParaLevar": info_contextual["fraseDoDia"]
         }
 
