@@ -119,7 +119,7 @@ gerado_em: "{agora.isoformat()}"
 
 # Versículo do Dia: {referencia} ({versao.upper()})
 
-> *"{texto_versiculo.strip()}"*
+> *"{texto_versiculo.strip().strip('\"“”\'')}"*
 > — **{referencia}**
 
 ---
@@ -475,9 +475,46 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
     match_ger = re.search(r'gerado_em:\s*"([^"]+)"', conteudo_md)
     gerado_em = match_ger.group(1) if match_ger else ""
 
-    # Extrair texto do versículo
-    match_v_text = re.search(r'>\s*\*"([^"]+)"\*', conteudo_md)
-    versiculo_texto = match_v_text.group(1).strip() if match_v_text else ""
+    # Extrair texto do versículo de forma ultra-resiliente
+    versiculo_texto = ""
+    # 1. Extração por linhas do bloco de citação logo após o título (# Versículo do Dia)
+    match_v_sec = re.search(r'#\s*Vers[íi]culo do Dia[^\n]*\n+((?:>[^\n]*\n?)+)', conteudo_md)
+    if match_v_sec:
+        linhas_v = []
+        for l in match_v_sec.group(1).splitlines():
+            l_strip = l.strip()
+            if not l_strip.startswith(">"):
+                continue
+            l_conteudo = re.sub(r"^>\s*", "", l_strip).strip()
+            if l_conteudo.startswith("—") or l_conteudo.startswith("--"):
+                break
+            linhas_v.append(l_conteudo)
+        if linhas_v:
+            texto_bruto = " ".join(linhas_v).strip()
+            texto_limpo = re.sub(r'^[>*_“"\'\s]+|[>*_”"\'\s]+$', '', texto_bruto).strip().strip('"“”\'')
+            if len(texto_limpo) > 5:
+                versiculo_texto = texto_limpo
+
+    # 2. Fallback por regex amplo cobrindo aspas internas e pontuações
+    if not versiculo_texto:
+        match_v_text = re.search(r'>\s*[*_]?["“\']?(.*?)[”"\'*_]*\s*(?:\n>\s*—|\n\s*—|\n\s*##|\n\s*---|\Z)', conteudo_md, re.DOTALL)
+        if match_v_text:
+            cand = match_v_text.group(1).strip()
+            cand_limpo = re.sub(r'^[>*_“"\'\s]+|[>*_”"\'\s]+$', '', cand).strip().strip('"“”\'')
+            if len(cand_limpo) > 5:
+                versiculo_texto = cand_limpo
+
+    # 3. Fallback na Comparação Exegética de Versões (NVI)
+    if not versiculo_texto:
+        match_nvi = re.search(r'[-*•]\s*(?:\*\*)?NVI[^*:\n]*:(?:\*\*)?\s*["“]?([^"”\n|]+)["”]?', conteudo_md, re.IGNORECASE)
+        if match_nvi:
+            versiculo_texto = match_nvi.group(1).strip().strip('"“”\'')
+
+    # 4. Fallback no JSON do Devocional Minuto com Deus
+    if not versiculo_texto:
+        match_dev_v = re.search(r'"versiculo":\s*"([^"]+)"', conteudo_md)
+        if match_dev_v:
+            versiculo_texto = match_dev_v.group(1).strip().strip('"“”\'')
 
     # Extrair WhatsApp
     zap = extrair_secao_whatsapp(conteudo_md)

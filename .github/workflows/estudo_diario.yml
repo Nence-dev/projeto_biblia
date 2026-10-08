@@ -65,6 +65,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ secrets.GEMINI_MODEL || 'gemini-2.5-flash' }}
           BIBLIA_VERSAO: ${{ secrets.BIBLIA_VERSAO || 'nvi' }}
+          JINA_API_KEY: ${{ secrets.JINA_API_KEY }}
         run: |
           python -c "
           import sys
