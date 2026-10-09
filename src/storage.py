@@ -108,7 +108,7 @@ def salvar_estudo(
 {texto_cafe}
 ```
 """
-texto_versiculo_limpo = texto_versiculo.strip().strip("\"“”'")
+    texto_versiculo_limpo = texto_versiculo.strip().strip("\"“”'")
 
     conteudo_final = f"""---
 data: "{data_str}"
