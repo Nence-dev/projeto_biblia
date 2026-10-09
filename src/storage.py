@@ -108,7 +108,7 @@ def salvar_estudo(
 {texto_cafe}
 ```
 
-"""
+
     conteudo_final = f"""---
 data: "{data_str}"
 referencia: "{referencia}"
@@ -127,7 +127,7 @@ gerado_em: "{agora.isoformat()}"
 {conteudo_estudo.strip()}
 {secao_whatsapp}
 {secao_cafe}
-"""
+
     
     caminho_arquivo.write_text(conteudo_final, encoding="utf-8")
     try:
