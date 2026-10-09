@@ -127,7 +127,6 @@ gerado_em: "{agora.isoformat()}"
 {conteudo_estudo.strip()}
 {secao_whatsapp}
 {secao_cafe}
-"""
 
     caminho_arquivo.write_text(conteudo_final, encoding="utf-8")
     try:
