@@ -4,6 +4,100 @@
  */
 const HISTORICO_ESTUDOS = [
     {
+        "data": "2026-10-09",
+        "dataFormatada": "9 de Outubro de 2026",
+        "referencia": "Mateus 4:4",
+        "versao": "NVI",
+        "modelo": "gemini-2.5-flash",
+        "geradoEm": "2026-10-09T12:25:31.479157",
+        "versiculoTexto": "Jesus respondeu: \"Está escrito: 'Nem só de pão viverá o homem, mas de toda palavra que procede da boca de Deus'\".",
+        "genero": "Literatura de Sabedoria / Bíblica",
+        "secoes": [
+            {
+                "id": "contexto",
+                "titulo": "1. O Contexto Histórico e Narrativo",
+                "icone": "scroll",
+                "conteudo": "O deserto não é um lugar onde as pessoas costumam ir para espairecer; é o cenário onde a ilusão de autossuficiência vai à falência. No início de Mateus capítulo 4, Jesus acaba de ser batizado, o céu se rasga, a voz do Pai o valida publicamente, e logo em seguida o Espírito o empurra para a árida solidão da Judeia. Não foi um passeio contemplativo. Foram quarenta dias de jejem absoluto, onde a biologia humana gritava por sobrevivência. É exatamente nesse ponto de exaustão física que o tentador aparece, tentando capitalizar sobre a vulnerabilidade do momento com uma proposta aparentemente pragmática: transformar pedras em pão. O sistema religioso adora reduzir a existência humana a uma dinâmica de balcão de farmácia ou de mercado, onde a prioridade é sempre aplacar o estômago, garantir o conforto imediato e anestesiar o medo da escassez. <br><br>A resposta de Jesus ao diabo desmantela a lógica utilitarista que governa tanto o mercado financeiro quanto o show gospel contemporâneo. Para a mentalidade urbana moderna, que mede o valor da vida pela produtividade, pelo saldo bancário e pela estabilidade material, a fome física é a maior das tragédias. Mas Jesus desloca o eixo do problema. Ele está citando a narrativa de Israel no deserto em <strong>Deuteronômio 8:3</strong> (<em>\"Ele os humilhou, e os deixou ter fome, e os sustentou com o maná, que vós não conhecíamos, nem vossos pais o conheciam, para vos dar a entender que o homem não viverá só de pão, mas de tudo o que sai da boca do Senhor viverá o homem\"</em>), lembrando que o sustento real de uma vida humana não reside na manipulação dos recursos ao alcance das mãos, mas na dependência radical da Palavra daquele que sustenta o cosmos. O estômago vazio é temporário; a desnutrição da alma é fatal.<br><br>---"
+            },
+            {
+                "id": "anatomia",
+                "titulo": "2. A Anatomia do Texto e Teologia Central",
+                "icone": "book-open",
+                "termosOriginais": [],
+                "conteudo": "Para entender a precisão cirúrgica desta declaração, precisamos olhar para a engenharia da frase grega que Mateus registra. Jesus responde usando o termo <em>rhema</em> (<em>rhema</em>), que denota a palavra dita, viva e ativa no momento, contrapondo-se à ideia de um mero suprimento biológico. O homem não se sustenta apenas com o <em>artos</em> (<em>artos</em>), que é o pão físico, o alimento material que compra no supermercado e consome para manter a termodinâmica do corpo funcionando. Existe uma nutrição ontológica, uma ordem que sustenta a própria estrutura da realidade. A boca de Deus (<em>stoma</em> - <em>stoma</em>) não emite sons vazios, mas ordens criativas que mantêm o universo coeso. Quando o tentador diz \"manda que estas pedras se transformem em pão\", ele apela para a autonomia, sugerindo que o Filho de Deus use o seu poder para resolver uma crise imediata sem submeter-se à dependência do Pai. Jesus recusa a barganha. Ele demonstra que a obediência e a confiança na Palavra de Deus têm prioridade absoluta sobre o pão de cada dia. A teologia central aqui é o primado da graça e da soberania divina sobre a nossa urgência egoísta de controle. O homem foi projetado para ser alimentado não por aquilo que ele consegue produzir ou negociar, mas por cada sopro que sai da fonte da vida."
+            },
+            {
+                "id": "aplicacao",
+                "titulo": "3. O que tirar disso para a prática de hoje?",
+                "icone": "compass",
+                "conteudo": "No asfalto da cidade grande, o nosso maior perigo é transformar o pão — o emprego, o status, o plano de saúde, a aprovação alheia — no deus que rege a nossa agenda. O homem urbano vive em um estado crônico de exaustão mental porque tenta garantir o próprio futuro através da performance e da ansiedade desenfreada. Quando a conta bancária aperta, quando a incerteza profissional bate à porta ou quando o relacionamento entra em colapso, a nossa primeira reação instintiva é tentar transformar pedras em pão, recorrendo a atalhos éticos, manipulações e desesperos que revelam a nossa profunda falta de confiança em Deus. <br><br>O texto nos acusa no ponto exato da nossa soberba. A religiosidade performática adora negociar com Deus: oferece rituais, jejuns e ofertas em troca de estabilidade financeira e prosperidade garantida, como se o Criador fosse um caixa eletrônico celestial. Jesus desmonta essa falácia ao mostrar que o deserto é o lugar onde aprendemos que o pão é importante, mas secundário. O descanso real da graça consiste em aceitar que somos sustentados por uma Palavra maior do que as nossas crises econômicas e emocionais. Parar de tentar controlar o amanhã é o ato mais revolucionário que um profissional esgotado ou um estudante universitário sobrecarregado pode fazer. Deus não prometeu ausência de fome no deserto, mas garantiu que Ele sustenta aqueles que decidem viver pela dependência da sua graça em vez da tirania da autossuficiência.<br><br>---"
+            },
+            {
+                "id": "canonicas",
+                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
+                "icone": "cross",
+                "citacoes": [
+                    {
+                        "autor": "Martyn Lloyd-Jones",
+                        "obra": "O Sermão do Monte",
+                        "texto": "O homem moderno pensa que, se tiver comida, roupas e conforto, ele tem tudo. Mas o evangelho insiste que o homem está morto espiritualmente e que nenhum suprimento material pode curar a sua alma. Precisamos desesperadamente da Palavra que procede da boca de Deus, pois somente ela pode dar sentido à nossa fome e à nossa dor."
+                    },
+                    {
+                        "autor": "C.S. Lewis",
+                        "obra": "O Peso de Glória",
+                        "texto": "Somos criaturas de meia-tigela, contentando-nos com bebida e sexo e ambição, quando nos é oferecida uma alegria sem limite. Somos como uma criança ignorante que quer continuar brincando num barraco de lama porque não consegue imaginar o que significa a oferta de ser levada a um feriado à beira-mar."
+                    }
+                ],
+                "conteudo": "A Escritura inteira costura essa mesma verdade de ponta a ponta, revelando que a provisão de Deus visa sempre recalibrar o nosso apetite espiritual. No deserto do Êxodo, Deus proveu o maná para ensinar ao povo que a vida não brota da engenhosidade humana, conforme lemos em <strong>Êxodo 16:4</strong> (<em>\"Disse o Senhor a Moisés: Eis que irei fazer chover pão dos céus para vós; e o povo sairá e colherá a porção para cada dia, para que eu o prove se anda na minha lei ou não\"</em>). Mais tarde, o profeta Jeremias ecoa essa mesma dependência visceral ao encontrar o refrigério em meio à ruína nacional, afirmando em <strong>Jeremias 15:16</strong> (<em>\"Foram achadas as tuas palavras, e eu as comi; e a tua palavra para mim foi o gozo e a alegria do meu coração; porque pelo teu nome sou chamado, ó Senhor, Deus dos exércitos\"</em>). O apóstolo Paulo resume essa inversão de valores quando declara a suficiência de Cristo diante das agruras da vida em <strong>Filipenses 4:12-13</strong> (<em>\"Sei estar abatido, e sei também ter abundância; em toda a maneira, e em todas as coisas sou instruído, assim a ter fartura, como a ter fome; assim a ter abundância, como a padecer necessidade. Posso todas as coisas em Cristo que me fortalece\"</em>). <br><br>Nesta mesma linha de pensamento, o teólogo Martyn Lloyd-Jones nos lembra com precisão cirúrgica sobre a nossa inversão de prioridades:<br><br>O pensador C.S. Lewis também aponta para essa desproporção entre os nossos desejos imediatos e o banquete eterno que Deus nos oferece:<br><br>---"
+            },
+            {
+                "id": "fechamento",
+                "titulo": "5. Pergunta Central para Meditação",
+                "icone": "help-circle",
+                "pergunta": "O que você está tentando transformar em pão hoje para saciar uma fome que só a Palavra de Deus tem o poder de preencher?"
+            }
+        ],
+        "devocionalWhatsApp": "*O Choque da Realidade*\nO asfalto da cidade grande nos empurra diariamente para o deserto da exaustão. Entre boletos, prazos e a neura pela produtividade, a nossa resposta automática para qualquer crise é tentar transformar pedras em pão. O sistema religioso adora aplaudir essa correria, tratando a fé como um balcão de barganha para garantir o conforto imediato. Mas Jesus desmantela essa farsa.\n\n*O Fôlego da Graça*\nNo deserto da Judeia, faminto e esgotado, Cristo recusou a manipulação dos recursos. Ele nos lembra que a existência humana não se sustenta pela tirania do *artos* (o pão físico, o saldo no banco, o controle de tudo), mas pelo *rhema* — a palavra viva que sai da boca de Deus. O descanso real da graça é abandonar a ilusão de que somos os salvadores do nosso próprio amanhã.\n\n*A Pergunta Desestabilizadora*\nO que você está tentando transformar em pão hoje para saciar uma fome que só a Palavra de Deus tem o poder de preencher? 🤔",
+        "minutoComDeus": {
+            "titulo": "NEM SÓ DE PÃO",
+            "fraseDoDia": "O estômago vazio é temporário, mas a desnutrição da alma é fatal. Você é sustentado por uma Palavra maior do que qualquer crise.",
+            "autorFrase": "@juniorrostirola",
+            "leiturasComplementares": [
+                "DEUTERONÔMIO 8.3",
+                "ÊXODO 16.4",
+                "JEREMIAS 15.16",
+                "FILIPENSES 4.12,13"
+            ],
+            "leituraComplementar": "MATEUS 4.4",
+            "historiaContexto": "O jejum de Jesus no deserto da Judeia e a recusa da tentação do pão imediato.",
+            "textoDevocional": "O deserto não é um lugar onde as pessoas costumam ir para espairecer; é o cenário onde a ilusão de autossuficiência vai à falência. No início de Mateus capítulo 4, Jesus acaba de ser batizado, o céu se rasga, a voz do Pai o valida publicamente, e logo em seguida o Espírito o empurra para a árida solidão da Judeia. Não foi um passeio contemplativo. Foram quarenta dias de jejum absoluto, onde a biologia humana gritava por sobrevivência. É exatamente nesse ponto de exaustão física que o tentador aparece, tentando capitalizar sobre a vulnerabilidade do momento com uma proposta aparentemente pragmática: transformar pedras em pão. O sistema religioso e o mundo adoram reduzir a existência humana a uma dinâmica de balcão de mercado, onde a prioridade é sempre aplacar o estômago, garantir o conforto imediato e anestesiar o medo da escassez.<br><br>A resposta de Jesus ao diabo desmantela a lógica utilitarista que governa tanto a nossa economia quanto a nossa ansiedade diária. Para a mentalidade moderna, que mede o valor da vida pela produtividade, pelo saldo bancário e pela estabilidade material, a fome física ou a escassez são vistas como a maior das tragédias. Mas Jesus desloca o eixo do problema ao citar a narrativa de Israel no deserto: o homem não viverá apenas de pão biológico, mas de toda palavra que sai da boca de Deus. Ele nos lembra que o sustento real de uma vida humana não reside na manipulação dos recursos ao alcance das mãos, mas na dependência radical daquele que sustenta o cosmos. O estômago vazio passa, mas a alma desnutrida padece.<br><br>No asfalto da cidade grande, o nosso maior perigo é transformar o pão — o emprego, o status, o plano de saúde, a aprovação alheia — no deus que rege a nossa agenda e o nosso valor. O homem urbano vive em um estado crônico de exaustão mental porque tenta garantir o próprio futuro através da performance e do controle. Quando a conta bancária aperta, quando a incerteza profissional bate à porta ou quando o relacionamento entra em colapso, a nossa primeira reação instintiva é tentar transformar pedras em pão, recorrendo a atalhos e desesperos. O texto nos confronta no ponto exato da nossa soberba, mostrando que o deserto é, na verdade, a escola onde aprendemos que o pão é importante, mas secundário.<br><br>Parar de tentar controlar o amanhã é o ato mais revolucionário que um coração cansado pode fazer hoje. Deus não prometeu ausência de lutas ou de desertos na jornada, mas garantiu que sustenta aqueles que decidem viver pela dependência da Sua graça em vez da tirania da autossuficiência. O que você está tentando transformar em pão hoje para saciar uma fome que só a Palavra de Deus tem o poder de preencher? Descanse, respire fundo e lembre-se: você não é sustentado pelo que produz, mas por cada sopro de vida que procede do Pai.<br><br>Em um mundo cheio de ansiedade, seja paz."
+        },
+        "cafeComDeusPai": {
+            "aromaManha": "O estômago vazio é temporário, mas a desnutrição da alma é fatal. Você é sustentado por uma Palavra maior do que qualquer crise.",
+            "vozDoPai": "O deserto não é um lugar onde as pessoas costumam ir para espairecer; é o cenário onde a ilusão de autossuficiência vai à falência. No início de Mateus capítulo 4, Jesus acaba de ser batizado, o céu se rasga, a voz do Pai o valida publicamente, e logo em seguida o Espírito o empurra para a árida solidão da Judeia. Não foi um passeio contemplativo. Foram quarenta dias de jejum absoluto, onde a biologia humana gritava por sobrevivência. É exatamente nesse ponto de exaustão física que o tentador aparece, tentando capitalizar sobre a vulnerabilidade do momento com uma proposta aparentemente pragmática: transformar pedras em pão. O sistema religioso e o mundo adoram reduzir a existência humana a uma dinâmica de balcão de mercado, onde a prioridade é sempre aplacar o estômago, garantir o conforto imediato e anestesiar o medo da escassez.<br><br>A resposta de Jesus ao diabo desmantela a lógica utilitarista que governa tanto a nossa economia quanto a nossa ansiedade diária. Para a mentalidade moderna, que mede o valor da vida pela produtividade, pelo saldo bancário e pela estabilidade material, a fome física ou a escassez são vistas como a maior das tragédias. Mas Jesus desloca o eixo do problema ao citar a narrativa de Israel no deserto: o homem não viverá apenas de pão biológico, mas de toda palavra que sai da boca de Deus. Ele nos lembra que o sustento real de uma vida humana não reside na manipulação dos recursos ao alcance das mãos, mas na dependência radical daquele que sustenta o cosmos. O estômago vazio passa, mas a alma desnutrida padece.<br><br>No asfalto da cidade grande, o nosso maior perigo é transformar o pão — o emprego, o status, o plano de saúde, a aprovação alheia — no deus que rege a nossa agenda e o nosso valor. O homem urbano vive em um estado crônico de exaustão mental porque tenta garantir o próprio futuro através da performance e do controle. Quando a conta bancária aperta, quando a incerteza profissional bate à porta ou quando o relacionamento entra em colapso, a nossa primeira reação instintiva é tentar transformar pedras em pão, recorrendo a atalhos e desesperos. O texto nos confronta no ponto exato da nossa soberba, mostrando que o deserto é, na verdade, a escola onde aprendemos que o pão é importante, mas secundário.<br><br>Parar de tentar controlar o amanhã é o ato mais revolucionário que um coração cansado pode fazer hoje. Deus não prometeu ausência de lutas ou de desertos na jornada, mas garantiu que sustenta aqueles que decidem viver pela dependência da Sua graça em vez da tirania da autossuficiência. O que você está tentando transformar em pão hoje para saciar uma fome que só a Palavra de Deus tem o poder de preencher? Descanse, respire fundo e lembre-se: você não é sustentado pelo que produz, mas por cada sopro de vida que procede do Pai.<br><br>Em um mundo cheio de ansiedade, seja paz.",
+            "palavraMesa": "Em Mateus 4:4: \"Jesus respondeu: \"Está escrito: 'Nem só de pão viverá o homem, mas de toda palavra que procede da boca de Deus'\".\".",
+            "oracaoMesa": "Pai amado, que Tua graça nos acompanhe hoje. Amém.",
+            "cafeParaLevar": "O estômago vazio é temporário, mas a desnutrição da alma é fatal. Você é sustentado por uma Palavra maior do que qualquer crise."
+        },
+        "comparacaoTraducoes": {
+            "titulo": "Comparação Exegética de Versões",
+            "versaoPrincipal": {
+                "sigla": "NVI (Nova Versão Internacional)",
+                "texto": "Jesus respondeu: 'Está escrito: 'Nem só de pão viverá o homem, mas de toda palavra que procede da boca de Deus''.",
+                "rotulo": "Tradução Dinâmica Contemporânea",
+                "foco": "Clareza comunicativa e inteligibilidade contemporânea"
+            },
+            "versaoOriginal": {
+                "sigla": "Literal (Tradução ao Pé da Letra)",
+                "rotulo": "Equivalência Formal Estrita",
+                "textoLiteral": "E respondendo, disse: Está escrito: Não sobre pão unicamente viverá o homem, mas sobre toda palavra saindo através da boca de Deus.",
+                "texto": "E respondendo, disse: Está escrito: Não sobre pão unicamente viverá o homem, mas sobre toda palavra saindo através da boca de Deus.",
+                "foco": "Nuance dos termos originais e precisão formal"
+            },
+            "notaHermeneutica": "A transição do pão físico (*artos*) para a palavra viva (*rhema*) evidencia que a existência humana autêntica não é mantida pela mera preservação biológica, mas pela sintonia relacional e obediente com a vontade soberana do Criador."
+        }
+    },
+    {
         "data": "2026-10-08",
         "dataFormatada": "8 de Outubro de 2026",
         "referencia": "Tiago 5:16",
