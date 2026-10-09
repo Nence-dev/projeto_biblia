@@ -108,6 +108,7 @@ def salvar_estudo(
 {texto_cafe}
 ```
 """
+texto_versiculo_limpo = texto_versiculo.strip().strip("\"“”'")
 
     conteudo_final = f"""---
 data: "{data_str}"
@@ -119,7 +120,7 @@ gerado_em: "{agora.isoformat()}"
 
 # Versículo do Dia: {referencia} ({versao.upper()})
 
-> *"{texto_versiculo.strip().strip('\"“”\'')}"*
+> *"{texto_versiculo_limpo}"*
 > — **{referencia}**
 
 ---
