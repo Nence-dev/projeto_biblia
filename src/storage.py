@@ -107,7 +107,7 @@ def salvar_estudo(
 ```json
 {texto_cafe}
 ```
-
+"""
 
     conteudo_final = f"""---
 data: "{data_str}"
@@ -119,7 +119,7 @@ gerado_em: "{agora.isoformat()}"
 
 # Versículo do Dia: {referencia} ({versao.upper()})
 
-> texto_versiculo_limpo = texto_versiculo.strip().strip("\"“”'")
+> *"{texto_versiculo.strip().strip('\"“”\'')}"*
 > — **{referencia}**
 
 ---
@@ -127,7 +127,7 @@ gerado_em: "{agora.isoformat()}"
 {conteudo_estudo.strip()}
 {secao_whatsapp}
 {secao_cafe}
-
+"""
     
     caminho_arquivo.write_text(conteudo_final, encoding="utf-8")
     try:
