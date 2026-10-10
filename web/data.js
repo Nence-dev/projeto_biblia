@@ -4,6 +4,96 @@
  */
 const HISTORICO_ESTUDOS = [
     {
+        "data": "2026-10-10",
+        "dataFormatada": "10 de Outubro de 2026",
+        "referencia": "John 10:10",
+        "versao": "NVI",
+        "modelo": "gemini-3.6-flash",
+        "geradoEm": "2026-10-10T08:31:31.585423",
+        "versiculoTexto": "The thief comes only to steal and kill and destroy; I have come that they may have life, and have it to the full.",
+        "genero": "Literatura de Sabedoria / Bíblica",
+        "secoes": [
+            {
+                "id": "contexto",
+                "titulo": "1. O Contexto Histórico e Narrativo",
+                "icone": "scroll",
+                "conteudo": "Para compreender João 10:10 sem ceder às caricaturas do mercado da fé, é preciso olhar para o que aconteceu no capítulo anterior. Em João 9, Jesus cura um homem cego de nascença em pleno sábado. Em vez de celebrarem a restauração daquele cidadão marginalizado, os líderes religiosos da época — os fariseus — instauram um tribunal moralista, intimidam os pais do jovem e terminam por expulsá-lo da sinagoga. A religião oficial da época preferia a cegueira institucionalizada à graça que liberta fora do seu controle.<br><br>É imediatamente após esse episódio que Jesus profere o discurso do Bom Pastor no capítulo 10. Quando Jesus fala sobre o \"ladrão\", o auditório original não estava pensando em uma figura folclórica ou em uma força mística abstrata operando no vácuo; eles pensavam nos maus pastores de Israel, na elite religiosa de Jerusalém que devorava as casas das viúvas, pesava os ombros do povo com fardos insuportáveis e usava o nome de Deus para exercer poder, controle e exploração financeira. <br><br>Ao transpor essa cena para a selva de pedra contemporânea, o cenário permanece dolorosamente idêntico. Promessas de uma vida sem dores são vendidas em balcões de barganha espiritual, enquanto a rotina sufocante de trabalho, boletos e cobranças reduz a existência humana a um ciclo de exaustão. O \"ladrão\" opera onde quer que a graça seja substituída pelo mérito, onde quer que a espiritualidade seja transformada em espetáculo e onde a busca por sentido seja sequestrada pela tirania da performance.<br><br>---"
+            },
+            {
+                "id": "anatomia",
+                "titulo": "2. A Anatomia do Texto e Teologia Central",
+                "icone": "book-open",
+                "termosOriginais": [],
+                "conteudo": "A estrutura de João 10:10 opera por meio de um contraste lógico e absoluto. De um lado, temos uma equação de destruição em três etapas; do outro, uma declaração de propósito redentor irrestrito.<br><br>O texto identifica três ações do impostor: roubar, matar e destruir. A progressão é matemática e degenerativa. O verbo roubar (<em>kleptō</em>) aponta para a usurpação furtiva e gradual da verdade; matar (<em>thyō</em>) refere-se ao sacrifício e à manipulação da vida alheia em benefício próprio; destruir (<em>apollymi</em>) indica a ruína completa e irreversível de uma existência baseada em falsas premissas. Os falsos sistemas religiosos não chegam anunciando sua letalidade; eles começam roubando o descanso da graça e terminam destruindo a consciência do indivíduo.<br><br>No polo oposto, Jesus estabelece o motivo de sua encarnação: <em>\"eu vim para que tenham vida, e a tenham plenamente\"</em>. O termo grego utilizado para vida aqui não é <em>bios</em> — que descreve o mero funcionamento biológico ou os recursos da vida terrena —, mas <em>zōē</em>, a própria vida divina, incriada e eterna. Essa vida é acompanhada pelo advérbio <em>perisson</em>, que significa extraordinário, abundante, transbordante, algo que excede a medida estritamente necessária. Não se trata de uma promessa de opulência material ou de uma vida isenta de conflitos na grande cidade, mas da posse de uma realidade espiritual tão densa que não pode ser extinta pelas dores da história."
+            },
+            {
+                "id": "aplicacao",
+                "titulo": "3. O que tirar disso para a prática de hoje?",
+                "icone": "compass",
+                "conteudo": "A mentalidade contemporânea foi adestrada para mensurar a \"vida abundante\" pelo tamanho do patrimônio, pelo status profissional ou pela validação nas redes sociais. No meio religioso, essa ilusão foi batizada com verniz gospel: prega-se que ter vida em abundância é nunca enfrentar um diagnóstico difícil, ter uma carreira irretocável ou morar em um endereço de alto padrão. Essa é a maior fraude conceitual da modernidade. Quando você condiciona a vida plena a fatores externos, você se torna refém das incertezas do mercado e do colapso das suas próprias forças.<br><br>A verdadeira vida abundante da qual Jesus fala não se encontra na ausência de problemas no trânsito, na faculdade ou no escritório, mas na presença inabalável de Deus em meio ao caos urbano. É a liberdade de não precisar provar nada a ninguém, de não ter que comprar o seu valor com horas exaustivas de trabalho ou com oferendas de barganha religiosa.<br><br>O Evangelho desmascara a tirania da performance. Se você está exausto de tentar sustentar uma fachada de justiça própria, de tentar barganhar com Deus para obter favor, ou de viver sob a ansiedade de que a qualquer momento o seu mundo vai rcar por falta de mérito, a mensagem de Cristo é um convite ao descanso. A vida plena não é o que você produz para Deus, mas o que Cristo já realizou por você na cruz.<br><br>---"
+            },
+            {
+                "id": "canonicas",
+                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
+                "icone": "cross",
+                "citacoes": [
+                    {
+                        "autor": "Tim Keller",
+                        "obra": "O Deus Pródigo",
+                        "texto": "A religião nos diz que se obedecermos, seremos aceitos. O Evangelho nos diz que porque fomos aceitos mediante o que Cristo fez, nós obedecemos. A religião nos rouba a vida tentando nos fazer nossos próprios salvadores; Jesus nos dá a vida se entregando em nosso lugar."
+                    }
+                ],
+                "conteudo": "A crítica de Jesus aos maus pastores e à religiosidade exploradora ecoa por toda a revelação bíblica. No Antigo Testamento, os profetas já haviam denunciado a elite espiritual que se alimentava do rebanho em vez de cuidar dele, como registrado em <strong>Ezequiel 34:2</strong> (<em>\"Filho do homem, profetize contra os pastores de Israel; profetize e diga-lhes: 'Assim diz o Senhor Deus: Ai dos pastores de Israel que só cuidam de si mesmos! Acaso os pastores não deveriam cuidar do rebanho?'\"</em>). Essa denúncia é reiterada em <strong>Jeremias 23:1</strong> (<em>\"'Ai dos pastores que destroem e dispersam as ovelhas do meu pastoreio!' — declara o Senhor\"</em>).<br><br>A abundância da vida trazida por Cristo encontra sua garantia máxima na suficiência da sua obra substitutiva, onde a graça é concedida sem qualquer custo meritório para o ser humano, conforme aponta <strong>Romanos 8:32</strong> (<em>\"Aquele que não poupou seu próprio Filho, mas o entregou por todos nós, como não nos dará juntamente com ele, gratuitamente, todas as coisas?\"</em>).<br><br>Compreender o contraste entre a religiosidade moralista e a graça de Cristo é o divisor de águas da caminhada cristã, como bem sintetizou o teólogo e pastor Tim Keller:<br><br>---"
+            },
+            {
+                "id": "fechamento",
+                "titulo": "5. Pergunta Central para Meditação",
+                "icone": "help-circle",
+                "pergunta": "Você tem buscado a plenitude da vida no descanso da graça já consumada por Cristo, ou continua permitindo que a ansiedade e a religiosidade de barganha roubem a sua paz na tentativa fútil de controlar o seu próprio destino?"
+            }
+        ],
+        "devocionalWhatsApp": "📌 *JOÃO 10:10*\n*\"O ladrão vem apenas para roubar, matar e destruir; eu vim para que tenham vida e a tenham plenamente.\"*\n\n---\n\n🔥 *O Choque da Realidade*\nA gente vive em uma engrenagem urbana que mede o valor do indivíduo pelo ritmo de produção, pelo status profissional e pela validação nas redes. Para piorar, o mercado da fé batizou essa neurose: vendeu a ilusão de que \"vida abundante\" é ter uma rotina sem dores, sem boletos e cheia de conquistas materiais. \n\nIsso é uma fraude conceitual. O \"ladrão\" que drena as suas forças não é só uma figura abstrata; é todo sistema — inclusive o religioso — que te obriga a performar, a barganhar com Deus e a tentar comprar a sua própria paz ao preço da sua exaustão mental.\n\n🕊️ *O Fôlego da Graça*\nQuando Jesus promete vida em abundância, Ele não usa a palavra para mera existência biológica (*bios*), mas a palavra para a própria vida de Deus (*zōē*). \n\nEle não está prometendo ausência de problemas no escritório, no trânsito ou na faculdade. Ele oferece o descanso de saber que o seu valor não depende do seu desempenho. A vida plena não é o que você produz para Deus, mas o alívio concreto daquilo que Cristo já consumou por você na cruz. A graça desmonta a tirania do mérito e devolve a paz ao coração cansado.\n\n🎯 *A Pergunta do Dia*\nVocê tem buscado a plenitude da vida no descanso da graça já consumada por Cristo, ou continua permitindo que a ansiedade e a religiosidade de barganha roubem a sua paz na tentativa fútil de controlar o seu próprio destino?\n\n---\n📲 *Compartilhe com quem precisa sair da roda dos loucos da performance hoje.*",
+        "minutoComDeus": {
+            "titulo": "VIDA EM ABUNDÂNCIA",
+            "fraseDoDia": "A religião nos exaure tentando nos fazer nossos próprios salvadores; Jesus nos concede a vida plena entregando-se em nosso lugar.",
+            "autorFrase": "Tim Keller",
+            "leiturasComplementares": [
+                "EZEQUIEL 34.2",
+                "JEREMIAS 23.1",
+                "ROMANOS 8.32",
+                "SALMOS 23.1",
+                "JOÃO 9.35-38"
+            ],
+            "leituraComplementar": "ROMANOS 8.32",
+            "historiaContexto": "A restauração do cego de nascença e sua expulsão pelos líderes religiosos",
+            "textoDevocional": "Imagine a cena: um homem que passou toda a sua existência na escuridão da cegueira, vivendo da caridade pública, subitamente enxerga a luz pela primeira vez. Mas, em vez de celebrar a sua restauração, a elite religiosa da sua época o arrasta para um tribunal de suspeitas. Intimidador e insensível, aquele sistema preferia a cegueira mantida debaixo de suas regras ao milagre que escapava ao seu controle. O jovem, que acabara de ter seus olhos abertos por Jesus, foi julgado, rotulado e expulso da sinagoga. Sozinho na poeira de Jerusalém, abandonado por quem deveria guiá-lo, ele experimentou na pele o peso de um sistema que rouba a dignidade das pessoas para proteger a própria estrutura.<br><br>Foi exatamente nesse cenário de desamparo que Jesus o encontrou e proferiu uma das declarações mais profundas das Escrituras. Ao denunciar os impostores que vêm apenas para roubar, matar e destruir, o Senhor desmascarou toda religiosidade e ideologia que drena a paz e a esperança do indivíduo sob o disfarce de virtude. Em contrapartida, Jesus se revelou como o Bom Pastor e prometeu algo revolucionário: a vida abundante. Essa vida não era o mero existir biológico revestido de bens temporais, mas a própria vida divina, incriada, inabalável e transbordante. Enquanto o legalismo extorque o descanso com a cobrança da performance, Cristo concede a vida eterna como presente da pura graça.<br><br>Talvez hoje você tenha acordado sentindo esse mesmo esgotamento. Em um mundo que mede o seu valor pelo seu rendimento, pelo saldo bancário ou por padrões inalcançáveis de perfeição, é fácil sentir que a alegria está sendo roubada aos poucos. Quantas vezes você se viu exausto, tentando barganhar com Deus ou sustentar uma fachada de força para ser aceito? Entenda de uma vez por todas: a vida abundante prometida por Jesus não significa uma rotina isenta de dores, mas a certeza inabalável de que você é profundamente amado e sustentado por Ele no meio do caos diário. A cruz já liquidou a sua sentença para que você não precise mais viver como escravo do desempenho.<br><br>Portanto, respire fundo e descanse os seus ombros cansados no dia de hoje. Abandone a tentativa fútil de controlar todas as coisas e abra o coração para acolher a graça que já foi plenamente conquistada em seu favor. Você não precisa provar nada a ninguém, pois o seu Pastor conhece o seu nome e já supriu o que a sua alma mais necessita. Saia para a sua jornada com a cabeça erguida: em Cristo, a sua existência não é uma batalha desgastante pela sobrevivência, mas uma experiência diária e inesgotável da presença de Deus."
+        },
+        "cafeComDeusPai": {
+            "aromaManha": "A religião nos exaure tentando nos fazer nossos próprios salvadores; Jesus nos concede a vida plena entregando-se em nosso lugar.",
+            "vozDoPai": "Imagine a cena: um homem que passou toda a sua existência na escuridão da cegueira, vivendo da caridade pública, subitamente enxerga a luz pela primeira vez. Mas, em vez de celebrar a sua restauração, a elite religiosa da sua época o arrasta para um tribunal de suspeitas. Intimidador e insensível, aquele sistema preferia a cegueira mantida debaixo de suas regras ao milagre que escapava ao seu controle. O jovem, que acabara de ter seus olhos abertos por Jesus, foi julgado, rotulado e expulso da sinagoga. Sozinho na poeira de Jerusalém, abandonado por quem deveria guiá-lo, ele experimentou na pele o peso de um sistema que rouba a dignidade das pessoas para proteger a própria estrutura.<br><br>Foi exatamente nesse cenário de desamparo que Jesus o encontrou e proferiu uma das declarações mais profundas das Escrituras. Ao denunciar os impostores que vêm apenas para roubar, matar e destruir, o Senhor desmascarou toda religiosidade e ideologia que drena a paz e a esperança do indivíduo sob o disfarce de virtude. Em contrapartida, Jesus se revelou como o Bom Pastor e prometeu algo revolucionário: a vida abundante. Essa vida não era o mero existir biológico revestido de bens temporais, mas a própria vida divina, incriada, inabalável e transbordante. Enquanto o legalismo extorque o descanso com a cobrança da performance, Cristo concede a vida eterna como presente da pura graça.<br><br>Talvez hoje você tenha acordado sentindo esse mesmo esgotamento. Em um mundo que mede o seu valor pelo seu rendimento, pelo saldo bancário ou por padrões inalcançáveis de perfeição, é fácil sentir que a alegria está sendo roubada aos poucos. Quantas vezes você se viu exausto, tentando barganhar com Deus ou sustentar uma fachada de força para ser aceito? Entenda de uma vez por todas: a vida abundante prometida por Jesus não significa uma rotina isenta de dores, mas a certeza inabalável de que você é profundamente amado e sustentado por Ele no meio do caos diário. A cruz já liquidou a sua sentença para que você não precise mais viver como escravo do desempenho.<br><br>Portanto, respire fundo e descanse os seus ombros cansados no dia de hoje. Abandone a tentativa fútil de controlar todas as coisas e abra o coração para acolher a graça que já foi plenamente conquistada em seu favor. Você não precisa provar nada a ninguém, pois o seu Pastor conhece o seu nome e já supriu o que a sua alma mais necessita. Saia para a sua jornada com a cabeça erguida: em Cristo, a sua existência não é uma batalha desgastante pela sobrevivência, mas uma experiência diária e inesgotável da presença de Deus.",
+            "palavraMesa": "Em John 10:10: \"The thief comes only to steal and kill and destroy; I have come that they may have life, and have it to the full.\".",
+            "oracaoMesa": "Pai amado, que Tua graça nos acompanhe hoje. Amém.",
+            "cafeParaLevar": "A religião nos exaure tentando nos fazer nossos próprios salvadores; Jesus nos concede a vida plena entregando-se em nosso lugar."
+        },
+        "comparacaoTraducoes": {
+            "titulo": "Comparação Exegética de Versões",
+            "versaoPrincipal": {
+                "sigla": "NVI (Nova Versão Internacional)",
+                "texto": "O ladrão vem apenas para roubar, matar e destruir; eu vim para que tenham vida e a tenham plenamente.",
+                "rotulo": "Tradução Dinâmica Contemporânea",
+                "foco": "Clarity comunicativa e acessibilidade na linguagem contemporânea."
+            },
+            "versaoOriginal": {
+                "sigla": "Literal (Tradução ao Pé da Letra)",
+                "rotulo": "Equivalência Formal Estrita",
+                "textoLiteral": "O ladrão não vem senão para que roube, e mate, e destrua; eu vim para que vida tenham, e em abundância a tenham.",
+                "texto": "O ladrão não vem senão para que roube, e mate, e destrua; eu vim para que vida tenham, e em abundância a tenham.",
+                "foco": "Nuance sintática do grego original, enfatizando a exclusividade da intenção do ladrão em oposição à gratuidade do dom de Cristo."
+            },
+            "notaHermeneutica": "A vida abundante prometida por Cristo não é a acumulação de bens ou o sucesso temporal, mas a participação na própria vida de Deus recebida inteiramente pela graça, em contraste com a espoliação promovida pelos legalismos e ideologias humanas."
+        }
+    },
+    {
         "data": "2026-10-09",
         "dataFormatada": "9 de Outubro de 2026",
         "referencia": "Mateus 4:4",
