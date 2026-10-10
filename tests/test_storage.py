@@ -214,7 +214,7 @@ Pergunta central para hoje.
 {
   "titulo": "A GLÓRIA NO ORDINÁRIO",
   "fraseDoDia": "Quando o trabalho é oração, a rotina é sagrada.",
-  "autorFrase": "@juniorrostirola",
+  "autorFrase": "Martinho Lutero",
   "textoDevocional": "História completa nos quatro movimentos narrativos, rica e detalhada com mais de duzentos caracteres para comprovar a integridade total do devocional e ausência de fallbacks resumidos ou genéricos."
 }
 ```

@@ -319,7 +319,7 @@ def derivar_titulo_e_leituras_minuto(referencia: str, versiculo_texto: str) -> d
         return {
             "titulo": "INESGOTÁVEL",
             "fraseDoDia": "Só Deus pode satisfazer o anseio mais íntimo da sua alma.",
-            "autorFrase": "@juniorrostirola",
+            "autorFrase": "A.W. Tozer",
             "leiturasComplementares": [
                 "APOCALIPSE 22.17",
                 "JEREMIAS 2.13",
@@ -334,7 +334,7 @@ def derivar_titulo_e_leituras_minuto(referencia: str, versiculo_texto: str) -> d
         return {
             "titulo": "DE VOLTA AO PRIMEIRO AMOR",
             "fraseDoDia": "Lembre-se de onde você caiu e volte ao primeiro amor.",
-            "autorFrase": "@juniorrostirola",
+            "autorFrase": "Charles Spurgeon",
             "leiturasComplementares": [
                 "JEREMIAS 2.2",
                 "MATEUS 24.12",

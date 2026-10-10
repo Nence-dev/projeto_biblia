@@ -15,16 +15,16 @@ O texto devocional gerado anteriormente em `minutoComDeus.textoDevocional` era a
 
 Faltava **vida, drama humano, narrativa e conexão visceral**.
 
-### O Padrão das Imagens de Referência ("Café com Deus Pai" - Junior Rostirola):
-Analisando as 3 imagens fornecidas pelo usuário:
+### O Padrão das Imagens de Referência ("Minuto com Deus" / Clássicos Devocionais):
+Analisando as imagens fornecidas pelo usuário:
 1. **03 JUN - A Importância do Testemunho (Marcos 5:19):**
-   - *Frase lateral:* "Em um mundo cheio de ódio, seja amor." `@juniorrostirola`
-   - *História:* Começa com a queixa humana x contar bênçãos, traz uma canção antiga e relata uma história pessoal concreta (*"Certa vez, me perguntaram se eu era forte. Minha resposta foi que, onde termina a minha força, a força de Deus Pai começa a agir..."*).
+   - *Frase lateral:* "Em um mundo cheio de ódio, seja amor." (C.S. Lewis / Pensador Cristão)
+   - *História:* Começa com a queixa humana x contar bênçãos, traz uma canção antiga e relata uma história concreta (*"onde termina a minha força, a força de Deus Pai começa a agir..."*).
 2. **04 JUN - Ele Cuida de Você (1 Reis 17:13,14):**
-   - *Frase lateral:* "Você acessa o milagre por meio da sua confiança em Deus." `@juniorrostirola`
+   - *Frase lateral:* "Você acessa o milagre por meio da sua confiança em Deus." (A.W. Tozer / Pensador Cristão)
    - *História:* O drama visceral da viúva de Sarepta — sem horizontes, com um punhado de farinha, um coração angustiado e o peso da morte iminente. Conecta a dor da viúva com o leitor no "último fio de esperança". Termina com chamada de ação: *"Confie, entregue e obedeça, para que o milagre aconteça"*.
 3. **09 JUN - A Brevidade da Vida (Salmos 90:12):**
-   - *Frase lateral:* "A vida é breve; aproveite-a com sabedoria!" `@juniorrostirola`
+   - *Frase lateral:* "A vida é breve; aproveite-a com sabedoria!" (Jonathan Edwards / Pensador Cristão)
    - *História:* Dilemas reais de tragédias e sonhos interrompidos, desconstrução da necessidade de agradar aos outros, fechamento com intencionalidade.
 
 ---
@@ -52,7 +52,7 @@ Todo texto devocional passará a ter **4 parágrafos robustos e envolventes**, o
 - Exigir o formato JSON estruturado com:
   - `titulo`: 1 a 4 palavras em caixa alta (ex: `A PAZ INABALÁVEL`, `ELE CUIDA DE VOCÊ`).
   - `fraseDoDia`: Pensamento curto e memorável para o card lateral.
-  - `autorFrase`: `@juniorrostirola` ou pensador/autor correspondente.
+  - `autorFrase`: Nome do teólogo/pensador correspondente (ex: C.S. Lewis, Spurgeon, Bonhoeffer, etc.).
   - `leiturasComplementares`: Array com 4 a 6 leituras bíblicas.
   - `historiaContexto`: Resumo da história/fato real utilizado.
   - `textoDevocional`: O texto completo nos 4 movimentos narrativos.

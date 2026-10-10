@@ -17,8 +17,9 @@ from src.prompts import (
 
 logger = logging.getLogger(__name__)
 
-# Modelos recomendados para fallback estático (família Gemini 2.x e 1.5)
+# Modelos recomendados para fallback estático (família Gemini 3.x, 2.x e 1.5)
 MODELOS_PADRAO_FALLBACK = [
+    "gemini-3.6-flash",
     "gemini-2.5-flash",
     "gemini-2.0-flash",
     "gemini-1.5-flash",

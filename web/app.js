@@ -1142,13 +1142,13 @@ function obterDadosMinutoComFallback(data) {
     } else if (refUpper.includes("7:37") || vUpper.includes("SEDE") || vUpper.includes("ÁGUA VIVA")) {
         tituloCtx = "INESGOTÁVEL";
         fraseCtx = "Só Deus pode satisfazer o anseio mais íntimo da sua alma.";
-        autorCtx = "@juniorrostirola";
+        autorCtx = "A.W. Tozer";
         leiturasCtx = ["APOCALIPSE 22.17", "JEREMIAS 2.13", "SALMOS 36.9", "JOÃO 4.13,14", "ISAÍAS 55.1", "ISAÍAS 44.3"];
         leituraPrincipalCtx = "JOÃO 4.13,14";
     } else if (refUpper.includes("APOCALIPSE 2") || vUpper.includes("PRIMEIRO AMOR")) {
         tituloCtx = "DE VOLTA AO PRIMEIRO AMOR";
         fraseCtx = "Lembre-se de onde você caiu e volte ao primeiro amor.";
-        autorCtx = "@juniorrostirola";
+        autorCtx = "Charles Spurgeon";
         leiturasCtx = ["JEREMIAS 2.2", "MATEUS 24.12", "HEBREUS 10.32-36", "GÁLATAS 6.9", "HEBREUS 6.10-12", "JOÃO 21.15-17"];
         leituraPrincipalCtx = "JEREMIAS 2.2";
     }

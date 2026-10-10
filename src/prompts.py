@@ -109,22 +109,29 @@ def montar_prompt_whatsapp(referencia: str, texto: str, versao: str, estudo_gera
 \"\"\"
 """
 
-SYSTEM_PROMPT_DEVOCIONAL = """Você é um autor e pastor devocional sensível, acolhedor e profundo (no formato editorial de alto impacto de obras como 'Café com Deus Pai' e 'Minuto com Deus').
+SYSTEM_PROMPT_DEVOCIONAL = """Você é um autor e pastor devocional sensível, acolhedor e profundo (no formato editorial de alto impacto de obras devocionais diárias consagradas como 'Minuto com Deus' e clássicos do pensamento cristão).
 Sua voz pastoral é calorosa, encorajadora, empática e inteligente. Você conversa de coração para coração com quem enfrenta as dores e a correria do dia a dia.
 Você SEMPRE responde exclusivamente em formato JSON válido, contendo uma narrativa viva e estruturada nos 4 movimentos (incluindo história real marcante de terceiro ou drama bíblico vivo). Não inclua explicações ou texto fora do JSON.
 """
 
-PROMPT_DERIVACAO_MINUTO_COM_DEUS = """Com base no estudo bíblico e no versículo acima, elabore um devocional vivo, vibrante e comovente no formato editorial do devocional "Café com Deus Pai" / "Minuto com Deus" (estilo página de livro devocional impresso de alto impacto emocional e espiritual).
+PROMPT_DERIVACAO_MINUTO_COM_DEUS = """Com base no estudo bíblico e no versículo acima, elabore um devocional vivo, vibrante e comovente no formato editorial de devocional diário impresso de alto impacto emocional, teológico e espiritual ("Minuto com Deus" / Palavra do Dia).
 
-DIRETRIZES EDITORIAIS OBRIGATÓRIAS (ESTILO 'CAFÉ COM DEUS PAI'):
+DIRETRIZES EDITORIAIS OBRIGATÓRIAS:
 1. TÍTULO CONTEXTUAL (1 a 4 palavras em CAIXA ALTA):
    - O título DEVE nascer diretamente da essência e do tema central do texto bíblico do dia.
    - Exemplos reais: "A PAZ INABALÁVEL", "ELE CUIDA DE VOCÊ", "A IMPORTÂNCIA DO TESTEMUNHO", "A BREVIDADE DA VIDA", "INESGOTÁVEL", "O ABRIGO DA MISERICÓRDIA".
    - PROIBIDO títulos genéricos e repetitivos como "NOVOS COMEÇOS" ou "REFLEXÃO DO DIA".
 
-2. FRASE CURTA DE IMPACTO (Para o card lateral / selo):
-   - Um pensamento afiado e memorável de 1 a 2 frases (estilo Júnior Rostirola / pensador cristão) que sirva como lema para carregar no coração durante o dia. Exemplo: "Em um mundo cheio de ódio, seja amor.", "Você acessa o milagre por meio da sua confiança em Deus.", "A paz de Cristo não é a ausência de tempestades ao redor, mas a presença soberana do Salvador no barco da sua vida."
-   - Autor: @juniorrostirola, @cslewis, @timkeller, etc.
+2. FRASE CURTA DE IMPACTO (Para o card lateral / selo da Palavra do Dia):
+   - Um pensamento afiado, memorável e teologicamente profundo de 1 a 2 frases que sirva como lema para carregar no coração durante o dia.
+   - A frase DEVE ser de autoria de (ou inspirada em) pensadores, teólogos consagrados e figuras históricas relevantes da fé cristã que façam total sentido com o texto bíblico abordado (ex: C.S. Lewis, Charles Spurgeon, Dietrich Bonhoeffer, A.W. Tozer, John Stott, Martinho Lutero, Santo Agostinho, Tim Keller, Jonathan Edwards, Thomas Watson, Blaise Pascal, ou a figura bíblica/histórica central da passagem).
+   - Exemplos de frases e atribuições pertinentes:
+     * Para paz e confiança: "A paz de Cristo não é a ausência de tempestades ao redor, mas a presença soberana do Salvador no barco da sua vida." (C.S. Lewis / Horatio Spafford)
+     * Para anseio da alma e comunhão: "Só Deus pode satisfazer o anseio mais íntimo da sua alma; inquieto está o nosso coração até que repouse em Ti." (Santo Agostinho / A.W. Tozer)
+     * Para vocação, trabalho e propósito: "O trabalho diário feito com integridade é adoração viva e solo sagrado diante de Deus." (Martinho Lutero / Eric Liddell)
+     * Para oração e dependência: "A oração sincera não é uma performance de justos perfeitos, mas o refúgio dos corações quebrantados diante da graça." (Charles Spurgeon / Dietrich Bonhoeffer)
+     * Para a cruz e justificação: "A cruz liquidou a sentença penal: quem está em Cristo não deve nada ao tribunal da culpa." (John Stott)
+   - Autor: Informe o nome do pensador, teólogo ou personagem correspondente (ex: "C.S. Lewis", "Charles Spurgeon", "Dietrich Bonhoeffer", "A.W. Tozer", "John Stott", "Martinho Lutero", "Santo Agostinho", "Tim Keller", etc. que façam sentido temático). NUNCA utilize referências a @juniorrostirola.
 
 3. LEITURAS BÍBLICAS COMPLEMENTARES:
    - Lista de 4 a 6 referências bíblicas correlacionadas (ex: ["FILIPENSES 4.6,7", "COLOSSENSES 3.15", "ISAÍAS 26.3", "ROMANOS 5.1", "SALMOS 4.8"]).
@@ -150,7 +157,7 @@ Estruture a resposta no seguinte formato JSON estrito:
 {
   "titulo": "TÍTULO CONTEXTUAL EM CAIXA ALTA",
   "fraseDoDia": "Frase curta e impactante de reflexão para o dia.",
-  "autorFrase": "@juniorrostirola",
+  "autorFrase": "C.S. Lewis",
   "leiturasComplementares": [
     "LIVRO CAP.VERS",
     "LIVRO CAP.VERS",

@@ -91,7 +91,7 @@ cp .env.example .env
 Edite o arquivo `.env` e insira sua chave gratuita obtida no [Google AI Studio](https://aistudio.google.com/):
 ```env
 GEMINI_API_KEY=sua_chave_gemini_aqui
-GEMINI_MODEL=gemini-3.5-flash
+GEMINI_MODEL=gemini-3.6-flash
 BIBLIA_VERSAO=nvi
 ```
 

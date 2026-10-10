@@ -150,7 +150,7 @@ const HISTORICO_ESTUDOS = [
         "minutoComDeus": {
             "titulo": "A CURA NA TRANSPARÊNCIA",
             "fraseDoDia": "A oração sincera não é um monólogo de religiosos perfeitos, mas o clamor de corações quebrantados que confiam na graça do Pai.",
-            "autorFrase": "@juniorrostirola",
+            "autorFrase": "Dietrich Bonhoeffer",
             "leiturasComplementares": [
                 "SALMOS 32.1-5",
                 "1 JOÃO 1.7-9",
@@ -240,7 +240,7 @@ const HISTORICO_ESTUDOS = [
         "minutoComDeus": {
             "titulo": "A GLÓRIA NO ORDINÁRIO",
             "fraseDoDia": "Quando o seu trabalho se torna uma oração silenciosa, a rotina diária deixa de ser um peso e se torna solo sagrado.",
-            "autorFrase": "@juniorrostirola",
+            "autorFrase": "Martinho Lutero",
             "leiturasComplementares": [
                 "1 CORÍNTIOS 10.31",
                 "EFÉSIOS 6.5-8",
@@ -330,7 +330,7 @@ const HISTORICO_ESTUDOS = [
         "minutoComDeus": {
             "titulo": "A PAZ INABALÁVEL",
             "fraseDoDia": "A paz de Cristo não é a ausência de tempestades ao redor, mas a presença soberana do Salvador no barco da sua vida.",
-            "autorFrase": "@juniorrostirola",
+            "autorFrase": "C.S. Lewis",
             "leiturasComplementares": [
                 "FILIPENSES 4.6,7",
                 "COLOSSENSES 3.15",
