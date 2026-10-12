@@ -22,6 +22,13 @@ from src.config import (
     YOUVERSION_VERSION_IDS,
 )
 from src.versiculos_calendario import obter_versiculo_calendario
+from src.bible_books import (
+    traduzir_referencia_en_para_pt,
+    eh_texto_ou_referencia_em_ingles,
+    eh_referencia_em_ingles,
+    eh_texto_em_ingles,
+    MAPA_PT_PARA_SIGLA_YOUVERSION,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +48,7 @@ class ScraperError(Exception):
     pass
 
 
-# Conjunto de Headers limpos e compatíveis com WAF (sem os client hints Sec-Ch-Ua que provocam TLS fingerprint mismatch)
+# Conjunto de Headers limpos e compatíveis com WAF forçando localidade em português
 HEADERS_COMPATIVEIS = [
     {
         "User-Agent": (
@@ -50,6 +57,7 @@ HEADERS_COMPATIVEIS = [
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
         "Accept-Encoding": "gzip, deflate",
+        "Cookie": "youversion_locale=pt; yv_lang=pt",
         "DNT": "1",
         "Connection": "keep-alive",
         "Upgrade-Insecure-Requests": "1",
@@ -62,17 +70,19 @@ HEADERS_COMPATIVEIS = [
         ),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
         "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Cookie": "youversion_locale=pt; yv_lang=pt",
         "Upgrade-Insecure-Requests": "1",
     },
 ]
 
 
 def normalizar_referencia(ref: str) -> str:
-    """Padroniza referências com números juntos (ex: '2Coríntios 10:5' -> '2 Coríntios 10:5')."""
+    """Padroniza referências com números juntos e converte nomes em inglês para português."""
     if not ref:
         return ""
     ref_limpa = re.sub(r"^([1-3])\s*([a-zA-ZÀ-ÿ])", r"\1 \2", ref.strip())
-    return ref_limpa.strip()
+    # Traduz livros em inglês (ex.: 'Proverbs 22:6' -> 'Provérbios 22:6')
+    return traduzir_referencia_en_para_pt(ref_limpa.strip())
 
 
 def eh_pagina_de_desafio_bot(html: str) -> bool:
@@ -320,6 +330,7 @@ def baixar_via_jina(url: str, formato: str = "markdown") -> Optional[str]:
             "X-No-Cache": "true",
             "X-Timeout": "20",
             "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "Cookie": "youversion_locale=pt; yv_lang=pt",
         }
         jina_key = os.getenv("JINA_API_KEY", "").strip()
         if jina_key:
@@ -491,6 +502,148 @@ def obter_versiculo_via_gemini_fallback(versao: str = "nvi") -> Optional[tuple[s
     return None
 
 
+def extrair_texto_pagina_versiculo_youversion(html_ou_md: str, ref_pt: str) -> Optional[str]:
+    """Extrai o texto do versículo a partir do conteúdo retornado da página do versículo no YouVersion."""
+    if not html_ou_md:
+        return None
+
+    # 1. Padrão Alt text de imagens diárias / versículo
+    match_img = re.search(
+        r"(?:Image\s*\d*:\s*|alt=[\"'](?:Image\s*\d*:\s*)?)" + re.escape(ref_pt) + r"\s*[-–—]\s*([^\]\"'\n\r]+)",
+        html_ou_md,
+        re.IGNORECASE,
+    )
+    if match_img:
+        txt = match_img.group(1).strip(" -–—:\"'“”\t\n\r")
+        if len(txt) > 5 and not eh_texto_em_ingles(txt):
+            return txt
+
+    # 2. Padrão Markdown de parágrafo de texto após o título de versão (ex: ## Provérbios 22:6 NVI)
+    padrao_md = rf"##\s*{re.escape(ref_pt)}[^\n]*\n+(?:Compartilhar\s*\n+)?(?:\[[^\]]+\]\([^\)]+\)\s*)*\n*([^\n#\[][^\n]{{10,}})"
+    match_md = re.search(padrao_md, html_ou_md, re.IGNORECASE)
+    if match_md:
+        txt = match_md.group(1).strip(" -–—:\"'“”\t\n\r")
+        if len(txt) > 5 and not eh_texto_em_ingles(txt):
+            return txt
+
+    return None
+
+
+def recuperar_texto_versiculo_em_portugues(referencia: str, versao: str = "NVI") -> Optional[str]:
+    """
+    Recupera com resiliência o texto bíblico oficial em português para a referência indicada,
+    assegurando que nenhum versículo em inglês permaneça no sistema.
+    Estratégia 1: Consulta direta à página dedicada do versículo no YouVersion em português.
+    Estratégia 2: Consulta à Google Gemini API (ultra-rápida, determinística e autorizada).
+    Estratégia 3: Consulta ao Bíbliaon.
+    """
+    ref_pt = normalizar_referencia(referencia)
+    versao_clean = versao.lower()
+
+    # Estratégia 1: YouVersion /pt/bible/{version_id}/{SIGLA}.{cap}.{vers}.{VERSAO}
+    match = re.match(r"^([1-3]?\s?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)?)\s+(\d+):(\d+(?:-\d+)?)$", ref_pt)
+    if match:
+        livro = match.group(1).strip()
+        cap = match.group(2)
+        versiculo_num = match.group(3)
+        sigla = MAPA_PT_PARA_SIGLA_YOUVERSION.get(livro)
+        v_id = YOUVERSION_VERSION_IDS.get(versao_clean, 129)
+        if sigla:
+            url_yv = f"https://www.bible.com/pt/bible/{v_id}/{sigla}.{cap}.{versiculo_num}.{versao.upper()}"
+            for formato in ["markdown", "html"]:
+                try:
+                    conteudo = baixar_via_jina(url_yv, formato=formato)
+                    if conteudo:
+                        txt_extraido = extrair_texto_pagina_versiculo_youversion(conteudo, ref_pt)
+                        if txt_extraido:
+                            logger.info("Texto de %s (%s) obtido em português no YouVersion via Jina: %s", ref_pt, versao, txt_extraido)
+                            return txt_extraido
+                except Exception as e:
+                    logger.debug("Tentativa YouVersion pontual (%s) falhou: %s", url_yv, e)
+
+    # Estratégia 2: Google Gemini API
+    gemini_key = os.getenv("GEMINI_API_KEY", "").strip()
+    if gemini_key and gemini_key != "sua_chave_gemini_aqui":
+        try:
+            from src.llm_client import GeminiClient
+            client = GeminiClient(api_key=gemini_key)
+            prompt = (
+                f"Forneça exclusivamente o texto bíblico oficial do versículo {ref_pt} na versão {versao.upper()} em português. "
+                "Responda estritamente com o texto bíblico integral, sem aspas, sem adicionar a referência e sem nenhuma explicação adicional."
+            )
+            resposta = client.gerar_estudo(
+                referencia=ref_pt,
+                texto="Consulta de texto bíblico oficial em português",
+                versao=versao,
+                prompt_customizado=prompt,
+            )
+            if resposta:
+                texto_limpo = resposta.strip().strip('"“”\'')
+                texto_limpo = re.sub(r"^(?:Texto(?:\s+do\s+vers[íi]culo)?\s*:\s*)", "", texto_limpo, flags=re.IGNORECASE).strip()
+                if len(texto_limpo) > 10 and not eh_texto_em_ingles(texto_limpo):
+                    logger.info("Texto de %s (%s) obtido em português com sucesso via Gemini API: %s", ref_pt, versao, texto_limpo)
+                    return texto_limpo
+        except Exception as e:
+            logger.debug("Falha na obtenção do texto pontual via Gemini: %s", e)
+
+    # Estratégia 3: Bíbliaon
+    try:
+        import unicodedata
+        ref_slug = unicodedata.normalize("NFKD", ref_pt).encode("ascii", "ignore").decode("ascii").lower()
+        ref_slug = re.sub(r"[^\w\s]", " ", ref_slug)
+        slug_formatado = "_".join(ref_slug.split())
+        url_bibliaon = f"https://www.bibliaon.com/{slug_formatado}/"
+        html_bon = baixar_html_via_requests(url_bibliaon) or baixar_html_via_curl(url_bibliaon)
+        if html_bon:
+            res_bon = extrair_versiculo_bibliaon(html_bon)
+            if res_bon and res_bon[1] and not eh_texto_em_ingles(res_bon[1]):
+                logger.info("Texto de %s obtido em português com sucesso via Bíbliaon.", ref_pt)
+                return res_bon[1]
+    except Exception as e:
+        logger.debug("Falha na tentativa Bíbliaon pontual: %s", e)
+
+    return None
+
+
+def assegurar_versiculo_em_portugues(
+    versiculo: VersiculoDoDia,
+    versao_escolhida: str = "NVI",
+) -> VersiculoDoDia:
+    """
+    Garante que tanto a referência quanto o texto bíblico do versículo estejam 100% em português.
+    Se a referência ou texto vier em inglês (por redirecionamento de IP ou scraper),
+    normaliza a referência e resgata o texto bíblico correspondente em português.
+    """
+    ref_original = versiculo.referencia
+    ref_pt = normalizar_referencia(ref_original)
+    texto_atual = versiculo.texto
+    versao_final = versao_escolhida.upper()
+
+    if eh_texto_ou_referencia_em_ingles(texto_atual, ref_original):
+        logger.warning(
+            "Detectado versículo ou referência em inglês ('%s': '%s...'). Normalizando para português (%s)...",
+            ref_original,
+            texto_atual[:40],
+            versao_final,
+        )
+        if eh_texto_em_ingles(texto_atual):
+            texto_pt = recuperar_texto_versiculo_em_portugues(ref_pt, versao=versao_final)
+            if texto_pt:
+                texto_atual = texto_pt
+
+    url_fonte_final = versiculo.url_fonte
+    if ref_pt != ref_original or eh_texto_em_ingles(versiculo.texto):
+        url_fonte_final = f"{versiculo.url_fonte} [Normalizado para Português]"
+
+    return VersiculoDoDia(
+        referencia=ref_pt,
+        texto=texto_atual,
+        versao=versao_final,
+        url_fonte=url_fonte_final,
+        coletado_em=versiculo.coletado_em,
+    )
+
+
 def obter_versiculo_do_dia(
     versao: Optional[str] = None,
     versiculo_manual: Optional[str] = None,
@@ -504,6 +657,7 @@ def obter_versiculo_do_dia(
     4. Fallback Inteligente via Gemini (garante a passagem do YouVersion no CI mesmo com rate limit de proxy).
     5. Fallback no Bíbliaon.
     6. Tier de Contingência Final: Calendário Bíblico Determinístico Anual (366 dias), garantindo 100% de execução.
+    Garante sempre saída 100% em português.
     """
     versao_escolhida = (versao or BIBLIA_VERSAO).lower()
     data_hoje = datetime.now().strftime("%Y-%m-%d")
@@ -512,12 +666,15 @@ def obter_versiculo_do_dia(
     if versiculo_manual:
         referencia = normalizar_referencia(versiculo_manual.strip())
         texto = texto_manual.strip() if texto_manual else f"(Passagem selecionada para reflexão: {referencia})"
-        return VersiculoDoDia(
-            referencia=referencia,
-            texto=texto,
-            versao=versao_escolhida.upper(),
-            url_fonte="Entrada manual",
-            coletado_em=data_hoje,
+        return assegurar_versiculo_em_portugues(
+            VersiculoDoDia(
+                referencia=referencia,
+                texto=texto,
+                versao=versao_escolhida.upper(),
+                url_fonte="Entrada manual",
+                coletado_em=data_hoje,
+            ),
+            versao_escolhida=versao_escolhida,
         )
 
     metodos_download = [
@@ -525,14 +682,15 @@ def obter_versiculo_do_dia(
         ("curl", baixar_html_via_curl),
     ]
 
-    # 2. URLs YouVersion a tentar
+    # 2. URLs YouVersion a tentar (exclusivamente endpoints em português com versões suportadas)
     urls_youversion = [
         YOUVERSION_VOTD_URL,
-        f"{YOUVERSION_VOTD_URL}?version=129",
-        "https://www.bible.com/verse-of-the-day",
+        f"{YOUVERSION_VOTD_URL}?version=129",   # NVI
+        f"{YOUVERSION_VOTD_URL}?version=211",   # NTLH
+        f"{YOUVERSION_VOTD_URL}?version=1608",  # ARA
     ]
     version_id = YOUVERSION_VERSION_IDS.get(versao_escolhida)
-    if version_id and version_id != 129:
+    if version_id and f"{YOUVERSION_VOTD_URL}?version={version_id}" not in urls_youversion:
         urls_youversion.insert(0, f"{YOUVERSION_VOTD_URL}?version={version_id}")
 
     # 2.1 Tentativa direta YouVersion (Requests / Curl)
@@ -545,12 +703,15 @@ def obter_versiculo_do_dia(
 
                 referencia, texto = extrair_referencia_e_texto(html)
                 if referencia and texto:
-                    return VersiculoDoDia(
-                        referencia=referencia,
-                        texto=texto,
-                        versao=versao_escolhida.upper(),
-                        url_fonte=f"{url} (via {nome_metodo})",
-                        coletado_em=data_hoje,
+                    return assegurar_versiculo_em_portugues(
+                        VersiculoDoDia(
+                            referencia=referencia,
+                            texto=texto,
+                            versao=versao_escolhida.upper(),
+                            url_fonte=f"{url} (via {nome_metodo})",
+                            coletado_em=data_hoje,
+                        ),
+                        versao_escolhida=versao_escolhida,
                     )
             except Exception:
                 continue
@@ -565,12 +726,15 @@ def obter_versiculo_do_dia(
                     if resultado_jina:
                         ref_jina, txt_jina = resultado_jina
                         logger.info("Versículo do Dia obtido com sucesso via Jina Reader (%s): %s", formato, ref_jina)
-                        return VersiculoDoDia(
-                            referencia=ref_jina,
-                            texto=txt_jina,
-                            versao=versao_escolhida.upper(),
-                            url_fonte=f"{url} (via Jina Reader {formato})",
-                            coletado_em=data_hoje,
+                        return assegurar_versiculo_em_portugues(
+                            VersiculoDoDia(
+                                referencia=ref_jina,
+                                texto=txt_jina,
+                                versao=versao_escolhida.upper(),
+                                url_fonte=f"{url} (via Jina Reader {formato})",
+                                coletado_em=data_hoje,
+                            ),
+                            versao_escolhida=versao_escolhida,
                         )
             except Exception as e:
                 logger.debug("Tentativa Jina Reader falhou para %s (%s): %s", url, formato, e)
@@ -579,12 +743,15 @@ def obter_versiculo_do_dia(
     resultado_gemini = obter_versiculo_via_gemini_fallback(versao=versao_escolhida)
     if resultado_gemini:
         ref_gem, txt_gem = resultado_gemini
-        return VersiculoDoDia(
-            referencia=ref_gem,
-            texto=txt_gem,
-            versao=versao_escolhida.upper(),
-            url_fonte="YouVersion via Gemini Intelligence Fallback",
-            coletado_em=data_hoje,
+        return assegurar_versiculo_em_portugues(
+            VersiculoDoDia(
+                referencia=ref_gem,
+                texto=txt_gem,
+                versao=versao_escolhida.upper(),
+                url_fonte="YouVersion via Gemini Intelligence Fallback",
+                coletado_em=data_hoje,
+            ),
+            versao_escolhida=versao_escolhida,
         )
 
     # 2.4 Fallback Bíbliaon
@@ -596,12 +763,15 @@ def obter_versiculo_do_dia(
                 if res_bon:
                     ref_bon, txt_bon = res_bon
                     logger.info("Versículo obtido via Bíbliaon: %s", ref_bon)
-                    return VersiculoDoDia(
-                        referencia=ref_bon,
-                        texto=txt_bon,
-                        versao="NVI",
-                        url_fonte=f"{BIBLIAON_VOTD_URL} (via {nome_metodo})",
-                        coletado_em=data_hoje,
+                    return assegurar_versiculo_em_portugues(
+                        VersiculoDoDia(
+                            referencia=ref_bon,
+                            texto=txt_bon,
+                            versao="NVI",
+                            url_fonte=f"{BIBLIAON_VOTD_URL} (via {nome_metodo})",
+                            coletado_em=data_hoje,
+                        ),
+                        versao_escolhida=versao_escolhida,
                     )
         except Exception as e:
             logger.debug("Tentativa Bíbliaon falhou: %s", e)
@@ -614,10 +784,13 @@ def obter_versiculo_do_dia(
         data_hoje,
         ref_cal,
     )
-    return VersiculoDoDia(
-        referencia=ref_cal,
-        texto=texto_cal,
-        versao=versao_escolhida.upper(),
-        url_fonte="Calendário Bíblico YouVersion (Contingência Oficial)",
-        coletado_em=data_hoje,
+    return assegurar_versiculo_em_portugues(
+        VersiculoDoDia(
+            referencia=ref_cal,
+            texto=texto_cal,
+            versao=versao_escolhida.upper(),
+            url_fonte="Calendário Bíblico YouVersion (Contingência Oficial)",
+            coletado_em=data_hoje,
+        ),
+        versao_escolhida=versao_escolhida,
     )

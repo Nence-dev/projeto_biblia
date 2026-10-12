@@ -9,6 +9,10 @@ from pathlib import Path
 from typing import Any
 
 from src.config import ESTUDOS_DIR, GEMINI_MODEL
+from src.bible_books import (
+    traduzir_referencia_en_para_pt,
+    eh_texto_em_ingles,
+)
 
 
 def normalizar_slug(texto: str) -> str:
@@ -466,6 +470,7 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
 
     match_ref = re.search(r'referencia:\s*"([^"]+)"', conteudo_md)
     referencia = match_ref.group(1) if match_ref else "Passagem Bíblica"
+    referencia = traduzir_referencia_en_para_pt(referencia)
 
     match_ver = re.search(r'versao:\s*"([^"]+)"', conteudo_md)
     versao = match_ver.group(1) if match_ver else "NVI"
@@ -506,16 +511,20 @@ def parse_estudo_markdown(conteudo_md: str | Path) -> dict[str, Any]:
                 versiculo_texto = cand_limpo
 
     # 3. Fallback na Comparação Exegética de Versões (NVI)
-    if not versiculo_texto:
+    if not versiculo_texto or eh_texto_em_ingles(versiculo_texto):
         match_nvi = re.search(r'[-*•]\s*(?:\*\*)?NVI[^*:\n]*:(?:\*\*)?\s*["“]?([^"”\n|]+)["”]?', conteudo_md, re.IGNORECASE)
         if match_nvi:
-            versiculo_texto = match_nvi.group(1).strip().strip('"“”\'')
+            cand_nvi = match_nvi.group(1).strip().strip('"“”\'')
+            if not eh_texto_em_ingles(cand_nvi):
+                versiculo_texto = cand_nvi
 
     # 4. Fallback no JSON do Devocional Minuto com Deus
-    if not versiculo_texto:
+    if not versiculo_texto or eh_texto_em_ingles(versiculo_texto):
         match_dev_v = re.search(r'"versiculo":\s*"([^"]+)"', conteudo_md)
         if match_dev_v:
-            versiculo_texto = match_dev_v.group(1).strip().strip('"“”\'')
+            cand_dev = match_dev_v.group(1).strip().strip('"“”\'')
+            if not eh_texto_em_ingles(cand_dev):
+                versiculo_texto = cand_dev
 
     # Extrair WhatsApp
     zap = extrair_secao_whatsapp(conteudo_md)
