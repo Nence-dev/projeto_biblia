@@ -1,7 +1,12 @@
 """Testes unitários para validar referências bíblicas acompanhadas de seus textos completos."""
 
 from pathlib import Path
-from src.prompts import SYSTEM_PROMPT_TEOLOGICO, montar_prompt_usuario
+from src.prompts import (
+    SYSTEM_PROMPT_TEOLOGICO,
+    PROMPT_DERIVACAO_MINUTO_COM_DEUS,
+    PROMPT_DERIVACAO_WHATSAPP,
+    montar_prompt_usuario,
+)
 from src.storage import parse_estudo_markdown
 
 
@@ -96,4 +101,32 @@ def test_tom_autoral_dialogo_urbano_e_equilibrio():
     assert "universitário" in prompt_lower
     assert "formalismo pedante" in prompt_lower or "zero formalismo" in prompt_lower
     assert "não tão informal" in prompt_lower or "nem formal" in prompt_lower
+
+
+def test_devocional_restringe_historias_reais_biblicas_parabolas():
+    """Valida se o devocional proíbe histórias fictícias e exige histórias reais, bíblicas ou parábolas."""
+    prompt_devocional = PROMPT_DERIVACAO_MINUTO_COM_DEUS.lower()
+    assert "história real documentada" in prompt_devocional or "história real" in prompt_devocional
+    assert "bíblia" in prompt_devocional
+    assert "parábola" in prompt_devocional or "parábolas de jesus" in prompt_devocional
+    assert "proibido inventar historinhas fictícias" in prompt_devocional or "proibido" in prompt_devocional
+
+
+def test_prompts_proibem_cliches_asfalto_e_linguagem_dificil():
+    """Valida se os prompts exigem linguagem simples e acessível e banem o clichê do 'asfalto'."""
+    prompt_teologico = SYSTEM_PROMPT_TEOLOGICO.lower()
+    prompt_devocional = PROMPT_DERIVACAO_MINUTO_COM_DEUS.lower()
+    prompt_zap = PROMPT_DERIVACAO_WHATSAPP.lower()
+
+    # Fácil leitura e sem palavras difíceis
+    assert "fácil leitura" in prompt_teologico
+    assert "sem palavras difíceis" in prompt_teologico
+    assert "fácil leitura" in prompt_devocional
+    assert "sem palavras difíceis" in prompt_devocional
+
+    # Proibição de repetições e do clichê do asfalto
+    assert "proibição de clichês" in prompt_teologico or "proibido" in prompt_teologico
+    assert "asfalto" in prompt_teologico  # mencionando na lista de proibições
+    assert "asfalto" in prompt_devocional  # mencionando na lista de proibições
+    assert "asfalto" in prompt_zap  # mencionando na lista de proibições
 
