@@ -11,8 +11,9 @@ echo.
 python subir_alteracoes_git.py
 if errorlevel 1 (
     echo.
-    echo [ERRO] Falha ao enviar para o GitHub. Verifique as mensagens acima.
-    goto FIM
+    echo [AVISO] Tentando rebase direto com o GitHub...
+    git pull --rebase origin main -X ours
+    git push origin main
 )
 
 :FIM

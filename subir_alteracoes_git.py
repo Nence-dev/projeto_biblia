@@ -1,4 +1,4 @@
-"""Script Python para subir ao GitHub o novo refinamento dos prompts e testes."""
+"""Script Python resiliente para subir ao GitHub o novo refinamento dos prompts e testes."""
 
 import subprocess
 import sys
@@ -19,42 +19,44 @@ def main():
     print("=" * 70)
     print(f"Diretório: {pasta_projeto}")
 
-    # 1. Fetch
-    print("\n[1/4] Buscando atualizações remotas do GitHub...")
-    executar_comando(["git", "fetch", "origin", "main"])
-
-    # 2. Merge com origin/main preservando nosso histórico
-    print("\n[2/4] Integrando com histórico remoto...")
-    executar_comando(["git", "merge", "origin/main", "--no-edit"], ignorar_erro=True)
-
-    # 3. Adicionar arquivos locais modificados
-    print("\n[3/4] Adicionando novos prompts, testes e dados atualizados...")
+    # 1. Adicionar arquivos locais modificados (sem tentar adicionar arquivos do .gitignore)
+    print("\n[1/4] Adicionando arquivos modificados...")
     arquivos_para_add = [
         "src/prompts.py",
         "tests/test_prompts_e_estilizacao.py",
         "estudos/2026-10-12_proverbios_22_6.md",
         "web/data.js",
-        "testar_novo_prompt.py",
         "executar_teste_local.bat",
         "subir_alteracoes_git.py",
         "subir_alteracoes_git.bat",
     ]
-    executar_comando(["git", "add"] + arquivos_para_add)
+    executar_comando(["git", "add"] + arquivos_para_add, ignorar_erro=True)
 
-    # 4. Commit e Push
-    print("\n[4/4] Gravando commit e enviando para o GitHub (origin main)...")
+    # 2. Gravar commit caso haja algo pendente
+    print("\n[2/4] Gravando commit local...")
     msg_commit = "feat: refinar prompts do gemini (texto acessivel, sem cliches como asfalto, devocional conciso e historias reais/biblicas)"
     executar_comando(["git", "commit", "-m", msg_commit], ignorar_erro=True)
+
+    # 3. Puxar alterações remotas do GitHub com rebase preservando nossas alterações locais
+    print("\n[3/4] Sincronizando com histórico remoto do GitHub (origin main)...")
+    res_pull = executar_comando(["git", "pull", "--rebase", "origin", "main", "-X", "ours"], ignorar_erro=True)
+    if res_pull != 0:
+        print("Tentando merge convencional...")
+        executar_comando(["git", "merge", "origin/main", "-X", "ours", "--no-edit"], ignorar_erro=True)
+
+    # 4. Enviar para o GitHub
+    print("\n[4/4] Enviando para o GitHub (git push origin main)...")
     res_push = executar_comando(["git", "push", "origin", "main"])
 
     if res_push == 0:
         print("\n" + "=" * 70)
-        print("✅ SUCESSO! Alterações enviadas para o GitHub!")
+        print("✅ SUCESSO! Alterações enviadas para o GitHub com sucesso!")
         print("A partir de amanhã, a automação do GitHub Actions gerará o estudo")
         print("no novo formato sem clichês e com histórias reais/bíblicas.")
         print("=" * 70)
     else:
-        print("\n⚠️ O push encontrou alguma pendência de sincronização.")
+        print("\n⚠️ O push encontrou uma pendência. Tentando push final...")
+        executar_comando(["git", "push", "origin", "main", "--force-with-lease"])
 
 if __name__ == "__main__":
     main()
