@@ -22,6 +22,7 @@ from src.config import (
     YOUVERSION_VERSION_IDS,
 )
 from src.versiculos_calendario import obter_versiculo_calendario
+from src.biblia_nvi import obter_texto_nvi
 from src.bible_books import (
     traduzir_referencia_en_para_pt,
     eh_texto_ou_referencia_em_ingles,
@@ -540,6 +541,13 @@ def recuperar_texto_versiculo_em_portugues(referencia: str, versao: str = "NVI")
     ref_pt = normalizar_referencia(referencia)
     versao_clean = versao.lower()
 
+    # Prioridade Absoluta: Resolução Canônica NVI via biblia_nvi
+    if versao_clean == "nvi":
+        texto_nvi = obter_texto_nvi(ref_pt)
+        if texto_nvi:
+            logger.info("Texto de %s obtido diretamente da NVI canônica oficial.", ref_pt)
+            return texto_nvi
+
     # Estratégia 1: YouVersion /pt/bible/{version_id}/{SIGLA}.{cap}.{vers}.{VERSAO}
     match = re.match(r"^([1-3]?\s?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)?)\s+(\d+):(\d+(?:-\d+)?)$", ref_pt)
     if match:
@@ -610,30 +618,47 @@ def assegurar_versiculo_em_portugues(
     versao_escolhida: str = "NVI",
 ) -> VersiculoDoDia:
     """
-    Garante que tanto a referência quanto o texto bíblico do versículo estejam 100% em português.
-    Se a referência ou texto vier em inglês (por redirecionamento de IP ou scraper),
-    normaliza a referência e resgata o texto bíblico correspondente em português.
+    Garante que tanto a referência quanto o texto bíblico do versículo estejam 100% em português
+    e estritamente na versão NVI oficial.
+    Regra Canônica: Isola a referência extraída do YouVersion (livro, capítulo e versículo)
+    e obtém sempre o texto fidedigno da NVI através do motor canônico `obter_texto_nvi(ref_pt)`.
     """
     ref_original = versiculo.referencia
     ref_pt = normalizar_referencia(ref_original)
-    texto_atual = versiculo.texto
     versao_final = versao_escolhida.upper()
+    texto_atual = versiculo.texto
 
-    if eh_texto_ou_referencia_em_ingles(texto_atual, ref_original):
-        logger.warning(
-            "Detectado versículo ou referência em inglês ('%s': '%s...'). Normalizando para português (%s)...",
-            ref_original,
-            texto_atual[:40],
-            versao_final,
+    # Se a versão solicitada for NVI (padrão absoluto do projeto), resolve direto na NVI canônica
+    if versao_final == "NVI":
+        eh_entrada_manual_com_texto = (
+            versiculo.url_fonte == "Entrada manual"
+            and not texto_atual.startswith("(Passagem selecionada")
         )
-        if eh_texto_em_ingles(texto_atual):
-            texto_pt = recuperar_texto_versiculo_em_portugues(ref_pt, versao=versao_final)
-            if texto_pt:
-                texto_atual = texto_pt
+        if not eh_entrada_manual_com_texto:
+            texto_nvi = obter_texto_nvi(ref_pt)
+            if texto_nvi:
+                logger.info("Texto canônico NVI aplicado com sucesso para %s: '%s...'", ref_pt, texto_nvi[:45])
+                texto_atual = texto_nvi
+            elif eh_texto_ou_referencia_em_ingles(texto_atual, ref_original) or eh_texto_em_ingles(texto_atual):
+                texto_pt = recuperar_texto_versiculo_em_portugues(ref_pt, versao=versao_final)
+                if texto_pt:
+                    texto_atual = texto_pt
+    else:
+        if eh_texto_ou_referencia_em_ingles(texto_atual, ref_original):
+            logger.warning(
+                "Detectado versículo ou referência em inglês ('%s': '%s...'). Normalizando para português (%s)...",
+                ref_original,
+                texto_atual[:40],
+                versao_final,
+            )
+            if eh_texto_em_ingles(texto_atual):
+                texto_pt = recuperar_texto_versiculo_em_portugues(ref_pt, versao=versao_final)
+                if texto_pt:
+                    texto_atual = texto_pt
 
     url_fonte_final = versiculo.url_fonte
     if ref_pt != ref_original or eh_texto_em_ingles(versiculo.texto):
-        url_fonte_final = f"{versiculo.url_fonte} [Normalizado para Português]"
+        url_fonte_final = f"{versiculo.url_fonte} [Normalizado para Português NVI]"
 
     return VersiculoDoDia(
         referencia=ref_pt,

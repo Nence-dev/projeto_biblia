@@ -1,10 +1,10 @@
 @echo off
 setlocal
-title Subir Alteracoes para o GitHub - Projeto Biblia
+title Subir Alteracoes NVI para o GitHub - Projeto Biblia
 
 cd /d "%~dp0"
 echo ====================================================================
-echo  Subindo Novo Formato dos Prompts do Gemini para o GitHub
+echo  Subindo Atualizacoes Canonicas da NVI para o GitHub
 echo ====================================================================
 echo.
 

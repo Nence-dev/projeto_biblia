@@ -22,19 +22,24 @@ def main():
     # 1. Adicionar arquivos locais modificados (sem tentar adicionar arquivos do .gitignore)
     print("\n[1/4] Adicionando arquivos modificados...")
     arquivos_para_add = [
-        "src/prompts.py",
-        "tests/test_prompts_e_estilizacao.py",
-        "estudos/2026-10-12_proverbios_22_6.md",
+        "src/biblia_nvi.py",
+        "src/scraper.py",
+        "tests/test_biblia_nvi.py",
+        "tests/test_versiculo_portugues.py",
+        "estudos/2026-10-15_colossenses_3_13.md",
+        "estudos/2026-10-14_salmos_46_10.md",
+        "estudos/2026-10-13_jeremias_17_7.md",
         "web/data.js",
-        "executar_teste_local.bat",
+        "garantia-texto-nvi-versiculo-do-dia.md",
         "subir_alteracoes_git.py",
         "subir_alteracoes_git.bat",
+        "atualizar_git_nvi.bat",
     ]
     executar_comando(["git", "add"] + arquivos_para_add, ignorar_erro=True)
 
     # 2. Gravar commit caso haja algo pendente
     print("\n[2/4] Gravando commit local...")
-    msg_commit = "feat: refinar prompts do gemini (texto acessivel, sem cliches como asfalto, devocional conciso e historias reais/biblicas)"
+    msg_commit = "fix: garantir texto canonico NVI nos versiculos diarios (Colossenses 3:13 e Salmos 46:10) e blindar scraper"
     executar_comando(["git", "commit", "-m", msg_commit], ignorar_erro=True)
 
     # 3. Puxar alterações remotas do GitHub com rebase preservando nossas alterações locais

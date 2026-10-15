@@ -83,30 +83,32 @@ def test_eh_texto_em_ingles():
 
 
 def test_assegurar_versiculo_em_portugues_quando_ja_esta_em_pt():
+    texto_nvi_oficial = "Instrua a criança segundo os objetivos que você tem para ela, e mesmo com o passar dos anos não se desviará deles."
     v = VersiculoDoDia(
         referencia="Provérbios 22:6",
-        texto="Eduque a criança no caminho em que deve andar, e até o fim da vida não se desviará dele.",
+        texto=texto_nvi_oficial,
         versao="NVI",
         url_fonte="https://www.bible.com/pt/verse-of-the-day",
         coletado_em="2026-10-12",
     )
     v_seguro = assegurar_versiculo_em_portugues(v, "NVI")
     assert v_seguro.referencia == "Provérbios 22:6"
-    assert v_seguro.texto == v.texto
+    assert v_seguro.texto == texto_nvi_oficial
     assert "Normalizado" not in v_seguro.url_fonte
 
 
 def test_assegurar_versiculo_em_portugues_com_referencia_ingles():
+    texto_nvi_oficial = "Instrua a criança segundo os objetivos que você tem para ela, e mesmo com o passar dos anos não se desviará deles."
     v = VersiculoDoDia(
         referencia="Proverbs 22:6",
-        texto="Eduque a criança no caminho em que deve andar, e até o fim da vida não se desviará dele.",
+        texto=texto_nvi_oficial,
         versao="NVI",
         url_fonte="https://www.bible.com/pt/verse-of-the-day",
         coletado_em="2026-10-12",
     )
     v_seguro = assegurar_versiculo_em_portugues(v, "NVI")
     assert v_seguro.referencia == "Provérbios 22:6"
-    assert v_seguro.texto == v.texto
+    assert v_seguro.texto == texto_nvi_oficial
     assert "[Normalizado para Português]" in v_seguro.url_fonte
 
 
