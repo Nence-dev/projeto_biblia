@@ -27,17 +27,20 @@ git add subir_alteracoes_git.bat
 git add atualizar_git_nvi.bat
 
 echo.
-echo [3/4] Gravando commit local...
+echo [3/5] Gravando commit local...
 git commit -m "fix: garantir texto canonico NVI nos versiculos diarios (Colossenses 3:13 e Salmos 46:10) e blindar scraper"
 
 echo.
-echo [4/4] Enviando para o GitHub (git push origin main)...
+echo [4/5] Sincronizando com o GitHub preservando nossas alteracoes NVI (-X ours)...
+git pull --rebase origin main -X ours
+
+echo.
+echo [5/5] Enviando para o GitHub (git push origin main)...
 git push origin main
 if errorlevel 1 (
     echo.
-    echo [AVISO] O push convencional falhou. Sincronizando com rebase...
-    git pull --rebase origin main -X ours
-    git push origin main
+    echo [AVISO] Tentando envio com force-with-lease...
+    git push origin main --force-with-lease
 )
 
 echo.
