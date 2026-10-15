@@ -11,7 +11,7 @@ if str(RAIZ) not in sys.path:
 
 from src.scraper import obter_versiculo_do_dia
 from src.llm_client import GeminiClient
-from src.storage import salvar_estudo, exportar_todos_estudos_para_web_data
+from src.storage import salvar_estudo, exportar_todos_estudos_para_web_data, obter_ultimos_autores_frases
 
 def executar():
     data_hoje = datetime.now().strftime("%Y-%m-%d")
@@ -22,12 +22,17 @@ def executar():
     print(f"Texto: {versiculo.texto}")
     print(f"Fonte: {versiculo.url_fonte}")
     
+    autores_recentes = obter_ultimos_autores_frases(limite_dias=2)
+    if autores_recentes:
+        print(f"Autores recentes a evitar na rotacao: {autores_recentes}")
+
     client = GeminiClient()
     print("Consultando Gemini...")
     estudo = client.gerar_estudo_completo(
         referencia=versiculo.referencia,
         texto=versiculo.texto,
         versao=versiculo.versao,
+        autores_recentes=autores_recentes,
         on_status=lambda msg: print(f"  [Status] {msg}"),
     )
     
@@ -47,6 +52,7 @@ def executar():
             texto=versiculo.texto,
             versao=versiculo.versao,
             estudo_gerado=estudo,
+            autores_recentes=autores_recentes,
             on_status=lambda msg: print(f"  [Status] {msg}"),
         )
     except Exception as exc:

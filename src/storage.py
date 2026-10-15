@@ -171,6 +171,68 @@ def listar_historico() -> list[dict[str, Any]]:
     return historico
 
 
+def obter_ultimos_autores_frases(limite_dias: int = 3) -> list[str]:
+    """
+    Inspeciona os estudos mais recentes salvos e extrai os autores das frases/citações utilizadas.
+    Utilizado para impor rotação e evitar a repetição do mesmo pensador em dias consecutivos.
+    Retorna uma lista com os nomes normalizados (ex: ['Tim Keller', 'C.S. Lewis']).
+    """
+    pasta = obter_pasta_estudos()
+    arquivos = sorted(pasta.glob("*.md"), reverse=True)
+    autores_encontrados: list[str] = []
+
+    for arq in arquivos[: max(10, limite_dias * 3)]:
+        if len(autores_encontrados) >= limite_dias:
+            break
+        try:
+            conteudo = arq.read_text(encoding="utf-8")
+            autor = None
+
+            # 1. Tenta extrair do JSON do Minuto com Deus / Café
+            m_json = re.search(r'"autorFrase"\s*:\s*"([^"]+)"', conteudo)
+            if m_json:
+                autor = m_json.group(1).strip()
+
+            # 2. Se não achou no JSON, tenta extrair da citação no markdown (> — **Autor**)
+            if not autor:
+                m_citacao = re.search(r">\s*—\s*\*\*([^*]+)\*\*", conteudo)
+                if m_citacao:
+                    autor = m_citacao.group(1).strip()
+
+            if autor:
+                # Normaliza: remove @ inicial e espaços extras
+                autor_limpo = autor.lstrip("@").strip()
+                # Normalizações comuns de sinônimos (ex: Timothy Keller -> Tim Keller)
+                nome_lower = autor_limpo.lower()
+                if "keller" in nome_lower:
+                    autor_limpo = "Tim Keller"
+                elif "lewis" in nome_lower:
+                    autor_limpo = "C.S. Lewis"
+                elif "agostinho" in nome_lower:
+                    autor_limpo = "Santo Agostinho"
+                elif "stott" in nome_lower:
+                    autor_limpo = "John Stott"
+                elif "spurgeon" in nome_lower:
+                    autor_limpo = "Charles Spurgeon"
+                elif "bonhoeffer" in nome_lower:
+                    autor_limpo = "Dietrich Bonhoeffer"
+                elif "tozer" in nome_lower:
+                    autor_limpo = "A.W. Tozer"
+                elif "lutero" in nome_lower:
+                    autor_limpo = "Martinho Lutero"
+                elif "calvino" in nome_lower:
+                    autor_limpo = "João Calvino"
+                elif "watson" in nome_lower:
+                    autor_limpo = "Thomas Watson"
+
+                if autor_limpo and autor_limpo not in autores_encontrados:
+                    autores_encontrados.append(autor_limpo)
+        except Exception:
+            continue
+
+    return autores_encontrados
+
+
 def extrair_secao_whatsapp(conteudo_md: str) -> str:
     """Extrai o texto preparado para o WhatsApp de dentro do arquivo markdown de estudo."""
     match = re.search(

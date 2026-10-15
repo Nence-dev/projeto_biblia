@@ -220,10 +220,16 @@ class GeminiClient:
         referencia: str,
         texto: str,
         versao: str,
+        autores_recentes: Optional[list[str]] = None,
         on_status: Optional[Callable[[str], None]] = None,
     ) -> str:
-        """Gera a reflexão teológica expositiva estruturada em 5 etapas."""
-        prompt_usuario = montar_prompt_usuario(referencia, texto, versao)
+        """Gera a reflexão teológica expositiva estruturada em 5 etapas com rotação de autores."""
+        prompt_usuario = montar_prompt_usuario(
+            referencia,
+            texto,
+            versao,
+            autores_recentes=autores_recentes,
+        )
         return self._generate(
             prompt=prompt_usuario,
             system_instruction=SYSTEM_PROMPT_TEOLOGICO,
@@ -252,10 +258,17 @@ class GeminiClient:
         texto: str,
         versao: str,
         estudo_gerado: str,
+        autores_recentes: Optional[list[str]] = None,
         on_status: Optional[Callable[[str], None]] = None,
     ) -> str:
-        """Gera o devocional vivo e narrativo (estilo Café com Deus Pai) com histórias reais de terceiros."""
-        prompt_minuto = montar_prompt_minuto(referencia, texto, versao, estudo_gerado)
+        """Gera o devocional vivo e narrativo (estilo Café com Deus Pai) com rotação de autores da frase."""
+        prompt_minuto = montar_prompt_minuto(
+            referencia,
+            texto,
+            versao,
+            estudo_gerado,
+            autores_recentes=autores_recentes,
+        )
         
         # Primeira tentativa de geração com instrução específica devocional
         resultado = self._generate(

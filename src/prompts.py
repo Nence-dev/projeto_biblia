@@ -55,7 +55,7 @@ Aponte cirurgicamente onde o nosso coração cai na tentação da autossuficiên
 ### 4. Conexões Canônicas e Autores da Mesma Linha
 Conecte a passagem com outros textos da Escritura mostrando a unidade da redenção em Cristo.
 OBRIGATÓRIO: Toda referência bíblica complementar mencionada deve vir em negrito e acompanhada do texto literal com o texto do versículo em seguida transcrito entre aspas e itálico: **Livro Cap:Vers** (*"Texto do versículo..."*). Transcreva literalmente as palavras da passagem citada para que o leitor nunca veja uma referência sem o seu conteúdo.
-Cite também o pensamento de autores lúcidos da tradição reformada, apologistas ou pensadores clássicos e contemporâneos (ex.: C.S. Lewis, Tim Keller, Agostinho, Martyn Lloyd-Jones, John Stott, A.W. Tozer, Francis Schaeffer).
+Cite também o pensamento de autores lúcidos da tradição cristã histórica, apologistas ou pensadores clássicos e contemporâneos. ALTERNE OBRIGATORIAMENTE entre as grandes vozes da fé cristã (ex.: Santo Agostinho, Martinho Lutero, João Calvino, Charles Spurgeon, Dietrich Bonhoeffer, C.S. Lewis, A.W. Tozer, John Stott, Thomas Watson, John Bunyan, Corrie ten Boom, Martyn Lloyd-Jones, Blaise Pascal, George Müller, Elisabeth Elliot, Francis Schaeffer ou Timothy Keller). EVITE REPETIR o mesmo pensador utilizado em dias consecutivos!
 Formate a citação no bloco padrão:
 > "Texto da citação aqui."
 > — **Nome do Autor**, *Nome da Obra*
@@ -88,12 +88,29 @@ Diretrizes da Derivação para WhatsApp:
 """
 
 
-def montar_prompt_usuario(referencia: str, texto: str, versao: str) -> str:
-    """Monta o prompt para o estudo expositivo principal."""
+def montar_prompt_usuario(
+    referencia: str,
+    texto: str,
+    versao: str,
+    autores_recentes: list[str] | None = None,
+) -> str:
+    """Monta o prompt para o estudo expositivo principal com rotação anti-repetição de autores."""
+    instrucao_rotacao = ""
+    if autores_recentes:
+        autores_limpos = [a for a in autores_recentes if a]
+        if autores_limpos:
+            autores_str = ", ".join(f"'{a}'" for a in autores_limpos)
+            instrucao_rotacao = (
+                f"\n\n**REGRA MANDATÓRIA DE ROTAÇÃO DE PENSADORES (ANTI-REPETIÇÃO):**\n"
+                f"O(s) pensador(es) citado(s) recentemente nos estudos anteriores foi(foram): {autores_str}.\n"
+                f"É TERMINANTEMENTE PROIBIDO citar {autores_str} no estudo de hoje!\n"
+                f"Você DEVE OBRIGATORIAMENTE escolher outro teólogo/pensador clássico diferente (ex.: Dietrich Bonhoeffer, C.S. Lewis, Charles Spurgeon, Santo Agostinho, Martinho Lutero, John Stott, A.W. Tozer, Thomas Watson, Corrie ten Boom, Blaise Pascal, etc.) para garantir variedade e amplitude histórica.\n"
+            )
+
     return f"""Por favor, elabore o estudo expositivo para o versículo do dia:
 
 **Passagem:** {referencia} ({versao})
-**Texto:** "{texto}"
+**Texto:** "{texto}"{instrucao_rotacao}
 
 Siga rigorosamente a estrutura de 5 etapas e as diretrizes de redação direta, analítica e de fácil leitura para qualquer pessoa (com raciocínio lógico, ironia lúcida contra o sistema religioso e diálogo maduro com o trabalhador e o universitário — sem formalismo acadêmico pedante, sem palavras difíceis, sem clichês repetitivos como 'asfalto' e sem gírias infantis). Lembre-se: sempre que citar referências bíblicas de apoio no texto, garanta que cada referência venha acompanhada do texto e transcreva literalmente as palavras entre aspas e itálico logo após a referência (**Livro Cap:Vers** (*"Texto do versículo..."*)).
 """
@@ -127,14 +144,14 @@ DIRETRIZES EDITORIAIS OBRIGATÓRIAS:
 
 2. FRASE CURTA DE IMPACTO (Para o card lateral / selo da Palavra do Dia):
    - Um pensamento afiado, memorável e teologicamente profundo de 1 a 2 frases que sirva como lema para carregar no coração durante o dia.
-   - A frase DEVE ser de autoria de (ou inspirada em) pensadores, teólogos consagrados e figuras históricas relevantes da fé cristã que façam total sentido com o texto bíblico abordado (ex: C.S. Lewis, Charles Spurgeon, Dietrich Bonhoeffer, A.W. Tozer, John Stott, Martinho Lutero, Santo Agostinho, Tim Keller, Jonathan Edwards, Thomas Watson, Blaise Pascal, ou a figura bíblica/histórica central da passagem).
+   - A frase DEVE ser de autoria de (ou inspirada em) pensadores, teólogos consagrados e figuras históricas relevantes da fé cristã que façam total sentido com o texto bíblico abordado (ex: Dietrich Bonhoeffer, C.S. Lewis, Charles Spurgeon, Santo Agostinho, Martinho Lutero, John Stott, A.W. Tozer, Thomas Watson, Corrie ten Boom, Blaise Pascal, John Bunyan, Martyn Lloyd-Jones, George Müller, Elisabeth Elliot, Jonathan Edwards, Francis Schaeffer ou Timothy Keller).
    - Exemplos de frases e atribuições pertinentes:
      * Para paz e confiança: "A paz de Cristo não é a ausência de tempestades ao redor, mas a presença soberana do Salvador no barco da sua vida." (C.S. Lewis / Horatio Spafford)
      * Para anseio da alma e comunhão: "Só Deus pode satisfazer o anseio mais íntimo da sua alma; inquieto está o nosso coração até que repouse em Ti." (Santo Agostinho / A.W. Tozer)
      * Para vocação, trabalho e propósito: "O trabalho diário feito com integridade é adoração viva e solo sagrado diante de Deus." (Martinho Lutero / Eric Liddell)
      * Para oração e dependência: "A oração sincera não é uma performance de justos perfeitos, mas o refúgio dos corações quebrantados diante da graça." (Charles Spurgeon / Dietrich Bonhoeffer)
      * Para a cruz e justificação: "A cruz liquidou a sentença penal: quem está em Cristo não deve nada ao tribunal da culpa." (John Stott)
-   - Autor: Informe o nome do pensador, teólogo ou personagem correspondente (ex: "C.S. Lewis", "Charles Spurgeon", "Dietrich Bonhoeffer", "A.W. Tozer", "John Stott", "Martinho Lutero", "Santo Agostinho", "Tim Keller", etc. que façam sentido temático). NUNCA utilize referências a @juniorrostirola.
+   - Autor: Informe o nome do pensador, teólogo ou personagem correspondente (ex: "Dietrich Bonhoeffer", "C.S. Lewis", "Charles Spurgeon", "Santo Agostinho", "Martinho Lutero", "John Stott", "A.W. Tozer", "Thomas Watson", "Corrie ten Boom", "Blaise Pascal", etc. que façam sentido temático). NUNCA utilize referências a @juniorrostirola. EVITE REPETIR o autor utilizado nos últimos estudos!
 
 3. LEITURAS BÍBLICAS COMPLEMENTARES:
    - Lista de 4 a 6 referências bíblicas correlacionadas (ex: ["FILIPENSES 4.6,7", "COLOSSENSES 3.15", "ISAÍAS 26.3", "ROMANOS 5.1", "SALMOS 4.8"]).
@@ -171,7 +188,7 @@ Estruture a resposta no seguinte formato JSON estrito:
 {
   "titulo": "TÍTULO CONTEXTUAL EM CAIXA ALTA",
   "fraseDoDia": "Frase curta e impactante de reflexão para o dia.",
-  "autorFrase": "C.S. Lewis",
+  "autorFrase": "Dietrich Bonhoeffer",
   "leiturasComplementares": [
     "LIVRO CAP.VERS",
     "LIVRO CAP.VERS",
@@ -188,9 +205,27 @@ Estruture a resposta no seguinte formato JSON estrito:
 PROMPT_DERIVACAO_CAFE_COM_DEUS_PAI = PROMPT_DERIVACAO_MINUTO_COM_DEUS
 
 
-def montar_prompt_minuto(referencia: str, texto: str, versao: str, estudo_gerado: str) -> str:
-    """Monta o prompt para gerar o momento devocional Minuto com Deus."""
-    return f"""{PROMPT_DERIVACAO_MINUTO_COM_DEUS}
+def montar_prompt_minuto(
+    referencia: str,
+    texto: str,
+    versao: str,
+    estudo_gerado: str,
+    autores_recentes: list[str] | None = None,
+) -> str:
+    """Monta o prompt para gerar o momento devocional Minuto com Deus com rotação anti-repetição."""
+    instrucao_rotacao = ""
+    if autores_recentes:
+        autores_limpos = [a for a in autores_recentes if a]
+        if autores_limpos:
+            autores_str = ", ".join(f"'{a}'" for a in autores_limpos)
+            instrucao_rotacao = (
+                f"\n\n⚠️ REGRA MANDATÓRIA DE ROTAÇÃO DA FRASE DO DIA (ANTI-REPETIÇÃO):\n"
+                f"O(s) autor(es) citado(s) recentemente nos estudos anteriores foi(foram): {autores_str}.\n"
+                f"É TERMINANTEMENTE PROIBIDO preencher o campo 'autorFrase' com {autores_str}!\n"
+                f"Você DEVE OBRIGATORIAMENTE atribuir a frase a outro pensador relevante da fé cristã (ex.: Dietrich Bonhoeffer, C.S. Lewis, Charles Spurgeon, Santo Agostinho, Martinho Lutero, John Stott, A.W. Tozer, Thomas Watson, Corrie ten Boom, Blaise Pascal, etc.) para garantir diversidade contínua.\n"
+            )
+
+    return f"""{PROMPT_DERIVACAO_MINUTO_COM_DEUS}{instrucao_rotacao}
 
 **Passagem:** {referencia} ({versao})
 **Texto Bíblico:** "{texto}"
@@ -202,6 +237,18 @@ def montar_prompt_minuto(referencia: str, texto: str, versao: str, estudo_gerado
 """
 
 
-def montar_prompt_cafe(referencia: str, texto: str, versao: str, estudo_gerado: str) -> str:
+def montar_prompt_cafe(
+    referencia: str,
+    texto: str,
+    versao: str,
+    estudo_gerado: str,
+    autores_recentes: list[str] | None = None,
+) -> str:
     """Retrocompatibilidade com montador de prompt do Café."""
-    return montar_prompt_minuto(referencia, texto, versao, estudo_gerado)
+    return montar_prompt_minuto(
+        referencia,
+        texto,
+        versao,
+        estudo_gerado,
+        autores_recentes=autores_recentes,
+    )

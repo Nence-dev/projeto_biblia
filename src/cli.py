@@ -32,6 +32,7 @@ from src.storage import (
     extrair_secao_whatsapp,
     extrair_estudo_completo,
     exportar_estudo_para_web_data,
+    obter_ultimos_autores_frases,
 )
 
 
@@ -188,12 +189,18 @@ def executar_fluxo(args: argparse.Namespace) -> None:
         console.print(Panel(f"[bold red]Configuração da API Gemini:[/bold red]\n{err}", border_style="red"))
         sys.exit(1)
 
+    # 3.1 Identificação de autores recentes para rotação anti-repetição
+    autores_recentes = obter_ultimos_autores_frases(limite_dias=2)
+    if autores_recentes:
+        console.print(f"[dim]🔄 Rotação ativa — autores recentes excluídos: [yellow]{', '.join(autores_recentes)}[/yellow][/dim]")
+
     with console.status("[bold blue]Consultando o Especialista Teológico Expositivo (Gemini)...", spinner="bouncingBall"):
         try:
             estudo_gerado = client.gerar_estudo_completo(
                 referencia=versiculo.referencia,
                 texto=versiculo.texto,
                 versao=versiculo.versao,
+                autores_recentes=autores_recentes,
                 on_status=lambda msg: console.log(f"[yellow]{msg}[/yellow]"),
             )
         except LLMError as err:
@@ -222,6 +229,7 @@ def executar_fluxo(args: argparse.Namespace) -> None:
                 texto=versiculo.texto,
                 versao=versiculo.versao,
                 estudo_gerado=estudo_gerado,
+                autores_recentes=autores_recentes,
                 on_status=lambda msg: console.log(f"[yellow]{msg}[/yellow]"),
             )
         except LLMError as err:
