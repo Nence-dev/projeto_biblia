@@ -4,6 +4,95 @@
  */
 const HISTORICO_ESTUDOS = [
     {
+        "data": "2026-10-16",
+        "dataFormatada": "16 de Outubro de 2026",
+        "referencia": "João 6:35",
+        "versao": "NVI",
+        "modelo": "gemini-3.6-flash",
+        "geradoEm": "2026-10-16T08:32:09.070539",
+        "versiculoTexto": "Então, Jesus declarou: — Eu sou o pão da vida. Aquele que vem a mim nunca terá fome; aquele que crê em mim nunca terá sede.",
+        "genero": "Literatura de Sabedoria / Bíblica",
+        "secoes": [
+            {
+                "id": "contexto",
+                "titulo": "1. O Contexto Histórico e Narrativo",
+                "icone": "scroll",
+                "conteudo": "Jesus acabou de alimentar uma multidão de mais de cinco mil homens nas colinas da Galileia com apenas cinco pães de cevada e dois peixinhos. No dia seguinte, a multidão atravessa o mar e vai atrás dele em Cafarnaum. O motivo da busca, no entanto, não é adoração nem sede de verdade: é estômago cheio e conveniência econômica. Eles queriam transformar Jesus em rei à força porque vislumbraram nele a solução definitiva para a escassez material diária sob a opressão dos impostos romanos.<br><br>Jesus não entra no jogo da bajulação e expõe a engrenagem oculta daquele interesse: <em>\"Vocês estão me procurando, não porque viram os sinais miraculosos, mas porque comeram dos pães e ficaram satisfeitos\"</em> (<strong>João 6:26</strong>). A multidão então tenta pressioná-lo, apelando para a história de Israel: lembram que Moisés deu o maná no deserto e praticamente exigem um espetáculo diário contínuo para continuar seguindo Jesus. <br><br>Essa dinâmica desmascara a raiz da religiosidade mercantil de qualquer época. O ser humano adora um mediador que sirva de balcão de negócios, um fornecedor cósmico que atenda aos seus apetites imediatos sem exigir entrega de vida. Quando Jesus responde em João 6:35, ele quebra o contrato utilitário: ele não veio ser o garçom dos caprichos humanos, mas o próprio banquete da reconciliação com o Pai.<br><br>---"
+            },
+            {
+                "id": "anatomia",
+                "titulo": "2. A Anatomia do Texto e Teologia Central",
+                "icone": "book-open",
+                "termosOriginais": [],
+                "conteudo": "Em termos de lógica interna, o versículo opera em uma estrutura de causa, identidade e efeito absoluto. <br><br>Primeiro, temos a proclamação de identidade: <em>\"Eu sou o pão da vida\"</em>. No grego, a expressão utilizada é <em>Egō eimi</em> (Ἐγώ εἰμι), a mesma fórmula com a qual Deus se revela a Moisés na sarça ardente. Jesus não está dizendo apenas que traz uma mensagem nutritiva; ele afirma ser a própria substância da vida eterna (<em>artos tēs zōēs</em>). O pão físico apenas adia a morte por algumas horas, mas Jesus sustenta a existência para sempre.<br><br>Em segundo lugar, a engrenagem do texto estabelece duas ações complementares: \"vir\" e \"crer\". Vir a Cristo e crer nele não são etapas separadas de uma escada moral, mas dois lados da mesma moeda da fé. Quem vai a ele reconhece a própria falência e abandona a ilusão de produzir seu próprio sustento moral.<br><br>Em terceiro lugar, a garantia é absoluta. No texto grego, a negação é construída com uma partícula dupla enfática (<em>ou mē</em>), que significa \"de modo algum\", \"nunca jamais\". Não se trata de uma promessa de ausência de dores materiais ou de estômagos roncando no fim do mês. Trata-se da erradicação definitiva da fome de significado e da sede de aceitação diante de Deus. Na cruz, Cristo foi partido para que a nossa carência eterna de paz fosse plenamente saciada."
+            },
+            {
+                "id": "aplicacao",
+                "titulo": "3. O que tirar disso para a prática de hoje?",
+                "icone": "compass",
+                "conteudo": "A vida moderna funciona como uma esteira rolante de insaciabilidade. Trabalhamos até o limite da exaustão mental, acumulamos aprovações profissionais, diplomas, bens, e ainda assim deitamos a cabeça no travesseiro com a sensação de vazio. Há uma ansiedade crônica nos dizendo que o próximo salário, o próximo projeto ou o próximo relacionamento finalmente trará o alívio que o peito pede. Não traz. Trata-se apenas de pão que mofa no dia seguinte.<br><br>No ambiente religioso, a tentativa de matar essa fome é igualmente doentia. Criam-se rituais de autoflagelação psicológica, correntes de vitória e promessas mágicas de prosperidade financeira para tentar saciar apetites que continuam vazios. Reduz-se Deus a um fornecedor de benefícios e a fé a um contrato de prestação de serviços. <br><br>O descanso da graça começa quando entendemos o diagnóstico de Jesus: o problema não é a falta de recursos ao nosso redor, mas a fome errada por coisas que não alimentam a alma. Descansar em Cristo significa parar de tentar justificar a própria existência pelo desempenho, pela aprovação do chefe ou pela performance moral diante da igreja. Quando nos alimentamos da justiça que ele já conquistou de graça, o desespero por controle perde a força. Você trabalha com dedicação, cuida da família e paga suas contas, mas não coloca o peso da sua salvação nas coisas deste mundo transitório.<br><br>---"
+            },
+            {
+                "id": "canonicas",
+                "titulo": "4. Conexões Canônicas & A Obra de Cristo",
+                "icone": "cross",
+                "citacoes": [
+                    {
+                        "autor": "Santo Agostinho",
+                        "obra": "Confissões",
+                        "texto": "Tu nos fizeste para ti, Senhor, e o nosso coração está inquieto enquanto não descansar em ti."
+                    }
+                ],
+                "conteudo": "A declaração de Jesus em Cafarnaum é a resposta viva ao convite poético e profético feito séculos antes pelo profeta Isaías, chamando os falidos a deixarem o comércio infrutífero do ego: <br><br><strong>Isaías 55:1-2</strong> (<em>\"Venham, todos vocês que estão com sede, venham às águas; e vocês que não têm dinheiro, venham, comprem e comam! Venham, comprem vinho e leite sem dinheiro e sem custo. Por que gastar dinheiro naquilo que não é pão, e o seu trabalho árduo naquilo que não satisfaz? Escutem, escutem-me, e comam o que é bom, e a alma de vocês se banqueteará com o que há de melhor.\"</em>).<br><br>Jesus retoma o mesmo princípio ao falar com a mulher samaritana à beira do poço de Jacó, estabelecendo que a verdadeira satisfação brota de dentro para fora por meio da união com ele:<br><br><strong>João 4:13-14</strong> (<em>\"Jesus respondeu: 'Quem beber desta água terá sede outra vez, mas quem beber da água que eu lhe der nunca mais terá sede. Ao contrário, a água que eu lhe der se tornará nele uma fonte de água a jorrar para a vida eterna'.\"</em>).<br><br>Essa fome universal e incurável que nenhum banquete terreno consegue aplacar foi sintetizada com lucidez cirúrgica por Santo Agostinho logo na abertura de sua autobiografia espiritual:<br><br>---"
+            },
+            {
+                "id": "fechamento",
+                "titulo": "5. Pergunta Central para Meditação",
+                "icone": "help-circle",
+                "pergunta": "Você está buscando a Jesus pela pessoa dele ou apenas pelos pães que ele pode multiplicar para sustentar o seu próprio projeto de vida?"
+            }
+        ],
+        "devocionalWhatsApp": "### João 6:35 (NVI)\n*\"Então, Jesus declarou: — Eu sou o pão da vida. Aquele que vem a mim nunca terá fome; aquele que crê em mim nunca terá sede.\"*\n\n---\n\n### O Choque da Realidade\n\nA gente passa os dias correndo atrás de aprovação, saldo bancário e aplausos, achando que a próxima conquista vai finalmente preencher o vazio no peito. O pior é que a religião muitas vezes entra nesse mesmo jogo, transformando Deus num balcão de barganha para resolver nossos problemas imediatos. Queremos os pães, mas fugimos do dono do banquete. \n\n### O Fôlego da Graça\n\nJesus rasga esse contrato utilitário e diz que ele mesmo é o suprimento que a nossa alma faminta tanto procura. A promessa dele não é de ausência de lutas, mas de saciedade definitiva. Ir a Cristo é abandonar a ilusão de que você precisa se sustentar sozinho pela força do próprio braço ou da sua performance moral. Na cruz, ele foi partido para que o seu coração cansado encontre descanso real e permanente.\n\n### A Pergunta Desestabilizadora\n\nVocê está correndo atrás de Jesus pelo que ele pode te dar para sustentar o seu próprio ego, ou está disposto a descansar naquilo que ele já consumou por você?",
+        "minutoComDeus": {
+            "titulo": "O PÃO DA VIDA",
+            "fraseDoDia": "Só Deus pode satisfazer o anseio mais íntimo da sua alma; inquieto está o nosso coração até que repouse em Ti.",
+            "autorFrase": "Santo Agostinho",
+            "leiturasComplementares": [
+                "ISAÍAS 55.1,2",
+                "JOÃO 4.13,14",
+                "JOÃO 6.26",
+                "SALMOS 107.9"
+            ],
+            "leituraComplementar": "JOÃO 6.35",
+            "historiaContexto": "A multidão alimentada em Cafarnaum buscando a Jesus por interesse material",
+            "textoDevocional": "Jesus acabara de realizar o milagre da multiplicação dos pães, saciando milhares de pessoas nas colinas da Galileia. No dia seguinte, aquela mesma multidão o cercou novamente em Cafarnaum, mas não por amor à verdade ou sede de adoração, e sim pelo estômago cheio e pela conveniência de ter um provedor à mão. Eles queriam transformar o Filho de Deus em um instrumento para seus confortos imediatos, lembrando do maná do deserto e exigindo um espetáculo diário. Jesus, contudo, recusou o jogo da barganha religiosa e confrontou a intenção daquele povo: eles buscavam o pão que perece, mas ignoravam o verdadeiro sustento que o Pai oferecia.<br><br>A atitude daquela multidão expõe uma engrenagem que ainda opera silenciosamente em nossos dias. O ser humano carrega uma tendência constante de reduzir o Criador a um mero balcão de negócios, um fornecedor cósmico acionado apenas quando a escassez aperta ou a dor aperta. Quando Jesus declara 'Eu sou o pão da vida', ele quebra essa lógica utilitária e nos convida a ir além do visível. Ir a ele e crer nele não significa uma transação comercial, mas o reconhecimento profundo de que nenhuma conquista profissional, aplauso ou acúmulo material tem o poder de preencher o vazio existencial que habita no peito.<br><br>Talvez hoje você também se pegue correndo em uma esteira invisível, tentando saciar a alma com aprovações passageiras, noites mal dormidas de ansiedade e a cobrança constante por desempenho. Quantas vezes não gastamos forças correndo atrás daquilo que não satisfaz, alimentando preocupações que parecem mofar no dia seguinte? Jesus olha para o seu cansaço e para as suas frustrações diárias com um amor imensurável, oferecendo um refúgio onde o peso da culpa e a necessidade de controle finalmente cessam. Ele não promete uma vida sem lutas, mas garante que a fome mais profunda do seu coração será perfeitamente saciada na graça dele.<br><br>Descanse hoje: o autor da sua história não é um provedor distante, mas o próprio banquete que sustenta a sua alma. Pare de tentar provar o seu valor por meio de esforços que apenas trazem exaustão. Em um mundo faminto por significado e pressa, venha a Cristo de mãos abertas e permita que a presença dele seja a paz que faltava no seu dia."
+        },
+        "cafeComDeusPai": {
+            "aromaManha": "Só Deus pode satisfazer o anseio mais íntimo da sua alma; inquieto está o nosso coração até que repouse em Ti.",
+            "vozDoPai": "Jesus acabara de realizar o milagre da multiplicação dos pães, saciando milhares de pessoas nas colinas da Galileia. No dia seguinte, aquela mesma multidão o cercou novamente em Cafarnaum, mas não por amor à verdade ou sede de adoração, e sim pelo estômago cheio e pela conveniência de ter um provedor à mão. Eles queriam transformar o Filho de Deus em um instrumento para seus confortos imediatos, lembrando do maná do deserto e exigindo um espetáculo diário. Jesus, contudo, recusou o jogo da barganha religiosa e confrontou a intenção daquele povo: eles buscavam o pão que perece, mas ignoravam o verdadeiro sustento que o Pai oferecia.<br><br>A atitude daquela multidão expõe uma engrenagem que ainda opera silenciosamente em nossos dias. O ser humano carrega uma tendência constante de reduzir o Criador a um mero balcão de negócios, um fornecedor cósmico acionado apenas quando a escassez aperta ou a dor aperta. Quando Jesus declara 'Eu sou o pão da vida', ele quebra essa lógica utilitária e nos convida a ir além do visível. Ir a ele e crer nele não significa uma transação comercial, mas o reconhecimento profundo de que nenhuma conquista profissional, aplauso ou acúmulo material tem o poder de preencher o vazio existencial que habita no peito.<br><br>Talvez hoje você também se pegue correndo em uma esteira invisível, tentando saciar a alma com aprovações passageiras, noites mal dormidas de ansiedade e a cobrança constante por desempenho. Quantas vezes não gastamos forças correndo atrás daquilo que não satisfaz, alimentando preocupações que parecem mofar no dia seguinte? Jesus olha para o seu cansaço e para as suas frustrações diárias com um amor imensurável, oferecendo um refúgio onde o peso da culpa e a necessidade de controle finalmente cessam. Ele não promete uma vida sem lutas, mas garante que a fome mais profunda do seu coração será perfeitamente saciada na graça dele.<br><br>Descanse hoje: o autor da sua história não é um provedor distante, mas o próprio banquete que sustenta a sua alma. Pare de tentar provar o seu valor por meio de esforços que apenas trazem exaustão. Em um mundo faminto por significado e pressa, venha a Cristo de mãos abertas e permita que a presença dele seja a paz que faltava no seu dia.",
+            "palavraMesa": "Em João 6:35: \"Então, Jesus declarou: — Eu sou o pão da vida. Aquele que vem a mim nunca terá fome; aquele que crê em mim nunca terá sede.\".",
+            "oracaoMesa": "Pai amado, que Tua graça nos acompanhe hoje. Amém.",
+            "cafeParaLevar": "Só Deus pode satisfazer o anseio mais íntimo da sua alma; inquieto está o nosso coração até que repouse em Ti."
+        },
+        "comparacaoTraducoes": {
+            "titulo": "Comparação Exegética de Versões",
+            "versaoPrincipal": {
+                "sigla": "NVI (Nova Versão Internacional)",
+                "texto": "Então, Jesus declarou: — Eu sou o pão da vida. Aquele que vem a mim nunca terá fome; aquele que crê em mim nunca terá sede.",
+                "rotulo": "Tradução Dinâmica Contemporânea",
+                "foco": "Fluidez comunicativa e equilíbrio entre precisão e clareza para o leitor contemporâneo."
+            },
+            "versaoOriginal": {
+                "sigla": "Literal (Tradução ao Pé da Letra)",
+                "rotulo": "Equivalência Formal Estrita",
+                "textoLiteral": "Disse-lhes, pois, Jesus: 'Eu sou o pão da vida; o que vem a mim não, de modo algum, terá fome, e o que crê em mim não, de modo algum, terá sede jamais'.",
+                "texto": "Disse-lhes, pois, Jesus: 'Eu sou o pão da vida; o que vem a mim não, de modo algum, terá fome, e o que crê em mim não, de modo algum, terá sede jamais'.",
+                "foco": "Destaca a dupla negação grega enfática (*ou mē*), que expressa a impossibilidade absoluta de desamparo espiritual para quem se abriga em Cristo."
+            },
+            "notaHermeneutica": "A transição do pão físico para a pessoa de Cristo revela que a verdadeira necessidade humana não é apenas a resolução dos sintomas temporais, mas a reconciliação permanente com a fonte da vida."
+        }
+    },
+    {
         "data": "2026-10-15",
         "dataFormatada": "15 de Outubro de 2026",
         "referencia": "Colossenses 3:13",
@@ -23,23 +112,7 @@ const HISTORICO_ESTUDOS = [
                 "id": "anatomia",
                 "titulo": "2. A Anatomia do Texto e Teologia Central",
                 "icone": "book-open",
-                "termosOriginais": [
-                    {
-                        "termo": "Anechomai (ἀνέχομαι)",
-                        "significado": "Suportar, ter paciência, tolerar",
-                        "explicacao": "Capacidade de conviver com as arestas e fraquezas alheias sem romper o vínculo na primeira discordância."
-                    },
-                    {
-                        "termo": "Charizomai (χαρίζομαι)",
-                        "significado": "Perdoar graciosamente, cancelar a dívida",
-                        "explicacao": "Ação de absorver o custo da ofensa sem exigir retaliação, espelhando a graça (charis) divina."
-                    },
-                    {
-                        "termo": "Momphē (μομφή)",
-                        "significado": "Queixa, motivo legítimo de censura",
-                        "explicacao": "Demonstra que o perdão bíblico não ignora a realidade do erro; ele lida com dívidas reais, não com fantasias."
-                    }
-                ],
+                "termosOriginais": [],
                 "conteudo": "Analisando a estrutura lógica do versículo, percebemos que Paulo trabalha com uma relação clara de causa e efeito. Ele não apresenta o perdão como uma sugestão de autoajuda ou um conselho de etiqueta social, mas como uma consequência matemática da graça de Cristo na vida de quem crê.<br><br>Primeiro, Paulo usa o verbo <em>anechomai</em> (<em>suportar</em> ou <em>tolerar</em>). A palavra traz a ideia de sustentar um peso, dar espaço para que a outra pessoa exista com suas lentidões, falhas e imperfeições. Em seguida, ele trata das situações em que o atrito ultrapassa o limite da tolerância e vira dano real: a ocorrência de uma queixa legítima (<em>momphē</em>). O texto não nos pede para fingir que a ofensa não existiu. A queixa é real, o prejuízo aconteceu. É exatamente aí que entra o verbo <em>charizomai</em> (<em>perdoar graciosamente</em>), um termo que nasce diretamente da raiz de graça (<em>charis</em>). Perdoar, no vocabulário do Novo Testamento, não é dizer que \"está tudo bem\", mas assumir voluntariamente o prejuízo e cancelar a dívida sem cobrar juros emocionais.<br><br>O motor dessa ação não é a bondade inata do nosso coração, nem o merecimento de quem nos feriu. O padrão é estabelecido pela conjunção comparativa: \"assim como o Senhor perdoou vocês\". Aqui desmorona todo o moralismo religioso. O ser humano gosta de estabelecer balcões de justiça própria, onde perdoa apenas quem se humilha o suficiente ou quem oferece garantias de que nunca mais errará. Cristo quebra esse circuito: fomos perdoados quando éramos indesculpáveis. Reter o perdão de alguém, portanto, é tentar bancar o cobrador implacável depois de ter uma dívida impagável rasgada na cruz."
             },
             {
@@ -54,9 +127,9 @@ const HISTORICO_ESTUDOS = [
                 "icone": "cross",
                 "citacoes": [
                     {
-                        "autor": "Tim Keller",
-                        "obra": "O Deus Pródigo",
-                        "texto": "Perdoar significa absorver a dívida em vez de fazê-la ser paga pelo outro. Toda vez que você perdoa alguém, você arca com o custo do dano. Mas a alternativa — guardar rancor e buscar retaliação — destrói o seu coração e envenena todas as suas relações."
+                        "autor": "Dietrich Bonhoeffer",
+                        "obra": "Vida em Comunhão",
+                        "texto": "O cristão deve suportar o irmão como Deus o suportou em Cristo. Quem ama o seu sonho de uma comunidade cristã perfeita mais do que a própria comunidade concreta, torna-se um destruidor dela. Mas quem perdoa e suporta o irmão com suas arestas vive da graça real que recebeu na cruz."
                     }
                 ],
                 "conteudo": "A ordem de Paulo em Colossos reflete perfeitamente a mensagem de Jesus nos Evangelhos e a instrução apostólica em outras cartas. A Bíblia trata a incapacidade de perdoar como uma evidência gritante de que a pessoa ainda não entendeu a gravidade da sua própria condição diante de Deus.<br><br>Paulo repete essa mesma lógica em <strong>Efésios 4:32</strong> (<em>\"Sejam bondosos e compassivos uns para com os outros, perdoando-se mutuamente, assim como Deus os perdoou em Cristo.\"</em>), amarrando o comportamento interpessoal à obra consumada no Calvário. Jesus já havia tratado dessa conta de forma contundente na parábola do credor incompassivo, registrada em <strong>Mateus 18:32-33</strong> (<em>\"Então o senhor chamou o servo e disse: ‘Servo mau, cancelei toda a sua dívida porque você me implorou. Você não devia ter tido misericórdia do seu conservo, assim como eu tive de você?’\"</em>). Não há brecha para negociar: quem foi alcançado por uma graça imensurável não pode agir como um agiota de faltas alheias.<br><br>Refletindo sobre a convivência comunitária e a urgência de suportar os limites e perdoar as queixas do irmão, Dietrich Bonhoeffer destaca a essência prática desse mandamento:<br><br>---"
@@ -128,30 +201,14 @@ const HISTORICO_ESTUDOS = [
                 "id": "anatomia",
                 "titulo": "2. A Anatomia do Texto e Teologia Central",
                 "icone": "book-open",
-                "termosOriginais": [
-                    {
-                        "termo": "Harpu (הַרְפּוּ)",
-                        "significado": "Largar, afrouxar as mãos, desistir do esforço próprio",
-                        "explicacao": "A convocação definitiva para desarmar as defesas do ego e interromper a tentativa desesperada de controlar os resultados da vida."
-                    },
-                    {
-                        "termo": "De'u (דְּעוּ)",
-                        "significado": "Conhecei, constatai por experiência, tomai plena consciência",
-                        "explicacao": "O convite para enxergar a soberania de Deus na prática, saindo da teoria religiosa vazia para a confiança real."
-                    },
-                    {
-                        "termo": "Arum (אָרוּם)",
-                        "significado": "Serei exaltado, serei elevado ao mais alto posto",
-                        "explicacao": "A certeza absoluta de que Deus não depende do consentimento ou da ajuda dos impérios humanos para manifestar o Seu governo supremo."
-                    }
-                ],
+                "termosOriginais": [],
                 "conteudo": "A engrenagem lógica desta passagem opera por meio de uma quebra intencional de ritmo. Até o versículo 9, o salmista fala em terceira pessoa sobre as obras do Senhor: Ele quebra os arcos, despedaça as lanças e queima os carros de guerra no fogo. No versículo 10, a voz muda repentinamente. O próprio Deus assume a palavra em discurso direto, emitindo um imperativo incontestável.<br><br>O comando traduzido como \"parem de lutar\" vem do hebraico <em>harpu</em> (do verbo <em>raphah</em>). No uso militar e cotidiano da língua original, esse termo não significa apenas \"ficar calmo\", mas literalmente \"afrouxar\", \"abrir as mãos\", \"largar o que você está segurando com tanta força\" ou \"bater em retirada\". A ordem divina para um exército em pânico é: larguem as armas com as quais vocês tentam se defender inutilmente.<br><br>Logo em seguida, a lógica se completa com a segunda ordem: \"saibam que eu sou Deus\" (<em>de'u ki-anoki Elohim</em>). O verbo <em>yada</em> (conhecer) na mentalidade bíblica nunca é um mero assentimento intelectual ou uma fórmula teórica que se aprende na cartilha religiosa; é um reconhecimento relacional, profundo e experimental da realidade. O raciocínio de causa e efeito é cirúrgico: enquanto você estiver ocupado tentando salvar a si mesmo pelas próprias forças, maquinando planos e projetando ilusões de controle, você continuará cego para quem Deus realmente é. A soberania divina não divide o trono com a nossa ansiedade."
             },
             {
                 "id": "aplicacao",
                 "titulo": "3. O que tirar disso para a prática de hoje?",
                 "icone": "compass",
-                "conteudo": "Nós vivemos sob a tirania do hipercontrole. A nossa cultura idolatra a hiperprodutividade, o cálculo minucioso de riscos e a ilusão de que, se trabalharmos mais, nos preocuparmos mais e vigiarmos mais, manteremos todas as variáveis da vida sob domínio. No fundo, a nossa ansiedade crônica é uma forma sofisticada de ateísmo prático: nós afirmamos no culto ou na oração que Deus é soberano, mas passamos a noite acordados calculando cenários como se a sobrevivência da nossa família, da nossa carreira e do nosso futuro dependesse exclusivamente da nossa musculatura intelectual.<br><br>O meio religioso muitas vezes piora esse quadro vendendo uma espiritualidade de barganha. Ensinam que, se você jejuar certas horas, recitar as frases corretas ou fizer sacrifícios performáticos, você dobrará o braço de Deus para que Ele execute os seus planos. Isso não é Evangelho; é paganismo com verniz cristão. Deus não é um prestador de serviços contratado pelas nossas boas obras para gerenciar a nossa agenda.<br><br>A ordem do Salmo 46:10 para a sua segunda-feira é desarmante: abra as mãos. Solte a tentativa de gerenciar a crise familiar pelo grito ou pela manipulação. Pare de carregar nas costas o peso de garantir o futuro da sua empresa ou dos seus filhos através do medo. Descansar na graça não significa cruzar os braços com preguiça e negligenciar o trabalho honesto, mas sim fazer o que está ao seu alcance e tirar as mãos daquilo que pertence exclusivamente ao governo de Deus. É o alívio profundo de saber que você não é o gerente do universo.<br><br>---"
+                "conteudo": "Nós vivemos sob a tirania do hipercontrole. A nossa cultura idolatra a hiperprodutividade, o cálculo minucioso de riscos e a ilusão de que, se trabalharmos mais, nos preocuparmos mais e vigiarmos mais, manteremos todas as variáveis da vida sob domínio. No fundo, a nossa ansiedade crônica é uma forma sofisticada de ateísmo prático: nós afirmamos no culto ou na oração que Deus é soberano, mas passamos a noite acordados calculando cenários como se a sobrevivência da nossa família, da nossa carreira e do nosso futuro dependesse exclusivamente da nossa musculatura intelectual.<br><br>O meio religioso muitas vezes piora esse quadro vendendo uma espiritualidade de barganha. Ensinam que, se você jejuar certas horas, recitar as frases corretas ou fizer sacrifícios performáticos, você dobrará o braço de Deus para que Ele execute os seus planos. Isso não é Evangelho; é paganismo com verniz cristão. Deus não é um prestador de serviços contratado pelas nossas boas obras para gerenciar a nossa agenda.<br><br>A ordem do Salmo 46:10 para a sua segunda-feira é desarmante: abra as mãos. Solte a tentativa de gerenciar a crise familiar pelo grito ou pela manipulação. Pare de carregar nas costas o peso de garantir o futuro da sua empresa ou dos seus filhos através do medo. Descansar na graça não significa cruzar os braços com preguiça e negligenciar o trabalho honesto, mas sim fazer o que está ao seu alcance e tirar as mãos daquilo que pertence exclusivamente ao governo de Deus. É o alívio profundo de saber que você não é o gerente do universo."
             },
             {
                 "id": "canonicas",
@@ -164,7 +221,7 @@ const HISTORICO_ESTUDOS = [
                         "texto": "A preocupação não é apenas uma reação emocional; é um ato teológico. Quando nos preocupamos, estamos assumindo o papel de Deus e acreditando, lá no fundo, que Ele não cuidará de nós adequadamente a menos que nós mesmos assumamos o controle da situação."
                     }
                 ],
-                "conteudo": "A Bíblia inteira converge para essa mesma verdade: o ser humano sempre tenta se salvar pela força das próprias mãos, e Deus sempre o desconcerta mostrando que a salvação pertence unicamente à Sua graça. Diante do Mar Vermelho, quando o povo de Israel entrou em pânico vendo o exército egípcio avançar pelas costas, Moisés declarou exatamente a mesma lógica em <strong>Êxodo 14:14</strong> (<em>\"O Senhor lutará por vocês; tão somente acalmem-se.\"</em>).<br><br>No Novo Testamento, Jesus confronta a raiz da nossa obsessão por controle, lembrando que o desgaste mental não tem capacidade executiva nenhuma para mudar a realidade, como lemos em <strong>Mateus 6:27</strong> (<em>\"Quem de vocês, por mais que se preocupe, pode acrescentar uma hora que seja à sua vida?\"</em>). O apóstolo Paulo arremata a questão apontando a oração não como um balcão de negócios, mas como o lugar onde descarregamos o fardo em troca da estabilidade interior que vem do Alto, em <strong>Filipenses 4:6-7</strong> (<em>\"Não andem ansiosos por coisa alguma, mas em tudo, pela oração e súplicas, e com ação de graças, apresentem seus pedidos a Deus. E a paz de Deus, que excede todo o entendimento, guardará o coração e a mente de vocês em Cristo Jesus.\"</em>).<br><br>Essa entrega lúcida nada tem a ver com passividade estúpida, mas sim com o diagnóstico correto de nossa fraqueza e da fidelidade dAquele que nos resgatou na cruz, como bem analisou Tim Keller ao expor as raízes da nossa ansiedade crônica:<br><br>---"
+                "conteudo": "A Bíblia inteira converge para essa mesma verdade: o ser humano sempre tenta se salvar pela força das próprias mãos, e Deus sempre o desconcerta mostrando que a salvação pertence unicamente à Sua graça. Diante do Mar Vermelho, quando o povo de Israel entrou em pânico vendo o exército egípcio avançar pelas costas, Moisés declarou exatamente a mesma lógica em <strong>Êxodo 14:14</strong> (<em>\"O Senhor lutará por vocês; tão somente acalmem-se.\"</em>).<br><br>No Novo Testamento, Jesus confronta a raiz da nossa obsessão por controle, lembrando que o desgaste mental não tem capacidade executiva nenhuma para mudar a realidade, como lemos em <strong>Mateus 6:27</strong> (<em>\"Quem de vocês, por mais que se preocupe, pode acrescentar uma hora que seja à sua vida?\"</em>). O apóstolo Paulo arremata a questão apontando a oração não como um balcão de negócios, mas como o lugar onde descarregamos o fardo em troca da estabilidade interior que vem do Alto, em <strong>Filipenses 4:6-7</strong> (<em>\"Não andem ansiosos por coisa alguma, mas em tudo, pela oração e súplicas, e com ação de graças, apresentem seus pedidos a Deus. E a paz de Deus, que excede todo o entendimento, guardará o coração e a mente de vocês em Cristo Jesus.\"</em>).<br><br>Essa entrega lúcida nada tem a ver com passividade estúpida, mas sim com o diagnóstico correto de nossa fraqueza e da fidelidade dAquele que nos resgatou na cruz, como bem analisou Tim Keller ao expor as raízes da nossa ansiedade crônica:"
             },
             {
                 "id": "fechamento",
@@ -202,14 +259,14 @@ const HISTORICO_ESTUDOS = [
                 "sigla": "NVI (Nova Versão Internacional)",
                 "texto": "Parem de lutar e saibam que eu sou Deus! Serei exaltado entre as nações, serei exaltado na terra.",
                 "rotulo": "Tradução Dinâmica Contemporânea",
-                "foco": "Clareza contemporânea e impacto comunicativo imediato, enfatizando o encerramento do conflito e a exaltação suprema do Senhor."
+                "foco": "Clareza contemporânea e impacto comunicativo imediato, enfatizando o encerramento das contendas e a exaltação suprema do Senhor."
             },
             "versaoOriginal": {
                 "sigla": "Literal (Tradução ao Pé da Letra)",
                 "rotulo": "Equivalência Formal Estrita",
                 "textoLiteral": "Desistam [soltem as mãos] e sabei que Eu sou Deus; serei exaltado entre as nações, serei exaltado na terra.",
                 "texto": "Desistam [soltem as mãos] e sabei que Eu sou Deus; serei exaltado entre as nações, serei exaltado na terra.",
-                "foco": "Precisão do verbo de rendição física (harpu) e a declaração profética da exaltação inescapável do Criador."
+                "foco": "Precisão do verbo de rendição física (*harpu*) e a declaração profética da exaltação inescapável do Criador."
             },
             "notaHermeneutica": "A transição do abandono forçado das defesas humanas para o reconhecimento do senhorio de Deus demonstra que a fé bíblica não é uma conquista moral da mente, mas o ato lúcido de parar de resistir à soberania dAquele que governa a história."
         }
@@ -281,7 +338,7 @@ const HISTORICO_ESTUDOS = [
         "cafeComDeusPai": {
             "aromaManha": "Se você colocar a sua maior esperança em qualquer coisa que não seja Deus — seja no seu sucesso, no dinheiro, nos relacionamentos ou na sua própria competência —, essa coisa inevitavelmente falhará e esmagará você no dia da crise.",
             "vozDoPai": "Jerusalém respirava o ar irrespirável da iminência de um desastre total. Cercada pelas tropas esmagadoras da Babilônia de Nabucodonosor, a alta corte e os líderes religiosos daquela nação se recusaram a olhar para o céu; em vez disso, montaram um comitê febril de desespero, correndo para assinar acordos escusos e alianças militares com o Egito. A aposta era fria e calculada: a engenharia diplomática humana salvaria a pele deles. No entanto, o profeta Jeremias, fincando os pés na poeira daquela crise civilizatória, desmascarou a ilusão. Enquanto o mercado religioso da época comercializava uma falsa paz nos pátios do Templo, garantindo que nenhum mal aconteceria aos que mantivessem os rituais, o profeta disparou o veredito divino: maldito o homem que faz da carne o seu braço, pois ele será como um arbusto esquecido no deserto, condenado à aridez perpétua.<br><br>O cerne do texto não propõe um mérito moral impecável, mas uma mudança radical de apoio. No hebraico original, a palavra usada para traduzir a confiança é 'batach', que descreve o ato físico e deliberado de encostar-se com todo o peso do corpo sobre uma superfície sólida, despojando-se de qualquer controle próprio. O homem verdadeiramente abençoado — o 'baruch' de Deus — é aquele que retira o fardo esmagador da própria sobrevivência das suas costas fragilizadas e o deposita inteiramente na rocha eterna. Deus não atua apenas como um prestador de serviços alinhado aos nossos planos; Ele é o próprio 'mivtach', o fundamento inabalável que permanece de pé quando a estrutura da vida desmorona.<br><br>Quantas vezes você também se pegou operando exatamente assim na sua rotina urbana? Acordando sobressaltado no asfalto, checando notificações com o coração apertado, convencido silenciosamente de que, se você vacilar por um único instante no trabalho, nas finanças ou na família, o seu mundo inteiro vai desabar. Esse é o 'braço da carne' moderno: a exaustão disfarçada de produtividade, a neurose de ter que controlar cada variável do amanhã. O Evangelho da graça vem hoje para desarmar essa ansiedade tóxica. A promessa de Deus não é a ausência de secas ou de boletos difíceis, mas a garantia de que, mesmo quando o calor apertar, a sua raiz estará ligada a uma fonte que nunca seca.<br><br>Por isso, respire fundo e entregue o controle. Desligue o piloto automático do pânico diário e aceite a abençoada liberdade de ser fraco nas mãos de quem é infinitamente forte. Em um mundo desesperado por garantias falsas, caminhe hoje com a cabeça erguida e o coração em paz, ancorado na certeza cirúrgica de que o peso final da sua história não está nos seus ombros, mas nas mãos consumadas dAquele que governa a história e jamais perdeu o controle do universo.",
-            "palavraMesa": "Em Jeremias 17:7: \"Mas eu abençoarei aquele que confia em mim, aquele que tem fé em mim, o SENHOR.\".",
+            "palavraMesa": "Em Jeremias 17:7: \"Mas bendito é o homem cuja confiança está no Senhor, cuja esperança ele é.\".",
             "oracaoMesa": "Pai amado, que Tua graça nos acompanhe hoje. Amém.",
             "cafeParaLevar": "Se você colocar a sua maior esperança em qualquer coisa que não seja Deus — seja no seu sucesso, no dinheiro, nos relacionamentos ou na sua própria competência —, essa coisa inevitavelmente falhará e esmagará você no dia da crise."
         },
